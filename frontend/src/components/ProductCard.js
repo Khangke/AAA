@@ -20,8 +20,8 @@ const ProductCard = ({ product, onClick }) => {
       className="bg-deep-black/50 rounded-xl overflow-hidden backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105 cursor-pointer"
       onClick={() => onClick && onClick(product)}
     >
-      {/* Product Image */}
-      <div className="relative h-32 sm:h-40 md:h-48 bg-gradient-to-br from-luxury-gold/20 to-luxury-copper/20 flex items-center justify-center overflow-hidden">
+      {/* Product Image - Square aspect ratio */}
+      <div className="relative aspect-square bg-gradient-to-br from-luxury-gold/20 to-luxury-copper/20 flex items-center justify-center overflow-hidden">
         <img 
           src={product.image_url} 
           alt={product.name}
