@@ -381,6 +381,21 @@ backend:
         comment: "Tested order address auto-save functionality. When a user with no address information creates an order, the address from the shipping_address is automatically saved to the user profile. Subsequent orders with different addresses don't overwrite the existing address information. User profile retrieval after order creation confirms the address is saved correctly."
 
 frontend:
+  - task: "Mobile Optimization for Account Page"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/AccountPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Need to optimize account page for mobile display and ensure full content is visible on mobile screens"
+      - working: true
+        agent: "main"
+        comment: "Đã tối ưu hóa trang tài khoản cho mobile thành công. Giảm padding từ pt-16 xuống pt-14, giảm px-4 xuống px-3, giảm py-8 xuống py-4 cho mobile. Cải thiện form spacing từ space-y-6 xuống space-y-4 cho mobile. Responsive text size từ text-3xl xuống text-2xl cho mobile. Cải thiện tab navigation, form inputs, và tất cả components để hiển thị tốt hơn trên mobile với font size và spacing phù hợp."
+
   - task: "Font Change to Merriweather"
     implemented: true
     working: true
