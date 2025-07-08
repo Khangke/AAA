@@ -46,15 +46,21 @@ export const NotificationProvider = ({ children }) => {
 
   // Auto-remove notification after timeout
   useEffect(() => {
+    const timeouts = [];
+    
     state.notifications.forEach(notification => {
       if (notification.autoRemove) {
         const timeout = setTimeout(() => {
           removeNotification(notification.id);
         }, notification.duration || 3000);
         
-        return () => clearTimeout(timeout);
+        timeouts.push(timeout);
       }
     });
+    
+    return () => {
+      timeouts.forEach(timeout => clearTimeout(timeout));
+    };
   }, [state.notifications]);
 
   // Add notification
