@@ -314,15 +314,10 @@ def test_user_registration():
         "email": TEST_USER["email"],
         "password": TEST_USER["password"],
         "full_name": TEST_USER["full_name"],
-        "phone": "0912345678",
-        "address": "123 Đường Lê Lợi",
-        "city": "Hồ Chí Minh",
-        "district": "Quận 1",
-        "ward": "Phường Bến Nghé",
-        "zip_code": "70000"
+        "phone": TEST_USER["phone"]
     }
     
-    response = requests.post(url, json=data)
+    response = make_request("POST", url, json=data)
     
     print(f"Status Code: {response.status_code}")
     print("Response:")
