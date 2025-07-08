@@ -394,4 +394,4 @@ test_plan:
 
 agent_communication:
   - agent: "main"
-    message: "Đã hoàn thành backend API cho contact form, user authentication, cart management, và order processing. Tất cả endpoints đã được test và hoạt động tốt. Sẵn sàng phát triển frontend."
+    message: "Đã cập nhật trang đăng ký tài khoản theo yêu cầu của user. Backend UserCreate model giờ chỉ yêu cầu 4 trường cơ bản: email, password, full_name, phone. Frontend registration form đã được đơn giản hóa, loại bỏ tất cả các trường địa chỉ và thêm validation cho số điện thoại. Đã cập nhật logic create_order để tự động lưu thông tin địa chỉ từ đơn hàng đầu tiên vào user profile. Cần test để đảm bảo mọi thứ hoạt động đúng."
