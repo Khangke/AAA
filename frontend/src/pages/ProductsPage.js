@@ -145,28 +145,28 @@ const ProductsPage = () => {
   }
 
   return (
-    <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen pt-14 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-3 sm:py-8">
         
-        {/* Header */}
-        <div className="text-center mb-6 sm:mb-8">
-          <h1 className="font-luxury text-2xl sm:text-3xl md:text-4xl font-bold text-luxury-gold mb-2 sm:mb-4">
+        {/* Header - Compact for mobile */}
+        <div className="text-center mb-3 sm:mb-6">
+          <h1 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-1 sm:mb-2">
             Sản Phẩm Trầm Hương Cao Cấp
           </h1>
-          <p className="text-soft-gold text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
+          <p className="text-soft-gold text-xs sm:text-sm md:text-base max-w-2xl mx-auto">
             Khám phá bộ sưu tập trầm hương luxury được tuyển chọn kỹ lưỡng
           </p>
         </div>
 
-        {/* Search Bar */}
-        <div className="mb-4 sm:mb-6">
+        {/* Search Bar - Smaller for mobile */}
+        <div className="mb-3 sm:mb-4">
           <div className="relative max-w-md mx-auto">
             <input
               type="text"
               placeholder="Tìm kiếm sản phẩm..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-3 py-2 sm:px-4 sm:py-3 pl-10 sm:pl-12 bg-deep-black/50 border border-luxury-gold/20 rounded-full text-white placeholder-soft-gold focus:outline-none focus:border-luxury-gold/60 transition-colors text-sm sm:text-base"
+              className="w-full px-3 py-2 sm:px-4 sm:py-3 pl-9 sm:pl-12 bg-deep-black/50 border border-luxury-gold/20 rounded-full text-white placeholder-soft-gold focus:outline-none focus:border-luxury-gold/60 transition-colors text-sm sm:text-base"
             />
             <div className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-luxury-gold text-sm sm:text-base">
               🔍
@@ -174,8 +174,8 @@ const ProductsPage = () => {
           </div>
         </div>
 
-        {/* Filters - Mobile Optimized */}
-        <div className="mb-4 sm:mb-8">
+        {/* Filters - More compact for mobile */}
+        <div className="mb-3 sm:mb-6">
           <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 justify-center items-center">
             
             {/* Mobile: Stack filters vertically */}
