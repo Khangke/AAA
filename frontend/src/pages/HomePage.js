@@ -5,6 +5,7 @@ const HomePage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -17,6 +18,16 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchFeaturedProducts();
+    
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640); // 640px is Tailwind's sm breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const fetchFeaturedProducts = async () => {
