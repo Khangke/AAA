@@ -17,10 +17,10 @@ module.exports = {
         'dark-gold': '#B8860B',
       },
       fontFamily: {
-        'bodoni': ['Bodoni Moda', 'serif'],
+        'merriweather': ['Merriweather', 'serif'],
         'luxury': ['Playfair Display', 'serif'],
         'modern': ['Inter', 'sans-serif'],
-        'vietnamese': ['Bodoni Moda', 'Noto Serif', 'serif'],
+        'vietnamese': ['Merriweather', 'Noto Serif', 'serif'],
       },
       screens: {
         'xs': '375px',
