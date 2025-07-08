@@ -386,7 +386,8 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Frontend Testing"
+    - "Account Registration Simplification"
+    - "Order Address Auto-Save Testing"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
