@@ -137,63 +137,29 @@ const CartPage = () => {
     }
   };
 
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen pt-16 md:pt-20 bg-deep-black">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center">
-            <div className="text-luxury-gold text-6xl mb-6">🔒</div>
-            <h1 className="font-luxury text-3xl md:text-4xl font-bold text-luxury-gold mb-4">
-              Vui Lòng Đăng Nhập
-            </h1>
-            <p className="text-soft-gold text-lg mb-8">
-              Bạn cần đăng nhập để xem giỏ hàng
-            </p>
-            <Link
-              to="/account"
-              className="inline-block bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-105"
-            >
-              Đăng Nhập Ngay
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (loading) {
-    return (
-      <div className="min-h-screen pt-16 md:pt-20 bg-deep-black">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center">
-            <div className="text-luxury-gold text-6xl mb-6 animate-pulse">🛒</div>
-            <h2 className="font-luxury text-2xl text-luxury-gold">
-              Đang tải giỏ hàng...
-            </h2>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   if (items.length === 0) {
     return (
       <div className="min-h-screen pt-16 md:pt-20 bg-deep-black">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
-            <div className="text-luxury-gold text-6xl mb-6">🛒</div>
-            <h1 className="font-luxury text-3xl md:text-4xl font-bold text-luxury-gold mb-4">
-              Giỏ Hàng Trống
+            <h1 className="font-luxury text-2xl sm:text-3xl font-bold text-luxury-gold mb-6">
+              Giỏ Hàng
             </h1>
-            <p className="text-soft-gold text-lg mb-8">
-              Bạn chưa có sản phẩm nào trong giỏ hàng
-            </p>
-            <Link
-              to="/products"
-              className="inline-block bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-105"
-            >
-              Khám Phá Sản Phẩm
-            </Link>
+            <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-8">
+              <span className="text-6xl mb-4 block">🛒</span>
+              <h2 className="text-xl font-bold text-luxury-gold mb-4">
+                Giỏ hàng của bạn đang trống
+              </h2>
+              <p className="text-soft-gold mb-6">
+                Hãy khám phá các sản phẩm trầm hương cao cấp của chúng tôi
+              </p>
+              <a
+                href="/products"
+                className="inline-block bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02]"
+              >
+                Mua Sắm Ngay
+              </a>
+            </div>
           </div>
         </div>
       </div>
