@@ -5,11 +5,13 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 // Context Providers
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
+import { NotificationProvider } from "./context/NotificationContext";
 
 // Components
 import MobileNavigation from "./components/MobileNavigation";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import NotificationContainer from "./components/NotificationContainer";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
@@ -18,6 +20,7 @@ import NewsPage from "./pages/NewsPage";
 import ContactPage from "./pages/ContactPage";
 import CartPage from "./pages/CartPage";
 import AccountPage from "./pages/AccountPage";
+import OrderSuccessPage from "./pages/OrderSuccessPage";
 
 function AppContent() {
   const [isMobile, setIsMobile] = useState(false);
