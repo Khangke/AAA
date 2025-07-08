@@ -91,43 +91,45 @@ const NewsPage = () => {
     ? articles 
     : articles.filter(article => article.category === activeCategory);
 
+  const featuredArticles = filteredArticles.filter(article => article.featured);
+  const regularArticles = filteredArticles.filter(article => !article.featured);
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('vi-VN', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+      day: '2-digit',
+      month: '2-digit'
     });
   };
 
   if (selectedArticle) {
     return (
       <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
-        <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
+        <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6">
           {/* Back Button */}
           <button
             onClick={() => setSelectedArticle(null)}
-            className="mb-3 sm:mb-6 flex items-center text-luxury-gold hover:text-luxury-copper transition-colors"
+            className="mb-2 sm:mb-4 flex items-center text-luxury-gold hover:text-luxury-copper transition-colors"
           >
-            <span className="mr-2">←</span>
-            <span className="text-xs sm:text-base">Quay lại</span>
+            <span className="mr-1">←</span>
+            <span className="text-xs sm:text-sm">Quay lại</span>
           </button>
 
           {/* Article Content */}
-          <article className="bg-deep-black/50 rounded-xl p-3 sm:p-6 md:p-8 border border-luxury-gold/20">
-            <div className="mb-3 sm:mb-6">
+          <article className="bg-deep-black/50 rounded-lg p-3 sm:p-6 border border-luxury-gold/20">
+            <div className="mb-2 sm:mb-4">
               <img
                 src={selectedArticle.image}
                 alt={selectedArticle.title}
-                className="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg"
+                className="w-full h-24 sm:h-40 md:h-48 object-cover rounded-lg"
               />
             </div>
             
-            <div className="mb-3 sm:mb-6">
-              <h1 className="font-luxury text-base sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-2 sm:mb-4">
+            <div className="mb-2 sm:mb-4">
+              <h1 className="font-luxury text-sm sm:text-xl md:text-2xl font-bold text-luxury-gold mb-1 sm:mb-2">
                 {selectedArticle.title}
               </h1>
-              <div className="flex flex-wrap items-center gap-1 sm:gap-2 text-3xs sm:text-sm text-soft-gold">
+              <div className="flex flex-wrap items-center gap-1 text-3xs sm:text-xs text-soft-gold">
                 <span>📅 {formatDate(selectedArticle.date)}</span>
                 <span>•</span>
                 <span>✍️ {selectedArticle.author}</span>
@@ -137,7 +139,7 @@ const NewsPage = () => {
             </div>
             
             <div className="prose prose-invert max-w-none">
-              <p className="text-soft-gold text-xs sm:text-base leading-relaxed">
+              <p className="text-soft-gold text-xs sm:text-sm leading-relaxed">
                 {selectedArticle.content}
               </p>
             </div>
@@ -149,29 +151,29 @@ const NewsPage = () => {
 
   return (
     <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6">
         
-        {/* Header - Compact */}
-        <div className="text-center mb-4 sm:mb-8">
-          <h1 className="font-luxury text-xl sm:text-3xl md:text-4xl font-bold text-luxury-gold mb-2 sm:mb-4">
+        {/* Header - Super Compact */}
+        <div className="text-center mb-3 sm:mb-6">
+          <h1 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-1 sm:mb-2">
             Tin Tức Trầm Hương
           </h1>
-          <p className="text-soft-gold text-xs sm:text-base md:text-lg max-w-2xl mx-auto">
-            Cập nhật những thông tin mới nhất về thế giới trầm hương và các sản phẩm của chúng tôi
+          <p className="text-soft-gold text-xs sm:text-sm max-w-xl mx-auto">
+            Cập nhật thông tin mới nhất về trầm hương
           </p>
         </div>
 
-        {/* Categories - Compact */}
-        <div className="mb-4 sm:mb-6">
-          <div className="flex flex-wrap gap-1 sm:gap-2 justify-center">
+        {/* Categories - Very Compact */}
+        <div className="mb-3 sm:mb-4">
+          <div className="flex gap-1 justify-center overflow-x-auto pb-1">
             {categories.map(category => (
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center px-2 py-1 sm:px-3 sm:py-2 rounded-full text-3xs sm:text-sm font-medium transition-colors ${
+                className={`flex items-center px-2 py-1 rounded-full text-3xs sm:text-xs font-medium transition-colors whitespace-nowrap ${
                   activeCategory === category.id
                     ? 'bg-luxury-gold text-deep-black'
-                    : 'bg-deep-black/50 text-soft-gold border border-luxury-gold/20 hover:bg-luxury-gold/10'
+                    : 'bg-deep-black/50 text-soft-gold border border-luxury-gold/20'
                 }`}
               >
                 <span className="mr-1">{category.icon}</span>
@@ -181,87 +183,96 @@ const NewsPage = () => {
           </div>
         </div>
 
-        {/* Featured Articles - Compact */}
-        <div className="mb-4 sm:mb-8">
-          <h2 className="font-luxury text-base sm:text-xl md:text-2xl font-bold text-luxury-gold mb-3 sm:mb-4">
-            Bài Viết Nổi Bật
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
-            {filteredArticles.filter(article => article.featured).map(article => (
-              <div
-                key={article.id}
-                className="bg-deep-black/50 rounded-lg overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 cursor-pointer group"
-                onClick={() => setSelectedArticle(article)}
-              >
-                <div className="relative h-24 sm:h-32 md:h-40 overflow-hidden">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute top-1 left-1 bg-luxury-gold text-deep-black px-1 py-0.5 rounded text-3xs sm:text-2xs font-bold">
-                    Nổi Bật
+        {/* Featured Articles - Horizontal Scroll on Mobile */}
+        {featuredArticles.length > 0 && (
+          <div className="mb-3 sm:mb-6">
+            <h2 className="font-luxury text-sm sm:text-lg font-bold text-luxury-gold mb-2 sm:mb-3">
+              🌟 Nổi Bật
+            </h2>
+            <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-x-visible">
+              {featuredArticles.map(article => (
+                <div
+                  key={article.id}
+                  className="bg-deep-black/50 rounded-lg overflow-hidden border border-luxury-gold/20 cursor-pointer group flex-shrink-0 w-48 sm:w-auto"
+                  onClick={() => setSelectedArticle(article)}
+                >
+                  <div className="relative h-20 sm:h-24 overflow-hidden">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute top-1 left-1 bg-luxury-gold text-deep-black px-1 py-0.5 rounded text-3xs font-bold">
+                      HOT
+                    </div>
+                  </div>
+                  <div className="p-2">
+                    <h3 className="font-luxury text-xs sm:text-sm font-bold text-luxury-gold mb-1 line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <div className="flex items-center justify-between text-3xs text-soft-gold/80">
+                      <span>{formatDate(article.date)}</span>
+                      <span>{article.readTime}</span>
+                    </div>
                   </div>
                 </div>
-                <div className="p-2 sm:p-3">
-                  <h3 className="font-luxury text-xs sm:text-sm md:text-base font-bold text-luxury-gold mb-1 line-clamp-2">
-                    {article.title}
-                  </h3>
-                  <p className="text-soft-gold text-3xs sm:text-xs mb-2 line-clamp-2">
-                    {article.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-3xs sm:text-2xs text-soft-gold/80">
-                    <span>{formatDate(article.date)}</span>
-                    <span>{article.readTime}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* All Articles - Compact */}
-        <div className="mb-4 sm:mb-8">
-          <h2 className="font-luxury text-base sm:text-xl md:text-2xl font-bold text-luxury-gold mb-3 sm:mb-4">
-            Tất Cả Bài Viết
+        {/* All Articles - Compact List */}
+        <div className="mb-3 sm:mb-6">
+          <h2 className="font-luxury text-sm sm:text-lg font-bold text-luxury-gold mb-2 sm:mb-3">
+            📰 Tất Cả Bài Viết ({filteredArticles.length})
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
+          
+          {/* List View for Mobile, Grid for Desktop */}
+          <div className="space-y-2 sm:space-y-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-3">
             {filteredArticles.map(article => (
               <div
                 key={article.id}
-                className="bg-deep-black/50 rounded-lg overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 cursor-pointer group"
+                className="bg-deep-black/50 rounded-lg border border-luxury-gold/20 cursor-pointer group transition-all duration-300 hover:border-luxury-gold/40"
                 onClick={() => setSelectedArticle(article)}
               >
-                <div className="relative h-24 sm:h-32 md:h-40 overflow-hidden">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  {article.featured && (
-                    <div className="absolute top-1 left-1 bg-luxury-gold text-deep-black px-1 py-0.5 rounded text-3xs sm:text-2xs font-bold">
-                      Nổi Bật
+                {/* Mobile: Horizontal Layout */}
+                <div className="flex gap-2 sm:block p-2">
+                  <div className="relative w-16 h-16 sm:w-full sm:h-20 flex-shrink-0 overflow-hidden rounded sm:rounded-b-none">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    {article.featured && (
+                      <div className="absolute top-0.5 left-0.5 bg-luxury-gold text-deep-black px-1 py-0.5 rounded text-3xs font-bold">
+                        ⭐
+                      </div>
+                    )}
+                    <div className="absolute top-0.5 right-0.5 bg-luxury-gold/90 text-deep-black px-1 py-0.5 rounded text-3xs font-bold">
+                      {categories.find(cat => cat.id === article.category)?.icon}
                     </div>
-                  )}
-                  <div className="absolute top-1 right-1 bg-luxury-gold/90 text-deep-black px-1 py-0.5 rounded text-3xs sm:text-2xs font-bold">
-                    {categories.find(cat => cat.id === article.category)?.name}
                   </div>
-                </div>
-                <div className="p-2 sm:p-3">
-                  <h3 className="font-luxury text-xs sm:text-sm md:text-base font-bold text-luxury-gold mb-1 line-clamp-2">
-                    {article.title}
-                  </h3>
-                  <p className="text-soft-gold text-3xs sm:text-xs mb-2 line-clamp-2">
-                    {article.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-3xs sm:text-2xs text-soft-gold/80">
-                    <div className="flex items-center gap-1">
-                      <span>📅 {formatDate(article.date)}</span>
+                  
+                  <div className="flex-1 sm:p-1">
+                    <h3 className="font-luxury text-xs sm:text-sm font-bold text-luxury-gold mb-1 line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <p className="text-soft-gold text-3xs sm:text-xs mb-1 line-clamp-1 sm:line-clamp-2 hidden sm:block">
+                      {article.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between text-3xs text-soft-gold/80">
+                      <span className="flex items-center gap-1">
+                        <span>📅</span>
+                        <span>{formatDate(article.date)}</span>
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <span>⏱️</span>
+                        <span>{article.readTime}</span>
+                      </span>
                     </div>
-                    <span>⏱️ {article.readTime}</span>
-                  </div>
-                  <div className="mt-1 text-3xs sm:text-2xs text-soft-gold/60">
-                    ✍️ {article.author}
+                    <div className="text-3xs text-soft-gold/60 mt-0.5">
+                      ✍️ {article.author}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -269,44 +280,39 @@ const NewsPage = () => {
           </div>
         </div>
 
-        {/* No Results - Compact */}
+        {/* No Results - Super Compact */}
         {filteredArticles.length === 0 && (
-          <div className="text-center py-8 sm:py-12">
-            <div className="text-soft-gold text-3xl sm:text-5xl mb-3 sm:mb-4">📰</div>
-            <h3 className="font-luxury text-base sm:text-xl text-luxury-gold mb-2 sm:mb-4">
+          <div className="text-center py-6">
+            <div className="text-soft-gold text-2xl mb-2">📰</div>
+            <h3 className="font-luxury text-sm text-luxury-gold mb-2">
               Không Tìm Thấy Bài Viết
             </h3>
-            <p className="text-soft-gold mb-3 sm:mb-4 text-xs sm:text-base">
-              Hiện tại chưa có bài viết nào trong danh mục này
-            </p>
             <button
               onClick={() => setActiveCategory('all')}
-              className="bg-luxury-gold text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors text-xs sm:text-base"
+              className="bg-luxury-gold text-deep-black px-3 py-1 rounded-full font-bold hover:bg-luxury-copper transition-colors text-xs"
             >
               Xem Tất Cả
             </button>
           </div>
         )}
 
-        {/* Newsletter Signup - Compact */}
-        <div className="mt-6 sm:mt-12">
-          <div className="bg-gradient-to-r from-luxury-gold/10 to-luxury-copper/10 rounded-xl p-3 sm:p-6 md:p-8 border border-luxury-gold/20 text-center">
-            <h2 className="font-luxury text-base sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-2 sm:mb-4">
-              Đăng Ký Nhận Tin
-            </h2>
-            <p className="text-soft-gold text-xs sm:text-base mb-3 sm:mb-4 max-w-2xl mx-auto">
-              Nhận thông tin mới nhất về trầm hương và các sản phẩm độc đáo từ Khang Trầm Hương
-            </p>
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Nhập email của bạn"
-                className="flex-1 px-3 py-2 sm:px-4 sm:py-3 bg-deep-black/50 border border-luxury-gold/20 rounded-full text-white placeholder-soft-gold focus:outline-none focus:border-luxury-gold/60 text-xs sm:text-base"
-              />
-              <button className="bg-luxury-gold text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors text-xs sm:text-base">
-                Đăng Ký
-              </button>
-            </div>
+        {/* Newsletter - Compact */}
+        <div className="bg-gradient-to-r from-luxury-gold/10 to-luxury-copper/10 rounded-lg p-3 border border-luxury-gold/20 text-center">
+          <h2 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold mb-1 sm:mb-2">
+            📬 Đăng Ký Nhận Tin
+          </h2>
+          <p className="text-soft-gold text-xs mb-2 sm:mb-3">
+            Nhận thông tin mới nhất về trầm hương
+          </p>
+          <div className="flex gap-2 max-w-xs mx-auto">
+            <input
+              type="email"
+              placeholder="Email của bạn"
+              className="flex-1 px-2 py-1 bg-deep-black/50 border border-luxury-gold/20 rounded-full text-white placeholder-soft-gold focus:outline-none text-xs"
+            />
+            <button className="bg-luxury-gold text-deep-black px-3 py-1 rounded-full font-bold hover:bg-luxury-copper transition-colors text-xs">
+              OK
+            </button>
           </div>
         </div>
       </div>
