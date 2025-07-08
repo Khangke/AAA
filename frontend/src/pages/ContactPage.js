@@ -101,19 +101,19 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen pt-16 md:pt-20 bg-deep-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h1 className="font-luxury text-3xl sm:text-4xl lg:text-5xl font-bold text-luxury-gold mb-4 sm:mb-6">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="font-luxury text-2xl sm:text-3xl lg:text-4xl font-bold text-luxury-gold mb-3 sm:mb-4">
             Liên Hệ Với Chúng Tôi
           </h1>
-          <p className="text-soft-gold text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-soft-gold text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed">
             Chúng tôi luôn sẵn sàng tư vấn và hỗ trợ bạn về các sản phẩm trầm hương cao cấp
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           
           {/* Contact Form */}
           <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-6 sm:p-8">
