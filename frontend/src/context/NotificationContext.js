@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
-const NotificationContext = createContext();
+const NotificationContext = React.createContext();
 
 // Initial state
 const initialState = {
