@@ -20,6 +20,31 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Scrollbar Hide */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth Scrolling for Mobile Products */
+.product-scroll {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.product-scroll > * {
+  scroll-snap-align: start;
+}
+
+/* Touch Scroll Optimization */
+.product-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
