@@ -452,4 +452,4 @@ test_plan:
 
 agent_communication:
   - agent: "main"
-    message: "Đã hoàn thành tạo trang About và News với thiết kế mobile-first. Trang About bao gồm câu chuyện thương hiệu, tầm nhìn, sứ mệnh, sản phẩm và giá trị cốt lõi. Trang News có 6 bài viết mẫu với phân loại và chức năng đọc chi tiết. Cả hai trang đều tối ưu cho mobile với responsive design."
+    message: "Đã hoàn thành backend API cho contact form, user authentication, cart management, và order processing. Tất cả endpoints đã được test và hoạt động tốt. Sẵn sàng phát triển frontend."
