@@ -776,6 +776,30 @@ async def create_order(order_data: OrderCreate, current_user_id: str = Depends(v
     
     await db.orders.insert_one(order_obj.dict())
     
+    # Update user profile with address information from first order (if user doesn't have address yet)
+    user = await db.users.find_one({"id": current_user_id})
+    if user and (not user.get("address") or not user.get("city")):
+        # Extract address information from shipping_address
+        address_update = {}
+        if order_data.shipping_address.get("address"):
+            address_update["address"] = order_data.shipping_address["address"]
+        if order_data.shipping_address.get("city"):
+            address_update["city"] = order_data.shipping_address["city"]
+        if order_data.shipping_address.get("district"):
+            address_update["district"] = order_data.shipping_address["district"]
+        if order_data.shipping_address.get("ward"):
+            address_update["ward"] = order_data.shipping_address["ward"]
+        if order_data.shipping_address.get("zip_code"):
+            address_update["zip_code"] = order_data.shipping_address["zip_code"]
+        
+        # Update user with address information
+        if address_update:
+            address_update["updated_at"] = datetime.utcnow()
+            await db.users.update_one(
+                {"id": current_user_id},
+                {"$set": address_update}
+            )
+    
     # Clear cart after successful order
     await db.carts.delete_one({"user_id": current_user_id})
     
