@@ -61,7 +61,7 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 min-h-screen">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
         
         {/* Hero Section - Compact */}
         <div className={`text-center mb-8 sm:mb-12 transition-all duration-1000 ${
