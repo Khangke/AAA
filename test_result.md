@@ -105,6 +105,54 @@
 user_problem_statement: "Phát triển trang sản phẩm và tối ưu cho mobile 1 dòng 2 cột"
 
 backend:
+  - task: "Contact Form API"
+    implemented: false
+    working: false
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Need to implement contact form submission endpoint"
+
+  - task: "User Registration/Login API"
+    implemented: false
+    working: false
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Need to implement user authentication with email"
+
+  - task: "Cart Management API"
+    implemented: false
+    working: false
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Need to implement cart operations and order processing"
+
+  - task: "Order Management API"
+    implemented: false
+    working: false
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Need to implement order creation with shipping fee and payment methods"
+
   - task: "Product API Development"
     implemented: true
     working: true
