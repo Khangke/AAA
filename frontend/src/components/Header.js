@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
-const Header = ({ cartCount }) => {
+const Header = () => {
   const location = useLocation();
+  const { getCartItemCount } = useCart();
+  const cartCount = getCartItemCount();
 
   const navItems = [
     { path: '/', label: 'Trang Chủ', icon: '🏠' },
