@@ -208,7 +208,7 @@ test_plan:
     - "GET /api/products?search=trầm - Tìm kiếm sản phẩm"
     - "GET /api/products/categories - Lấy danh sách categories"
   stuck_tasks:
-    - "GET /api/products/categories - Lấy danh sách categories"
+    []
   test_all: false
   test_priority: "high_first"
 
