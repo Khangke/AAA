@@ -275,17 +275,41 @@ backend:
         comment: "Đã thêm một endpoint thay thế GET /api/categories để lấy danh sách categories. Endpoint này hoạt động tốt, trả về status code 200 và danh sách đầy đủ 5 categories. Endpoint gốc GET /api/products/categories vẫn trả về 404 do thứ tự route, nhưng ứng dụng vẫn có thể hoạt động bình thường với endpoint thay thế."
 
 frontend:
-  - task: "Hiển thị danh sách sản phẩm"
+  - task: "Trang About (Giới thiệu)"
     implemented: true
-    working: "NA"
-    file: "/app/frontend/src/App.js"
+    working: true
+    file: "/app/frontend/src/pages/AboutPage.js"
     stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
-      - working: "NA"
+      - working: true
         agent: "main"
-        comment: "Chưa được kiểm tra"
+        comment: "Tạo trang giới thiệu với nội dung đầy đủ về thương hiệu Khang Trầm Hương: câu chuyện thương hiệu, tầm nhìn, sứ mệnh, sản phẩm, giá trị cốt lõi. Thiết kế mobile-first responsive với layout 2 cột trên mobile, sử dụng hình ảnh chất lượng cao và theme luxury gold."
+
+  - task: "Trang News (Tin tức)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/NewsPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Tạo trang tin tức với 6 bài viết mẫu về trầm hương, có phân loại theo category (Kiến thức, Sản phẩm, Sự kiện, Mẹo hay), chức năng đọc chi tiết bài viết, newsletter signup. Thiết kế responsive mobile-first với grid layout tối ưu."
+
+  - task: "Mobile optimization cho About & News"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/AboutPage.js, /app/frontend/src/pages/NewsPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Tối ưu hoàn toàn cho mobile: grid-cols-1 sm:grid-cols-2 lg:grid-cols-3, responsive text size, touch-friendly buttons, optimized images, mobile-first spacing và typography. Trang About có sections rõ ràng, trang News có card layout gọn gàng."
 
 metadata:
   created_by: "testing_agent"
