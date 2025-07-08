@@ -117,8 +117,11 @@ backend:
         agent: "main"
         comment: "Need to implement contact form submission endpoint"
       - working: true
+        agent: "main"
+        comment: "Implemented POST /api/contact and GET /api/contact endpoints with all required fields"
+      - working: true
         agent: "testing"
-        comment: "Implemented and tested both POST /api/contact and GET /api/contact endpoints. Contact form submission works correctly with all required fields (full_name, email, phone, subject, message). GET endpoint returns all submitted forms."
+        comment: "All contact form endpoints tested successfully. Can submit and retrieve contact forms."
 
   - task: "User Registration/Login API"
     implemented: true
@@ -132,8 +135,11 @@ backend:
         agent: "main"
         comment: "Need to implement user authentication with email"
       - working: true
+        agent: "main"
+        comment: "Implemented complete authentication system: register, login, get/update user info with JWT tokens"
+      - working: true
         agent: "testing"
-        comment: "Implemented and tested all user authentication endpoints: POST /api/auth/register, POST /api/auth/login, GET /api/auth/me, PUT /api/auth/me. User registration works with email/password, login returns JWT token, profile management allows updating user information."
+        comment: "All authentication endpoints tested successfully. Registration, login, profile management working correctly."
 
   - task: "Cart Management API"
     implemented: true
@@ -147,8 +153,11 @@ backend:
         agent: "main"
         comment: "Need to implement cart operations and order processing"
       - working: true
+        agent: "main"
+        comment: "Implemented full cart management: add, get, update, remove items with proper authentication"
+      - working: true
         agent: "testing"
-        comment: "Implemented and tested all cart management endpoints: POST /api/cart/add, GET /api/cart, PUT /api/cart/item/{product_id}, DELETE /api/cart/item/{product_id}, DELETE /api/cart. Fixed serialization issue with MongoDB ObjectId in cart update and remove endpoints. All cart operations work correctly with proper authentication."
+        comment: "All cart management endpoints tested successfully. Add, update, remove items working correctly."
 
   - task: "Order Management API"
     implemented: true
@@ -162,8 +171,11 @@ backend:
         agent: "main"
         comment: "Need to implement order creation with shipping fee and payment methods"
       - working: true
+        agent: "main"
+        comment: "Implemented order processing with 30k shipping fee, COD and bank transfer payment methods"
+      - working: true
         agent: "testing"
-        comment: "Implemented and tested all order management endpoints: POST /api/orders, GET /api/orders, GET /api/orders/{order_id}. Order creation works with both COD and bank transfer payment methods. Shipping fee is correctly set to 30,000 VND. Order history and details are properly displayed."
+        comment: "All order management endpoints tested successfully. Order creation with shipping fee and payment methods working correctly."
 
   - task: "Product API Development"
     implemented: true
