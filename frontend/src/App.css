@@ -93,6 +93,11 @@ html, body {
 }
 
 /* Utility Classes */
+.text-2xs {
+  font-size: 0.625rem;
+  line-height: 0.75rem;
+}
+
 .bg-glass {
   background: rgba(26, 26, 26, 0.3);
   backdrop-filter: blur(12px);
