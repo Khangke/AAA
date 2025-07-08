@@ -168,22 +168,22 @@ const CartPage = () => {
 
   return (
     <div className="min-h-screen pt-16 md:pt-20 bg-deep-black">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         
         {/* Header */}
-        <div className="text-center mb-6 sm:mb-8">
-          <h1 className="font-luxury text-2xl sm:text-3xl font-bold text-luxury-gold mb-3">
+        <div className="text-center mb-4 sm:mb-6">
+          <h1 className="font-luxury text-xl sm:text-2xl font-bold text-luxury-gold mb-2">
             Giỏ Hàng ({items.length} sản phẩm)
           </h1>
           {isGuest && !isAuthenticated && (
-            <p className="text-soft-gold text-sm">
+            <p className="text-soft-gold text-xs">
               💡 Bạn đang mua sắm dưới dạng khách. Đăng nhập để lưu thông tin và đặt hàng dễ dàng hơn.
             </p>
           )}
         </div>
 
         {checkoutMessage && (
-          <div className={`mb-6 p-4 rounded-lg text-center ${
+          <div className={`mb-4 p-3 rounded-lg text-center text-sm ${
             checkoutMessage.includes('thành công') 
               ? 'bg-green-900/30 border border-green-500/30 text-green-300'
               : 'bg-red-900/30 border border-red-500/30 text-red-300'
@@ -192,7 +192,7 @@ const CartPage = () => {
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
           
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
