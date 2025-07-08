@@ -352,11 +352,11 @@ user_problem_statement: "fix lại trang tài khoản đăng ký chỉ nhập sd
 backend:
   - task: "Account Registration Simplification"
     implemented: true
-    working: false
+    working: true
     file: "backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "main"
@@ -364,6 +364,9 @@ backend:
       - working: false
         agent: "main"
         comment: "Updated create_order function to automatically save address information from first order into user profile if user doesn't have address yet."
+      - working: true
+        agent: "testing"
+        comment: "Tested simplified registration with only 4 required fields (email, password, full_name, phone). Registration works correctly without address fields. Validation for all required fields works as expected. JWT token is returned correctly."
 
 frontend:
   - task: "Account Registration Form Simplification"
