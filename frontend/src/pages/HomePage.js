@@ -103,7 +103,7 @@ const HomePage = () => {
             <>
               {/* Mobile: Horizontal Scroll */}
               <div className="block sm:hidden">
-                <div className="flex gap-3 overflow-x-auto pb-4 px-4 -mx-4 scrollbar-hide">
+                <div className="flex gap-3 overflow-x-auto pb-4 px-4 -mx-4 scrollbar-hide product-scroll">
                   {featuredProducts.map((product) => (
                     <div key={product.id} className="bg-deep-black/60 rounded-xl overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all cursor-pointer group flex-shrink-0 w-40">
                       {/* Square Image */}
@@ -129,6 +129,10 @@ const HomePage = () => {
                       </div>
                     </div>
                   ))}
+                </div>
+                {/* Swipe Indicator */}
+                <div className="text-center">
+                  <p className="text-soft-gold text-xs opacity-70">← Lướt để xem thêm →</p>
                 </div>
               </div>
 
