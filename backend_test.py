@@ -15,7 +15,8 @@ API_BASE_URL = f"{BACKEND_URL}/api"
 TEST_USER = {
     "email": f"test.user.{datetime.now().strftime('%Y%m%d%H%M%S')}@example.com",
     "password": "Test@123456",
-    "full_name": "Nguyễn Văn Test"
+    "full_name": "Nguyễn Văn Test",
+    "phone": "0912345678"
 }
 ACCESS_TOKEN = None
 TEST_PRODUCT_ID = None
@@ -30,6 +31,31 @@ def get_auth_headers():
     if not ACCESS_TOKEN:
         raise Exception("No access token available. Please run authentication tests first.")
     return {"Authorization": f"Bearer {ACCESS_TOKEN}"}
+
+# Helper function to make requests with retry logic
+def make_request(method, url, **kwargs):
+    """Make a request with retry logic for timeouts"""
+    max_retries = 3
+    timeout = 30  # seconds
+    
+    # Add timeout to kwargs if not already present
+    if 'timeout' not in kwargs:
+        kwargs['timeout'] = timeout
+    
+    for attempt in range(max_retries):
+        try:
+            response = requests.request(method, url, **kwargs)
+            return response
+        except requests.exceptions.Timeout:
+            print(f"Request timed out (attempt {attempt+1}/{max_retries})")
+            if attempt == max_retries - 1:  # Last attempt
+                raise
+            time.sleep(2)  # Wait before retrying
+        except requests.exceptions.RequestException as e:
+            print(f"Request error: {e}")
+            if attempt == max_retries - 1:  # Last attempt
+                raise
+            time.sleep(2)  # Wait before retrying
 
 def test_seed_products():
     """Test POST /api/products/seed endpoint"""
