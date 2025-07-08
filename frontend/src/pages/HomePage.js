@@ -21,7 +21,8 @@ const HomePage = () => {
 
   const fetchFeaturedProducts = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/products?featured=true`);
+      // Get more products for scrolling
+      const response = await axios.get(`${backendUrl}/api/products`);
       setFeaturedProducts(response.data);
     } catch (error) {
       console.error('Error fetching featured products:', error);
