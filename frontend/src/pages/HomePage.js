@@ -3,6 +3,8 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 const HomePage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentProductIndex, setCurrentProductIndex] = useState(0);
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
   // Memoize hero background images for better performance
   const heroImages = useMemo(() => [
@@ -54,6 +56,28 @@ const HomePage = () => {
     };
   }, [handleScroll]);
 
+  // Handle product scroll
+  const handleProductScroll = useCallback((e) => {
+    const container = e.target;
+    const scrollLeft = container.scrollLeft;
+    const itemWidth = container.children[0]?.offsetWidth || 320;
+    const gap = 16; // 4 * 4px gap
+    const totalItemWidth = itemWidth + gap;
+    const index = Math.round(scrollLeft / totalItemWidth);
+    setCurrentProductIndex(index);
+  }, []);
+
+  // Handle testimonial scroll
+  const handleTestimonialScroll = useCallback((e) => {
+    const container = e.target;
+    const scrollLeft = container.scrollLeft;
+    const itemWidth = container.children[0]?.offsetWidth || 320;
+    const gap = 16; // 4 * 4px gap
+    const totalItemWidth = itemWidth + gap;
+    const index = Math.round(scrollLeft / totalItemWidth);
+    setCurrentTestimonialIndex(index);
+  }, []);
+
   // Memoized product data
   const featuredProducts = useMemo(() => [
     {
@@ -98,6 +122,52 @@ const HomePage = () => {
     }
   ], []);
 
+  // Memoized testimonials data
+  const testimonials = useMemo(() => [
+    {
+      id: 1,
+      name: 'Anh Minh',
+      location: 'TP. Hồ Chí Minh',
+      avatar: 'A',
+      review: 'Trầm hương ở đây chất lượng thật sự tuyệt vời. Hương thơm rất đậm đà và tự nhiên. Tôi đã mua nhiều lần và luôn hài lòng!'
+    },
+    {
+      id: 2,
+      name: 'Chị Lan',
+      location: 'Hà Nội',
+      avatar: 'L',
+      review: 'Phục vụ tận tình, sản phẩm đúng như mô tả. Vòng trầm hương rất đẹp và chất lượng. Sẽ giới thiệu cho bạn bè!'
+    },
+    {
+      id: 3,
+      name: 'Anh Hưng',
+      location: 'Đà Nẵng',
+      avatar: 'H',
+      review: 'Mua làm quà tặng cho bố mẹ, họ rất thích. Chất lượng trầm hương thật sự cao cấp, xứng đáng với giá tiền!'
+    },
+    {
+      id: 4,
+      name: 'Chị Thảo',
+      location: 'Cần Thơ',
+      avatar: 'T',
+      review: 'Shop tư vấn rất chi tiết và nhiệt tình. Sản phẩm đẹp, đóng gói cẩn thận. Rất hài lòng với dịch vụ!'
+    },
+    {
+      id: 5,
+      name: 'Anh Dũng',
+      location: 'Hải Phòng',
+      avatar: 'D',
+      review: 'Mình đã so sánh nhiều nơi, chỗ này có giá hợp lý nhất với chất lượng tuyệt vời. Sẽ ủng hộ lâu dài!'
+    },
+    {
+      id: 6,
+      name: 'Chị Nga',
+      location: 'Nha Trang',
+      avatar: 'N',
+      review: 'Hương trầm rất tinh tế và sang trọng. Mua về làm quà tặng sếp, ông ấy khen ngợi hết lời!'
+    }
+  ], []);
+
   const ProductCard = React.memo(({ product, index }) => (
     <div className={`flex-shrink-0 w-full xs:w-80 sm:w-auto bg-deep-black/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105 will-change-transform animate-fade-in-up`}
          style={{ animationDelay: `${index * 0.1}s` }}>
@@ -124,6 +194,26 @@ const HomePage = () => {
             Xem Chi Tiết
           </button>
         </div>
+      </div>
+    </div>
+  ));
+
+  const TestimonialCard = React.memo(({ testimonial, index }) => (
+    <div className="flex-shrink-0 w-full xs:w-80 sm:w-auto bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up">
+      <div className="flex items-center mb-4 xs:mb-6">
+        <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
+          <span className="text-deep-black font-bold text-sm xs:text-base">{testimonial.avatar}</span>
+        </div>
+        <div>
+          <h4 className="font-bold text-luxury-gold text-sm xs:text-base">{testimonial.name}</h4>
+          <p className="text-soft-gold text-xs xs:text-sm">{testimonial.location}</p>
+        </div>
+      </div>
+      <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
+        "{testimonial.review}"
+      </p>
+      <div className="flex text-luxury-gold text-sm xs:text-base">
+        ⭐⭐⭐⭐⭐
       </div>
     </div>
   ));
