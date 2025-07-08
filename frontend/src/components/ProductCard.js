@@ -153,9 +153,9 @@ const ProductCard = ({ product, onClick }) => {
           )}
         </div>
         
-        {/* Add to Cart Button */}
+        {/* Add to Cart Button - More compact */}
         <button 
-          className={`w-full px-3 py-2 rounded-lg font-bold text-sm transition-all duration-300 shadow-md ${
+          className={`w-full px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg font-bold text-xs sm:text-sm transition-all duration-300 shadow-md ${
             !product.in_stock
               ? 'bg-gray-500 text-gray-300 cursor-not-allowed'
               : itemInCart
@@ -175,10 +175,10 @@ const ProductCard = ({ product, onClick }) => {
           }
         </button>
         
-        {/* Quick Buy Button */}
+        {/* Quick Buy Button - More compact */}
         {product.in_stock && (
           <button 
-            className="w-full bg-transparent border border-luxury-gold text-luxury-gold px-3 py-2 rounded-lg font-bold text-sm hover:bg-luxury-gold hover:text-deep-black transition-all duration-300"
+            className="w-full bg-transparent border border-luxury-gold text-luxury-gold px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg font-bold text-xs sm:text-sm hover:bg-luxury-gold hover:text-deep-black transition-all duration-300"
             onClick={(e) => {
               e.stopPropagation();
               handleAddToCart(e).then(() => {
@@ -190,9 +190,9 @@ const ProductCard = ({ product, onClick }) => {
           </button>
         )}
         
-        {/* Category Tag */}
-        <div className="flex justify-center mt-2">
-          <span className="inline-block bg-luxury-gold/20 text-luxury-gold px-2 py-1 rounded-full text-xs">
+        {/* Category Tag - More compact */}
+        <div className="flex justify-center mt-1.5">
+          <span className="inline-block bg-luxury-gold/20 text-luxury-gold px-1.5 py-0.5 rounded-full text-2xs sm:text-xs">
             {product.category}
           </span>
         </div>
