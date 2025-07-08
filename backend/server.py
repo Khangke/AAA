@@ -208,15 +208,22 @@ class OrderCreate(BaseModel):
     shipping_address: Dict[str, str]
     notes: str = ""
 
+class ProductVariation(BaseModel):
+    size: str  # e.g., "S", "M", "L", "XL", "6mm", "8mm", "10mm"
+    price: float
+    original_price: float = None
+    stock_quantity: int = 0
+
 class Product(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str
     description: str
-    price: float
+    price: float  # Base price (lowest price among variations)
     original_price: float = None
     category: str
     image_url: str
     images: List[str] = []
+    variations: List[ProductVariation] = []  # Size variations with different prices
     in_stock: bool = True
     stock_quantity: int = 0
     featured: bool = False
