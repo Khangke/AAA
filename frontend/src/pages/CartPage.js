@@ -140,22 +140,22 @@ const CartPage = () => {
   if (items.length === 0) {
     return (
       <div className="min-h-screen pt-16 md:pt-20 bg-deep-black">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="text-center">
-            <h1 className="font-luxury text-2xl sm:text-3xl font-bold text-luxury-gold mb-6">
+            <h1 className="font-luxury text-xl sm:text-2xl font-bold text-luxury-gold mb-4">
               Giỏ Hàng
             </h1>
-            <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-8">
-              <span className="text-6xl mb-4 block">🛒</span>
-              <h2 className="text-xl font-bold text-luxury-gold mb-4">
+            <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-6">
+              <span className="text-4xl mb-3 block">🛒</span>
+              <h2 className="text-lg font-bold text-luxury-gold mb-3">
                 Giỏ hàng của bạn đang trống
               </h2>
-              <p className="text-soft-gold mb-6">
+              <p className="text-soft-gold mb-4 text-sm">
                 Hãy khám phá các sản phẩm trầm hương cao cấp của chúng tôi
               </p>
               <a
                 href="/products"
-                className="inline-block bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02]"
+                className="inline-block bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] text-sm"
               >
                 Mua Sắm Ngay
               </a>
