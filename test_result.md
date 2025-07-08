@@ -291,7 +291,10 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Frontend Testing"
+    - "Contact Form API"
+    - "User Registration/Login API"
+    - "Cart Management API"
+    - "Order Management API"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
