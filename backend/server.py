@@ -695,7 +695,11 @@ async def update_cart_item(product_id: str, cart_update: CartItemUpdate, current
         {"$set": cart}
     )
     
-    return {"message": "Cart updated", "cart": cart}
+    # Get the updated cart to return as a proper model
+    updated_cart = await db.carts.find_one({"user_id": current_user_id})
+    cart_model = Cart(**updated_cart)
+    
+    return {"message": "Cart updated", "cart": cart_model.dict()}
 
 @api_router.delete("/cart/item/{product_id}")
 async def remove_from_cart(product_id: str, current_user_id: str = Depends(verify_token)):
