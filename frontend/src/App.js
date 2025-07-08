@@ -54,12 +54,16 @@ function AppContent() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/account" element={<AccountPage />} />
+          <Route path="/order-success" element={<OrderSuccessPage />} />
         </Routes>
       </main>
 
       {showFooter && <Footer />}
 
       {isMobile && <MobileNavigation />}
+      
+      {/* Notification Container */}
+      <NotificationContainer />
     </div>
   );
 }
