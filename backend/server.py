@@ -71,6 +71,19 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     return hash_password(plain_password) == hashed_password
 
 
+# Define Enums
+class PaymentMethod(str, Enum):
+    COD = "cod"
+    BANK_TRANSFER = "bank_transfer"
+
+class OrderStatus(str, Enum):
+    PENDING = "pending"
+    CONFIRMED = "confirmed"
+    PROCESSING = "processing"
+    SHIPPED = "shipped"
+    DELIVERED = "delivered"
+    CANCELLED = "cancelled"
+
 # Define Models
 class StatusCheck(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
@@ -79,6 +92,126 @@ class StatusCheck(BaseModel):
 
 class StatusCheckCreate(BaseModel):
     client_name: str
+
+# Contact Models
+class ContactForm(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    full_name: str
+    email: EmailStr
+    phone: str
+    subject: str
+    message: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+class ContactFormCreate(BaseModel):
+    full_name: str
+    email: EmailStr
+    phone: str
+    subject: str
+    message: str
+
+# User Models
+class User(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    email: EmailStr
+    full_name: str
+    phone: str = ""
+    address: str = ""
+    city: str = ""
+    district: str = ""
+    ward: str = ""
+    zip_code: str = ""
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+class UserCreate(BaseModel):
+    email: EmailStr
+    password: str
+    full_name: str
+    phone: str = ""
+    address: str = ""
+    city: str = ""
+    district: str = ""
+    ward: str = ""
+    zip_code: str = ""
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+class UserUpdate(BaseModel):
+    full_name: str = None
+    phone: str = None
+    address: str = None
+    city: str = None
+    district: str = None
+    ward: str = None
+    zip_code: str = None
+
+class UserInDB(User):
+    hashed_password: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class TokenData(BaseModel):
+    user_id: str = None
+
+# Cart Models
+class CartItem(BaseModel):
+    product_id: str
+    quantity: int
+    price: float
+    name: str
+    image_url: str
+
+class Cart(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_id: str = None
+    items: List[CartItem] = []
+    total_amount: float = 0.0
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+class CartItemAdd(BaseModel):
+    product_id: str
+    quantity: int = 1
+
+class CartItemUpdate(BaseModel):
+    quantity: int
+
+# Order Models
+class OrderItem(BaseModel):
+    product_id: str
+    quantity: int
+    price: float
+    name: str
+    image_url: str
+    subtotal: float
+
+class Order(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_id: str = None
+    order_number: str
+    items: List[OrderItem]
+    subtotal: float
+    shipping_fee: float = 30000  # Fixed 30k VND
+    total_amount: float
+    payment_method: PaymentMethod
+    status: OrderStatus = OrderStatus.PENDING
+    customer_info: Dict[str, str]
+    shipping_address: Dict[str, str]
+    notes: str = ""
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+class OrderCreate(BaseModel):
+    items: List[CartItem]
+    payment_method: PaymentMethod
+    customer_info: Dict[str, str]
+    shipping_address: Dict[str, str]
+    notes: str = ""
 
 class Product(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
