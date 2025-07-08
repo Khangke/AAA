@@ -99,12 +99,12 @@ const ProductCard = ({ product, onClick }) => {
         </h3>
         
         {/* Product Description - Show on mobile with line clamp */}
-        <p className="text-soft-gold text-xs leading-tight line-clamp-2 mb-2">
+        <p className="text-soft-gold text-2xs sm:text-xs leading-tight line-clamp-2 mb-1.5">
           {product.description}
         </p>
         
-        {/* Rating & Reviews */}
-        <div className="flex items-center justify-between mb-2">
+        {/* Rating & Reviews - More compact */}
+        <div className="flex items-center justify-between mb-1.5">
           <div className="flex items-center">
             <div className="flex text-yellow-400 text-xs">
               {[...Array(5)].map((_, i) => (
@@ -113,41 +113,41 @@ const ProductCard = ({ product, onClick }) => {
                 </span>
               ))}
             </div>
-            <span className="text-soft-gold text-xs ml-1">
+            <span className="text-soft-gold text-2xs sm:text-xs ml-1">
               ({product.reviews_count})
             </span>
           </div>
-          <div className="text-xs text-soft-gold">
+          <div className="text-2xs sm:text-xs text-soft-gold">
             {product.rating}/5
           </div>
         </div>
         
-        {/* Price Section */}
-        <div className="space-y-1 mb-3">
-          <div className="flex items-center gap-2">
-            <span className="text-luxury-gold font-bold text-base">
+        {/* Price Section - More compact */}
+        <div className="space-y-1 mb-2">
+          <div className="flex items-center gap-1.5">
+            <span className="text-luxury-gold font-bold text-xs sm:text-sm">
               {formatPrice(product.price)}
             </span>
             {product.original_price && product.original_price > product.price && (
-              <span className="text-soft-gold/60 text-xs line-through">
+              <span className="text-soft-gold/60 text-2xs sm:text-xs line-through">
                 {formatPrice(product.original_price)}
               </span>
             )}
           </div>
           {discount > 0 && (
-            <div className="text-green-400 text-xs font-semibold">
+            <div className="text-green-400 text-2xs sm:text-xs font-semibold">
               Tiết kiệm {formatPrice(product.original_price - product.price)}
             </div>
           )}
         </div>
         
-        {/* Stock Info */}
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-soft-gold text-xs">
+        {/* Stock Info - More compact */}
+        <div className="flex items-center justify-between mb-1.5">
+          <span className="text-soft-gold text-2xs sm:text-xs">
             Còn lại: {product.stock_quantity} sản phẩm
           </span>
           {product.stock_quantity <= 5 && (
-            <span className="text-red-400 text-xs font-semibold">
+            <span className="text-red-400 text-2xs sm:text-xs font-semibold">
               Sắp hết hàng!
             </span>
           )}
