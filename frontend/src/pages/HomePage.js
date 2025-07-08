@@ -1,36 +1,7 @@
-import React, { useState, useEffect, useCallback, useMemo, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const HomePage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [currentProductIndex, setCurrentProductIndex] = useState(0);
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
-  
-  // Refs for scroll containers
-  const productScrollRef = useRef(null);
-  const testimonialScrollRef = useRef(null);
-  
-  // Refs for throttling
-  const productThrottleRef = useRef(null);
-  const testimonialThrottleRef = useRef(null);
-
-  // Memoize hero background images for better performance
-  const heroImages = useMemo(() => [
-    'https://images.unsplash.com/photo-1608828201317-ce72715cb12a',
-    'https://images.unsplash.com/photo-1603201667230-bd54a8b9d8b7',
-    'https://images.unsplash.com/photo-1590819477338-a0e3c6b8a31c'
-  ], []);
-
-  // Preload images for better UX
-  useEffect(() => {
-    const preloadImages = () => {
-      heroImages.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
-    };
-    preloadImages();
-  }, [heroImages]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,575 +10,218 @@ const HomePage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Optimized scroll handler
-  const handleScroll = useCallback(() => {
-    const scrolled = window.scrollY;
-    const parallax = scrolled * 0.5;
-    
-    const heroElement = document.querySelector('.hero-bg');
-    if (heroElement) {
-      heroElement.style.transform = `translateY(${parallax}px)`;
-    }
-  }, []);
-
-  useLayoutEffect(() => {
-    let timeoutId;
-    const debouncedHandleScroll = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => handleScroll(), 10);
-    };
-
-    window.addEventListener('scroll', debouncedHandleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', debouncedHandleScroll);
-      clearTimeout(timeoutId);
-    };
-  }, [handleScroll]);
-
-  // Memoized product data
-  const featuredProducts = useMemo(() => [
+  const featuredProducts = [
     {
       id: 1,
       name: 'Vòng Trầm Hương Cao Cấp',
-      description: 'Vòng tay trầm hương nguyên chất, mang lại may mắn và bình an',
       price: '2.500.000₫',
       image: 'https://images.unsplash.com/photo-1662473217799-6e7288f19741',
-      alt: 'Vòng Trầm Hương'
     },
     {
       id: 2,
       name: 'Trầm Hương Nguyên Khối',
-      description: 'Khối trầm hương tự nhiên, hương thơm nồng nàn, quý hiếm',
       price: '5.800.000₫',
       image: 'https://images.unsplash.com/photo-1719611639294-f754d39a6bed',
-      alt: 'Trầm Hương Nguyên Khối'
     },
     {
       id: 3,
       name: 'Nhang Trầm Hương Premium',
-      description: 'Nhang trầm hương cao cấp, thích hợp cho không gian thiền định',
       price: '850.000₫',
       image: 'https://images.unsplash.com/photo-1652959889888-53d048374e35',
-      alt: 'Nhang Trầm Hương'
-    },
-    {
-      id: 4,
-      name: 'Trầm Hương Thiền Định',
-      description: 'Trầm hương đặc biệt dành cho thiền định và tâm linh',
-      price: '3.200.000₫',
-      image: 'https://images.unsplash.com/photo-1589115324861-b757b1dd2247',
-      alt: 'Trầm Hương Thiền'
-    },
-    {
-      id: 5,
-      name: 'Bộ Sưu Tập Luxury',
-      description: 'Bộ sưu tập trầm hương cao cấp đặc biệt, phiên bản giới hạn',
-      price: '12.500.000₫',
-      image: 'https://images.pexels.com/photos/6998574/pexels-photo-6998574.jpeg',
-      alt: 'Bộ Sưu Tập Trầm Hương'
     }
-  ], []);
-
-  // Memoized testimonials data
-  const testimonials = useMemo(() => [
-    {
-      id: 1,
-      name: 'Anh Minh',
-      location: 'TP. Hồ Chí Minh',
-      avatar: 'A',
-      review: 'Trầm hương ở đây chất lượng thật sự tuyệt vời. Hương thơm rất đậm đà và tự nhiên. Tôi đã mua nhiều lần và luôn hài lòng!'
-    },
-    {
-      id: 2,
-      name: 'Chị Lan',
-      location: 'Hà Nội',
-      avatar: 'L',
-      review: 'Phục vụ tận tình, sản phẩm đúng như mô tả. Vòng trầm hương rất đẹp và chất lượng. Sẽ giới thiệu cho bạn bè!'
-    },
-    {
-      id: 3,
-      name: 'Anh Hưng',
-      location: 'Đà Nẵng',
-      avatar: 'H',
-      review: 'Mua làm quà tặng cho bố mẹ, họ rất thích. Chất lượng trầm hương thật sự cao cấp, xứng đáng với giá tiền!'
-    },
-    {
-      id: 4,
-      name: 'Chị Thảo',
-      location: 'Cần Thơ',
-      avatar: 'T',
-      review: 'Shop tư vấn rất chi tiết và nhiệt tình. Sản phẩm đẹp, đóng gói cẩn thận. Rất hài lòng với dịch vụ!'
-    },
-    {
-      id: 5,
-      name: 'Anh Dũng',
-      location: 'Hải Phòng',
-      avatar: 'D',
-      review: 'Mình đã so sánh nhiều nơi, chỗ này có giá hợp lý nhất với chất lượng tuyệt vời. Sẽ ủng hộ lâu dài!'
-    },
-    {
-      id: 6,
-      name: 'Chị Nga',
-      location: 'Nha Trang',
-      avatar: 'N',
-      review: 'Hương trầm rất tinh tế và sang trọng. Mua về làm quà tặng sếp, ông ấy khen ngợi hết lời!'
-    }
-  ], []);
-
-  // Optimized scroll handlers without dependencies that cause re-renders
-  const handleProductScroll = useCallback((e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    // Clear existing timeout
-    if (productThrottleRef.current) {
-      clearTimeout(productThrottleRef.current);
-    }
-    
-    // Throttle the update
-    productThrottleRef.current = setTimeout(() => {
-      const container = e.target;
-      if (!container) return;
-      
-      const scrollLeft = container.scrollLeft;
-      const containerWidth = container.clientWidth;
-      const itemCount = featuredProducts.length;
-      
-      // Calculate index based on scroll position
-      const itemWidth = containerWidth * 0.9; // Approximate item width
-      const newIndex = Math.round(scrollLeft / itemWidth);
-      const clampedIndex = Math.max(0, Math.min(newIndex, itemCount - 1));
-      
-      setCurrentProductIndex(prev => prev !== clampedIndex ? clampedIndex : prev);
-    }, 100);
-  }, [featuredProducts.length]);
-
-  const handleTestimonialScroll = useCallback((e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    // Clear existing timeout
-    if (testimonialThrottleRef.current) {
-      clearTimeout(testimonialThrottleRef.current);
-    }
-    
-    // Throttle the update
-    testimonialThrottleRef.current = setTimeout(() => {
-      const container = e.target;
-      if (!container) return;
-      
-      const scrollLeft = container.scrollLeft;
-      const containerWidth = container.clientWidth;
-      const itemCount = testimonials.length;
-      
-      // Calculate index based on scroll position
-      const itemWidth = containerWidth * 0.9; // Approximate item width
-      const newIndex = Math.round(scrollLeft / itemWidth);
-      const clampedIndex = Math.max(0, Math.min(newIndex, itemCount - 1));
-      
-      setCurrentTestimonialIndex(prev => prev !== clampedIndex ? clampedIndex : prev);
-    }, 100);
-  }, [testimonials.length]);
-
-  // Cleanup timeouts on unmount
-  useEffect(() => {
-    return () => {
-      if (productThrottleRef.current) {
-        clearTimeout(productThrottleRef.current);
-      }
-      if (testimonialThrottleRef.current) {
-        clearTimeout(testimonialThrottleRef.current);
-      }
-    };
-  }, []);
-
-  const ProductCard = React.memo(({ product, index }) => (
-    <div className={`flex-shrink-0 w-full xs:w-80 sm:w-auto bg-deep-black/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105 will-change-transform animate-fade-in-up`}
-         style={{ animationDelay: `${index * 0.1}s` }}>
-      <div className="h-36 xs:h-40 sm:h-48 bg-gradient-to-br from-luxury-gold/20 to-luxury-copper/20 flex items-center justify-center overflow-hidden">
-        <img 
-          src={product.image} 
-          alt={product.alt}
-          className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-          loading="lazy"
-          draggable="false"
-        />
-      </div>
-      <div className="p-4 xs:p-6">
-        <h3 className="font-luxury text-lg xs:text-xl font-bold text-luxury-gold mb-2 line-clamp-1">
-          {product.name}
-        </h3>
-        <p className="text-soft-gold mb-4 text-sm xs:text-base line-clamp-2">
-          {product.description}
-        </p>
-        <div className="flex justify-between items-center">
-          <span className="text-luxury-gold font-bold text-base xs:text-lg">
-            {product.price}
-          </span>
-          <button className="bg-luxury-gold text-deep-black px-3 xs:px-4 py-2 rounded-full font-bold text-sm xs:text-base hover:bg-luxury-copper transition-colors min-h-[44px]">
-            Xem Chi Tiết
-          </button>
-        </div>
-      </div>
-    </div>
-  ));
-
-  const TestimonialCard = React.memo(({ testimonial, index }) => (
-    <div className="flex-shrink-0 w-full xs:w-80 sm:w-auto bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up">
-      <div className="flex items-center mb-4 xs:mb-6">
-        <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
-          <span className="text-deep-black font-bold text-sm xs:text-base">{testimonial.avatar}</span>
-        </div>
-        <div>
-          <h4 className="font-bold text-luxury-gold text-sm xs:text-base">{testimonial.name}</h4>
-          <p className="text-soft-gold text-xs xs:text-sm">{testimonial.location}</p>
-        </div>
-      </div>
-      <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
-        "{testimonial.review}"
-      </p>
-      <div className="flex text-luxury-gold text-sm xs:text-base">
-        ⭐⭐⭐⭐⭐
-      </div>
-    </div>
-  ));
+  ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Parallax */}
-        <div 
-          className="hero-bg absolute inset-0 z-0 will-change-transform"
-          style={{
-            backgroundImage: `url('${heroImages[currentImageIndex]}')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-deep-black/80 via-deep-black/60 to-deep-black/90"></div>
-        </div>
-
-        {/* Content */}
-        <div className={`relative z-10 text-center px-4 max-w-4xl mx-auto transition-all duration-1000 ${
-          isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+    <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
+        
+        {/* Hero Section - Compact */}
+        <div className={`text-center mb-8 sm:mb-12 transition-all duration-1000 ${
+          isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}>
-          {/* Logo */}
-          <div className="mb-6 xs:mb-8">
-            <div className="w-16 xs:w-20 sm:w-24 h-16 xs:h-20 sm:h-24 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
-              <span className="text-deep-black font-bold text-2xl xs:text-3xl sm:text-4xl">K</span>
+          <div className="mb-4 sm:mb-6">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <span className="text-deep-black font-bold text-2xl sm:text-3xl">K</span>
             </div>
-            <h1 className="font-luxury text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-luxury-gold via-warm-gold to-luxury-copper bg-clip-text text-transparent leading-tight">
+            <h1 className="font-luxury text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-luxury-gold via-warm-gold to-luxury-copper bg-clip-text text-transparent">
               Khang Trầm Hương
             </h1>
           </div>
-
-          {/* Subtitle */}
-          <p className="text-lg xs:text-xl sm:text-2xl text-soft-gold mb-6 xs:mb-8 leading-relaxed">
-            Tinh Hoa Trầm Hương Việt Nam<br />
-            <span className="text-luxury-gold">Chất Lượng Luxury - Giá Trị Vĩnh Cửu</span>
+          
+          <p className="text-soft-gold text-sm sm:text-base md:text-lg mb-4 sm:mb-6 max-w-2xl mx-auto">
+            Tinh Hoa Trầm Hương Việt Nam • Chất Lượng Luxury • 20+ Năm Kinh Nghiệm
           </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 xs:gap-4 justify-center items-center">
-            <button className="w-full sm:w-auto bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 xs:px-8 py-3 xs:py-4 rounded-full font-bold text-base xs:text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-105 min-h-[44px]">
+          
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center max-w-md mx-auto">
+            <button className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:shadow-lg transition-all">
               Khám Phá Sản Phẩm
             </button>
-            <button className="w-full sm:w-auto border-2 border-luxury-gold text-luxury-gold px-6 xs:px-8 py-3 xs:py-4 rounded-full font-bold text-base xs:text-lg hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 transform hover:scale-105 min-h-[44px]">
-              Liên Hệ Tư Vấn
+            <button className="border border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all">
+              Liên Hệ Ngay
             </button>
           </div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-6 xs:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-            <div className="w-5 xs:w-6 h-8 xs:h-10 border-2 border-luxury-gold rounded-full flex justify-center">
-              <div className="w-1 h-2 xs:h-3 bg-luxury-gold rounded-full mt-2 animate-pulse"></div>
-            </div>
-          </div>
         </div>
-      </section>
 
-      {/* Products Preview Section */}
-      <section className="py-16 xs:py-20 bg-gradient-to-b from-deep-black to-charcoal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 xs:mb-16">
-            <h2 className="font-luxury text-2xl xs:text-3xl sm:text-4xl font-bold text-luxury-gold mb-4">
-              Sản Phẩm Nổi Bật
-            </h2>
-            <p className="text-soft-gold text-base xs:text-lg max-w-2xl mx-auto">
-              Khám phá bộ sưu tập trầm hương cao cấp được yêu thích nhất
-            </p>
-          </div>
-
-          {/* Desktop Grid */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8">
-            {featuredProducts.slice(0, 3).map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
+        {/* Products Section - Compact */}
+        <div className="mb-8 sm:mb-12">
+          <h2 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-3 sm:mb-6 text-center">
+            🌟 Sản Phẩm Nổi Bật
+          </h2>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+            {featuredProducts.map((product) => (
+              <div key={product.id} className="bg-deep-black/50 rounded-xl overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all cursor-pointer group">
+                <div className="relative h-32 sm:h-40 overflow-hidden">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-3 sm:p-4">
+                  <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold mb-2 line-clamp-1">
+                    {product.name}
+                  </h3>
+                  <div className="flex justify-between items-center">
+                    <span className="text-luxury-gold font-bold text-sm sm:text-base">
+                      {product.price}
+                    </span>
+                    <button className="bg-luxury-gold text-deep-black px-3 py-1 sm:px-4 sm:py-2 rounded-full font-bold text-xs sm:text-sm hover:bg-luxury-copper transition-colors">
+                      Xem
+                    </button>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
-
-          {/* Mobile Horizontal Scroll */}
-          <div className="md:hidden">
-            <div 
-              ref={productScrollRef}
-              className="flex overflow-x-auto space-x-4 xs:space-x-6 pb-6 px-4 -mx-4 scrollbar-hide product-scroll" 
-              onScroll={handleProductScroll}
-              style={{ 
-                scrollSnapType: 'x mandatory',
-                WebkitOverflowScrolling: 'touch',
-                scrollBehavior: 'smooth'
-              }}
-            >
-              {featuredProducts.map((product, index) => (
-                <div key={product.id} style={{ scrollSnapAlign: 'start' }}>
-                  <ProductCard product={product} index={index} />
-                </div>
-              ))}
-            </div>
-
-            {/* Scroll Indicator */}
-            <div className="flex justify-center mt-6">
-              <div className="flex space-x-2">
-                {featuredProducts.map((_, index) => (
-                  <div 
-                    key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-150 ease-linear ${
-                      index === currentProductIndex ? 'bg-luxury-gold scale-125' : 'bg-luxury-gold/30'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Mobile Swipe Hint */}
-            <div className="text-center mt-4">
-              <p className="text-soft-gold/70 text-sm">
-                ← Lướt qua để xem thêm sản phẩm →
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center mt-8 xs:mt-12">
-            <button className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 xs:px-8 py-3 xs:py-4 rounded-full font-bold text-base xs:text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-105 min-h-[44px]">
-              Xem Tất Cả Sản Phẩm
+          
+          <div className="text-center mt-4 sm:mt-6">
+            <button className="text-luxury-gold hover:text-luxury-copper transition-colors text-sm sm:text-base underline">
+              Xem Tất Cả Sản Phẩm →
             </button>
           </div>
         </div>
-      </section>
 
-      {/* Features Section */}
-      <section className="py-16 xs:py-20 bg-charcoal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 xs:mb-16">
-            <h2 className="font-luxury text-2xl xs:text-3xl sm:text-4xl font-bold text-luxury-gold mb-4">
-              Tại Sao Chọn Khang Trầm Hương?
-            </h2>
-            <p className="text-soft-gold text-base xs:text-lg max-w-2xl mx-auto">
-              Chúng tôi tự hào mang đến những sản phẩm trầm hương cao cấp nhất
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xs:gap-8">
-            {/* Feature 1 */}
-            <div className="text-center p-6 xs:p-8 bg-charcoal/50 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105 will-change-transform">
-              <div className="w-12 xs:w-16 h-12 xs:h-16 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center mx-auto mb-4 xs:mb-6">
-                <span className="text-xl xs:text-2xl">🌿</span>
+        {/* Features Section - Compact */}
+        <div className="mb-8 sm:mb-12">
+          <h2 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-3 sm:mb-6 text-center">
+            ✨ Tại Sao Chọn Chúng Tôi?
+          </h2>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6">
+            <div className="text-center p-3 sm:p-6 bg-deep-black/50 rounded-xl border border-luxury-gold/20">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                <span className="text-lg sm:text-xl">🌿</span>
               </div>
-              <h3 className="font-luxury text-lg xs:text-xl font-bold text-luxury-gold mb-3 xs:mb-4">
+              <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold mb-1 sm:mb-2">
                 100% Tự Nhiên
               </h3>
-              <p className="text-soft-gold text-sm xs:text-base">
-                Trầm hương nguyên chất, không pha tạp, được tuyển chọn kỹ lưỡng từ những cây trầm quý hiếm nhất
+              <p className="text-soft-gold text-xs sm:text-sm">
+                Trầm hương nguyên chất, không pha tạp
               </p>
             </div>
-
-            {/* Feature 2 */}
-            <div className="text-center p-6 xs:p-8 bg-charcoal/50 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105 will-change-transform">
-              <div className="w-12 xs:w-16 h-12 xs:h-16 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center mx-auto mb-4 xs:mb-6">
-                <span className="text-xl xs:text-2xl">👑</span>
+            
+            <div className="text-center p-3 sm:p-6 bg-deep-black/50 rounded-xl border border-luxury-gold/20">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                <span className="text-lg sm:text-xl">👑</span>
               </div>
-              <h3 className="font-luxury text-lg xs:text-xl font-bold text-luxury-gold mb-3 xs:mb-4">
+              <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold mb-1 sm:mb-2">
                 Chất Lượng Luxury
               </h3>
-              <p className="text-soft-gold text-sm xs:text-base">
-                Từng sản phẩm được chế tác tỉ mỉ, kiểm tra chất lượng nghiêm ngặt, đạt tiêu chuẩn luxury cao cấp
+              <p className="text-soft-gold text-xs sm:text-sm">
+                Tiêu chuẩn cao cấp, kiểm tra nghiêm ngặt
               </p>
             </div>
-
-            {/* Feature 3 */}
-            <div className="text-center p-6 xs:p-8 bg-charcoal/50 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105 will-change-transform">
-              <div className="w-12 xs:w-16 h-12 xs:h-16 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center mx-auto mb-4 xs:mb-6">
-                <span className="text-xl xs:text-2xl">🏆</span>
+            
+            <div className="text-center p-3 sm:p-6 bg-deep-black/50 rounded-xl border border-luxury-gold/20 sm:col-span-1 col-span-1">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                <span className="text-lg sm:text-xl">🏆</span>
               </div>
-              <h3 className="font-luxury text-lg xs:text-xl font-bold text-luxury-gold mb-3 xs:mb-4">
-                Uy Tín Lâu Năm
+              <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold mb-1 sm:mb-2">
+                Uy Tín 20+ Năm
               </h3>
-              <p className="text-soft-gold text-sm xs:text-base">
-                Hơn 20 năm kinh nghiệm trong ngành, phục vụ hàng ngàn khách hàng tin tưởng trên toàn quốc
+              <p className="text-soft-gold text-xs sm:text-sm">
+                Hàng ngàn khách hàng tin tưởng
               </p>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 xs:py-20 bg-gradient-to-b from-charcoal to-deep-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 xs:mb-16">
-            <h2 className="font-luxury text-2xl xs:text-3xl sm:text-4xl font-bold text-luxury-gold mb-4">
-              Khách Hàng Nói Gì Về Chúng Tôi
-            </h2>
-            <p className="text-soft-gold text-base xs:text-lg max-w-2xl mx-auto">
-              Hàng ngàn khách hàng tin tưởng và hài lòng với chất lượng sản phẩm
-            </p>
-          </div>
-
-          {/* Desktop Grid */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8">
-            {testimonials.slice(0, 3).map((testimonial, index) => (
-              <div key={testimonial.id} className="bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="flex items-center mb-4 xs:mb-6">
-                  <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
-                    <span className="text-deep-black font-bold text-sm xs:text-base">{testimonial.avatar}</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-luxury-gold text-sm xs:text-base">{testimonial.name}</h4>
-                    <p className="text-soft-gold text-xs xs:text-sm">{testimonial.location}</p>
-                  </div>
+        {/* Testimonials Section - Compact */}
+        <div className="mb-8 sm:mb-12">
+          <h2 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-3 sm:mb-6 text-center">
+            💬 Khách Hàng Nói Gì
+          </h2>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+            <div className="bg-deep-black/50 p-3 sm:p-4 rounded-xl border border-luxury-gold/20">
+              <div className="flex items-center mb-2 sm:mb-3">
+                <div className="w-8 h-8 bg-luxury-gold rounded-full flex items-center justify-center mr-2">
+                  <span className="text-deep-black font-bold text-sm">A</span>
                 </div>
-                <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
-                  "{testimonial.review}"
-                </p>
-                <div className="flex text-luxury-gold text-sm xs:text-base">
-                  ⭐⭐⭐⭐⭐
+                <div>
+                  <h4 className="font-bold text-luxury-gold text-xs sm:text-sm">Anh Minh</h4>
+                  <p className="text-soft-gold text-3xs sm:text-xs">TP.HCM</p>
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Mobile Horizontal Scroll */}
-          <div className="md:hidden">
-            <div 
-              ref={testimonialScrollRef}
-              className="flex overflow-x-auto space-x-4 xs:space-x-6 pb-6 px-4 -mx-4 scrollbar-hide product-scroll" 
-              onScroll={handleTestimonialScroll}
-              style={{ scrollSnapType: 'x mandatory' }}
-            >
-              {testimonials.map((testimonial, index) => (
-                <div key={testimonial.id} style={{ scrollSnapAlign: 'start' }}>
-                  <TestimonialCard testimonial={testimonial} index={index} />
-                </div>
-              ))}
-            </div>
-
-            {/* Scroll Indicator */}
-            <div className="flex justify-center mt-6">
-              <div className="flex space-x-2">
-                {testimonials.map((_, index) => (
-                  <div 
-                    key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-200 ease-out ${
-                      index === currentTestimonialIndex ? 'bg-luxury-gold scale-125' : 'bg-luxury-gold/30'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Mobile Swipe Hint */}
-            <div className="text-center mt-4">
-              <p className="text-soft-gold/70 text-sm">
-                ← Lướt qua để xem thêm đánh giá →
+              <p className="text-soft-gold text-xs sm:text-sm italic">
+                "Chất lượng tuyệt vời, hương thơm rất đậm đà và tự nhiên!"
               </p>
+              <div className="text-luxury-gold text-xs mt-1">⭐⭐⭐⭐⭐</div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 xs:py-20 bg-gradient-to-r from-luxury-gold/10 to-luxury-copper/10 backdrop-blur-sm">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <div className="bg-deep-black/50 p-8 xs:p-12 rounded-3xl backdrop-blur-sm border border-luxury-gold/30">
-            <h2 className="font-luxury text-2xl xs:text-3xl sm:text-4xl font-bold text-luxury-gold mb-4 xs:mb-6">
-              Sẵn Sàng Trải Nghiệm Trầm Hương Cao Cấp?
-            </h2>
-            <p className="text-soft-gold text-base xs:text-lg mb-6 xs:mb-8 max-w-2xl mx-auto">
-              Liên hệ ngay với chúng tôi để được tư vấn và lựa chọn sản phẩm phù hợp nhất
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 xs:gap-4 justify-center items-center">
-              <button className="w-full sm:w-auto bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 xs:px-8 py-3 xs:py-4 rounded-full font-bold text-base xs:text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-105 min-h-[44px]">
-                Liên Hệ Ngay
-              </button>
-              <button className="w-full sm:w-auto border-2 border-luxury-gold text-luxury-gold px-6 xs:px-8 py-3 xs:py-4 rounded-full font-bold text-base xs:text-lg hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 transform hover:scale-105 min-h-[44px]">
-                Xem Sản Phẩm
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-deep-black border-t border-luxury-gold/20 py-8 xs:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 xs:gap-8">
-            {/* Company Info */}
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 xs:w-10 h-8 xs:h-10 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center">
-                  <span className="text-deep-black font-bold text-sm xs:text-lg">K</span>
+            
+            <div className="bg-deep-black/50 p-3 sm:p-4 rounded-xl border border-luxury-gold/20">
+              <div className="flex items-center mb-2 sm:mb-3">
+                <div className="w-8 h-8 bg-luxury-gold rounded-full flex items-center justify-center mr-2">
+                  <span className="text-deep-black font-bold text-sm">L</span>
                 </div>
-                <span className="text-luxury-gold font-luxury text-lg xs:text-xl font-bold">
-                  Khang Trầm Hương
-                </span>
+                <div>
+                  <h4 className="font-bold text-luxury-gold text-xs sm:text-sm">Chị Lan</h4>
+                  <p className="text-soft-gold text-3xs sm:text-xs">Hà Nội</p>
+                </div>
               </div>
-              <p className="text-soft-gold mb-4 text-sm xs:text-base">
-                Chuyên cung cấp trầm hương cao cấp, chất lượng luxury với hơn 20 năm kinh nghiệm trong ngành.
+              <p className="text-soft-gold text-xs sm:text-sm italic">
+                "Phục vụ tận tình, sản phẩm đúng như mô tả. Rất hài lòng!"
               </p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-luxury-gold hover:text-luxury-copper transition-colors text-sm xs:text-base">
-                  Facebook
-                </a>
-                <a href="#" className="text-luxury-gold hover:text-luxury-copper transition-colors text-sm xs:text-base">
-                  Instagram
-                </a>
-                <a href="#" className="text-luxury-gold hover:text-luxury-copper transition-colors text-sm xs:text-base">
-                  Zalo
-                </a>
+              <div className="text-luxury-gold text-xs mt-1">⭐⭐⭐⭐⭐</div>
+            </div>
+            
+            <div className="bg-deep-black/50 p-3 sm:p-4 rounded-xl border border-luxury-gold/20 sm:col-span-2 lg:col-span-1">
+              <div className="flex items-center mb-2 sm:mb-3">
+                <div className="w-8 h-8 bg-luxury-gold rounded-full flex items-center justify-center mr-2">
+                  <span className="text-deep-black font-bold text-sm">H</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-luxury-gold text-xs sm:text-sm">Anh Hưng</h4>
+                  <p className="text-soft-gold text-3xs sm:text-xs">Đà Nẵng</p>
+                </div>
               </div>
+              <p className="text-soft-gold text-xs sm:text-sm italic">
+                "Chất lượng cao cấp, xứng đáng với giá tiền!"
+              </p>
+              <div className="text-luxury-gold text-xs mt-1">⭐⭐⭐⭐⭐</div>
             </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="font-luxury text-base xs:text-lg font-bold text-luxury-gold mb-3 xs:mb-4">
-                Liên Kết
-              </h4>
-              <ul className="space-y-1 xs:space-y-2">
-                <li><a href="#" className="text-soft-gold hover:text-luxury-gold transition-colors text-sm xs:text-base">Về Chúng Tôi</a></li>
-                <li><a href="#" className="text-soft-gold hover:text-luxury-gold transition-colors text-sm xs:text-base">Sản Phẩm</a></li>
-                <li><a href="#" className="text-soft-gold hover:text-luxury-gold transition-colors text-sm xs:text-base">Tin Tức</a></li>
-                <li><a href="#" className="text-soft-gold hover:text-luxury-gold transition-colors text-sm xs:text-base">Liên Hệ</a></li>
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <h4 className="font-luxury text-base xs:text-lg font-bold text-luxury-gold mb-3 xs:mb-4">
-                Liên Hệ
-              </h4>
-              <div className="space-y-1 xs:space-y-2 text-soft-gold text-sm xs:text-base">
-                <p>📞 0123 456 789</p>
-                <p>✉️ info@khangtramhuong.com</p>
-                <p>📍 123 Đường ABC, Quận 1, TP.HCM</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-luxury-gold/20 mt-8 xs:mt-12 pt-6 xs:pt-8 text-center text-soft-gold text-sm xs:text-base">
-            <p>&copy; 2024 Khang Trầm Hương. Tất cả quyền được bảo lưu.</p>
           </div>
         </div>
-      </footer>
+
+        {/* CTA Section - Compact */}
+        <div className="bg-gradient-to-r from-luxury-gold/10 to-luxury-copper/10 p-4 sm:p-6 rounded-xl border border-luxury-gold/20 text-center">
+          <h2 className="font-luxury text-base sm:text-xl md:text-2xl font-bold text-luxury-gold mb-2 sm:mb-3">
+            Sẵn Sàng Trải Nghiệm?
+          </h2>
+          <p className="text-soft-gold text-xs sm:text-sm mb-3 sm:mb-4">
+            Liên hệ ngay để được tư vấn sản phẩm phù hợp
+          </p>
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center max-w-md mx-auto">
+            <button className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:shadow-lg transition-all">
+              📞 Liên Hệ Ngay
+            </button>
+            <button className="border border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all">
+              🛍️ Xem Sản Phẩm
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
