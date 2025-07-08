@@ -63,8 +63,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-charcoal">
+      {/* Products Preview Section */}
+      <section className="py-20 bg-gradient-to-b from-deep-black to-charcoal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-luxury text-3xl md:text-4xl font-bold text-luxury-gold mb-4">
