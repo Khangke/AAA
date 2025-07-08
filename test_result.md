@@ -381,7 +381,7 @@ backend:
         comment: "Tested order address auto-save functionality. When a user with no address information creates an order, the address from the shipping_address is automatically saved to the user profile. Subsequent orders with different addresses don't overwrite the existing address information. User profile retrieval after order creation confirms the address is saved correctly."
 
 frontend:
-  - task: "Font Change to Bodoni Moda"
+  - task: "Font Change to Merriweather"
     implemented: true
     working: true
     file: "frontend/src/App.css, frontend/src/index.css, frontend/tailwind.config.js"
@@ -391,10 +391,10 @@ frontend:
     status_history:
       - working: false
         agent: "main"
-        comment: "Need to implement font change from current fonts to Bodoni Moda throughout the website"
+        comment: "Need to implement font change from Bodoni Moda to Merriweather throughout the website"
       - working: true
         agent: "main"
-        comment: "Đã thay đổi font thành Bodoni Moda thành công. Cập nhật Google Fonts import để thêm 'Bodoni Moda:wght@400;500;600;700;800'. Thay đổi font-family chính trong body từ 'Inter' sang 'Bodoni Moda'. Cập nhật Vietnamese text class và Tailwind config để thêm font 'bodoni'. Font hiển thị đẹp trên cả desktop và mobile, tạo cảm giác luxury và elegant cho trang jewelry."
+        comment: "Đã thay đổi font thành Merriweather thành công. Cập nhật Google Fonts import để thêm 'Merriweather:wght@300;400;700;900'. Thay đổi font-family chính trong body từ 'Bodoni Moda' sang 'Merriweather'. Cập nhật Vietnamese text class và Tailwind config để thêm font 'merriweather'. Font hiển thị đẹp và dễ đọc trên cả desktop và mobile, tạo cảm giác chuyên nghiệp và phù hợp với trang jewelry."
 
   - task: "Account Registration Form Simplification"
     implemented: true
