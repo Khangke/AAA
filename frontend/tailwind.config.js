@@ -17,9 +17,10 @@ module.exports = {
         'dark-gold': '#B8860B',
       },
       fontFamily: {
+        'bodoni': ['Bodoni Moda', 'serif'],
         'luxury': ['Playfair Display', 'serif'],
         'modern': ['Inter', 'sans-serif'],
-        'vietnamese': ['Noto Serif', 'serif'],
+        'vietnamese': ['Bodoni Moda', 'Noto Serif', 'serif'],
       },
       screens: {
         'xs': '375px',
