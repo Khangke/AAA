@@ -233,17 +233,17 @@ const ProductsPage = () => {
           </div>
         </div>
 
-        {/* Results Count */}
-        <div className="mb-4 sm:mb-6 text-center">
+        {/* Results Count - More compact */}
+        <div className="mb-2 sm:mb-4 text-center">
           <p className="text-soft-gold text-xs sm:text-sm">
             Hiển thị {filteredProducts.length} sản phẩm
             {selectedCategory !== 'all' && ` trong danh mục "${selectedCategory}"`}
           </p>
         </div>
 
-        {/* Products Grid - Mobile Optimized */}
+        {/* Products Grid - Optimized for mobile with tighter spacing */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1.5 sm:gap-3 md:gap-4">
             {filteredProducts.map(product => (
               <ProductCard 
                 key={product.id} 
