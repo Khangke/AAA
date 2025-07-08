@@ -1,10 +1,155 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ProductCard from '../components/ProductCard';
 
 const ProductsPage = () => {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  // Filter states
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState('featured');
+  const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
+
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+  useEffect(() => {
+    fetchProducts();
+    fetchCategories();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`${backendUrl}/api/products`);
+      setProducts(response.data);
+      setFilteredProducts(response.data);
+    } catch (err) {
+      console.error('Error fetching products:', err);
+      setError('Không thể tải sản phẩm. Vui lòng thử lại sau.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(`${backendUrl}/api/categories`);
+      setCategories(response.data.categories);
+    } catch (err) {
+      console.error('Error fetching categories:', err);
+      // Fallback: extract categories from products
+      const uniqueCategories = [...new Set(products.map(p => p.category))];
+      setCategories(uniqueCategories);
+    }
+  };
+
+  // Filter and sort products
+  useEffect(() => {
+    let filtered = [...products];
+
+    // Filter by category
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(product => product.category === selectedCategory);
+    }
+
+    // Filter by search term
+    if (searchTerm) {
+      filtered = filtered.filter(product => 
+        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+    }
+
+    // Filter by featured
+    if (showFeaturedOnly) {
+      filtered = filtered.filter(product => product.featured);
+    }
+
+    // Sort products
+    switch (sortBy) {
+      case 'price-low':
+        filtered.sort((a, b) => a.price - b.price);
+        break;
+      case 'price-high':
+        filtered.sort((a, b) => b.price - a.price);
+        break;
+      case 'rating':
+        filtered.sort((a, b) => b.rating - a.rating);
+        break;
+      case 'newest':
+        filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        break;
+      case 'featured':
+      default:
+        filtered.sort((a, b) => {
+          if (a.featured && !b.featured) return -1;
+          if (!a.featured && b.featured) return 1;
+          return b.rating - a.rating;
+        });
+        break;
+    }
+
+    setFilteredProducts(filtered);
+  }, [products, selectedCategory, searchTerm, sortBy, showFeaturedOnly]);
+
+  const handleProductClick = (product) => {
+    console.log('Product clicked:', product);
+    // Navigate to product detail page
+  };
+
+  const clearFilters = () => {
+    setSelectedCategory('all');
+    setSearchTerm('');
+    setSortBy('featured');
+    setShowFeaturedOnly(false);
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-2 border-luxury-gold border-t-transparent"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="text-center">
+            <div className="text-red-500 text-6xl mb-6">⚠️</div>
+            <h2 className="font-luxury text-2xl text-luxury-gold mb-4">
+              Có Lỗi Xảy Ra
+            </h2>
+            <p className="text-soft-gold mb-6">{error}</p>
+            <button 
+              onClick={fetchProducts}
+              className="bg-luxury-gold text-deep-black px-6 py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors"
+            >
+              Thử Lại
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen pt-16 md:pt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-16">
+    <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        {/* Header */}
+        <div className="text-center mb-8">
           <h1 className="font-luxury text-3xl md:text-4xl font-bold text-luxury-gold mb-4">
             Sản Phẩm Trầm Hương Cao Cấp
           </h1>
@@ -13,15 +158,133 @@ const ProductsPage = () => {
           </p>
         </div>
 
-        <div className="text-center py-20">
-          <div className="text-luxury-gold text-6xl mb-6">🔄</div>
-          <h2 className="font-luxury text-2xl text-luxury-gold mb-4">
-            Đang Phát Triển
-          </h2>
+        {/* Search Bar */}
+        <div className="mb-6">
+          <div className="relative max-w-md mx-auto">
+            <input
+              type="text"
+              placeholder="Tìm kiếm sản phẩm..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-4 py-3 pl-12 bg-deep-black/50 border border-luxury-gold/20 rounded-full text-white placeholder-soft-gold focus:outline-none focus:border-luxury-gold/60 transition-colors"
+            />
+            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-luxury-gold">
+              🔍
+            </div>
+          </div>
+        </div>
+
+        {/* Filters */}
+        <div className="mb-8">
+          <div className="flex flex-wrap gap-4 justify-center items-center">
+            
+            {/* Category Filter */}
+            <div className="flex items-center gap-2">
+              <label className="text-soft-gold text-sm">Danh mục:</label>
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="px-3 py-2 bg-deep-black/50 border border-luxury-gold/20 rounded-lg text-white focus:outline-none focus:border-luxury-gold/60"
+              >
+                <option value="all">Tất cả</option>
+                {categories.map(category => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Sort Filter */}
+            <div className="flex items-center gap-2">
+              <label className="text-soft-gold text-sm">Sắp xếp:</label>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="px-3 py-2 bg-deep-black/50 border border-luxury-gold/20 rounded-lg text-white focus:outline-none focus:border-luxury-gold/60"
+              >
+                <option value="featured">Nổi bật</option>
+                <option value="price-low">Giá thấp → cao</option>
+                <option value="price-high">Giá cao → thấp</option>
+                <option value="rating">Đánh giá cao nhất</option>
+                <option value="newest">Mới nhất</option>
+              </select>
+            </div>
+
+            {/* Featured Toggle */}
+            <div className="flex items-center gap-2">
+              <label className="text-soft-gold text-sm">
+                <input
+                  type="checkbox"
+                  checked={showFeaturedOnly}
+                  onChange={(e) => setShowFeaturedOnly(e.target.checked)}
+                  className="mr-2"
+                />
+                Chỉ sản phẩm nổi bật
+              </label>
+            </div>
+
+            {/* Clear Filters */}
+            <button
+              onClick={clearFilters}
+              className="text-luxury-gold hover:text-luxury-copper transition-colors text-sm underline"
+            >
+              Xóa bộ lọc
+            </button>
+          </div>
+        </div>
+
+        {/* Results Count */}
+        <div className="mb-6 text-center">
           <p className="text-soft-gold">
-            Trang sản phẩm đang được hoàn thiện để mang đến trải nghiệm tốt nhất
+            Hiển thị {filteredProducts.length} sản phẩm
+            {selectedCategory !== 'all' && ` trong danh mục "${selectedCategory}"`}
           </p>
         </div>
+
+        {/* Products Grid */}
+        {filteredProducts.length > 0 ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {filteredProducts.map(product => (
+              <ProductCard 
+                key={product.id} 
+                product={product} 
+                onClick={handleProductClick}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <div className="text-soft-gold text-6xl mb-6">🔍</div>
+            <h3 className="font-luxury text-xl text-luxury-gold mb-4">
+              Không tìm thấy sản phẩm
+            </h3>
+            <p className="text-soft-gold mb-6">
+              Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm
+            </p>
+            <button
+              onClick={clearFilters}
+              className="bg-luxury-gold text-deep-black px-6 py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors"
+            >
+              Xóa Bộ Lọc
+            </button>
+          </div>
+        )}
+
+        {/* Load More Button - For future pagination */}
+        {filteredProducts.length > 0 && (
+          <div className="text-center mt-12">
+            <button 
+              className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-8 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-105"
+              onClick={() => {
+                // Pagination logic here
+                console.log('Load more products');
+              }}
+            >
+              Xem Thêm Sản Phẩm
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
