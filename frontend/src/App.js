@@ -30,8 +30,8 @@ function AppContent() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Ẩn footer ở trang chủ
-  const showFooter = location.pathname !== '/';
+  // Hiển thị footer ở tất cả các trang
+  const showFooter = true;
 
   return (
     <div className="App min-h-screen bg-deep-black text-white">
