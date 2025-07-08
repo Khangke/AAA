@@ -347,7 +347,7 @@ agent_communication:
   - agent: "main"
     message: "Đã hoàn thành phát triển trang giỏ hàng hoạt động hoàn toàn mà không cần đăng nhập như yêu cầu. Khách hàng có thể thêm sản phẩm vào giỏ hàng (localStorage), checkout với form guest đầy đủ (họ tên, email, SĐT, địa chỉ, ghi chú), phí vận chuyển 30k tự động, hỗ trợ COD và chuyển khoản ngân hàng. CartContext hỗ trợ cả guest mode và authenticated mode. Trang tài khoản dành cho khách hàng thân thiết muốn lưu thông tin."
 
-user_problem_statement: "trò chuyện với tôi bằng tiếng việt, thay font của web bằng font này Bodoni Moda"
+user_problem_statement: "Build cho tôi trang đặt hàng và thanh toán. Và trang đặt hàng thành công. Tối ưu cho mobile và vừa vặn với mọi kích cỡ màn hình. Tôi muốn hiển thị được nhiều ở màn hình. Có thêm cả thông báo khi thêm vào giỏ. Thông báo khi xoá sản phẩm ở giỏ. Thông báo đã dặt hàng thành công"
 
 backend:
   - task: "Account Registration Simplification"
