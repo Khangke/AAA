@@ -78,7 +78,7 @@ def test_get_products():
     print("\n=== Testing GET /api/products ===")
     
     url = f"{API_BASE_URL}/products"
-    response = requests.get(url)
+    response = make_request("GET", url)
     
     print(f"Status Code: {response.status_code}")
     print(f"Total Products: {len(response.json())}")
