@@ -5,9 +5,9 @@ const AboutPage = () => {
 
   const tabs = [
     { id: 'story', name: 'Câu Chuyện', icon: '📖' },
-    { id: 'products', name: 'Sản Phẩm', icon: '🛍️' },
+    { id: 'process', name: 'Quy Trình', icon: '⚒️' },
     { id: 'values', name: 'Giá Trị', icon: '💎' },
-    { id: 'contact', name: 'Liên Hệ', icon: '📞' }
+    { id: 'heritage', name: 'Di Sản', icon: '🏛️' }
   ];
 
   return (
