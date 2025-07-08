@@ -295,7 +295,7 @@ const HomePage = () => {
 
           {/* Mobile Horizontal Scroll */}
           <div className="md:hidden">
-            <div className="flex overflow-x-auto space-x-4 xs:space-x-6 pb-6 px-4 -mx-4 scrollbar-hide product-scroll">
+            <div className="flex overflow-x-auto space-x-4 xs:space-x-6 pb-6 px-4 -mx-4 scrollbar-hide product-scroll" onScroll={handleProductScroll}>
               {featuredProducts.map((product, index) => (
                 <ProductCard key={product.id} product={product} index={index} />
               ))}
@@ -308,7 +308,7 @@ const HomePage = () => {
                   <div 
                     key={index}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === 0 ? 'bg-luxury-gold' : 'bg-luxury-gold/30'
+                      index === currentProductIndex ? 'bg-luxury-gold' : 'bg-luxury-gold/30'
                     }`}
                   />
                 ))}
