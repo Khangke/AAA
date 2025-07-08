@@ -303,10 +303,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Contact Form API"
-    - "User Registration/Login API"
-    - "Cart Management API"
-    - "Order Management API"
+    - "Frontend Testing"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
