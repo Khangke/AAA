@@ -423,4 +423,4 @@ test_plan:
 
 agent_communication:
   - agent: "main"
-    message: "Đã hoàn thành thay đổi font website thành Bodoni Moda theo yêu cầu của user. Cập nhật Google Fonts import, thay đổi font-family chính trong body, cập nhật Vietnamese text class và Tailwind config. Font Bodoni Moda hiển thị đẹp trên cả desktop và mobile, tạo cảm giác luxury và elegant phù hợp với trang jewelry. Tất cả các trang (homepage, products) đều hiển thị font mới chính xác."
+    message: "Đã hoàn thành thay đổi font website thành Merriweather theo yêu cầu mới của user. Cập nhật Google Fonts import từ Bodoni Moda sang Merriweather với weights 300,400,700,900. Thay đổi font-family chính trong body, cập nhật Vietnamese text class và Tailwind config với font 'merriweather'. Font Merriweather hiển thị rất đẹp và dễ đọc trên cả desktop và mobile, tạo cảm giác chuyên nghiệp và phù hợp với trang jewelry. Tất cả các trang đều hiển thị font mới chính xác."
