@@ -462,9 +462,16 @@ const HomePage = () => {
 
           {/* Mobile Horizontal Scroll */}
           <div className="md:hidden">
-            <div className="flex overflow-x-auto space-x-4 xs:space-x-6 pb-6 px-4 -mx-4 scrollbar-hide product-scroll" onScroll={handleTestimonialScroll}>
+            <div 
+              ref={testimonialScrollRef}
+              className="flex overflow-x-auto space-x-4 xs:space-x-6 pb-6 px-4 -mx-4 scrollbar-hide product-scroll" 
+              onScroll={handleTestimonialScroll}
+              style={{ scrollSnapType: 'x mandatory' }}
+            >
               {testimonials.map((testimonial, index) => (
-                <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
+                <div key={testimonial.id} style={{ scrollSnapAlign: 'start' }}>
+                  <TestimonialCard testimonial={testimonial} index={index} />
+                </div>
               ))}
             </div>
 
@@ -474,8 +481,8 @@ const HomePage = () => {
                 {testimonials.map((_, index) => (
                   <div 
                     key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentTestimonialIndex ? 'bg-luxury-gold' : 'bg-luxury-gold/30'
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ease-out ${
+                      index === currentTestimonialIndex ? 'bg-luxury-gold scale-125' : 'bg-luxury-gold/30'
                     }`}
                   />
                 ))}
