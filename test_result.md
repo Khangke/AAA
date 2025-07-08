@@ -347,7 +347,7 @@ agent_communication:
   - agent: "main"
     message: "Đã hoàn thành phát triển trang giỏ hàng hoạt động hoàn toàn mà không cần đăng nhập như yêu cầu. Khách hàng có thể thêm sản phẩm vào giỏ hàng (localStorage), checkout với form guest đầy đủ (họ tên, email, SĐT, địa chỉ, ghi chú), phí vận chuyển 30k tự động, hỗ trợ COD và chuyển khoản ngân hàng. CartContext hỗ trợ cả guest mode và authenticated mode. Trang tài khoản dành cho khách hàng thân thiết muốn lưu thông tin."
 
-user_problem_statement: "làm tiếp phần liên hệ và giỏ hàng, tài khoản. đầy đủ thông tin và tối ưu cho mobile và màn hình hiển thị được nhiều. Requirements: Liên hệ thêm hết, giỏ hàng phí vận chuyển 30k và thanh toán cod và chuyển khoản, tài khoản tạo tài khoản bằng email và có lưu thông tin để đặt đơn sau dễ dàng hơn"
+user_problem_statement: "fix lại trang tài khoản đăng ký chỉ nhập sdt với tên với email và mật khẩu thôi. còn thông tin như địa chỉ... thì khách đặt 1 đơn đầu tiên rồi web tự lưu lại"
 
 backend:
   - task: "POST /api/products/seed - Seed dữ liệu sản phẩm mẫu"
