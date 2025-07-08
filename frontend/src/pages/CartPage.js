@@ -38,14 +38,26 @@ const CartPage = () => {
 
   const handleQuantityChange = async (productId, newQuantity) => {
     if (newQuantity <= 0) {
-      await removeFromCart(productId);
+      const result = await removeFromCart(productId);
+      if (result.success) {
+        showCartNotification('remove', result.productName);
+      }
     } else {
-      await updateCartItem(productId, newQuantity);
+      const result = await updateCartItem(productId, newQuantity);
+      if (result.success) {
+        const product = items.find(item => item.id === productId);
+        if (product) {
+          showCartNotification('update', product.name, newQuantity);
+        }
+      }
     }
   };
 
   const handleRemoveItem = async (productId) => {
-    await removeFromCart(productId);
+    const result = await removeFromCart(productId);
+    if (result.success) {
+      showCartNotification('remove', result.productName);
+    }
   };
 
   const formatPrice = (price) => {
