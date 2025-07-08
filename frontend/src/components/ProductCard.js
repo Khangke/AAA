@@ -53,61 +53,82 @@ const ProductCard = ({ product, onClick }) => {
       </div>
 
       {/* Product Info */}
-      <div className="p-2 sm:p-3 md:p-4">
+      <div className="p-3 space-y-2">
         {/* Product Name */}
-        <h3 className="font-luxury text-sm sm:text-base md:text-lg font-bold text-luxury-gold mb-1 line-clamp-1">
+        <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold line-clamp-2 leading-tight">
           {product.name}
         </h3>
         
-        {/* Product Description - Hidden on mobile for space */}
-        <p className="text-soft-gold text-2xs sm:text-xs md:text-sm mb-2 line-clamp-1 hidden sm:block">
+        {/* Product Description - Show on mobile with line clamp */}
+        <p className="text-soft-gold text-xs leading-tight line-clamp-2 mb-2">
           {product.description}
         </p>
         
-        {/* Rating - Compact version */}
-        <div className="flex items-center mb-2">
-          <div className="flex text-yellow-400 text-xs sm:text-sm">
-            {[...Array(5)].map((_, i) => (
-              <span key={i} className={i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-400'}>
-                ⭐
-              </span>
-            ))}
+        {/* Rating & Reviews */}
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center">
+            <div className="flex text-yellow-400 text-xs">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className={i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-500'}>
+                  ★
+                </span>
+              ))}
+            </div>
+            <span className="text-soft-gold text-xs ml-1">
+              ({product.reviews_count})
+            </span>
           </div>
-          <span className="text-soft-gold text-2xs sm:text-xs ml-1">
-            ({product.reviews_count})
-          </span>
+          <div className="text-xs text-soft-gold">
+            {product.rating}/5
+          </div>
         </div>
         
-        {/* Price */}
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex flex-col">
-            <span className="text-luxury-gold font-bold text-sm sm:text-base md:text-lg">
+        {/* Price Section */}
+        <div className="space-y-1 mb-3">
+          <div className="flex items-center gap-2">
+            <span className="text-luxury-gold font-bold text-base">
               {formatPrice(product.price)}
             </span>
             {product.original_price && product.original_price > product.price && (
-              <span className="text-soft-gold/60 text-2xs sm:text-xs line-through">
+              <span className="text-soft-gold/60 text-xs line-through">
                 {formatPrice(product.original_price)}
               </span>
             )}
           </div>
+          {discount > 0 && (
+            <div className="text-green-400 text-xs font-semibold">
+              Tiết kiệm {formatPrice(product.original_price - product.price)}
+            </div>
+          )}
         </div>
         
-        {/* Add to Cart Button - Full width on mobile */}
+        {/* Stock Info */}
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-soft-gold text-xs">
+            Còn lại: {product.stock_quantity} sản phẩm
+          </span>
+          {product.stock_quantity <= 5 && (
+            <span className="text-red-400 text-xs font-semibold">
+              Sắp hết hàng!
+            </span>
+          )}
+        </div>
+        
+        {/* Add to Cart Button */}
         <button 
-          className="w-full bg-luxury-gold text-deep-black px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg font-bold text-xs sm:text-sm hover:bg-luxury-copper transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-luxury-gold text-deep-black px-3 py-2 rounded-lg font-bold text-sm hover:bg-luxury-copper transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
           disabled={!product.in_stock}
           onClick={(e) => {
             e.stopPropagation();
-            // Add to cart logic here
             console.log('Buy now:', product.id);
           }}
         >
           {product.in_stock ? 'Mua Ngay' : 'Hết Hàng'}
         </button>
         
-        {/* Category Tag - Compact */}
-        <div className="mt-2">
-          <span className="inline-block bg-luxury-gold/20 text-luxury-gold px-2 py-0.5 rounded-md text-2xs sm:text-xs">
+        {/* Category Tag */}
+        <div className="flex justify-center mt-2">
+          <span className="inline-block bg-luxury-gold/20 text-luxury-gold px-2 py-1 rounded-full text-xs">
             {product.category}
           </span>
         </div>
