@@ -241,6 +241,7 @@ class ProductCreate(BaseModel):
     category: str
     image_url: str
     images: List[str] = []
+    variations: List[ProductVariation] = []
     in_stock: bool = True
     stock_quantity: int = 0
     featured: bool = False
