@@ -323,14 +323,8 @@ metadata:
 
 test_plan:
   current_focus:
-    - "POST /api/products/seed - Seed dữ liệu sản phẩm mẫu"
-    - "GET /api/products - Lấy danh sách sản phẩm"
-    - "GET /api/products?category=Vòng Tay - Filter theo category"
-    - "GET /api/products?featured=true - Filter sản phẩm nổi bật"
-    - "GET /api/products?search=trầm - Tìm kiếm sản phẩm"
-    - "GET /api/products/categories - Lấy danh sách categories"
-  stuck_tasks:
-    []
+    - "Frontend Testing"
+  stuck_tasks: []
   test_all: false
   test_priority: "high_first"
 
