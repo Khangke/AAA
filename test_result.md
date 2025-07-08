@@ -366,41 +366,17 @@ backend:
         comment: "Updated create_order function to automatically save address information from first order into user profile if user doesn't have address yet."
 
 frontend:
-  - task: "Trang About (Giới thiệu)"
+  - task: "Account Registration Form Simplification"
     implemented: true
-    working: true
-    file: "/app/frontend/src/pages/AboutPage.js"
+    working: false
+    file: "frontend/src/pages/AccountPage.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
-      - working: true
+      - working: false
         agent: "main"
-        comment: "Tạo trang giới thiệu với nội dung đầy đủ về thương hiệu Khang Trầm Hương: câu chuyện thương hiệu, tầm nhìn, sứ mệnh, sản phẩm, giá trị cốt lõi. Thiết kế mobile-first responsive với layout 2 cột trên mobile, sử dụng hình ảnh chất lượng cao và theme luxury gold."
-
-  - task: "Trang News (Tin tức)"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/pages/NewsPage.js"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-      - working: true
-        agent: "main"
-        comment: "Tạo trang tin tức với 6 bài viết mẫu về trầm hương, có phân loại theo category (Kiến thức, Sản phẩm, Sự kiện, Mẹo hay), chức năng đọc chi tiết bài viết, newsletter signup. Thiết kế responsive mobile-first với grid layout tối ưu."
-
-  - task: "Mobile optimization cho About & News"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/pages/AboutPage.js, /app/frontend/src/pages/NewsPage.js"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-      - working: true
-        agent: "main"
-        comment: "Tối ưu hoàn toàn cho mobile: grid-cols-1 sm:grid-cols-2 lg:grid-cols-3, responsive text size, touch-friendly buttons, optimized images, mobile-first spacing và typography. Trang About có sections rõ ràng, trang News có card layout gọn gàng."
+        comment: "Updated registration form to only collect 4 basic fields: email, password, full_name, phone. Removed all address fields from registration. Added validation for phone number and informative notice about address collection during first order."
 
 metadata:
   created_by: "testing_agent"
