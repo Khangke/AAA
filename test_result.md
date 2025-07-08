@@ -196,7 +196,7 @@ agent_communication:
   - agent: "main"
     message: "Frontend ProductsPage completed with full functionality: search, filter, sort, mobile 2-column layout. All manual tests successful. Ready for automated testing."
 
-user_problem_statement: "Test backend API với các endpoints sau: 1. POST /api/products/seed - Seed dữ liệu sản phẩm mẫu, 2. GET /api/products - Lấy danh sách sản phẩm, 3. GET /api/products?category=Vòng Tay - Filter theo category, 4. GET /api/products?featured=true - Filter sản phẩm nổi bật, 5. GET /api/products?search=trầm - Tìm kiếm sản phẩm, 6. GET /api/products/categories - Lấy danh sách categories"
+user_problem_statement: "Tạo giúp tôi trang giới thiệu, thêm nội dung về thương hiệu của tôi vào. và làm thêm trang tin tức. lưu ý làm sao để tối ưu cho mobile, gọn gàng, đẹp mắt"
 
 backend:
   - task: "POST /api/products/seed - Seed dữ liệu sản phẩm mẫu"
