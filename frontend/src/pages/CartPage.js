@@ -195,58 +195,58 @@ const CartPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
           
           {/* Cart Items */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-3">
             {items.map((item) => (
               <div 
                 key={item.id} 
-                className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-4 sm:p-6"
+                className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-3 sm:p-4"
               >
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-3">
                   {/* Product Image */}
                   <div className="flex-shrink-0">
                     <img
                       src={item.image || '/placeholder-image.jpg'}
                       alt={item.name}
-                      className="w-full sm:w-20 h-20 object-cover rounded-lg"
+                      className="w-full sm:w-16 h-16 object-cover rounded-lg"
                     />
                   </div>
                   
                   {/* Product Info */}
                   <div className="flex-1">
-                    <h3 className="font-bold text-luxury-gold text-lg mb-2">
+                    <h3 className="font-bold text-luxury-gold text-base mb-1">
                       {item.name}
                     </h3>
-                    <p className="text-soft-gold text-sm mb-3">
+                    <p className="text-soft-gold text-xs mb-2">
                       {formatPrice(item.price)} / sản phẩm
                     </p>
                     
                     {/* Quantity Controls */}
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-2">
                         <button
                           onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
-                          className="w-8 h-8 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 text-luxury-gold hover:bg-luxury-gold/30 transition-colors flex items-center justify-center"
+                          className="w-7 h-7 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 text-luxury-gold hover:bg-luxury-gold/30 transition-colors flex items-center justify-center text-sm"
                         >
                           -
                         </button>
-                        <span className="text-white font-medium min-w-[2rem] text-center">
+                        <span className="text-white font-medium min-w-[1.5rem] text-center text-sm">
                           {item.quantity}
                         </span>
                         <button
                           onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-                          className="w-8 h-8 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 text-luxury-gold hover:bg-luxury-gold/30 transition-colors flex items-center justify-center"
+                          className="w-7 h-7 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 text-luxury-gold hover:bg-luxury-gold/30 transition-colors flex items-center justify-center text-sm"
                         >
                           +
                         </button>
                       </div>
                       
-                      <div className="flex items-center space-x-4">
-                        <span className="text-luxury-gold font-bold">
+                      <div className="flex items-center space-x-3">
+                        <span className="text-luxury-gold font-bold text-sm">
                           {formatPrice(item.price * item.quantity)}
                         </span>
                         <button
                           onClick={() => handleRemoveItem(item.id)}
-                          className="text-red-400 hover:text-red-300 text-sm underline"
+                          className="text-red-400 hover:text-red-300 text-xs underline"
                         >
                           Xóa
                         </button>
