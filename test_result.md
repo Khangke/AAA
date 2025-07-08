@@ -151,16 +151,19 @@ backend:
         comment: "Implemented and tested all cart management endpoints: POST /api/cart/add, GET /api/cart, PUT /api/cart/item/{product_id}, DELETE /api/cart/item/{product_id}, DELETE /api/cart. Fixed serialization issue with MongoDB ObjectId in cart update and remove endpoints. All cart operations work correctly with proper authentication."
 
   - task: "Order Management API"
-    implemented: false
-    working: false
+    implemented: true
+    working: true
     file: "backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "main"
         comment: "Need to implement order creation with shipping fee and payment methods"
+      - working: true
+        agent: "testing"
+        comment: "Implemented and tested all order management endpoints: POST /api/orders, GET /api/orders, GET /api/orders/{order_id}. Order creation works with both COD and bank transfer payment methods. Shipping fee is correctly set to 30,000 VND. Order history and details are properly displayed."
 
   - task: "Product API Development"
     implemented: true
