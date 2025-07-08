@@ -100,6 +100,221 @@ async def get_status_checks():
     status_checks = await db.status_checks.find().to_list(1000)
     return [StatusCheck(**status_check) for status_check in status_checks]
 
+# Product endpoints
+@api_router.get("/products", response_model=List[Product])
+async def get_products(
+    category: str = None,
+    featured: bool = None,
+    search: str = None,
+    skip: int = 0,
+    limit: int = 20
+):
+    """Get products with optional filtering and pagination"""
+    query = {}
+    
+    if category:
+        query["category"] = category
+    if featured is not None:
+        query["featured"] = featured
+    if search:
+        query["$or"] = [
+            {"name": {"$regex": search, "$options": "i"}},
+            {"description": {"$regex": search, "$options": "i"}},
+            {"tags": {"$regex": search, "$options": "i"}}
+        ]
+    
+    products = await db.products.find(query).skip(skip).limit(limit).to_list(limit)
+    return [Product(**product) for product in products]
+
+@api_router.get("/products/{product_id}", response_model=Product)
+async def get_product(product_id: str):
+    """Get a specific product by ID"""
+    product = await db.products.find_one({"id": product_id})
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return Product(**product)
+
+@api_router.post("/products", response_model=Product)
+async def create_product(product_data: ProductCreate):
+    """Create a new product"""
+    product_dict = product_data.dict()
+    product_obj = Product(**product_dict)
+    await db.products.insert_one(product_obj.dict())
+    return product_obj
+
+@api_router.put("/products/{product_id}", response_model=Product)
+async def update_product(product_id: str, product_data: ProductUpdate):
+    """Update an existing product"""
+    update_dict = {k: v for k, v in product_data.dict().items() if v is not None}
+    if not update_dict:
+        raise HTTPException(status_code=400, detail="No fields to update")
+    
+    update_dict["updated_at"] = datetime.utcnow()
+    result = await db.products.update_one(
+        {"id": product_id}, 
+        {"$set": update_dict}
+    )
+    
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Product not found")
+    
+    product = await db.products.find_one({"id": product_id})
+    return Product(**product)
+
+@api_router.delete("/products/{product_id}")
+async def delete_product(product_id: str):
+    """Delete a product"""
+    result = await db.products.delete_one({"id": product_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return {"message": "Product deleted successfully"}
+
+@api_router.get("/products/categories")
+async def get_categories():
+    """Get all product categories"""
+    categories = await db.products.distinct("category")
+    return {"categories": categories}
+
+@api_router.post("/products/seed")
+async def seed_products():
+    """Seed database with sample products"""
+    # Check if products already exist
+    existing_count = await db.products.count_documents({})
+    if existing_count > 0:
+        return {"message": f"Database already has {existing_count} products"}
+    
+    sample_products = [
+        {
+            "name": "Vòng Trầm Hương Cao Cấp",
+            "description": "Vòng tay trầm hương nguyên chất từ Khánh Hòa, mang lại may mắn và bình an. Được chế tác từ những cây trầm hương già nhất với hương thơm đặc trưng.",
+            "price": 2500000,
+            "original_price": 3000000,
+            "category": "Vòng Tay",
+            "image_url": "https://images.unsplash.com/photo-1662473217799-6e7288f19741",
+            "images": ["https://images.unsplash.com/photo-1662473217799-6e7288f19741"],
+            "in_stock": True,
+            "stock_quantity": 15,
+            "featured": True,
+            "rating": 4.8,
+            "reviews_count": 24,
+            "tags": ["trầm hương", "vòng tay", "may mắn", "cao cấp"]
+        },
+        {
+            "name": "Trầm Hương Nguyên Khối",
+            "description": "Khối trầm hương tự nhiên 100% từ rừng Khánh Hòa, hương thơm nồng nàn, quý hiếm. Thích hợp cho thiền định và tâm linh.",
+            "price": 5800000,
+            "original_price": 6500000,
+            "category": "Trầm Khối",
+            "image_url": "https://images.unsplash.com/photo-1719611639294-f754d39a6bed",
+            "images": ["https://images.unsplash.com/photo-1719611639294-f754d39a6bed"],
+            "in_stock": True,
+            "stock_quantity": 8,
+            "featured": True,
+            "rating": 4.9,
+            "reviews_count": 18,
+            "tags": ["trầm hương", "nguyên khối", "thiền định", "quý hiếm"]
+        },
+        {
+            "name": "Nhang Trầm Hương Premium",
+            "description": "Nhang trầm hương cao cấp, thích hợp cho không gian thiền định và thờ cúng. Mỗi que nhang cháy được 45-60 phút với hương thơm dịu nhẹ.",
+            "price": 850000,
+            "original_price": 1000000,
+            "category": "Nhang Trầm",
+            "image_url": "https://images.unsplash.com/photo-1652959889888-53d048374e35",
+            "images": ["https://images.unsplash.com/photo-1652959889888-53d048374e35"],
+            "in_stock": True,
+            "stock_quantity": 25,
+            "featured": True,
+            "rating": 4.7,
+            "reviews_count": 32,
+            "tags": ["nhang trầm", "premium", "thiền định", "thờ cúng"]
+        },
+        {
+            "name": "Trầm Hương Thiền Định",
+            "description": "Trầm hương đặc biệt dành cho thiền định và tâm linh. Hương thơm thanh tịnh, giúp tâm trí được thư giãn và tập trung.",
+            "price": 3200000,
+            "original_price": 3800000,
+            "category": "Trầm Khối",
+            "image_url": "https://images.unsplash.com/photo-1589115324861-b757b1dd2247",
+            "images": ["https://images.unsplash.com/photo-1589115324861-b757b1dd2247"],
+            "in_stock": True,
+            "stock_quantity": 12,
+            "featured": True,
+            "rating": 4.8,
+            "reviews_count": 16,
+            "tags": ["trầm hương", "thiền định", "tâm linh", "thư giãn"]
+        },
+        {
+            "name": "Bộ Sưu Tập Luxury",
+            "description": "Bộ sưu tập trầm hương cao cấp đặc biệt, phiên bản giới hạn. Bao gồm vòng tay, nhang và khối trầm hương trong hộp gỗ sang trọng.",
+            "price": 12500000,
+            "original_price": 15000000,
+            "category": "Bộ Sưu Tập",
+            "image_url": "https://images.pexels.com/photos/6998574/pexels-photo-6998574.jpeg",
+            "images": ["https://images.pexels.com/photos/6998574/pexels-photo-6998574.jpeg"],
+            "in_stock": True,
+            "stock_quantity": 3,
+            "featured": True,
+            "rating": 5.0,
+            "reviews_count": 8,
+            "tags": ["bộ sưu tập", "luxury", "giới hạn", "hộp gỗ"]
+        },
+        {
+            "name": "Vòng Trầm Hương Nữ",
+            "description": "Vòng tay trầm hương nhỏ gọn dành cho nữ giới, thiết kế tinh tế với hạt trầm hương tròn đều. Thích hợp đeo hàng ngày.",
+            "price": 1800000,
+            "original_price": 2200000,
+            "category": "Vòng Tay",
+            "image_url": "https://images.unsplash.com/photo-1611652022419-a9419f74343d",
+            "images": ["https://images.unsplash.com/photo-1611652022419-a9419f74343d"],
+            "in_stock": True,
+            "stock_quantity": 20,
+            "featured": False,
+            "rating": 4.6,
+            "reviews_count": 28,
+            "tags": ["vòng tay", "nữ giới", "tinh tế", "hàng ngày"]
+        },
+        {
+            "name": "Trầm Hương Thơm Phòng",
+            "description": "Trầm hương dạng bột thơm phòng, hương thơm dịu nhẹ kéo dài 4-6 giờ. Thích hợp cho không gian làm việc và nghỉ ngơi.",
+            "price": 650000,
+            "original_price": 800000,
+            "category": "Trầm Bột",
+            "image_url": "https://images.unsplash.com/photo-1603201667230-bd54a8b9d8b7",
+            "images": ["https://images.unsplash.com/photo-1603201667230-bd54a8b9d8b7"],
+            "in_stock": True,
+            "stock_quantity": 30,
+            "featured": False,
+            "rating": 4.4,
+            "reviews_count": 22,
+            "tags": ["trầm bột", "thơm phòng", "làm việc", "nghỉ ngơi"]
+        },
+        {
+            "name": "Vòng Trầm Hương Nam",
+            "description": "Vòng tay trầm hương nam tính với hạt to, thiết kế mạnh mẽ. Phù hợp với phong cách lịch lãm và sang trọng.",
+            "price": 3500000,
+            "original_price": 4000000,
+            "category": "Vòng Tay",
+            "image_url": "https://images.unsplash.com/photo-1608828201317-ce72715cb12a",
+            "images": ["https://images.unsplash.com/photo-1608828201317-ce72715cb12a"],
+            "in_stock": True,
+            "stock_quantity": 10,
+            "featured": False,
+            "rating": 4.7,
+            "reviews_count": 15,
+            "tags": ["vòng tay", "nam giới", "mạnh mẽ", "lịch lãm"]
+        }
+    ]
+    
+    # Insert sample products
+    products_to_insert = []
+    for product_data in sample_products:
+        product_obj = Product(**product_data)
+        products_to_insert.append(product_obj.dict())
+    
+    await db.products.insert_many(products_to_insert)
+    return {"message": f"Successfully seeded {len(products_to_insert)} products"}
+
 # Include the router in the main app
 app.include_router(api_router)
 
