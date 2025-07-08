@@ -149,42 +149,42 @@ const ProductsPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="font-luxury text-3xl md:text-4xl font-bold text-luxury-gold mb-4">
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="font-luxury text-2xl sm:text-3xl md:text-4xl font-bold text-luxury-gold mb-2 sm:mb-4">
             Sản Phẩm Trầm Hương Cao Cấp
           </h1>
-          <p className="text-soft-gold text-lg max-w-2xl mx-auto">
+          <p className="text-soft-gold text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
             Khám phá bộ sưu tập trầm hương luxury được tuyển chọn kỹ lưỡng
           </p>
         </div>
 
         {/* Search Bar */}
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <div className="relative max-w-md mx-auto">
             <input
               type="text"
               placeholder="Tìm kiếm sản phẩm..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 pl-12 bg-deep-black/50 border border-luxury-gold/20 rounded-full text-white placeholder-soft-gold focus:outline-none focus:border-luxury-gold/60 transition-colors"
+              className="w-full px-3 py-2 sm:px-4 sm:py-3 pl-10 sm:pl-12 bg-deep-black/50 border border-luxury-gold/20 rounded-full text-white placeholder-soft-gold focus:outline-none focus:border-luxury-gold/60 transition-colors text-sm sm:text-base"
             />
-            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-luxury-gold">
+            <div className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-luxury-gold text-sm sm:text-base">
               🔍
             </div>
           </div>
         </div>
 
-        {/* Filters */}
-        <div className="mb-8">
-          <div className="flex flex-wrap gap-4 justify-center items-center">
+        {/* Filters - Mobile Optimized */}
+        <div className="mb-4 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 justify-center items-center">
             
-            {/* Category Filter */}
-            <div className="flex items-center gap-2">
-              <label className="text-soft-gold text-sm">Danh mục:</label>
+            {/* Mobile: Stack filters vertically */}
+            <div className="w-full sm:w-auto flex items-center gap-2 justify-center">
+              <label className="text-soft-gold text-xs sm:text-sm whitespace-nowrap">Danh mục:</label>
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-3 py-2 bg-deep-black/50 border border-luxury-gold/20 rounded-lg text-white focus:outline-none focus:border-luxury-gold/60"
+                className="flex-1 sm:flex-none px-2 py-1 sm:px-3 sm:py-2 bg-deep-black/50 border border-luxury-gold/20 rounded-lg text-white focus:outline-none focus:border-luxury-gold/60 text-xs sm:text-sm"
               >
                 <option value="all">Tất cả</option>
                 {categories.map(category => (
@@ -195,13 +195,12 @@ const ProductsPage = () => {
               </select>
             </div>
 
-            {/* Sort Filter */}
-            <div className="flex items-center gap-2">
-              <label className="text-soft-gold text-sm">Sắp xếp:</label>
+            <div className="w-full sm:w-auto flex items-center gap-2 justify-center">
+              <label className="text-soft-gold text-xs sm:text-sm whitespace-nowrap">Sắp xếp:</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-3 py-2 bg-deep-black/50 border border-luxury-gold/20 rounded-lg text-white focus:outline-none focus:border-luxury-gold/60"
+                className="flex-1 sm:flex-none px-2 py-1 sm:px-3 sm:py-2 bg-deep-black/50 border border-luxury-gold/20 rounded-lg text-white focus:outline-none focus:border-luxury-gold/60 text-xs sm:text-sm"
               >
                 <option value="featured">Nổi bật</option>
                 <option value="price-low">Giá thấp → cao</option>
@@ -212,13 +211,13 @@ const ProductsPage = () => {
             </div>
 
             {/* Featured Toggle */}
-            <div className="flex items-center gap-2">
-              <label className="text-soft-gold text-sm">
+            <div className="w-full sm:w-auto flex items-center justify-center gap-2">
+              <label className="text-soft-gold text-xs sm:text-sm flex items-center">
                 <input
                   type="checkbox"
                   checked={showFeaturedOnly}
                   onChange={(e) => setShowFeaturedOnly(e.target.checked)}
-                  className="mr-2"
+                  className="mr-1 sm:mr-2"
                 />
                 Chỉ sản phẩm nổi bật
               </label>
@@ -227,7 +226,7 @@ const ProductsPage = () => {
             {/* Clear Filters */}
             <button
               onClick={clearFilters}
-              className="text-luxury-gold hover:text-luxury-copper transition-colors text-sm underline"
+              className="text-luxury-gold hover:text-luxury-copper transition-colors text-xs sm:text-sm underline"
             >
               Xóa bộ lọc
             </button>
@@ -235,8 +234,8 @@ const ProductsPage = () => {
         </div>
 
         {/* Results Count */}
-        <div className="mb-6 text-center">
-          <p className="text-soft-gold">
+        <div className="mb-4 sm:mb-6 text-center">
+          <p className="text-soft-gold text-xs sm:text-sm">
             Hiển thị {filteredProducts.length} sản phẩm
             {selectedCategory !== 'all' && ` trong danh mục "${selectedCategory}"`}
           </p>
