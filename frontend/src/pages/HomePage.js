@@ -308,9 +308,10 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8">
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8">
             {/* Testimonial 1 */}
-            <div className="bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300">
+            <div className="bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up">
               <div className="flex items-center mb-4 xs:mb-6">
                 <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
                   <span className="text-deep-black font-bold text-sm xs:text-base">A</span>
@@ -329,7 +330,7 @@ const HomePage = () => {
             </div>
 
             {/* Testimonial 2 */}
-            <div className="bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300">
+            <div className="bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <div className="flex items-center mb-4 xs:mb-6">
                 <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
                   <span className="text-deep-black font-bold text-sm xs:text-base">L</span>
@@ -348,7 +349,7 @@ const HomePage = () => {
             </div>
 
             {/* Testimonial 3 */}
-            <div className="bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300">
+            <div className="bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div className="flex items-center mb-4 xs:mb-6">
                 <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
                   <span className="text-deep-black font-bold text-sm xs:text-base">H</span>
@@ -364,6 +365,144 @@ const HomePage = () => {
               <div className="flex text-luxury-gold text-sm xs:text-base">
                 ⭐⭐⭐⭐⭐
               </div>
+            </div>
+          </div>
+
+          {/* Mobile Horizontal Scroll */}
+          <div className="md:hidden">
+            <div className="flex overflow-x-auto space-x-4 xs:space-x-6 pb-6 px-4 -mx-4 scrollbar-hide product-scroll">
+              {/* Testimonial 1 */}
+              <div className="flex-shrink-0 w-full xs:w-80 sm:w-auto bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up">
+                <div className="flex items-center mb-4 xs:mb-6">
+                  <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
+                    <span className="text-deep-black font-bold text-sm xs:text-base">A</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-luxury-gold text-sm xs:text-base">Anh Minh</h4>
+                    <p className="text-soft-gold text-xs xs:text-sm">TP. Hồ Chí Minh</p>
+                  </div>
+                </div>
+                <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
+                  "Trầm hương ở đây chất lượng thật sự tuyệt vời. Hương thơm rất đậm đà và tự nhiên. Tôi đã mua nhiều lần và luôn hài lòng!"
+                </p>
+                <div className="flex text-luxury-gold text-sm xs:text-base">
+                  ⭐⭐⭐⭐⭐
+                </div>
+              </div>
+
+              {/* Testimonial 2 */}
+              <div className="flex-shrink-0 w-full xs:w-80 sm:w-auto bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up">
+                <div className="flex items-center mb-4 xs:mb-6">
+                  <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
+                    <span className="text-deep-black font-bold text-sm xs:text-base">L</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-luxury-gold text-sm xs:text-base">Chị Lan</h4>
+                    <p className="text-soft-gold text-xs xs:text-sm">Hà Nội</p>
+                  </div>
+                </div>
+                <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
+                  "Phục vụ tận tình, sản phẩm đúng như mô tả. Vòng trầm hương rất đẹp và chất lượng. Sẽ giới thiệu cho bạn bè!"
+                </p>
+                <div className="flex text-luxury-gold text-sm xs:text-base">
+                  ⭐⭐⭐⭐⭐
+                </div>
+              </div>
+
+              {/* Testimonial 3 */}
+              <div className="flex-shrink-0 w-full xs:w-80 sm:w-auto bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up">
+                <div className="flex items-center mb-4 xs:mb-6">
+                  <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
+                    <span className="text-deep-black font-bold text-sm xs:text-base">H</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-luxury-gold text-sm xs:text-base">Anh Hưng</h4>
+                    <p className="text-soft-gold text-xs xs:text-sm">Đà Nẵng</p>
+                  </div>
+                </div>
+                <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
+                  "Mua làm quà tặng cho bố mẹ, họ rất thích. Chất lượng trầm hương thật sự cao cấp, xứng đáng với giá tiền!"
+                </p>
+                <div className="flex text-luxury-gold text-sm xs:text-base">
+                  ⭐⭐⭐⭐⭐
+                </div>
+              </div>
+
+              {/* Testimonial 4 */}
+              <div className="flex-shrink-0 w-full xs:w-80 sm:w-auto bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up">
+                <div className="flex items-center mb-4 xs:mb-6">
+                  <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
+                    <span className="text-deep-black font-bold text-sm xs:text-base">T</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-luxury-gold text-sm xs:text-base">Chị Thảo</h4>
+                    <p className="text-soft-gold text-xs xs:text-sm">Cần Thơ</p>
+                  </div>
+                </div>
+                <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
+                  "Shop tư vấn rất chi tiết và nhiệt tình. Sản phẩm đẹp, đóng gói cẩn thận. Rất hài lòng với dịch vụ!"
+                </p>
+                <div className="flex text-luxury-gold text-sm xs:text-base">
+                  ⭐⭐⭐⭐⭐
+                </div>
+              </div>
+
+              {/* Testimonial 5 */}
+              <div className="flex-shrink-0 w-full xs:w-80 sm:w-auto bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up">
+                <div className="flex items-center mb-4 xs:mb-6">
+                  <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
+                    <span className="text-deep-black font-bold text-sm xs:text-base">D</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-luxury-gold text-sm xs:text-base">Anh Dũng</h4>
+                    <p className="text-soft-gold text-xs xs:text-sm">Hải Phòng</p>
+                  </div>
+                </div>
+                <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
+                  "Mình đã so sánh nhiều nơi, chỗ này có giá hợp lý nhất với chất lượng tuyệt vời. Sẽ ủng hộ lâu dài!"
+                </p>
+                <div className="flex text-luxury-gold text-sm xs:text-base">
+                  ⭐⭐⭐⭐⭐
+                </div>
+              </div>
+
+              {/* Testimonial 6 */}
+              <div className="flex-shrink-0 w-full xs:w-80 sm:w-auto bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up">
+                <div className="flex items-center mb-4 xs:mb-6">
+                  <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
+                    <span className="text-deep-black font-bold text-sm xs:text-base">N</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-luxury-gold text-sm xs:text-base">Chị Nga</h4>
+                    <p className="text-soft-gold text-xs xs:text-sm">Nha Trang</p>
+                  </div>
+                </div>
+                <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
+                  "Hương trầm rất tinh tế và sang trọng. Mua về làm quà tặng sếp, ông ấy khen ngợi hết lời!"
+                </p>
+                <div className="flex text-luxury-gold text-sm xs:text-base">
+                  ⭐⭐⭐⭐⭐
+                </div>
+              </div>
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="flex justify-center mt-6">
+              <div className="flex space-x-2">
+                <div className="w-2 h-2 bg-luxury-gold rounded-full"></div>
+                <div className="w-2 h-2 bg-luxury-gold/30 rounded-full"></div>
+                <div className="w-2 h-2 bg-luxury-gold/30 rounded-full"></div>
+                <div className="w-2 h-2 bg-luxury-gold/30 rounded-full"></div>
+                <div className="w-2 h-2 bg-luxury-gold/30 rounded-full"></div>
+                <div className="w-2 h-2 bg-luxury-gold/30 rounded-full"></div>
+              </div>
+            </div>
+
+            {/* Mobile Swipe Hint */}
+            <div className="text-center mt-4">
+              <p className="text-soft-gold/70 text-sm">
+                ← Lướt qua để xem thêm đánh giá →
+              </p>
             </div>
           </div>
         </div>
