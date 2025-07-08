@@ -8,16 +8,38 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   color: #ffffff;
   background-color: #0A0A0A;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Prevent zoom on input focus on iOS */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Disable tap highlight on iOS */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Optimize scrolling performance */
+html, body {
+  overscroll-behavior: none;
 }
 
 /* Scrollbar Hide */
@@ -34,20 +56,18 @@ html {
 .product-scroll {
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
 }
 
 .product-scroll > * {
   scroll-snap-align: start;
 }
 
-/* Touch Scroll Optimization */
-.product-scroll {
-  -webkit-overflow-scrolling: touch;
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -56,11 +76,20 @@ html {
 
 ::-webkit-scrollbar-thumb {
   background: #D4AF37;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #B8860B;
+}
+
+/* Performance Optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
 }
 
 /* Utility Classes */
@@ -95,6 +124,47 @@ html {
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
 .shimmer {
   background: linear-gradient(
     90deg,
@@ -108,13 +178,42 @@ html {
 
 /* Mobile Optimizations */
 @media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
   .hero-mobile {
     min-height: 100vh;
-    padding: 2rem 1rem;
+    padding: 1rem;
   }
   
   .mobile-nav-padding {
     padding-bottom: 5rem;
+  }
+  
+  /* Optimize touch interactions */
+  button, .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Reduce motion for performance */
+  * {
+    transition-duration: 0.2s;
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Desktop Optimizations */
+@media (min-width: 1025px) {
+  html {
+    font-size: 16px;
   }
 }
 
@@ -122,6 +221,10 @@ html {
 @media (hover: none) and (pointer: coarse) {
   .hover\:scale-105:hover {
     transform: scale(1.02);
+  }
+  
+  .hover\:shadow-lg:hover {
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
   }
 }
 
@@ -182,6 +285,7 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 /* Vietnamese Typography */
@@ -197,13 +301,18 @@ img {
   background: linear-gradient(135deg, #D4AF37 0%, #B87333 100%);
   color: #0A0A0A;
   border: none;
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 50px;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .luxury-button:hover {
@@ -237,15 +346,6 @@ img {
     transform: translateY(0);
     box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
   }
-}
-
-/* Performance Optimizations */
-.will-change-transform {
-  will-change: transform;
-}
-
-.will-change-opacity {
-  will-change: opacity;
 }
 
 /* Dark Mode Support */
