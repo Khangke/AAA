@@ -381,47 +381,83 @@ backend:
         comment: "Tested order address auto-save functionality. When a user with no address information creates an order, the address from the shipping_address is automatically saved to the user profile. Subsequent orders with different addresses don't overwrite the existing address information. User profile retrieval after order creation confirms the address is saved correctly."
 
 frontend:
-  - task: "Mobile Optimization for Account Page"
+  - task: "Notification System Implementation"
     implemented: true
     working: true
-    file: "frontend/src/pages/AccountPage.js"
+    file: "frontend/src/context/NotificationContext.js, frontend/src/components/NotificationContainer.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã tạo NotificationContext và NotificationContainer component để hiển thị thông báo. Hỗ trợ 4 loại thông báo: success, error, warning, info. Có animation slide-in và auto-remove sau 3-5 giây. Tích hợp với CartContext để hiển thị thông báo khi thêm/xóa sản phẩm."
+
+  - task: "Order Success Page"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/OrderSuccessPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã tạo trang OrderSuccessPage hiển thị thông tin đơn hàng đã đặt thành công. Có thông tin chi tiết: mã đơn hàng, thông tin khách hàng, sản phẩm đã mua, tổng tiền, phương thức thanh toán. Tối ưu cho mobile với responsive design."
+
+  - task: "Cart Notification Integration"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/CartPage.js, frontend/src/components/ProductCard.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã tích hợp notification system vào CartPage và ProductCard. Hiển thị thông báo khi thêm/xóa sản phẩm khỏi giỏ hàng. Khi đặt hàng thành công sẽ hiển thị notification và chuyển hướng đến trang OrderSuccessPage với thông tin đơn hàng."
+
+  - task: "Mobile Optimization Enhancement"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/ProductsPage.js, frontend/src/components/ProductCard.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã tối ưu hóa ProductsPage và ProductCard để hiển thị nhiều nội dung hơn trên mobile. Giảm padding, margin, font size. Tăng tỷ lệ hiển thị sản phẩm. Grid layout 2 cột trên mobile với gap nhỏ hơn. Responsive design cho tất cả screen sizes."
+
+  - task: "Contact Page Development"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/ContactPage.js"
     stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
       - working: false
         agent: "main"
-        comment: "Need to optimize account page for mobile display and ensure full content is visible on mobile screens"
+        comment: "Currently just placeholder, need complete contact form, business info, map integration"
       - working: true
         agent: "main"
-        comment: "Đã tối ưu hóa trang tài khoản cho mobile thành công. Giảm padding từ pt-16 xuống pt-14, giảm px-4 xuống px-3, giảm py-8 xuống py-4 cho mobile. Cải thiện form spacing từ space-y-6 xuống space-y-4 cho mobile. Responsive text size từ text-3xl xuống text-2xl cho mobile. Cải thiện tab navigation, form inputs, và tất cả components để hiển thị tốt hơn trên mobile với font size và spacing phù hợp."
+        comment: "Đã hoàn thành tối ưu hóa trang liên hệ cho mobile. Giảm padding, spacing, text size để hiển thị được nhiều nội dung hơn trên màn hình mobile. Form liên hệ, thông tin doanh nghiệp, bản đồ, social media đều được tối ưu cho mobile với layout compact hơn."
 
-  - task: "Font Change to Merriweather"
+  - task: "Cart Page Development"
     implemented: true
     working: true
-    file: "frontend/src/App.css, frontend/src/index.css, frontend/tailwind.config.js"
+    file: "frontend/src/pages/CartPage.js"
     stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
       - working: false
         agent: "main"
-        comment: "Need to implement font change from Bodoni Moda to Merriweather throughout the website"
+        comment: "Currently just placeholder, need cart functionality with shipping fee, COD and bank transfer"
       - working: true
         agent: "main"
-        comment: "Đã thay đổi font thành Merriweather thành công. Cập nhật Google Fonts import để thêm 'Merriweather:wght@300;400;700;900'. Thay đổi font-family chính trong body từ 'Bodoni Moda' sang 'Merriweather'. Cập nhật Vietnamese text class và Tailwind config để thêm font 'merriweather'. Font hiển thị đẹp và dễ đọc trên cả desktop và mobile, tạo cảm giác chuyên nghiệp và phù hợp với trang jewelry."
-
-  - task: "Account Registration Form Simplification"
-    implemented: true
-    working: false
-    file: "frontend/src/pages/AccountPage.js"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: true
-    status_history:
-      - working: false
-        agent: "main"
-        comment: "Updated registration form to only collect 4 basic fields: email, password, full_name, phone. Removed all address fields from registration. Added validation for phone number and informative notice about address collection during first order."
+        comment: "Đã hoàn thành trang giỏ hàng hoạt động hoàn toàn mà không cần đăng nhập. Guest checkout với form đầy đủ: họ tên, email, SĐT, địa chỉ, ghi chú. Phí vận chuyển 30k, hỗ trợ COD và chuyển khoản ngân hàng. Layout mobile-friendly, hiển thị tóm tắt đơn hàng và checkout process hoàn chỉnh."
 
 metadata:
   created_by: "testing_agent"
