@@ -382,13 +382,19 @@ async def seed_products():
         {
             "name": "Vòng Trầm Hương Cao Cấp",
             "description": "Vòng tay trầm hương nguyên chất từ Khánh Hòa, mang lại may mắn và bình an. Được chế tác từ những cây trầm hương già nhất với hương thơm đặc trưng.",
-            "price": 2500000,
+            "price": 2200000,  # Base price - lowest among variations
             "original_price": 3000000,
             "category": "Vòng Tay",
             "image_url": "https://images.unsplash.com/photo-1662473217799-6e7288f19741",
             "images": ["https://images.unsplash.com/photo-1662473217799-6e7288f19741"],
+            "variations": [
+                {"size": "6mm", "price": 2200000, "original_price": 2800000, "stock_quantity": 10},
+                {"size": "8mm", "price": 2500000, "original_price": 3000000, "stock_quantity": 8},
+                {"size": "10mm", "price": 2800000, "original_price": 3400000, "stock_quantity": 5},
+                {"size": "12mm", "price": 3200000, "original_price": 3800000, "stock_quantity": 3}
+            ],
             "in_stock": True,
-            "stock_quantity": 15,
+            "stock_quantity": 26,  # Total across all variations
             "featured": True,
             "rating": 4.8,
             "reviews_count": 24,
@@ -397,13 +403,18 @@ async def seed_products():
         {
             "name": "Trầm Hương Nguyên Khối",
             "description": "Khối trầm hương tự nhiên 100% từ rừng Khánh Hòa, hương thơm nồng nàn, quý hiếm. Thích hợp cho thiền định và tâm linh.",
-            "price": 5800000,
+            "price": 4800000,
             "original_price": 6500000,
             "category": "Trầm Khối",
             "image_url": "https://images.unsplash.com/photo-1719611639294-f754d39a6bed",
             "images": ["https://images.unsplash.com/photo-1719611639294-f754d39a6bed"],
+            "variations": [
+                {"size": "50g", "price": 4800000, "original_price": 5500000, "stock_quantity": 5},
+                {"size": "100g", "price": 5800000, "original_price": 6500000, "stock_quantity": 3},
+                {"size": "200g", "price": 10500000, "original_price": 12000000, "stock_quantity": 2}
+            ],
             "in_stock": True,
-            "stock_quantity": 8,
+            "stock_quantity": 10,
             "featured": True,
             "rating": 4.9,
             "reviews_count": 18,
@@ -412,13 +423,18 @@ async def seed_products():
         {
             "name": "Nhang Trầm Hương Premium",
             "description": "Nhang trầm hương cao cấp, thích hợp cho không gian thiền định và thờ cúng. Mỗi que nhang cháy được 45-60 phút với hương thơm dịu nhẹ.",
-            "price": 850000,
+            "price": 650000,
             "original_price": 1000000,
             "category": "Nhang Trầm",
             "image_url": "https://images.unsplash.com/photo-1652959889888-53d048374e35",
             "images": ["https://images.unsplash.com/photo-1652959889888-53d048374e35"],
+            "variations": [
+                {"size": "10 que", "price": 650000, "original_price": 800000, "stock_quantity": 15},
+                {"size": "20 que", "price": 850000, "original_price": 1000000, "stock_quantity": 10},
+                {"size": "50 que", "price": 1800000, "original_price": 2200000, "stock_quantity": 5}
+            ],
             "in_stock": True,
-            "stock_quantity": 25,
+            "stock_quantity": 30,
             "featured": True,
             "rating": 4.7,
             "reviews_count": 32,
@@ -427,11 +443,15 @@ async def seed_products():
         {
             "name": "Trầm Hương Thiền Định",
             "description": "Trầm hương đặc biệt dành cho thiền định và tâm linh. Hương thơm thanh tịnh, giúp tâm trí được thư giãn và tập trung.",
-            "price": 3200000,
+            "price": 2800000,
             "original_price": 3800000,
             "category": "Trầm Khối",
             "image_url": "https://images.unsplash.com/photo-1589115324861-b757b1dd2247",
             "images": ["https://images.unsplash.com/photo-1589115324861-b757b1dd2247"],
+            "variations": [
+                {"size": "30g", "price": 2800000, "original_price": 3200000, "stock_quantity": 8},
+                {"size": "80g", "price": 3200000, "original_price": 3800000, "stock_quantity": 4}
+            ],
             "in_stock": True,
             "stock_quantity": 12,
             "featured": True,
@@ -447,6 +467,10 @@ async def seed_products():
             "category": "Bộ Sưu Tập",
             "image_url": "https://images.pexels.com/photos/6998574/pexels-photo-6998574.jpeg",
             "images": ["https://images.pexels.com/photos/6998574/pexels-photo-6998574.jpeg"],
+            "variations": [
+                {"size": "Cơ bản", "price": 12500000, "original_price": 15000000, "stock_quantity": 2},
+                {"size": "Premium", "price": 18500000, "original_price": 22000000, "stock_quantity": 1}
+            ],
             "in_stock": True,
             "stock_quantity": 3,
             "featured": True,
@@ -457,11 +481,15 @@ async def seed_products():
         {
             "name": "Vòng Trầm Hương Nữ",
             "description": "Vòng tay trầm hương nhỏ gọn dành cho nữ giới, thiết kế tinh tế với hạt trầm hương tròn đều. Thích hợp đeo hàng ngày.",
-            "price": 1800000,
+            "price": 1600000,
             "original_price": 2200000,
             "category": "Vòng Tay",
             "image_url": "https://images.unsplash.com/photo-1611652022419-a9419f74343d",
             "images": ["https://images.unsplash.com/photo-1611652022419-a9419f74343d"],
+            "variations": [
+                {"size": "5mm", "price": 1600000, "original_price": 1900000, "stock_quantity": 12},
+                {"size": "6mm", "price": 1800000, "original_price": 2200000, "stock_quantity": 8}
+            ],
             "in_stock": True,
             "stock_quantity": 20,
             "featured": False,
@@ -472,11 +500,16 @@ async def seed_products():
         {
             "name": "Trầm Hương Thơm Phòng",
             "description": "Trầm hương dạng bột thơm phòng, hương thơm dịu nhẹ kéo dài 4-6 giờ. Thích hợp cho không gian làm việc và nghỉ ngơi.",
-            "price": 650000,
+            "price": 450000,
             "original_price": 800000,
             "category": "Trầm Bột",
             "image_url": "https://images.unsplash.com/photo-1603201667230-bd54a8b9d8b7",
             "images": ["https://images.unsplash.com/photo-1603201667230-bd54a8b9d8b7"],
+            "variations": [
+                {"size": "20g", "price": 450000, "original_price": 550000, "stock_quantity": 15},
+                {"size": "50g", "price": 650000, "original_price": 800000, "stock_quantity": 10},
+                {"size": "100g", "price": 1100000, "original_price": 1400000, "stock_quantity": 5}
+            ],
             "in_stock": True,
             "stock_quantity": 30,
             "featured": False,
@@ -487,11 +520,15 @@ async def seed_products():
         {
             "name": "Vòng Trầm Hương Nam",
             "description": "Vòng tay trầm hương nam tính với hạt to, thiết kế mạnh mẽ. Phù hợp với phong cách lịch lãm và sang trọng.",
-            "price": 3500000,
+            "price": 3200000,
             "original_price": 4000000,
             "category": "Vòng Tay",
             "image_url": "https://images.unsplash.com/photo-1608828201317-ce72715cb12a",
             "images": ["https://images.unsplash.com/photo-1608828201317-ce72715cb12a"],
+            "variations": [
+                {"size": "12mm", "price": 3200000, "original_price": 3800000, "stock_quantity": 6},
+                {"size": "14mm", "price": 3500000, "original_price": 4000000, "stock_quantity": 4}
+            ],
             "in_stock": True,
             "stock_quantity": 10,
             "featured": False,
