@@ -35,10 +35,9 @@ const ProductCard = ({ product, onClick }) => {
     const result = await addToCart(product, 1);
     
     if (result.success) {
-      // Optionally show a success notification
-      console.log('Added to cart successfully');
+      showCartNotification('add', product.name, 1);
     } else {
-      alert(result.error || 'Không thể thêm vào giỏ hàng');
+      showError(result.error || 'Không thể thêm vào giỏ hàng');
     }
     
     setIsAddingToCart(false);
