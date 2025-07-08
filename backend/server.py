@@ -128,12 +128,7 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
     full_name: str
-    phone: str = ""
-    address: str = ""
-    city: str = ""
-    district: str = ""
-    ward: str = ""
-    zip_code: str = ""
+    phone: str
 
 class UserLogin(BaseModel):
     email: EmailStr
