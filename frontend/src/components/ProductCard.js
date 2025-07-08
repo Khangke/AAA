@@ -49,7 +49,7 @@ const ProductCard = ({ product, onClick }) => {
 
   return (
     <div 
-      className="bg-deep-black/60 rounded-xl overflow-hidden backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105 cursor-pointer shadow-lg hover:shadow-luxury-gold/20"
+      className="bg-deep-black/60 rounded-lg overflow-hidden backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105 cursor-pointer shadow-lg hover:shadow-luxury-gold/20"
       onClick={handleCardClick}
     >
       {/* Product Image - Square aspect ratio */}
@@ -64,21 +64,21 @@ const ProductCard = ({ product, onClick }) => {
         
         {/* Discount Badge */}
         {discount > 0 && (
-          <div className="absolute top-1 left-1 bg-red-500 text-white px-1.5 py-0.5 rounded-md text-2xs font-bold">
+          <div className="absolute top-1 left-1 bg-red-500 text-white px-1 py-0.5 rounded text-xs font-bold">
             -{discount}%
           </div>
         )}
         
         {/* Featured Badge */}
         {product.featured && (
-          <div className="absolute top-1 right-1 bg-luxury-gold text-deep-black px-1.5 py-0.5 rounded-md text-2xs font-bold">
+          <div className="absolute top-1 right-1 bg-luxury-gold text-deep-black px-1 py-0.5 rounded text-xs font-bold">
             Nổi Bật
           </div>
         )}
         
         {/* In Cart Badge */}
         {itemInCart && (
-          <div className="absolute top-1 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-1.5 py-0.5 rounded-md text-2xs font-bold">
+          <div className="absolute top-1 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-1 py-0.5 rounded text-xs font-bold">
             Trong giỏ: {itemQuantity}
           </div>
         )}
@@ -91,10 +91,10 @@ const ProductCard = ({ product, onClick }) => {
         )}
       </div>
 
-      {/* Product Info */}
-      <div className="p-3 space-y-2">
+      {/* Product Info - More compact */}
+      <div className="p-2 sm:p-3 space-y-1.5 sm:space-y-2">
         {/* Product Name */}
-        <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold line-clamp-2 leading-tight">
+        <h3 className="font-luxury text-xs sm:text-sm font-bold text-luxury-gold line-clamp-2 leading-tight">
           {product.name}
         </h3>
         
