@@ -89,41 +89,87 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Products Section - Compact */}
+        {/* Products Section - Swipeable on Mobile */}
         <div className="mb-8 sm:mb-12">
           <h2 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-3 sm:mb-6 text-center">
             🌟 Sản Phẩm Nổi Bật
           </h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-            {featuredProducts.map((product) => (
-              <div key={product.id} className="bg-deep-black/50 rounded-xl overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all cursor-pointer group">
-                <div className="relative h-32 sm:h-40 overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-3 sm:p-4">
-                  <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold mb-2 line-clamp-1">
-                    {product.name}
-                  </h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-luxury-gold font-bold text-sm sm:text-base">
-                      {product.price}
-                    </span>
-                    <button className="bg-luxury-gold text-deep-black px-3 py-1 sm:px-4 sm:py-2 rounded-full font-bold text-xs sm:text-sm hover:bg-luxury-copper transition-colors">
-                      Xem
-                    </button>
-                  </div>
+          {loading ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin rounded-full h-8 w-8 border-2 border-luxury-gold border-t-transparent"></div>
+            </div>
+          ) : (
+            <>
+              {/* Mobile: Horizontal Scroll */}
+              <div className="block sm:hidden">
+                <div className="flex gap-3 overflow-x-auto pb-4 px-4 -mx-4 scrollbar-hide">
+                  {featuredProducts.map((product) => (
+                    <div key={product.id} className="bg-deep-black/60 rounded-xl overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all cursor-pointer group flex-shrink-0 w-40">
+                      {/* Square Image */}
+                      <div className="relative aspect-square overflow-hidden">
+                        <img 
+                          src={product.image_url} 
+                          alt={product.name}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="p-2">
+                        <h3 className="font-luxury text-xs font-bold text-luxury-gold mb-1 line-clamp-2 leading-tight">
+                          {product.name}
+                        </h3>
+                        <div className="space-y-1">
+                          <span className="text-luxury-gold font-bold text-sm">
+                            {formatPrice(product.price)}
+                          </span>
+                          <button className="w-full bg-luxury-gold text-deep-black px-2 py-1 rounded-lg font-bold text-xs hover:bg-luxury-copper transition-colors">
+                            Xem
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+
+              {/* Desktop: Grid Layout */}
+              <div className="hidden sm:block">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                  {featuredProducts.map((product) => (
+                    <div key={product.id} className="bg-deep-black/60 rounded-xl overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all cursor-pointer group">
+                      {/* Square Image */}
+                      <div className="relative aspect-square overflow-hidden">
+                        <img 
+                          src={product.image_url} 
+                          alt={product.name}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-luxury text-base font-bold text-luxury-gold mb-2 line-clamp-2">
+                          {product.name}
+                        </h3>
+                        <div className="flex justify-between items-center">
+                          <span className="text-luxury-gold font-bold text-base">
+                            {formatPrice(product.price)}
+                          </span>
+                          <button className="bg-luxury-gold text-deep-black px-4 py-2 rounded-full font-bold text-sm hover:bg-luxury-copper transition-colors">
+                            Xem
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
           
           <div className="text-center mt-4 sm:mt-6">
-            <button className="text-luxury-gold hover:text-luxury-copper transition-colors text-sm sm:text-base underline">
+            <button 
+              className="text-luxury-gold hover:text-luxury-copper transition-colors text-sm sm:text-base underline"
+              onClick={() => window.location.href = '/products'}
+            >
               Xem Tất Cả Sản Phẩm →
             </button>
           </div>
