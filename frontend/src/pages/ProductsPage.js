@@ -241,9 +241,9 @@ const ProductsPage = () => {
           </p>
         </div>
 
-        {/* Products Grid */}
+        {/* Products Grid - Mobile Optimized */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6">
             {filteredProducts.map(product => (
               <ProductCard 
                 key={product.id} 
@@ -253,17 +253,17 @@ const ProductsPage = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <div className="text-soft-gold text-6xl mb-6">🔍</div>
-            <h3 className="font-luxury text-xl text-luxury-gold mb-4">
+          <div className="text-center py-8 sm:py-12">
+            <div className="text-soft-gold text-4xl sm:text-6xl mb-4 sm:mb-6">🔍</div>
+            <h3 className="font-luxury text-lg sm:text-xl text-luxury-gold mb-2 sm:mb-4">
               Không tìm thấy sản phẩm
             </h3>
-            <p className="text-soft-gold mb-6">
+            <p className="text-soft-gold mb-4 sm:mb-6 text-sm sm:text-base">
               Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm
             </p>
             <button
               onClick={clearFilters}
-              className="bg-luxury-gold text-deep-black px-6 py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors"
+              className="bg-luxury-gold text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors text-sm sm:text-base"
             >
               Xóa Bộ Lọc
             </button>
@@ -272,9 +272,9 @@ const ProductsPage = () => {
 
         {/* Load More Button - For future pagination */}
         {filteredProducts.length > 0 && (
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 sm:mt-12">
             <button 
-              className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-8 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-2 sm:px-8 sm:py-3 rounded-full font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               onClick={() => {
                 // Pagination logic here
                 console.log('Load more products');
