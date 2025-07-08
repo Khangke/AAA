@@ -499,6 +499,299 @@ async def seed_products():
     await db.products.insert_many(products_to_insert)
     return {"message": f"Successfully seeded {len(products_to_insert)} products"}
 
+# Contact Form endpoints
+@api_router.post("/contact", response_model=ContactForm)
+async def submit_contact_form(form_data: ContactFormCreate):
+    """Submit contact form"""
+    contact_dict = form_data.dict()
+    contact_obj = ContactForm(**contact_dict)
+    await db.contacts.insert_one(contact_obj.dict())
+    return contact_obj
+
+@api_router.get("/contact", response_model=List[ContactForm])
+async def get_contact_forms():
+    """Get all contact form submissions (admin only)"""
+    contacts = await db.contacts.find().sort("created_at", -1).to_list(100)
+    return [ContactForm(**contact) for contact in contacts]
+
+# User Authentication endpoints
+@api_router.post("/auth/register", response_model=Token)
+async def register_user(user_data: UserCreate):
+    """Register a new user"""
+    # Check if user already exists
+    existing_user = await db.users.find_one({"email": user_data.email})
+    if existing_user:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email already registered"
+        )
+    
+    # Create user
+    user_dict = user_data.dict()
+    hashed_password = hash_password(user_dict.pop("password"))
+    user_obj = User(**user_dict)
+    user_in_db = UserInDB(**user_obj.dict(), hashed_password=hashed_password)
+    
+    await db.users.insert_one(user_in_db.dict())
+    
+    # Create access token
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": user_obj.id}, expires_delta=access_token_expires
+    )
+    
+    return {"access_token": access_token, "token_type": "bearer"}
+
+@api_router.post("/auth/login", response_model=Token)
+async def login_user(user_credentials: UserLogin):
+    """Login user"""
+    # Find user
+    user = await db.users.find_one({"email": user_credentials.email})
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password"
+        )
+    
+    user_in_db = UserInDB(**user)
+    
+    # Verify password
+    if not verify_password(user_credentials.password, user_in_db.hashed_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password"
+        )
+    
+    # Create access token
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": user_in_db.id}, expires_delta=access_token_expires
+    )
+    
+    return {"access_token": access_token, "token_type": "bearer"}
+
+@api_router.get("/auth/me", response_model=User)
+async def get_current_user(current_user_id: str = Depends(verify_token)):
+    """Get current user info"""
+    user = await db.users.find_one({"id": current_user_id})
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found"
+        )
+    return User(**user)
+
+@api_router.put("/auth/me", response_model=User)
+async def update_current_user(user_update: UserUpdate, current_user_id: str = Depends(verify_token)):
+    """Update current user info"""
+    update_dict = {k: v for k, v in user_update.dict().items() if v is not None}
+    if not update_dict:
+        raise HTTPException(status_code=400, detail="No fields to update")
+    
+    update_dict["updated_at"] = datetime.utcnow()
+    result = await db.users.update_one(
+        {"id": current_user_id}, 
+        {"$set": update_dict}
+    )
+    
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    user = await db.users.find_one({"id": current_user_id})
+    return User(**user)
+
+# Cart endpoints
+@api_router.post("/cart/add")
+async def add_to_cart(cart_item: CartItemAdd, current_user_id: str = Depends(verify_token)):
+    """Add item to cart"""
+    # Get product details
+    product = await db.products.find_one({"id": cart_item.product_id})
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    
+    # Check if cart exists for user
+    cart = await db.carts.find_one({"user_id": current_user_id})
+    
+    if not cart:
+        # Create new cart
+        cart_obj = Cart(user_id=current_user_id)
+        cart = cart_obj.dict()
+    
+    # Check if item already exists in cart
+    existing_item = None
+    for i, item in enumerate(cart["items"]):
+        if item["product_id"] == cart_item.product_id:
+            existing_item = i
+            break
+    
+    if existing_item is not None:
+        # Update quantity
+        cart["items"][existing_item]["quantity"] += cart_item.quantity
+    else:
+        # Add new item
+        new_item = CartItem(
+            product_id=cart_item.product_id,
+            quantity=cart_item.quantity,
+            price=product["price"],
+            name=product["name"],
+            image_url=product["image_url"]
+        )
+        cart["items"].append(new_item.dict())
+    
+    # Calculate total
+    total = sum(item["price"] * item["quantity"] for item in cart["items"])
+    cart["total_amount"] = total
+    cart["updated_at"] = datetime.utcnow()
+    
+    # Save cart
+    await db.carts.update_one(
+        {"user_id": current_user_id},
+        {"$set": cart},
+        upsert=True
+    )
+    
+    return {"message": "Item added to cart", "cart": cart}
+
+@api_router.get("/cart", response_model=Cart)
+async def get_cart(current_user_id: str = Depends(verify_token)):
+    """Get user's cart"""
+    cart = await db.carts.find_one({"user_id": current_user_id})
+    if not cart:
+        # Return empty cart
+        cart_obj = Cart(user_id=current_user_id)
+        return cart_obj
+    
+    return Cart(**cart)
+
+@api_router.put("/cart/item/{product_id}")
+async def update_cart_item(product_id: str, cart_update: CartItemUpdate, current_user_id: str = Depends(verify_token)):
+    """Update cart item quantity"""
+    cart = await db.carts.find_one({"user_id": current_user_id})
+    if not cart:
+        raise HTTPException(status_code=404, detail="Cart not found")
+    
+    # Find and update item
+    item_found = False
+    for item in cart["items"]:
+        if item["product_id"] == product_id:
+            if cart_update.quantity <= 0:
+                cart["items"].remove(item)
+            else:
+                item["quantity"] = cart_update.quantity
+            item_found = True
+            break
+    
+    if not item_found:
+        raise HTTPException(status_code=404, detail="Item not found in cart")
+    
+    # Calculate total
+    total = sum(item["price"] * item["quantity"] for item in cart["items"])
+    cart["total_amount"] = total
+    cart["updated_at"] = datetime.utcnow()
+    
+    # Save cart
+    await db.carts.update_one(
+        {"user_id": current_user_id},
+        {"$set": cart}
+    )
+    
+    return {"message": "Cart updated", "cart": cart}
+
+@api_router.delete("/cart/item/{product_id}")
+async def remove_from_cart(product_id: str, current_user_id: str = Depends(verify_token)):
+    """Remove item from cart"""
+    cart = await db.carts.find_one({"user_id": current_user_id})
+    if not cart:
+        raise HTTPException(status_code=404, detail="Cart not found")
+    
+    # Find and remove item
+    item_found = False
+    for item in cart["items"]:
+        if item["product_id"] == product_id:
+            cart["items"].remove(item)
+            item_found = True
+            break
+    
+    if not item_found:
+        raise HTTPException(status_code=404, detail="Item not found in cart")
+    
+    # Calculate total
+    total = sum(item["price"] * item["quantity"] for item in cart["items"])
+    cart["total_amount"] = total
+    cart["updated_at"] = datetime.utcnow()
+    
+    # Save cart
+    await db.carts.update_one(
+        {"user_id": current_user_id},
+        {"$set": cart}
+    )
+    
+    return {"message": "Item removed from cart", "cart": cart}
+
+@api_router.delete("/cart")
+async def clear_cart(current_user_id: str = Depends(verify_token)):
+    """Clear user's cart"""
+    await db.carts.delete_one({"user_id": current_user_id})
+    return {"message": "Cart cleared"}
+
+# Order endpoints
+@api_router.post("/orders", response_model=Order)
+async def create_order(order_data: OrderCreate, current_user_id: str = Depends(verify_token)):
+    """Create a new order"""
+    # Calculate totals
+    subtotal = sum(item.price * item.quantity for item in order_data.items)
+    total_amount = subtotal + 30000  # Fixed shipping fee
+    
+    # Generate order number
+    order_number = f"ORD-{datetime.utcnow().strftime('%Y%m%d')}-{str(uuid.uuid4())[:8].upper()}"
+    
+    # Create order items
+    order_items = []
+    for item in order_data.items:
+        order_item = OrderItem(
+            product_id=item.product_id,
+            quantity=item.quantity,
+            price=item.price,
+            name=item.name,
+            image_url=item.image_url,
+            subtotal=item.price * item.quantity
+        )
+        order_items.append(order_item)
+    
+    # Create order
+    order_obj = Order(
+        user_id=current_user_id,
+        order_number=order_number,
+        items=order_items,
+        subtotal=subtotal,
+        total_amount=total_amount,
+        payment_method=order_data.payment_method,
+        customer_info=order_data.customer_info,
+        shipping_address=order_data.shipping_address,
+        notes=order_data.notes
+    )
+    
+    await db.orders.insert_one(order_obj.dict())
+    
+    # Clear cart after successful order
+    await db.carts.delete_one({"user_id": current_user_id})
+    
+    return order_obj
+
+@api_router.get("/orders", response_model=List[Order])
+async def get_user_orders(current_user_id: str = Depends(verify_token)):
+    """Get user's orders"""
+    orders = await db.orders.find({"user_id": current_user_id}).sort("created_at", -1).to_list(100)
+    return [Order(**order) for order in orders]
+
+@api_router.get("/orders/{order_id}", response_model=Order)
+async def get_order(order_id: str, current_user_id: str = Depends(verify_token)):
+    """Get specific order"""
+    order = await db.orders.find_one({"id": order_id, "user_id": current_user_id})
+    if not order:
+        raise HTTPException(status_code=404, detail="Order not found")
+    return Order(**order)
+
 # Include the router in the main app
 app.include_router(api_router)
 
