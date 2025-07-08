@@ -368,6 +368,17 @@ backend:
         agent: "testing"
         comment: "Tested simplified registration with only 4 required fields (email, password, full_name, phone). Registration works correctly without address fields. Validation for all required fields works as expected. JWT token is returned correctly."
 
+  - task: "Order Address Auto-Save"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Tested order address auto-save functionality. When a user with no address information creates an order, the address from the shipping_address is automatically saved to the user profile. Subsequent orders with different addresses don't overwrite the existing address information. User profile retrieval after order creation confirms the address is saved correctly."
 frontend:
   - task: "Account Registration Form Simplification"
     implemented: true
