@@ -372,25 +372,25 @@ const AccountPage = () => {
                       )}
                     </div>
 
-                  <div>
-                    <label htmlFor="register-phone" className="block text-luxury-gold font-medium mb-2">
-                      Số Điện Thoại *
-                    </label>
-                    <input
-                      type="tel"
-                      id="register-phone"
-                      value={registerForm.phone}
-                      onChange={(e) => setRegisterForm(prev => ({ ...prev, phone: e.target.value }))}
-                      className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
-                        formErrors.phone ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
-                      }`}
-                      placeholder="0123 456 789"
-                    />
-                    {formErrors.phone && (
-                      <p className="text-red-400 text-sm mt-1">{formErrors.phone}</p>
-                    )}
+                    <div>
+                      <label htmlFor="register-phone" className="block text-luxury-gold font-medium mb-2">
+                        Số Điện Thoại *
+                      </label>
+                      <input
+                        type="tel"
+                        id="register-phone"
+                        value={registerForm.phone}
+                        onChange={(e) => setRegisterForm(prev => ({ ...prev, phone: e.target.value }))}
+                        className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                          formErrors.phone ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
+                        }`}
+                        placeholder="0123 456 789"
+                      />
+                      {formErrors.phone && (
+                        <p className="text-red-400 text-sm mt-1">{formErrors.phone}</p>
+                      )}
+                    </div>
                   </div>
-                </div>
 
                 <div>
                   <label htmlFor="register-email" className="block text-luxury-gold font-medium mb-2">
