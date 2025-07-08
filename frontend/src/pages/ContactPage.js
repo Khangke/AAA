@@ -116,13 +116,13 @@ const ContactPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           
           {/* Contact Form */}
-          <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-6 sm:p-8">
-            <h2 className="font-luxury text-2xl sm:text-3xl font-bold text-luxury-gold mb-6 sm:mb-8">
+          <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-4 sm:p-6">
+            <h2 className="font-luxury text-xl sm:text-2xl font-bold text-luxury-gold mb-4 sm:mb-6">
               Gửi Tin Nhắn
             </h2>
             
             {submitMessage && (
-              <div className={`mb-6 p-4 rounded-lg ${
+              <div className={`mb-4 p-3 rounded-lg text-sm ${
                 submitMessage.includes('Cảm ơn') 
                   ? 'bg-green-900/30 border border-green-500/30 text-green-300'
                   : 'bg-red-900/30 border border-red-500/30 text-red-300'
@@ -131,10 +131,10 @@ const ContactPage = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="full_name" className="block text-luxury-gold font-medium mb-2">
+                  <label htmlFor="full_name" className="block text-luxury-gold font-medium mb-1 text-sm">
                     Họ và Tên *
                   </label>
                   <input
@@ -143,18 +143,18 @@ const ContactPage = () => {
                     name="full_name"
                     value={formData.full_name}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                    className={`w-full px-3 py-2 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm ${
                       errors.full_name ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                     }`}
                     placeholder="Nhập họ và tên"
                   />
                   {errors.full_name && (
-                    <p className="text-red-400 text-sm mt-1">{errors.full_name}</p>
+                    <p className="text-red-400 text-xs mt-1">{errors.full_name}</p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-luxury-gold font-medium mb-2">
+                  <label htmlFor="email" className="block text-luxury-gold font-medium mb-1 text-sm">
                     Email *
                   </label>
                   <input
@@ -163,20 +163,20 @@ const ContactPage = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                    className={`w-full px-3 py-2 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm ${
                       errors.email ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                     }`}
                     placeholder="email@example.com"
                   />
                   {errors.email && (
-                    <p className="text-red-400 text-sm mt-1">{errors.email}</p>
+                    <p className="text-red-400 text-xs mt-1">{errors.email}</p>
                   )}
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="phone" className="block text-luxury-gold font-medium mb-2">
+                  <label htmlFor="phone" className="block text-luxury-gold font-medium mb-1 text-sm">
                     Số Điện Thoại *
                   </label>
                   <input
@@ -185,18 +185,18 @@ const ContactPage = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                    className={`w-full px-3 py-2 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm ${
                       errors.phone ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                     }`}
                     placeholder="0123 456 789"
                   />
                   {errors.phone && (
-                    <p className="text-red-400 text-sm mt-1">{errors.phone}</p>
+                    <p className="text-red-400 text-xs mt-1">{errors.phone}</p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-luxury-gold font-medium mb-2">
+                  <label htmlFor="subject" className="block text-luxury-gold font-medium mb-1 text-sm">
                     Chủ Đề *
                   </label>
                   <select
@@ -204,7 +204,7 @@ const ContactPage = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                    className={`w-full px-3 py-2 bg-deep-black/50 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm ${
                       errors.subject ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                     }`}
                   >
@@ -217,13 +217,13 @@ const ContactPage = () => {
                     <option value="Khác">Khác</option>
                   </select>
                   {errors.subject && (
-                    <p className="text-red-400 text-sm mt-1">{errors.subject}</p>
+                    <p className="text-red-400 text-xs mt-1">{errors.subject}</p>
                   )}
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-luxury-gold font-medium mb-2">
+                <label htmlFor="message" className="block text-luxury-gold font-medium mb-1 text-sm">
                   Nội Dung Tin Nhắn *
                 </label>
                 <textarea
@@ -231,21 +231,21 @@ const ContactPage = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows="6"
-                  className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 resize-none ${
+                  rows="5"
+                  className={`w-full px-3 py-2 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 resize-none text-sm ${
                     errors.message ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                   }`}
                   placeholder="Nhập nội dung tin nhắn của bạn..."
                 ></textarea>
                 {errors.message && (
-                  <p className="text-red-400 text-sm mt-1">{errors.message}</p>
+                  <p className="text-red-400 text-xs mt-1">{errors.message}</p>
                 )}
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-4 rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-3 rounded-lg font-bold text-base hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 {isSubmitting ? 'Đang Gửi...' : 'Gửi Tin Nhắn'}
               </button>
