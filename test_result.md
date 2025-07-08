@@ -248,16 +248,19 @@ frontend:
         comment: "Currently just placeholder, need user registration/login, profile management, order history"
 
   - task: "Cart State Management"
-    implemented: false
-    working: false
+    implemented: true
+    working: true
     file: "frontend/src/context/CartContext.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "main"
         comment: "Need to implement cart context for state management across components"
+      - working: true
+        agent: "main"
+        comment: "Đã hoàn thành CartContext hỗ trợ cả guest mode (localStorage) và authenticated mode (API). Có thể thêm/xóa/cập nhật sản phẩm mà không cần đăng nhập. Tự động tính phí vận chuyển 30k. Sync với backend khi user đăng nhập."
 
   - task: "User Authentication Context"
     implemented: false
