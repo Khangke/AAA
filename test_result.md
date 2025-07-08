@@ -423,6 +423,4 @@ test_plan:
 
 agent_communication:
   - agent: "main"
-    message: "Đã cập nhật trang đăng ký tài khoản theo yêu cầu của user. Backend UserCreate model giờ chỉ yêu cầu 4 trường cơ bản: email, password, full_name, phone. Frontend registration form đã được đơn giản hóa, loại bỏ tất cả các trường địa chỉ và thêm validation cho số điện thoại. Đã cập nhật logic create_order để tự động lưu thông tin địa chỉ từ đơn hàng đầu tiên vào user profile. Cần test để đảm bảo mọi thứ hoạt động đúng."
-  - agent: "testing"
-    message: "Đã test thành công chức năng đăng ký đơn giản hóa và tự động lưu địa chỉ từ đơn hàng. Đăng ký chỉ với 4 trường (email, password, full_name, phone) hoạt động tốt, validation đúng cho tất cả các trường bắt buộc. Khi người dùng chưa có thông tin địa chỉ tạo đơn hàng đầu tiên, hệ thống tự động lưu địa chỉ từ đơn hàng vào hồ sơ người dùng. Các đơn hàng tiếp theo với địa chỉ khác không ghi đè thông tin địa chỉ đã có. Tất cả các test đều thành công."
+    message: "Đã hoàn thành thay đổi font website thành Bodoni Moda theo yêu cầu của user. Cập nhật Google Fonts import, thay đổi font-family chính trong body, cập nhật Vietnamese text class và Tailwind config. Font Bodoni Moda hiển thị đẹp trên cả desktop và mobile, tạo cảm giác luxury và elegant phù hợp với trang jewelry. Tất cả các trang (homepage, products) đều hiển thị font mới chính xác."
