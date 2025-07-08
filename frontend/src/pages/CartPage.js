@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
@@ -7,26 +6,30 @@ import axios from 'axios';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
 const CartPage = () => {
-  const { items, totalAmount, loading, updateCartItem, removeFromCart, clearCart } = useCart();
+  const { 
+    items, 
+    getSubtotal, 
+    getShippingFee, 
+    getCartTotal, 
+    updateCartItem, 
+    removeFromCart, 
+    clearCart,
+    isGuest 
+  } = useCart();
   const { isAuthenticated, user } = useAuth();
-  const navigate = useNavigate();
   
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [checkoutMessage, setCheckoutMessage] = useState('');
   const [showCheckout, setShowCheckout] = useState(false);
-  const [isProcessingOrder, setIsProcessingOrder] = useState(false);
-  const [orderData, setOrderData] = useState({
-    paymentMethod: 'cod',
-    customerInfo: {
-      full_name: '',
-      email: '',
-      phone: ''
-    },
-    shippingAddress: {
-      address: '',
-      city: '',
-      district: '',
-      ward: ''
-    },
-    notes: ''
+  
+  // Guest checkout form data
+  const [guestInfo, setGuestInfo] = useState({
+    full_name: '',
+    email: '',
+    phone: '',
+    address: '',
+    note: '',
+    payment_method: 'cod'
   });
   
   const SHIPPING_FEE = 30000;
