@@ -178,10 +178,6 @@ const ProductCard = ({ product, onClick }) => {
             className="w-full bg-transparent border border-luxury-gold text-luxury-gold px-3 py-2 rounded-lg font-bold text-sm hover:bg-luxury-gold hover:text-deep-black transition-all duration-300"
             onClick={(e) => {
               e.stopPropagation();
-              if (!isAuthenticated) {
-                navigate('/account');
-                return;
-              }
               handleAddToCart(e).then(() => {
                 navigate('/cart');
               });
