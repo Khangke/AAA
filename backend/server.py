@@ -35,6 +35,54 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+class Product(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    description: str
+    price: float
+    original_price: float = None
+    category: str
+    image_url: str
+    images: List[str] = []
+    in_stock: bool = True
+    stock_quantity: int = 0
+    featured: bool = False
+    rating: float = 5.0
+    reviews_count: int = 0
+    tags: List[str] = []
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+class ProductCreate(BaseModel):
+    name: str
+    description: str
+    price: float
+    original_price: float = None
+    category: str
+    image_url: str
+    images: List[str] = []
+    in_stock: bool = True
+    stock_quantity: int = 0
+    featured: bool = False
+    rating: float = 5.0
+    reviews_count: int = 0
+    tags: List[str] = []
+
+class ProductUpdate(BaseModel):
+    name: str = None
+    description: str = None
+    price: float = None
+    original_price: float = None
+    category: str = None
+    image_url: str = None
+    images: List[str] = None
+    in_stock: bool = None
+    stock_quantity: int = None
+    featured: bool = None
+    rating: float = None
+    reviews_count: int = None
+    tags: List[str] = None
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
