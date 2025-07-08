@@ -290,7 +290,7 @@ img {
 
 /* Vietnamese Typography */
 .vietnamese-text {
-  font-family: 'Bodoni Moda', 'Noto Serif', serif;
+  font-family: 'Merriweather', 'Noto Serif', serif;
   font-feature-settings: 'liga' 1, 'calt' 1;
 }
 
