@@ -99,10 +99,10 @@ const ProductCard = ({ product, onClick }) => {
           onClick={(e) => {
             e.stopPropagation();
             // Add to cart logic here
-            console.log('Add to cart:', product.id);
+            console.log('Buy now:', product.id);
           }}
         >
-          {product.in_stock ? 'Thêm Vào Giỏ' : 'Hết Hàng'}
+          {product.in_stock ? 'Mua Ngay' : 'Hết Hàng'}
         </button>
         
         {/* Category Tag - Compact */}
