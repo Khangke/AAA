@@ -347,7 +347,7 @@ agent_communication:
   - agent: "main"
     message: "Đã hoàn thành phát triển trang giỏ hàng hoạt động hoàn toàn mà không cần đăng nhập như yêu cầu. Khách hàng có thể thêm sản phẩm vào giỏ hàng (localStorage), checkout với form guest đầy đủ (họ tên, email, SĐT, địa chỉ, ghi chú), phí vận chuyển 30k tự động, hỗ trợ COD và chuyển khoản ngân hàng. CartContext hỗ trợ cả guest mode và authenticated mode. Trang tài khoản dành cho khách hàng thân thiết muốn lưu thông tin."
 
-user_problem_statement: "fix lại trang tài khoản đăng ký chỉ nhập sdt với tên với email và mật khẩu thôi. còn thông tin như địa chỉ... thì khách đặt 1 đơn đầu tiên rồi web tự lưu lại"
+user_problem_statement: "trò chuyện với tôi bằng tiếng việt, thay font của web bằng font này Bodoni Moda"
 
 backend:
   - task: "Account Registration Simplification"
@@ -379,7 +379,23 @@ backend:
       - working: true
         agent: "testing"
         comment: "Tested order address auto-save functionality. When a user with no address information creates an order, the address from the shipping_address is automatically saved to the user profile. Subsequent orders with different addresses don't overwrite the existing address information. User profile retrieval after order creation confirms the address is saved correctly."
+
 frontend:
+  - task: "Font Change to Bodoni Moda"
+    implemented: true
+    working: true
+    file: "frontend/src/App.css, frontend/src/index.css, frontend/tailwind.config.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Need to implement font change from current fonts to Bodoni Moda throughout the website"
+      - working: true
+        agent: "main"
+        comment: "Đã thay đổi font thành Bodoni Moda thành công. Cập nhật Google Fonts import để thêm 'Bodoni Moda:wght@400;500;600;700;800'. Thay đổi font-family chính trong body từ 'Inter' sang 'Bodoni Moda'. Cập nhật Vietnamese text class và Tailwind config để thêm font 'bodoni'. Font hiển thị đẹp trên cả desktop và mobile, tạo cảm giác luxury và elegant cho trang jewelry."
+
   - task: "Account Registration Form Simplification"
     implemented: true
     working: false
