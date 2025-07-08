@@ -23,6 +23,11 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+
+  .text-2xs {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+  }
 }
 
 body {
