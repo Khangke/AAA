@@ -161,7 +161,7 @@ const HomePage = () => {
 
           {/* Mobile Horizontal Scroll */}
           <div className="md:hidden">
-            <div className="flex overflow-x-auto space-x-6 pb-6 px-4 -mx-4 scrollbar-hide">
+            <div className="flex overflow-x-auto space-x-6 pb-6 px-4 -mx-4 scrollbar-hide product-scroll">
               {/* Product 1 */}
               <div className="flex-shrink-0 w-80 bg-deep-black/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-luxury-gold/20">
                 <div className="h-48 bg-gradient-to-br from-luxury-gold/20 to-luxury-copper/20 flex items-center justify-center">
