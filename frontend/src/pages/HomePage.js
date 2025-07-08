@@ -353,7 +353,11 @@ const HomePage = () => {
               ref={productScrollRef}
               className="flex overflow-x-auto space-x-4 xs:space-x-6 pb-6 px-4 -mx-4 scrollbar-hide product-scroll" 
               onScroll={handleProductScroll}
-              style={{ scrollSnapType: 'x mandatory' }}
+              style={{ 
+                scrollSnapType: 'x mandatory',
+                WebkitOverflowScrolling: 'touch',
+                scrollBehavior: 'smooth'
+              }}
             >
               {featuredProducts.map((product, index) => (
                 <div key={product.id} style={{ scrollSnapAlign: 'start' }}>
@@ -368,7 +372,7 @@ const HomePage = () => {
                 {featuredProducts.map((_, index) => (
                   <div 
                     key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-200 ease-out ${
+                    className={`w-2 h-2 rounded-full transition-all duration-150 ease-linear ${
                       index === currentProductIndex ? 'bg-luxury-gold scale-125' : 'bg-luxury-gold/30'
                     }`}
                   />
