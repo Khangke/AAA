@@ -350,80 +350,20 @@ agent_communication:
 user_problem_statement: "fix lại trang tài khoản đăng ký chỉ nhập sdt với tên với email và mật khẩu thôi. còn thông tin như địa chỉ... thì khách đặt 1 đơn đầu tiên rồi web tự lưu lại"
 
 backend:
-  - task: "POST /api/products/seed - Seed dữ liệu sản phẩm mẫu"
+  - task: "Account Registration Simplification"
     implemented: true
-    working: true
-    file: "/app/backend/server.py"
+    working: false
+    file: "backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
-    status_history:
-      - working: true
-        agent: "testing"
-        comment: "Endpoint hoạt động tốt, trả về status code 200 và message thành công. Đã seed 8 sản phẩm mẫu với thông tin tiếng Việt đầy đủ."
-
-  - task: "GET /api/products - Lấy danh sách sản phẩm"
-    implemented: true
-    working: true
-    file: "/app/backend/server.py"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-      - working: true
-        agent: "testing"
-        comment: "Endpoint hoạt động tốt, trả về status code 200 và danh sách 8 sản phẩm đầy đủ thông tin."
-
-  - task: "GET /api/products?category=Vòng Tay - Filter theo category"
-    implemented: true
-    working: true
-    file: "/app/backend/server.py"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-      - working: true
-        agent: "testing"
-        comment: "Endpoint hoạt động tốt, trả về status code 200 và danh sách 3 sản phẩm thuộc category 'Vòng Tay'. Filter hoạt động chính xác."
-
-  - task: "GET /api/products?featured=true - Filter sản phẩm nổi bật"
-    implemented: true
-    working: true
-    file: "/app/backend/server.py"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-      - working: true
-        agent: "testing"
-        comment: "Endpoint hoạt động tốt, trả về status code 200 và danh sách 5 sản phẩm có featured=true. Filter hoạt động chính xác."
-
-  - task: "GET /api/products?search=trầm - Tìm kiếm sản phẩm"
-    implemented: true
-    working: true
-    file: "/app/backend/server.py"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-      - working: true
-        agent: "testing"
-        comment: "Endpoint hoạt động tốt, trả về status code 200 và danh sách 8 sản phẩm có chứa từ khóa 'trầm' trong name, description hoặc tags. Search hoạt động chính xác."
-
-  - task: "GET /api/products/categories - Lấy danh sách categories"
-    implemented: true
-    working: true
-    file: "/app/backend/server.py"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
       - working: false
-        agent: "testing"
-        comment: "Endpoint trả về status code 404 thay vì 200. Nguyên nhân là do thứ tự route trong server.py, endpoint GET /api/products/{product_id} đang bắt request trước khi nó đến được endpoint GET /api/products/categories. Cần điều chỉnh thứ tự route trong server.py để fix lỗi này. Tuy nhiên, chúng ta vẫn có thể lấy được danh sách categories bằng cách trích xuất từ danh sách sản phẩm, và đã xác nhận có 5 categories: 'Bộ Sưu Tập', 'Trầm Bột', 'Nhang Trầm', 'Vòng Tay', 'Trầm Khối'."
-      - working: true
-        agent: "testing"
-        comment: "Đã thêm một endpoint thay thế GET /api/categories để lấy danh sách categories. Endpoint này hoạt động tốt, trả về status code 200 và danh sách đầy đủ 5 categories. Endpoint gốc GET /api/products/categories vẫn trả về 404 do thứ tự route, nhưng ứng dụng vẫn có thể hoạt động bình thường với endpoint thay thế."
+        agent: "main"
+        comment: "Updated UserCreate model to only require 4 basic fields: email, password, full_name, phone. Removed address fields from registration process."
+      - working: false
+        agent: "main"
+        comment: "Updated create_order function to automatically save address information from first order into user profile if user doesn't have address yet."
 
 frontend:
   - task: "Trang About (Giới thiệu)"
