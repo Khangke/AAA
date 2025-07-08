@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { useNotification } from '../context/NotificationContext';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
@@ -17,6 +19,8 @@ const CartPage = () => {
     isGuest 
   } = useCart();
   const { isAuthenticated, user } = useAuth();
+  const { showCartNotification, showOrderSuccess, showError } = useNotification();
+  const navigate = useNavigate();
   
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [checkoutMessage, setCheckoutMessage] = useState('');
