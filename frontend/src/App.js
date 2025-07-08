@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
+// Context Providers
+import { AuthProvider } from "./context/AuthContext";
+import { CartProvider } from "./context/CartContext";
+
 // Components
 import MobileNavigation from "./components/MobileNavigation";
 import Header from "./components/Header";
@@ -15,7 +19,6 @@ import CartPage from "./pages/CartPage";
 import AccountPage from "./pages/AccountPage";
 
 function AppContent() {
-  const [cartCount, setCartCount] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
 
@@ -35,7 +38,7 @@ function AppContent() {
 
   return (
     <div className="App min-h-screen bg-deep-black text-white">
-      {!isMobile && <Header cartCount={cartCount} />}
+      {!isMobile && <Header />}
       
       <main className={`${isMobile ? 'pb-20' : 'pt-0'}`}>
         <Routes>
@@ -51,7 +54,7 @@ function AppContent() {
 
       {showFooter && <Footer />}
 
-      {isMobile && <MobileNavigation cartCount={cartCount} />}
+      {isMobile && <MobileNavigation />}
     </div>
   );
 }
@@ -59,7 +62,11 @@ function AppContent() {
 function App() {
   return (
     <BrowserRouter>
-      <AppContent />
+      <AuthProvider>
+        <CartProvider>
+          <AppContent />
+        </CartProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
