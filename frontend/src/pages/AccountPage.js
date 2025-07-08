@@ -126,6 +126,12 @@ const AccountPage = () => {
       errors.full_name = 'Vui lòng nhập họ và tên';
     }
     
+    if (!registerForm.phone) {
+      errors.phone = 'Vui lòng nhập số điện thoại';
+    } else if (!/^[0-9]{10,11}$/.test(registerForm.phone.replace(/\s/g, ''))) {
+      errors.phone = 'Số điện thoại không hợp lệ';
+    }
+    
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
