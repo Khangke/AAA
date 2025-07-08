@@ -63,63 +63,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-gradient-to-b from-deep-black to-charcoal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-luxury text-3xl md:text-4xl font-bold text-luxury-gold mb-4">
-              Tại Sao Chọn Khang Trầm Hương?
-            </h2>
-            <p className="text-soft-gold text-lg max-w-2xl mx-auto">
-              Chúng tôi tự hào mang đến những sản phẩm trầm hương cao cấp nhất
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="text-center p-8 bg-charcoal/50 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl">🌿</span>
-              </div>
-              <h3 className="font-luxury text-xl font-bold text-luxury-gold mb-4">
-                100% Tự Nhiên
-              </h3>
-              <p className="text-soft-gold">
-                Trầm hương nguyên chất, không pha tạp, được tuyển chọn kỹ lưỡng từ những cây trầm quý hiếm nhất
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="text-center p-8 bg-charcoal/50 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl">👑</span>
-              </div>
-              <h3 className="font-luxury text-xl font-bold text-luxury-gold mb-4">
-                Chất Lượng Luxury
-              </h3>
-              <p className="text-soft-gold">
-                Từng sản phẩm được chế tác tỉ mỉ, kiểm tra chất lượng nghiêm ngặt, đạt tiêu chuẩn luxury cao cấp
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="text-center p-8 bg-charcoal/50 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl">🏆</span>
-              </div>
-              <h3 className="font-luxury text-xl font-bold text-luxury-gold mb-4">
-                Uy Tín Lâu Năm
-              </h3>
-              <p className="text-soft-gold">
-                Hơn 20 năm kinh nghiệm trong ngành, phục vụ hàng ngàn khách hàng tin tưởng trên toàn quốc
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Products Preview Section */}
-      <section className="py-20 bg-charcoal">
+      <section className="py-20 bg-gradient-to-b from-deep-black to-charcoal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-luxury text-3xl md:text-4xl font-bold text-luxury-gold mb-4">
