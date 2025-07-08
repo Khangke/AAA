@@ -353,49 +353,49 @@ const ContactPage = () => {
         </div>
 
         {/* Additional Info Section */}
-        <div className="mt-12 sm:mt-16 bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-6 sm:p-8">
-          <div className="text-center mb-8">
-            <h2 className="font-luxury text-2xl sm:text-3xl font-bold text-luxury-gold mb-4">
+        <div className="mt-8 sm:mt-12 bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-4 sm:p-6">
+          <div className="text-center mb-6">
+            <h2 className="font-luxury text-xl sm:text-2xl font-bold text-luxury-gold mb-3">
               Cam Kết Của Chúng Tôi
             </h2>
-            <p className="text-soft-gold text-base sm:text-lg max-w-3xl mx-auto">
+            <p className="text-soft-gold text-sm sm:text-base max-w-3xl mx-auto">
               Khang Trầm Hương cam kết mang đến cho khách hàng những sản phẩm trầm hương chất lượng cao nhất
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             <div className="text-center group">
-              <div className="w-16 h-16 bg-luxury-gold/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-luxury-gold/30 transition-colors">
-                <span className="text-luxury-gold text-2xl">🏆</span>
+              <div className="w-12 h-12 bg-luxury-gold/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-luxury-gold/30 transition-colors">
+                <span className="text-luxury-gold text-lg">🏆</span>
               </div>
-              <h3 className="font-luxury text-lg sm:text-xl font-bold text-luxury-gold mb-2">
+              <h3 className="font-luxury text-base sm:text-lg font-bold text-luxury-gold mb-2">
                 Chất Lượng Cao
               </h3>
-              <p className="text-soft-gold text-sm sm:text-base">
+              <p className="text-soft-gold text-xs sm:text-sm">
                 Sản phẩm được tuyển chọn kỹ lưỡng từ những vùng trầm hương tốt nhất
               </p>
             </div>
 
             <div className="text-center group">
-              <div className="w-16 h-16 bg-luxury-gold/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-luxury-gold/30 transition-colors">
-                <span className="text-luxury-gold text-2xl">🚚</span>
+              <div className="w-12 h-12 bg-luxury-gold/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-luxury-gold/30 transition-colors">
+                <span className="text-luxury-gold text-lg">🚚</span>
               </div>
-              <h3 className="font-luxury text-lg sm:text-xl font-bold text-luxury-gold mb-2">
+              <h3 className="font-luxury text-base sm:text-lg font-bold text-luxury-gold mb-2">
                 Giao Hàng Nhanh
               </h3>
-              <p className="text-soft-gold text-sm sm:text-base">
+              <p className="text-soft-gold text-xs sm:text-sm">
                 Giao hàng toàn quốc, đảm bảo an toàn và đúng thời gian cam kết
               </p>
             </div>
 
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-luxury-gold/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-luxury-gold/30 transition-colors">
-                <span className="text-luxury-gold text-2xl">💬</span>
+            <div className="text-center group sm:col-span-2 lg:col-span-1">
+              <div className="w-12 h-12 bg-luxury-gold/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-luxury-gold/30 transition-colors">
+                <span className="text-luxury-gold text-lg">💬</span>
               </div>
-              <h3 className="font-luxury text-lg sm:text-xl font-bold text-luxury-gold mb-2">
+              <h3 className="font-luxury text-base sm:text-lg font-bold text-luxury-gold mb-2">
                 Tư Vấn Tận Tình
               </h3>
-              <p className="text-soft-gold text-sm sm:text-base">
+              <p className="text-soft-gold text-xs sm:text-sm">
                 Đội ngũ chuyên gia sẵn sàng tư vấn và hỗ trợ 24/7
               </p>
             </div>
