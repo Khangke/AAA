@@ -166,9 +166,7 @@ const ProductCard = ({ product, onClick }) => {
             ? 'Hết Hàng' 
             : itemInCart 
             ? `Thêm nữa (${itemQuantity})` 
-            : isAuthenticated 
-            ? 'Thêm vào giỏ' 
-            : 'Đăng nhập để mua'
+            : 'Thêm vào giỏ'
           }
         </button>
         
