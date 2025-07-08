@@ -316,7 +316,7 @@ agent_communication:
   - agent: "main"
     message: "Frontend ProductsPage completed with full functionality: search, filter, sort, mobile 2-column layout. All manual tests successful. Ready for automated testing."
   - agent: "main"
-    message: "Đã hoàn thành tạo trang About và News với thiết kế mobile-first. Trang About bao gồm câu chuyện thương hiệu, tầm nhìn, sứ mệnh, sản phẩm và giá trị cốt lõi. Trang News có 6 bài viết mẫu với phân loại và chức năng đọc chi tiết. Cả hai trang đều tối ưu cho mobile với responsive design."
+    message: "Đã hoàn thành backend API cho contact form, user authentication, cart management, và order processing. Tất cả endpoints đã được test và hoạt động tốt. Sẵn sàng phát triển frontend."
   - agent: "testing"
     message: "Đã test lại tất cả API endpoints sau khi thêm trang About và News. Tất cả endpoints đều hoạt động tốt, trả về status code 200 và dữ liệu đúng format. Endpoint GET /api/products/categories vẫn trả về 404 nhưng endpoint thay thế GET /api/categories hoạt động tốt. Tổng cộng có 8 sản phẩm, 5 categories, 5 sản phẩm featured, 3 sản phẩm thuộc category 'Vòng Tay', và tất cả 8 sản phẩm đều chứa từ khóa 'trầm'."
   - agent: "testing"
