@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product, onClick }) => {
+  const { addToCart, isItemInCart, getItemQuantity } = useCart();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+
   const formatPrice = (price) => {
     return new Intl.NumberFormat('vi-VN', {
       style: 'currency',
@@ -13,7 +21,31 @@ const ProductCard = ({ product, onClick }) => {
     return Math.round(((originalPrice - currentPrice) / originalPrice) * 100);
   };
 
+  const handleAddToCart = async (e) => {
+    e.stopPropagation();
+    
+    if (!isAuthenticated) {
+      navigate('/account');
+      return;
+    }
+    
+    setIsAddingToCart(true);
+    
+    const result = await addToCart(product.id, 1);
+    
+    if (result.success) {
+      // Optionally show a success notification
+      console.log('Added to cart successfully');
+    } else {
+      alert(result.error || 'Không thể thêm vào giỏ hàng');
+    }
+    
+    setIsAddingToCart(false);
+  };
+
   const discount = calculateDiscount(product.original_price, product.price);
+  const itemInCart = isItemInCart(product.id);
+  const itemQuantity = getItemQuantity(product.id);
 
   return (
     <div 
@@ -41,6 +73,13 @@ const ProductCard = ({ product, onClick }) => {
         {product.featured && (
           <div className="absolute top-1 right-1 bg-luxury-gold text-deep-black px-1.5 py-0.5 rounded-md text-2xs font-bold">
             Nổi Bật
+          </div>
+        )}
+        
+        {/* In Cart Badge */}
+        {itemInCart && (
+          <div className="absolute top-1 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-1.5 py-0.5 rounded-md text-2xs font-bold">
+            Trong giỏ: {itemQuantity}
           </div>
         )}
         
@@ -116,15 +155,46 @@ const ProductCard = ({ product, onClick }) => {
         
         {/* Add to Cart Button */}
         <button 
-          className="w-full bg-luxury-gold text-deep-black px-3 py-2 rounded-lg font-bold text-sm hover:bg-luxury-copper transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
-          disabled={!product.in_stock}
-          onClick={(e) => {
-            e.stopPropagation();
-            console.log('Buy now:', product.id);
-          }}
+          className={`w-full px-3 py-2 rounded-lg font-bold text-sm transition-all duration-300 shadow-md ${
+            !product.in_stock
+              ? 'bg-gray-500 text-gray-300 cursor-not-allowed'
+              : itemInCart
+              ? 'bg-green-600 hover:bg-green-700 text-white'
+              : 'bg-luxury-gold hover:bg-luxury-copper text-deep-black'
+          } disabled:opacity-50 disabled:cursor-not-allowed`}
+          disabled={!product.in_stock || isAddingToCart}
+          onClick={handleAddToCart}
         >
-          {product.in_stock ? 'Mua Ngay' : 'Hết Hàng'}
+          {isAddingToCart 
+            ? 'Đang thêm...' 
+            : !product.in_stock 
+            ? 'Hết Hàng' 
+            : itemInCart 
+            ? `Thêm nữa (${itemQuantity})` 
+            : isAuthenticated 
+            ? 'Thêm vào giỏ' 
+            : 'Đăng nhập để mua'
+          }
         </button>
+        
+        {/* Quick Buy Button */}
+        {product.in_stock && (
+          <button 
+            className="w-full bg-transparent border border-luxury-gold text-luxury-gold px-3 py-2 rounded-lg font-bold text-sm hover:bg-luxury-gold hover:text-deep-black transition-all duration-300"
+            onClick={(e) => {
+              e.stopPropagation();
+              if (!isAuthenticated) {
+                navigate('/account');
+                return;
+              }
+              handleAddToCart(e).then(() => {
+                navigate('/cart');
+              });
+            }}
+          >
+            Mua Ngay
+          </button>
+        )}
         
         {/* Category Tag */}
         <div className="flex justify-center mt-2">
