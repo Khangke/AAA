@@ -75,7 +75,8 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Product 1 */}
             <div className="bg-deep-black/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 transform hover:scale-105">
               <div className="h-48 bg-gradient-to-br from-luxury-gold/20 to-luxury-copper/20 flex items-center justify-center">
@@ -155,6 +156,164 @@ const HomePage = () => {
                   </button>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Mobile Horizontal Scroll */}
+          <div className="md:hidden">
+            <div className="flex overflow-x-auto space-x-6 pb-6 px-4 -mx-4 scrollbar-hide">
+              {/* Product 1 */}
+              <div className="flex-shrink-0 w-80 bg-deep-black/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-luxury-gold/20">
+                <div className="h-48 bg-gradient-to-br from-luxury-gold/20 to-luxury-copper/20 flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1662473217799-6e7288f19741" 
+                    alt="Vòng Trầm Hương"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-luxury text-xl font-bold text-luxury-gold mb-2">
+                    Vòng Trầm Hương Cao Cấp
+                  </h3>
+                  <p className="text-soft-gold mb-4">
+                    Vòng tay trầm hương nguyên chất, mang lại may mắn và bình an
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-luxury-gold font-bold text-lg">
+                      2.500.000₫
+                    </span>
+                    <button className="bg-luxury-gold text-deep-black px-4 py-2 rounded-full font-bold hover:bg-luxury-copper transition-colors">
+                      Xem Chi Tiết
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Product 2 */}
+              <div className="flex-shrink-0 w-80 bg-deep-black/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-luxury-gold/20">
+                <div className="h-48 bg-gradient-to-br from-luxury-gold/20 to-luxury-copper/20 flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1719611639294-f754d39a6bed" 
+                    alt="Trầm Hương Nguyên Khối"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-luxury text-xl font-bold text-luxury-gold mb-2">
+                    Trầm Hương Nguyên Khối
+                  </h3>
+                  <p className="text-soft-gold mb-4">
+                    Khối trầm hương tự nhiên, hương thơm nồng nàn, quý hiếm
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-luxury-gold font-bold text-lg">
+                      5.800.000₫
+                    </span>
+                    <button className="bg-luxury-gold text-deep-black px-4 py-2 rounded-full font-bold hover:bg-luxury-copper transition-colors">
+                      Xem Chi Tiết
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Product 3 */}
+              <div className="flex-shrink-0 w-80 bg-deep-black/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-luxury-gold/20">
+                <div className="h-48 bg-gradient-to-br from-luxury-gold/20 to-luxury-copper/20 flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1652959889888-53d048374e35" 
+                    alt="Nhang Trầm Hương"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-luxury text-xl font-bold text-luxury-gold mb-2">
+                    Nhang Trầm Hương Premium
+                  </h3>
+                  <p className="text-soft-gold mb-4">
+                    Nhang trầm hương cao cấp, thích hợp cho không gian thiền định
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-luxury-gold font-bold text-lg">
+                      850.000₫
+                    </span>
+                    <button className="bg-luxury-gold text-deep-black px-4 py-2 rounded-full font-bold hover:bg-luxury-copper transition-colors">
+                      Xem Chi Tiết
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Product 4 */}
+              <div className="flex-shrink-0 w-80 bg-deep-black/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-luxury-gold/20">
+                <div className="h-48 bg-gradient-to-br from-luxury-gold/20 to-luxury-copper/20 flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1589115324861-b757b1dd2247" 
+                    alt="Trầm Hương Thiền"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-luxury text-xl font-bold text-luxury-gold mb-2">
+                    Trầm Hương Thiền Định
+                  </h3>
+                  <p className="text-soft-gold mb-4">
+                    Trầm hương đặc biệt dành cho thiền định và tâm linh
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-luxury-gold font-bold text-lg">
+                      3.200.000₫
+                    </span>
+                    <button className="bg-luxury-gold text-deep-black px-4 py-2 rounded-full font-bold hover:bg-luxury-copper transition-colors">
+                      Xem Chi Tiết
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Product 5 */}
+              <div className="flex-shrink-0 w-80 bg-deep-black/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-luxury-gold/20">
+                <div className="h-48 bg-gradient-to-br from-luxury-gold/20 to-luxury-copper/20 flex items-center justify-center">
+                  <img 
+                    src="https://images.pexels.com/photos/6998574/pexels-photo-6998574.jpeg" 
+                    alt="Bộ Sưu Tập Trầm Hương"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-luxury text-xl font-bold text-luxury-gold mb-2">
+                    Bộ Sưu Tập Luxury
+                  </h3>
+                  <p className="text-soft-gold mb-4">
+                    Bộ sưu tập trầm hương cao cấp đặc biệt, phiên bản giới hạn
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-luxury-gold font-bold text-lg">
+                      12.500.000₫
+                    </span>
+                    <button className="bg-luxury-gold text-deep-black px-4 py-2 rounded-full font-bold hover:bg-luxury-copper transition-colors">
+                      Xem Chi Tiết
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="flex justify-center mt-6">
+              <div className="flex space-x-2">
+                <div className="w-2 h-2 bg-luxury-gold rounded-full"></div>
+                <div className="w-2 h-2 bg-luxury-gold/30 rounded-full"></div>
+                <div className="w-2 h-2 bg-luxury-gold/30 rounded-full"></div>
+                <div className="w-2 h-2 bg-luxury-gold/30 rounded-full"></div>
+                <div className="w-2 h-2 bg-luxury-gold/30 rounded-full"></div>
+              </div>
+            </div>
+
+            {/* Mobile Swipe Hint */}
+            <div className="text-center mt-4">
+              <p className="text-soft-gold/70 text-sm">
+                ← Lướt qua để xem thêm sản phẩm →
+              </p>
             </div>
           </div>
 
