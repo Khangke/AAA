@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const HomePage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -10,26 +15,48 @@ const HomePage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const featuredProducts = [
-    {
-      id: 1,
-      name: 'Vòng Trầm Hương Cao Cấp',
-      price: '2.500.000₫',
-      image: 'https://images.unsplash.com/photo-1662473217799-6e7288f19741',
-    },
-    {
-      id: 2,
-      name: 'Trầm Hương Nguyên Khối',
-      price: '5.800.000₫',
-      image: 'https://images.unsplash.com/photo-1719611639294-f754d39a6bed',
-    },
-    {
-      id: 3,
-      name: 'Nhang Trầm Hương Premium',
-      price: '850.000₫',
-      image: 'https://images.unsplash.com/photo-1652959889888-53d048374e35',
+  useEffect(() => {
+    fetchFeaturedProducts();
+  }, []);
+
+  const fetchFeaturedProducts = async () => {
+    try {
+      const response = await axios.get(`${backendUrl}/api/products?featured=true`);
+      setFeaturedProducts(response.data);
+    } catch (error) {
+      console.error('Error fetching featured products:', error);
+      // Fallback to static data if API fails
+      setFeaturedProducts([
+        {
+          id: 1,
+          name: 'Vòng Trầm Hương Cao Cấp',
+          price: 2500000,
+          image_url: 'https://images.unsplash.com/photo-1662473217799-6e7288f19741',
+        },
+        {
+          id: 2,
+          name: 'Trầm Hương Nguyên Khối',
+          price: 5800000,
+          image_url: 'https://images.unsplash.com/photo-1719611639294-f754d39a6bed',
+        },
+        {
+          id: 3,
+          name: 'Nhang Trầm Hương Premium',
+          price: 850000,
+          image_url: 'https://images.unsplash.com/photo-1652959889888-53d048374e35',
+        }
+      ]);
+    } finally {
+      setLoading(false);
     }
-  ];
+  };
+
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    }).format(price);
+  };
 
   return (
     <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
