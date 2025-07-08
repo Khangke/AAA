@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 
 const HomePage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  
+  // Refs for scroll containers
+  const productScrollRef = useRef(null);
+  const testimonialScrollRef = useRef(null);
 
   // Memoize hero background images for better performance
   const heroImages = useMemo(() => [
@@ -56,27 +60,55 @@ const HomePage = () => {
     };
   }, [handleScroll]);
 
-  // Handle product scroll
-  const handleProductScroll = useCallback((e) => {
-    const container = e.target;
-    const scrollLeft = container.scrollLeft;
-    const itemWidth = container.children[0]?.offsetWidth || 320;
-    const gap = 16; // 4 * 4px gap
-    const totalItemWidth = itemWidth + gap;
-    const index = Math.round(scrollLeft / totalItemWidth);
-    setCurrentProductIndex(index);
+  // Throttle function for better performance
+  const throttle = useCallback((func, limit) => {
+    let inThrottle;
+    return function() {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    }
   }, []);
 
-  // Handle testimonial scroll
-  const handleTestimonialScroll = useCallback((e) => {
-    const container = e.target;
+  // Calculate current index based on scroll position
+  const calculateScrollIndex = useCallback((container, itemCount) => {
+    if (!container) return 0;
+    
     const scrollLeft = container.scrollLeft;
-    const itemWidth = container.children[0]?.offsetWidth || 320;
-    const gap = 16; // 4 * 4px gap
-    const totalItemWidth = itemWidth + gap;
-    const index = Math.round(scrollLeft / totalItemWidth);
-    setCurrentTestimonialIndex(index);
+    const containerWidth = container.clientWidth;
+    const itemWidth = containerWidth * 0.85; // Approximate item width including gap
+    
+    const index = Math.round(scrollLeft / itemWidth);
+    return Math.max(0, Math.min(index, itemCount - 1));
   }, []);
+
+  // Handle product scroll with throttling
+  const handleProductScroll = useCallback(
+    throttle((e) => {
+      const container = e.target;
+      const newIndex = calculateScrollIndex(container, featuredProducts.length);
+      if (newIndex !== currentProductIndex) {
+        setCurrentProductIndex(newIndex);
+      }
+    }, 50), // Throttle to 50ms for smooth updates
+    [currentProductIndex, throttle, calculateScrollIndex]
+  );
+
+  // Handle testimonial scroll with throttling
+  const handleTestimonialScroll = useCallback(
+    throttle((e) => {
+      const container = e.target;
+      const newIndex = calculateScrollIndex(container, testimonials.length);
+      if (newIndex !== currentTestimonialIndex) {
+        setCurrentTestimonialIndex(newIndex);
+      }
+    }, 50), // Throttle to 50ms for smooth updates
+    [currentTestimonialIndex, throttle, calculateScrollIndex]
+  );
 
   // Memoized product data
   const featuredProducts = useMemo(() => [
