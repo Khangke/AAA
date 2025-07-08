@@ -46,6 +46,8 @@ function App() {
           </Routes>
         </main>
 
+        <Footer />
+
         {isMobile && <MobileNavigation cartCount={cartCount} />}
       </BrowserRouter>
     </div>
