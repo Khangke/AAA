@@ -113,43 +113,43 @@ const HomePage = () => {
             </div>
           ) : (
             <>
-              {/* Mobile: Horizontal Scroll */}
-              <div className="block sm:hidden">
-                <div className="flex gap-4 overflow-x-auto pb-4 px-4 -mx-4 scrollbar-hide product-scroll">
-                  {featuredProducts.map((product) => (
-                    <div key={product.id} className="bg-deep-black/60 rounded-xl overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all cursor-pointer group flex-shrink-0 w-64 min-w-64">
-                      {/* Square Image */}
-                      <div className="relative aspect-square overflow-hidden">
-                        <img 
-                          src={product.image_url} 
-                          alt={product.name}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                      </div>
-                      <div className="p-3">
-                        <h3 className="font-luxury text-sm font-bold text-luxury-gold mb-2 line-clamp-2 leading-tight">
-                          {product.name}
-                        </h3>
-                        <div className="space-y-2">
-                          <span className="text-luxury-gold font-bold text-base">
-                            {formatPrice(product.price)}
-                          </span>
-                          <button className="w-full bg-luxury-gold text-deep-black px-3 py-2 rounded-lg font-bold text-sm hover:bg-luxury-copper transition-colors">
-                            Xem
-                          </button>
+              {isMobile ? (
+                /* Mobile: Horizontal Scroll */
+                <div>
+                  <div className="flex gap-4 overflow-x-auto pb-4 px-4 -mx-4 scrollbar-hide product-scroll">
+                    {featuredProducts.map((product) => (
+                      <div key={product.id} className="bg-deep-black/60 rounded-xl overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all cursor-pointer group flex-shrink-0 w-64 min-w-64">
+                        {/* Square Image */}
+                        <div className="relative aspect-square overflow-hidden">
+                          <img 
+                            src={product.image_url} 
+                            alt={product.name}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                        <div className="p-3">
+                          <h3 className="font-luxury text-sm font-bold text-luxury-gold mb-2 line-clamp-2 leading-tight">
+                            {product.name}
+                          </h3>
+                          <div className="space-y-2">
+                            <span className="text-luxury-gold font-bold text-base">
+                              {formatPrice(product.price)}
+                            </span>
+                            <button className="w-full bg-luxury-gold text-deep-black px-3 py-2 rounded-lg font-bold text-sm hover:bg-luxury-copper transition-colors">
+                              Xem
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                  {/* Swipe Indicator */}
+                  <div className="text-center">
+                    <p className="text-soft-gold text-xs opacity-70">← Lướt để xem thêm →</p>
+                  </div>
                 </div>
-                {/* Swipe Indicator */}
-                <div className="text-center">
-                  <p className="text-soft-gold text-xs opacity-70">← Lướt để xem thêm →</p>
-                </div>
-              </div>
-
-              {/* Desktop: Grid Layout */}
-              <div className="hidden sm:block">
+              ) : (
+                /* Desktop: Grid Layout */
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                   {featuredProducts.map((product) => (
                     <div key={product.id} className="bg-deep-black/60 rounded-xl overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all cursor-pointer group">
@@ -177,7 +177,7 @@ const HomePage = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              )}
             </>
           )}
           
