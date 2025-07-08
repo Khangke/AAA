@@ -126,7 +126,8 @@ const CartPage = () => {
 
       const response = await axios.post(`${BACKEND_URL}/api/orders`, orderData);
       
-      setCheckoutMessage('Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.');
+      // Show success notification
+      showOrderSuccess({ orderId: response.data.id });
       
       // Clear cart after successful order
       await clearCart();
@@ -144,6 +145,19 @@ const CartPage = () => {
       }
       
       setShowCheckout(false);
+      
+      // Navigate to order success page with order data
+      navigate('/order-success', { 
+        state: { 
+          orderData: {
+            ...response.data,
+            items: items.map(item => ({
+              ...item,
+              product_name: item.name
+            }))
+          }
+        }
+      });
       
     } catch (error) {
       const errorMessage = error.response?.data?.detail || 'Có lỗi xảy ra khi đặt hàng. Vui lòng thử lại.';
