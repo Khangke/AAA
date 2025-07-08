@@ -4,7 +4,7 @@ import sys
 from pprint import pprint
 
 # Backend URL from frontend/.env
-BACKEND_URL = "https://c1254c19-ec06-48e6-a756-8b1814cdaa36.preview.emergentagent.com"
+BACKEND_URL = "https://c56bbb67-fae2-411c-b48c-7725989b156e.preview.emergentagent.com"
 API_BASE_URL = f"{BACKEND_URL}/api"
 
 def test_seed_products():
