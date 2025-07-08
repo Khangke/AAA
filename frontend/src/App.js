@@ -73,7 +73,9 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
-          <AppContent />
+          <NotificationProvider>
+            <AppContent />
+          </NotificationProvider>
         </CartProvider>
       </AuthProvider>
     </BrowserRouter>
