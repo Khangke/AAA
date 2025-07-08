@@ -103,7 +103,7 @@ const HomePage = () => {
           ) : (
             <>
               {/* Mobile: Horizontal Scroll */}
-              <div className="block md:hidden">
+              <div className="block sm:hidden">
                 <div className="flex gap-4 overflow-x-auto pb-4 px-4 -mx-4 scrollbar-hide product-scroll">
                   {featuredProducts.map((product) => (
                     <div key={product.id} className="bg-deep-black/60 rounded-xl overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all cursor-pointer group flex-shrink-0 w-64 min-w-64">
@@ -138,7 +138,7 @@ const HomePage = () => {
               </div>
 
               {/* Desktop: Grid Layout */}
-              <div className="hidden md:block">
+              <div className="hidden sm:block">
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                   {featuredProducts.map((product) => (
                     <div key={product.id} className="bg-deep-black/60 rounded-xl overflow-hidden border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all cursor-pointer group">
