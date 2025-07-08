@@ -246,16 +246,16 @@ const AccountPage = () => {
   }
 
   return (
-    <div className="min-h-screen pt-16 md:pt-20 bg-deep-black">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div className="min-h-screen pt-14 md:pt-20 bg-deep-black">
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-12">
         
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-12">
-          <h1 className="font-luxury text-3xl sm:text-4xl lg:text-5xl font-bold text-luxury-gold mb-4">
+        <div className="text-center mb-6 sm:mb-12">
+          <h1 className="font-luxury text-2xl sm:text-4xl lg:text-5xl font-bold text-luxury-gold mb-2 sm:mb-4">
             {isAuthenticated ? 'Tài Khoản Của Tôi' : 'Đăng Nhập / Đăng Ký'}
           </h1>
           {isAuthenticated && user && (
-            <p className="text-soft-gold text-base sm:text-lg">
+            <p className="text-soft-gold text-sm sm:text-lg">
               Chào mừng trở lại, {user.full_name || user.email}!
             </p>
           )}
@@ -265,10 +265,10 @@ const AccountPage = () => {
           <div className="max-w-md mx-auto">
             
             {/* Tab Navigation */}
-            <div className="flex mb-8 bg-charcoal/50 rounded-lg p-1">
+            <div className="flex mb-6 sm:mb-8 bg-charcoal/50 rounded-lg p-1">
               <button
                 onClick={() => setActiveTab('login')}
-                className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-300 ${
+                className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base ${
                   activeTab === 'login'
                     ? 'bg-luxury-gold text-deep-black'
                     : 'text-soft-gold hover:text-luxury-gold'
@@ -278,7 +278,7 @@ const AccountPage = () => {
               </button>
               <button
                 onClick={() => setActiveTab('register')}
-                className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-300 ${
+                className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base ${
                   activeTab === 'register'
                     ? 'bg-luxury-gold text-deep-black'
                     : 'text-soft-gold hover:text-luxury-gold'
@@ -290,17 +290,17 @@ const AccountPage = () => {
 
             {/* Error Message */}
             {error && (
-              <div className="mb-6 p-4 bg-red-900/30 border border-red-500/30 rounded-lg text-red-300">
+              <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-900/30 border border-red-500/30 rounded-lg text-red-300 text-sm">
                 {error}
               </div>
             )}
 
             {/* Login Form */}
             {activeTab === 'login' && (
-              <div className="bg-charcoal/50 backdrop-blur-sm rounded-xl border border-luxury-gold/20 p-6 sm:p-8">
-                <form onSubmit={handleLogin} className="space-y-6">
+              <div className="bg-charcoal/50 backdrop-blur-sm rounded-xl border border-luxury-gold/20 p-4 sm:p-6 lg:p-8">
+                <form onSubmit={handleLogin} className="space-y-4 sm:space-y-6">
                   <div>
-                    <label htmlFor="login-email" className="block text-luxury-gold font-medium mb-2">
+                    <label htmlFor="login-email" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                       Email
                     </label>
                     <input
@@ -308,18 +308,18 @@ const AccountPage = () => {
                       id="login-email"
                       value={loginForm.email}
                       onChange={(e) => setLoginForm(prev => ({ ...prev, email: e.target.value }))}
-                      className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                      className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base ${
                         formErrors.email ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                       }`}
                       placeholder="email@example.com"
                     />
                     {formErrors.email && (
-                      <p className="text-red-400 text-sm mt-1">{formErrors.email}</p>
+                      <p className="text-red-400 text-xs sm:text-sm mt-1">{formErrors.email}</p>
                     )}
                   </div>
 
                   <div>
-                    <label htmlFor="login-password" className="block text-luxury-gold font-medium mb-2">
+                    <label htmlFor="login-password" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                       Mật Khẩu
                     </label>
                     <input
@@ -327,20 +327,20 @@ const AccountPage = () => {
                       id="login-password"
                       value={loginForm.password}
                       onChange={(e) => setLoginForm(prev => ({ ...prev, password: e.target.value }))}
-                      className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                      className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base ${
                         formErrors.password ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                       }`}
                       placeholder="Nhập mật khẩu"
                     />
                     {formErrors.password && (
-                      <p className="text-red-400 text-sm mt-1">{formErrors.password}</p>
+                      <p className="text-red-400 text-xs sm:text-sm mt-1">{formErrors.password}</p>
                     )}
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-4 rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                    className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     {isSubmitting ? 'Đang Đăng Nhập...' : 'Đăng Nhập'}
                   </button>
@@ -350,11 +350,11 @@ const AccountPage = () => {
 
             {/* Register Form */}
             {activeTab === 'register' && (
-              <div className="bg-charcoal/50 backdrop-blur-sm rounded-xl border border-luxury-gold/20 p-6 sm:p-8">
-                <form onSubmit={handleRegister} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-charcoal/50 backdrop-blur-sm rounded-xl border border-luxury-gold/20 p-4 sm:p-6 lg:p-8">
+                <form onSubmit={handleRegister} className="space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <label htmlFor="register-name" className="block text-luxury-gold font-medium mb-2">
+                      <label htmlFor="register-name" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                         Họ và Tên *
                       </label>
                       <input
@@ -362,18 +362,18 @@ const AccountPage = () => {
                         id="register-name"
                         value={registerForm.full_name}
                         onChange={(e) => setRegisterForm(prev => ({ ...prev, full_name: e.target.value }))}
-                        className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                        className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base ${
                           formErrors.full_name ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                         }`}
                         placeholder="Nhập họ và tên"
                       />
                       {formErrors.full_name && (
-                        <p className="text-red-400 text-sm mt-1">{formErrors.full_name}</p>
+                        <p className="text-red-400 text-xs sm:text-sm mt-1">{formErrors.full_name}</p>
                       )}
                     </div>
 
                     <div>
-                      <label htmlFor="register-phone" className="block text-luxury-gold font-medium mb-2">
+                      <label htmlFor="register-phone" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                         Số Điện Thoại *
                       </label>
                       <input
@@ -381,19 +381,19 @@ const AccountPage = () => {
                         id="register-phone"
                         value={registerForm.phone}
                         onChange={(e) => setRegisterForm(prev => ({ ...prev, phone: e.target.value }))}
-                        className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                        className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base ${
                           formErrors.phone ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                         }`}
                         placeholder="0123 456 789"
                       />
                       {formErrors.phone && (
-                        <p className="text-red-400 text-sm mt-1">{formErrors.phone}</p>
+                        <p className="text-red-400 text-xs sm:text-sm mt-1">{formErrors.phone}</p>
                       )}
                     </div>
                   </div>
 
                 <div>
-                  <label htmlFor="register-email" className="block text-luxury-gold font-medium mb-2">
+                  <label htmlFor="register-email" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                     Email *
                   </label>
                   <input
@@ -401,19 +401,19 @@ const AccountPage = () => {
                     id="register-email"
                     value={registerForm.email}
                     onChange={(e) => setRegisterForm(prev => ({ ...prev, email: e.target.value }))}
-                    className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base ${
                       formErrors.email ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                     }`}
                     placeholder="email@example.com"
                   />
                   {formErrors.email && (
-                    <p className="text-red-400 text-sm mt-1">{formErrors.email}</p>
+                    <p className="text-red-400 text-xs sm:text-sm mt-1">{formErrors.email}</p>
                   )}
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label htmlFor="register-password" className="block text-luxury-gold font-medium mb-2">
+                    <label htmlFor="register-password" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                       Mật Khẩu *
                     </label>
                     <input
@@ -421,18 +421,18 @@ const AccountPage = () => {
                       id="register-password"
                       value={registerForm.password}
                       onChange={(e) => setRegisterForm(prev => ({ ...prev, password: e.target.value }))}
-                      className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                      className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base ${
                         formErrors.password ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                       }`}
                       placeholder="Nhập mật khẩu"
                     />
                     {formErrors.password && (
-                      <p className="text-red-400 text-sm mt-1">{formErrors.password}</p>
+                      <p className="text-red-400 text-xs sm:text-sm mt-1">{formErrors.password}</p>
                     )}
                   </div>
 
                   <div>
-                    <label htmlFor="confirm-password" className="block text-luxury-gold font-medium mb-2">
+                    <label htmlFor="confirm-password" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                       Xác Nhận Mật Khẩu *
                     </label>
                     <input
@@ -440,19 +440,19 @@ const AccountPage = () => {
                       id="confirm-password"
                       value={registerForm.confirmPassword}
                       onChange={(e) => setRegisterForm(prev => ({ ...prev, confirmPassword: e.target.value }))}
-                      className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                      className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base ${
                         formErrors.confirmPassword ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                       }`}
                       placeholder="Nhập lại mật khẩu"
                     />
                     {formErrors.confirmPassword && (
-                      <p className="text-red-400 text-sm mt-1">{formErrors.confirmPassword}</p>
+                      <p className="text-red-400 text-xs sm:text-sm mt-1">{formErrors.confirmPassword}</p>
                     )}
                   </div>
                 </div>
 
-                <div className="bg-deep-black/30 border border-luxury-gold/20 rounded-lg p-4 text-center">
-                  <p className="text-soft-gold text-sm">
+                <div className="bg-deep-black/30 border border-luxury-gold/20 rounded-lg p-3 sm:p-4 text-center">
+                  <p className="text-soft-gold text-xs sm:text-sm">
                     <strong>📍 Lưu ý:</strong> Thông tin địa chỉ sẽ được thu thập khi bạn đặt đơn hàng đầu tiên
                   </p>
                 </div>
@@ -460,7 +460,7 @@ const AccountPage = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-4 rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                    className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     {isSubmitting ? 'Đang Đăng Ký...' : 'Đăng Ký'}
                   </button>
@@ -473,10 +473,10 @@ const AccountPage = () => {
           <div>
             
             {/* Tab Navigation */}
-            <div className="flex flex-wrap justify-center mb-8 bg-charcoal/50 rounded-lg p-1 max-w-md mx-auto">
+            <div className="flex flex-wrap justify-center mb-6 sm:mb-8 bg-charcoal/50 rounded-lg p-1 max-w-md mx-auto">
               <button
                 onClick={() => setActiveTab('profile')}
-                className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base ${
+                className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base ${
                   activeTab === 'profile'
                     ? 'bg-luxury-gold text-deep-black'
                     : 'text-soft-gold hover:text-luxury-gold'
@@ -486,7 +486,7 @@ const AccountPage = () => {
               </button>
               <button
                 onClick={() => setActiveTab('orders')}
-                className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base ${
+                className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base ${
                   activeTab === 'orders'
                     ? 'bg-luxury-gold text-deep-black'
                     : 'text-soft-gold hover:text-luxury-gold'
@@ -499,12 +499,12 @@ const AccountPage = () => {
             {/* Profile Tab */}
             {activeTab === 'profile' && (
               <div className="max-w-2xl mx-auto">
-                <div className="bg-charcoal/50 backdrop-blur-sm rounded-xl border border-luxury-gold/20 p-6 sm:p-8">
-                  <div className="flex justify-between items-center mb-6">
-                    <h2 className="font-luxury text-2xl font-bold text-luxury-gold">
+                <div className="bg-charcoal/50 backdrop-blur-sm rounded-xl border border-luxury-gold/20 p-4 sm:p-6 lg:p-8">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6">
+                    <h2 className="font-luxury text-xl sm:text-2xl font-bold text-luxury-gold mb-3 sm:mb-0">
                       Thông Tin Cá Nhân
                     </h2>
-                    <div className="space-x-2">
+                    <div className="flex space-x-2 text-sm sm:text-base">
                       {!editingProfile ? (
                         <button
                           onClick={() => setEditingProfile(true)}
@@ -531,52 +531,52 @@ const AccountPage = () => {
 
                   {!editingProfile ? (
                     /* Display Mode */
-                    <div className="space-y-4">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-3 sm:space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div>
-                          <label className="block text-luxury-gold font-medium mb-2">
+                          <label className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                             Họ và Tên
                           </label>
-                          <p className="text-soft-gold p-3 bg-deep-black/50 rounded-lg">
+                          <p className="text-soft-gold p-2.5 sm:p-3 bg-deep-black/50 rounded-lg text-sm sm:text-base">
                             {user?.full_name || 'Chưa cập nhật'}
                           </p>
                         </div>
                         
                         <div>
-                          <label className="block text-luxury-gold font-medium mb-2">
+                          <label className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                             Email
                           </label>
-                          <p className="text-soft-gold p-3 bg-deep-black/50 rounded-lg">
+                          <p className="text-soft-gold p-2.5 sm:p-3 bg-deep-black/50 rounded-lg text-sm sm:text-base">
                             {user?.email}
                           </p>
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div>
-                          <label className="block text-luxury-gold font-medium mb-2">
+                          <label className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                             Số Điện Thoại
                           </label>
-                          <p className="text-soft-gold p-3 bg-deep-black/50 rounded-lg">
+                          <p className="text-soft-gold p-2.5 sm:p-3 bg-deep-black/50 rounded-lg text-sm sm:text-base">
                             {user?.phone || 'Chưa cập nhật'}
                           </p>
                         </div>
                         
                         <div>
-                          <label className="block text-luxury-gold font-medium mb-2">
+                          <label className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                             Tỉnh/Thành
                           </label>
-                          <p className="text-soft-gold p-3 bg-deep-black/50 rounded-lg">
+                          <p className="text-soft-gold p-2.5 sm:p-3 bg-deep-black/50 rounded-lg text-sm sm:text-base">
                             {user?.city || 'Chưa cập nhật'}
                           </p>
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-luxury-gold font-medium mb-2">
+                        <label className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                           Địa Chỉ Đầy Đủ
                         </label>
-                        <p className="text-soft-gold p-3 bg-deep-black/50 rounded-lg">
+                        <p className="text-soft-gold p-2.5 sm:p-3 bg-deep-black/50 rounded-lg text-sm sm:text-base">
                           {[user?.address, user?.ward, user?.district, user?.city]
                             .filter(Boolean)
                             .join(', ') || 'Chưa cập nhật'}
@@ -585,10 +585,10 @@ const AccountPage = () => {
                     </div>
                   ) : (
                     /* Edit Mode */
-                    <form onSubmit={handleUpdateProfile} className="space-y-6">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <form onSubmit={handleUpdateProfile} className="space-y-4 sm:space-y-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div>
-                          <label htmlFor="profile-name" className="block text-luxury-gold font-medium mb-2">
+                          <label htmlFor="profile-name" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                             Họ và Tên
                           </label>
                           <input
@@ -596,13 +596,13 @@ const AccountPage = () => {
                             id="profile-name"
                             value={profileForm.full_name}
                             onChange={(e) => setProfileForm(prev => ({ ...prev, full_name: e.target.value }))}
-                            className="w-full px-4 py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300"
+                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base"
                             placeholder="Nhập họ và tên"
                           />
                         </div>
 
                         <div>
-                          <label htmlFor="profile-phone" className="block text-luxury-gold font-medium mb-2">
+                          <label htmlFor="profile-phone" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                             Số Điện Thoại
                           </label>
                           <input
@@ -610,14 +610,14 @@ const AccountPage = () => {
                             id="profile-phone"
                             value={profileForm.phone}
                             onChange={(e) => setProfileForm(prev => ({ ...prev, phone: e.target.value }))}
-                            className="w-full px-4 py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300"
+                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base"
                             placeholder="0123 456 789"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label htmlFor="profile-address" className="block text-luxury-gold font-medium mb-2">
+                        <label htmlFor="profile-address" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                           Địa Chỉ
                         </label>
                         <input
@@ -625,14 +625,14 @@ const AccountPage = () => {
                           id="profile-address"
                           value={profileForm.address}
                           onChange={(e) => setProfileForm(prev => ({ ...prev, address: e.target.value }))}
-                          className="w-full px-4 py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300"
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base"
                           placeholder="Số nhà, tên đường"
                         />
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                         <div>
-                          <label htmlFor="profile-ward" className="block text-luxury-gold font-medium mb-2">
+                          <label htmlFor="profile-ward" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                             Phường/Xã
                           </label>
                           <input
@@ -640,13 +640,13 @@ const AccountPage = () => {
                             id="profile-ward"
                             value={profileForm.ward}
                             onChange={(e) => setProfileForm(prev => ({ ...prev, ward: e.target.value }))}
-                            className="w-full px-4 py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300"
+                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base"
                             placeholder="Phường/Xã"
                           />
                         </div>
 
                         <div>
-                          <label htmlFor="profile-district" className="block text-luxury-gold font-medium mb-2">
+                          <label htmlFor="profile-district" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                             Quận/Huyện
                           </label>
                           <input
@@ -654,13 +654,13 @@ const AccountPage = () => {
                             id="profile-district"
                             value={profileForm.district}
                             onChange={(e) => setProfileForm(prev => ({ ...prev, district: e.target.value }))}
-                            className="w-full px-4 py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300"
+                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base"
                             placeholder="Quận/Huyện"
                           />
                         </div>
 
                         <div>
-                          <label htmlFor="profile-city" className="block text-luxury-gold font-medium mb-2">
+                          <label htmlFor="profile-city" className="block text-luxury-gold font-medium mb-2 text-sm sm:text-base">
                             Tỉnh/Thành
                           </label>
                           <input
@@ -668,7 +668,7 @@ const AccountPage = () => {
                             id="profile-city"
                             value={profileForm.city}
                             onChange={(e) => setProfileForm(prev => ({ ...prev, city: e.target.value }))}
-                            className="w-full px-4 py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300"
+                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 text-sm sm:text-base"
                             placeholder="Tỉnh/Thành phố"
                           />
                         </div>
@@ -677,7 +677,7 @@ const AccountPage = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-4 rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                        className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                       >
                         {isSubmitting ? 'Đang Cập Nhật...' : 'Cập Nhật Thông Tin'}
                       </button>
@@ -691,70 +691,70 @@ const AccountPage = () => {
             {activeTab === 'orders' && (
               <div className="max-w-4xl mx-auto">
                 {loadingOrders ? (
-                  <div className="text-center py-12">
-                    <div className="text-luxury-gold text-4xl mb-4 animate-pulse">📦</div>
-                    <p className="text-soft-gold">Đang tải lịch sử đơn hàng...</p>
+                  <div className="text-center py-8 sm:py-12">
+                    <div className="text-luxury-gold text-3xl sm:text-4xl mb-3 sm:mb-4 animate-pulse">📦</div>
+                    <p className="text-soft-gold text-sm sm:text-base">Đang tải lịch sử đơn hàng...</p>
                   </div>
                 ) : orders.length === 0 ? (
-                  <div className="text-center py-12">
-                    <div className="text-luxury-gold text-6xl mb-6">📦</div>
-                    <h2 className="font-luxury text-2xl text-luxury-gold mb-4">
+                  <div className="text-center py-8 sm:py-12">
+                    <div className="text-luxury-gold text-4xl sm:text-6xl mb-4 sm:mb-6">📦</div>
+                    <h2 className="font-luxury text-xl sm:text-2xl text-luxury-gold mb-3 sm:mb-4">
                       Chưa Có Đơn Hàng
                     </h2>
-                    <p className="text-soft-gold mb-8">
+                    <p className="text-soft-gold mb-6 sm:mb-8 text-sm sm:text-base">
                       Bạn chưa đặt đơn hàng nào
                     </p>
                     <a
                       href="/products"
-                      className="inline-block bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-105"
+                      className="inline-block bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-105"
                     >
                       Mua Sắm Ngay
                     </a>
                   </div>
                 ) : (
-                  <div className="space-y-6">
-                    <h2 className="font-luxury text-2xl font-bold text-luxury-gold mb-6">
+                  <div className="space-y-4 sm:space-y-6">
+                    <h2 className="font-luxury text-xl sm:text-2xl font-bold text-luxury-gold mb-4 sm:mb-6">
                       Lịch Sử Đơn Hàng ({orders.length})
                     </h2>
                     
                     {orders.map((order) => (
-                      <div key={order.id} className="bg-charcoal/50 backdrop-blur-sm rounded-xl border border-luxury-gold/20 p-6">
-                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                      <div key={order.id} className="bg-charcoal/50 backdrop-blur-sm rounded-xl border border-luxury-gold/20 p-4 sm:p-6">
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 sm:mb-4">
                           <div>
-                            <h3 className="font-luxury text-lg font-bold text-luxury-gold">
+                            <h3 className="font-luxury text-base sm:text-lg font-bold text-luxury-gold">
                               {order.order_number}
                             </h3>
-                            <p className="text-soft-gold text-sm">
+                            <p className="text-soft-gold text-xs sm:text-sm">
                               {formatDate(order.created_at)}
                             </p>
                           </div>
                           <div className="text-right mt-2 sm:mt-0">
-                            <p className={`font-medium ${getStatusColor(order.status)}`}>
+                            <p className={`font-medium text-sm sm:text-base ${getStatusColor(order.status)}`}>
                               {getStatusText(order.status)}
                             </p>
-                            <p className="text-soft-gold text-sm">
+                            <p className="text-soft-gold text-xs sm:text-sm">
                               {getPaymentMethodText(order.payment_method)}
                             </p>
                           </div>
                         </div>
                         
-                        <div className="space-y-2 mb-4">
+                        <div className="space-y-1 sm:space-y-2 mb-3 sm:mb-4">
                           {order.items.map((item, index) => (
-                            <div key={index} className="flex justify-between text-soft-gold text-sm">
+                            <div key={index} className="flex justify-between text-soft-gold text-xs sm:text-sm">
                               <span>{item.name} x{item.quantity}</span>
                               <span>{formatPrice(item.subtotal)}</span>
                             </div>
                           ))}
                         </div>
                         
-                        <div className="border-t border-luxury-gold/20 pt-4">
+                        <div className="border-t border-luxury-gold/20 pt-3 sm:pt-4">
                           <div className="flex justify-between items-center">
-                            <div className="text-soft-gold">
+                            <div className="text-soft-gold text-xs sm:text-sm">
                               <p>Tạm tính: {formatPrice(order.subtotal)}</p>
                               <p>Vận chuyển: {formatPrice(order.shipping_fee)}</p>
                             </div>
                             <div className="text-right">
-                              <p className="font-luxury text-lg font-bold text-luxury-gold">
+                              <p className="font-luxury text-base sm:text-lg font-bold text-luxury-gold">
                                 Tổng: {formatPrice(order.total_amount)}
                               </p>
                             </div>
@@ -762,8 +762,8 @@ const AccountPage = () => {
                         </div>
                         
                         {order.notes && (
-                          <div className="mt-4 p-3 bg-deep-black/50 rounded-lg">
-                            <p className="text-soft-gold text-sm">
+                          <div className="mt-3 sm:mt-4 p-2.5 sm:p-3 bg-deep-black/50 rounded-lg">
+                            <p className="text-soft-gold text-xs sm:text-sm">
                               <strong>Ghi chú:</strong> {order.notes}
                             </p>
                           </div>
