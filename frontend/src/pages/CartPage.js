@@ -259,25 +259,25 @@ const CartPage = () => {
           </div>
 
           {/* Order Summary */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             
             {/* Summary Card */}
-            <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-4 sm:p-6 sticky top-20">
-              <h2 className="font-luxury text-xl font-bold text-luxury-gold mb-4">
+            <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-3 sm:p-4 sticky top-20">
+              <h2 className="font-luxury text-lg font-bold text-luxury-gold mb-3">
                 Tóm Tắt Đơn Hàng
               </h2>
               
-              <div className="space-y-3 mb-6">
-                <div className="flex justify-between text-soft-gold">
+              <div className="space-y-2 mb-4">
+                <div className="flex justify-between text-soft-gold text-sm">
                   <span>Tạm tính:</span>
                   <span>{formatPrice(getSubtotal())}</span>
                 </div>
-                <div className="flex justify-between text-soft-gold">
+                <div className="flex justify-between text-soft-gold text-sm">
                   <span>Phí vận chuyển:</span>
                   <span>{formatPrice(getShippingFee())}</span>
                 </div>
-                <div className="border-t border-luxury-gold/20 pt-3">
-                  <div className="flex justify-between text-luxury-gold font-bold text-lg">
+                <div className="border-t border-luxury-gold/20 pt-2">
+                  <div className="flex justify-between text-luxury-gold font-bold text-base">
                     <span>Tổng cộng:</span>
                     <span>{formatPrice(getCartTotal())}</span>
                   </div>
@@ -287,7 +287,7 @@ const CartPage = () => {
               {!showCheckout && (
                 <button
                   onClick={() => setShowCheckout(true)}
-                  className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02]"
+                  className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] text-sm"
                 >
                   Tiến Hành Thanh Toán
                 </button>
