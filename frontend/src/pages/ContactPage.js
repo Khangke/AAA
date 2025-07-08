@@ -253,66 +253,87 @@ const ContactPage = () => {
           </div>
 
           {/* Business Information */}
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-4 sm:space-y-6">
             
             {/* Contact Info */}
-            <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-6 sm:p-8">
-              <h2 className="font-luxury text-2xl sm:text-3xl font-bold text-luxury-gold mb-6 sm:mb-8">
+            <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-4 sm:p-6">
+              <h2 className="font-luxury text-xl sm:text-2xl font-bold text-luxury-gold mb-4 sm:mb-6">
                 Thông Tin Liên Hệ
               </h2>
               
-              <div className="space-y-4 sm:space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                    <span className="text-luxury-gold text-lg">📍</span>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
+                    <span className="text-luxury-gold text-sm">📍</span>
                   </div>
                   <div>
-                    <h3 className="text-luxury-gold font-semibold mb-1">Địa Chỉ</h3>
-                    <p className="text-soft-gold text-sm sm:text-base">{businessInfo.address}</p>
+                    <h3 className="text-luxury-gold font-semibold mb-1 text-sm">Địa Chỉ</h3>
+                    <p className="text-soft-gold text-xs sm:text-sm">{businessInfo.address}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                    <span className="text-luxury-gold text-lg">📞</span>
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
+                    <span className="text-luxury-gold text-sm">📞</span>
                   </div>
                   <div>
-                    <h3 className="text-luxury-gold font-semibold mb-1">Điện Thoại</h3>
+                    <h3 className="text-luxury-gold font-semibold mb-1 text-sm">Điện Thoại</h3>
                     <a href={`tel:${businessInfo.phone.replace(/\s/g, '')}`} 
-                       className="text-soft-gold text-sm sm:text-base hover:text-luxury-gold transition-colors">
+                       className="text-soft-gold text-xs sm:text-sm hover:text-luxury-gold transition-colors">
                       {businessInfo.phone}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                    <span className="text-luxury-gold text-lg">✉️</span>
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
+                    <span className="text-luxury-gold text-sm">✉️</span>
                   </div>
                   <div>
-                    <h3 className="text-luxury-gold font-semibold mb-1">Email</h3>
+                    <h3 className="text-luxury-gold font-semibold mb-1 text-sm">Email</h3>
                     <a href={`mailto:${businessInfo.email}`} 
-                       className="text-soft-gold text-sm sm:text-base hover:text-luxury-gold transition-colors">
+                       className="text-soft-gold text-xs sm:text-sm hover:text-luxury-gold transition-colors">
                       {businessInfo.email}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                    <span className="text-luxury-gold text-lg">🕐</span>
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
+                    <span className="text-luxury-gold text-sm">🕐</span>
                   </div>
                   <div>
-                    <h3 className="text-luxury-gold font-semibold mb-1">Giờ Làm Việc</h3>
-                    <p className="text-soft-gold text-sm sm:text-base">{businessInfo.workingHours}</p>
+                    <h3 className="text-luxury-gold font-semibold mb-1 text-sm">Giờ Làm Việc</h3>
+                    <p className="text-soft-gold text-xs sm:text-sm">{businessInfo.workingHours}</p>
                   </div>
                 </div>
               </div>
             </div>
 
+            {/* Social Media */}
+            <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-4 sm:p-6">
+              <h2 className="font-luxury text-xl sm:text-2xl font-bold text-luxury-gold mb-4 sm:mb-6">
+                Kết Nối Với Chúng Tôi
+              </h2>
+              <div className="grid grid-cols-2 gap-3">
+                {businessInfo.socialMedia.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.url}
+                    className="flex items-center space-x-2 p-2 sm:p-3 bg-deep-black/50 rounded-lg border border-luxury-gold/20 hover:border-luxury-gold/50 hover:bg-luxury-gold/10 transition-all duration-300 group"
+                  >
+                    <span className="text-sm sm:text-base">{social.icon}</span>
+                    <span className="text-soft-gold group-hover:text-luxury-gold transition-colors text-xs sm:text-sm font-medium">
+                      {social.name}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
             {/* Map */}
-            <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-6 sm:p-8">
-              <h2 className="font-luxury text-2xl sm:text-3xl font-bold text-luxury-gold mb-6 sm:mb-8">
+            <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-4 sm:p-6">
+              <h2 className="font-luxury text-xl sm:text-2xl font-bold text-luxury-gold mb-4 sm:mb-6">
                 Bản Đồ
               </h2>
               <div className="relative overflow-hidden rounded-lg aspect-video bg-luxury-gold/10">
@@ -326,27 +347,6 @@ const ContactPage = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                   className="absolute inset-0"
                 ></iframe>
-              </div>
-            </div>
-
-            {/* Social Media */}
-            <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-6 sm:p-8">
-              <h2 className="font-luxury text-2xl sm:text-3xl font-bold text-luxury-gold mb-6 sm:mb-8">
-                Kết Nối Với Chúng Tôi
-              </h2>
-              <div className="grid grid-cols-2 gap-4">
-                {businessInfo.socialMedia.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    className="flex items-center space-x-3 p-3 sm:p-4 bg-deep-black/50 rounded-lg border border-luxury-gold/20 hover:border-luxury-gold/50 hover:bg-luxury-gold/10 transition-all duration-300 group"
-                  >
-                    <span className="text-lg sm:text-xl">{social.icon}</span>
-                    <span className="text-soft-gold group-hover:text-luxury-gold transition-colors text-sm sm:text-base font-medium">
-                      {social.name}
-                    </span>
-                  </a>
-                ))}
               </div>
             </div>
           </div>
