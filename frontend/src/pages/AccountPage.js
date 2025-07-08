@@ -366,137 +366,90 @@ const AccountPage = () => {
                       )}
                     </div>
 
-                    <div>
-                      <label htmlFor="register-phone" className="block text-luxury-gold font-medium mb-2">
-                        Số Điện Thoại
-                      </label>
-                      <input
-                        type="tel"
-                        id="register-phone"
-                        value={registerForm.phone}
-                        onChange={(e) => setRegisterForm(prev => ({ ...prev, phone: e.target.value }))}
-                        className="w-full px-4 py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300"
-                        placeholder="0123 456 789"
-                      />
-                    </div>
-                  </div>
-
                   <div>
-                    <label htmlFor="register-email" className="block text-luxury-gold font-medium mb-2">
-                      Email *
+                    <label htmlFor="register-phone" className="block text-luxury-gold font-medium mb-2">
+                      Số Điện Thoại *
                     </label>
                     <input
-                      type="email"
-                      id="register-email"
-                      value={registerForm.email}
-                      onChange={(e) => setRegisterForm(prev => ({ ...prev, email: e.target.value }))}
+                      type="tel"
+                      id="register-phone"
+                      value={registerForm.phone}
+                      onChange={(e) => setRegisterForm(prev => ({ ...prev, phone: e.target.value }))}
                       className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
-                        formErrors.email ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
+                        formErrors.phone ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
                       }`}
-                      placeholder="email@example.com"
+                      placeholder="0123 456 789"
                     />
-                    {formErrors.email && (
-                      <p className="text-red-400 text-sm mt-1">{formErrors.email}</p>
+                    {formErrors.phone && (
+                      <p className="text-red-400 text-sm mt-1">{formErrors.phone}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="register-email" className="block text-luxury-gold font-medium mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="register-email"
+                    value={registerForm.email}
+                    onChange={(e) => setRegisterForm(prev => ({ ...prev, email: e.target.value }))}
+                    className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                      formErrors.email ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
+                    }`}
+                    placeholder="email@example.com"
+                  />
+                  {formErrors.email && (
+                    <p className="text-red-400 text-sm mt-1">{formErrors.email}</p>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="register-password" className="block text-luxury-gold font-medium mb-2">
+                      Mật Khẩu *
+                    </label>
+                    <input
+                      type="password"
+                      id="register-password"
+                      value={registerForm.password}
+                      onChange={(e) => setRegisterForm(prev => ({ ...prev, password: e.target.value }))}
+                      className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                        formErrors.password ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
+                      }`}
+                      placeholder="Nhập mật khẩu"
+                    />
+                    {formErrors.password && (
+                      <p className="text-red-400 text-sm mt-1">{formErrors.password}</p>
                     )}
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="register-password" className="block text-luxury-gold font-medium mb-2">
-                        Mật Khẩu *
-                      </label>
-                      <input
-                        type="password"
-                        id="register-password"
-                        value={registerForm.password}
-                        onChange={(e) => setRegisterForm(prev => ({ ...prev, password: e.target.value }))}
-                        className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
-                          formErrors.password ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
-                        }`}
-                        placeholder="Nhập mật khẩu"
-                      />
-                      {formErrors.password && (
-                        <p className="text-red-400 text-sm mt-1">{formErrors.password}</p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label htmlFor="confirm-password" className="block text-luxury-gold font-medium mb-2">
-                        Xác Nhận Mật Khẩu *
-                      </label>
-                      <input
-                        type="password"
-                        id="confirm-password"
-                        value={registerForm.confirmPassword}
-                        onChange={(e) => setRegisterForm(prev => ({ ...prev, confirmPassword: e.target.value }))}
-                        className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
-                          formErrors.confirmPassword ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
-                        }`}
-                        placeholder="Nhập lại mật khẩu"
-                      />
-                      {formErrors.confirmPassword && (
-                        <p className="text-red-400 text-sm mt-1">{formErrors.confirmPassword}</p>
-                      )}
-                    </div>
-                  </div>
-
                   <div>
-                    <label htmlFor="register-address" className="block text-luxury-gold font-medium mb-2">
-                      Địa Chỉ
+                    <label htmlFor="confirm-password" className="block text-luxury-gold font-medium mb-2">
+                      Xác Nhận Mật Khẩu *
                     </label>
                     <input
-                      type="text"
-                      id="register-address"
-                      value={registerForm.address}
-                      onChange={(e) => setRegisterForm(prev => ({ ...prev, address: e.target.value }))}
-                      className="w-full px-4 py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300"
-                      placeholder="Số nhà, tên đường"
+                      type="password"
+                      id="confirm-password"
+                      value={registerForm.confirmPassword}
+                      onChange={(e) => setRegisterForm(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                      className={`w-full px-4 py-3 bg-deep-black/50 border rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300 ${
+                        formErrors.confirmPassword ? 'border-red-500' : 'border-luxury-gold/30 hover:border-luxury-gold/50'
+                      }`}
+                      placeholder="Nhập lại mật khẩu"
                     />
+                    {formErrors.confirmPassword && (
+                      <p className="text-red-400 text-sm mt-1">{formErrors.confirmPassword}</p>
+                    )}
                   </div>
+                </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div>
-                      <label htmlFor="register-ward" className="block text-luxury-gold font-medium mb-2">
-                        Phường/Xã
-                      </label>
-                      <input
-                        type="text"
-                        id="register-ward"
-                        value={registerForm.ward}
-                        onChange={(e) => setRegisterForm(prev => ({ ...prev, ward: e.target.value }))}
-                        className="w-full px-4 py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300"
-                        placeholder="Phường/Xã"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="register-district" className="block text-luxury-gold font-medium mb-2">
-                        Quận/Huyện
-                      </label>
-                      <input
-                        type="text"
-                        id="register-district"
-                        value={registerForm.district}
-                        onChange={(e) => setRegisterForm(prev => ({ ...prev, district: e.target.value }))}
-                        className="w-full px-4 py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300"
-                        placeholder="Quận/Huyện"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="register-city" className="block text-luxury-gold font-medium mb-2">
-                        Tỉnh/Thành
-                      </label>
-                      <input
-                        type="text"
-                        id="register-city"
-                        value={registerForm.city}
-                        onChange={(e) => setRegisterForm(prev => ({ ...prev, city: e.target.value }))}
-                        className="w-full px-4 py-3 bg-deep-black/50 border border-luxury-gold/30 hover:border-luxury-gold/50 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 transition-all duration-300"
-                        placeholder="Tỉnh/Thành phố"
-                      />
-                    </div>
-                  </div>
+                <div className="bg-deep-black/30 border border-luxury-gold/20 rounded-lg p-4 text-center">
+                  <p className="text-soft-gold text-sm">
+                    <strong>📍 Lưu ý:</strong> Thông tin địa chỉ sẽ được thu thập khi bạn đặt đơn hàng đầu tiên
+                  </p>
+                </div>
 
                   <button
                     type="submit"
