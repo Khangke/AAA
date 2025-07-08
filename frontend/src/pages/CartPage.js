@@ -162,6 +162,7 @@ const CartPage = () => {
     } catch (error) {
       const errorMessage = error.response?.data?.detail || 'Có lỗi xảy ra khi đặt hàng. Vui lòng thử lại.';
       setCheckoutMessage(errorMessage);
+      showError(errorMessage);
     } finally {
       setIsCheckingOut(false);
     }
