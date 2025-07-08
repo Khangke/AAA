@@ -200,7 +200,7 @@ agent_communication:
   - agent: "testing"
     message: "Đã test lại tất cả API endpoints sau khi thêm trang About và News. Tất cả endpoints đều hoạt động tốt, trả về status code 200 và dữ liệu đúng format. Endpoint GET /api/products/categories vẫn trả về 404 nhưng endpoint thay thế GET /api/categories hoạt động tốt. Tổng cộng có 8 sản phẩm, 5 categories, 5 sản phẩm featured, 3 sản phẩm thuộc category 'Vòng Tay', và tất cả 8 sản phẩm đều chứa từ khóa 'trầm'."
 
-user_problem_statement: "Tạo giúp tôi trang giới thiệu, thêm nội dung về thương hiệu của tôi vào. và làm thêm trang tin tức. lưu ý làm sao để tối ưu cho mobile, gọn gàng, đẹp mắt"
+user_problem_statement: "làm tiếp phần liên hệ và giỏ hàng, tài khoản. đầy đủ thông tin và tối ưu cho mobile và màn hình hiển thị được nhiều. Requirements: Liên hệ thêm hết, giỏ hàng phí vận chuyển 30k và thanh toán cod và chuyển khoản, tài khoản tạo tài khoản bằng email và có lưu thông tin để đặt đơn sau dễ dàng hơn"
 
 backend:
   - task: "POST /api/products/seed - Seed dữ liệu sản phẩm mẫu"
