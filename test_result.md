@@ -136,16 +136,19 @@ backend:
         comment: "Implemented and tested all user authentication endpoints: POST /api/auth/register, POST /api/auth/login, GET /api/auth/me, PUT /api/auth/me. User registration works with email/password, login returns JWT token, profile management allows updating user information."
 
   - task: "Cart Management API"
-    implemented: false
-    working: false
+    implemented: true
+    working: true
     file: "backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "main"
         comment: "Need to implement cart operations and order processing"
+      - working: true
+        agent: "testing"
+        comment: "Implemented and tested all cart management endpoints: POST /api/cart/add, GET /api/cart, PUT /api/cart/item/{product_id}, DELETE /api/cart/item/{product_id}, DELETE /api/cart. Fixed serialization issue with MongoDB ObjectId in cart update and remove endpoints. All cart operations work correctly with proper authentication."
 
   - task: "Order Management API"
     implemented: false
