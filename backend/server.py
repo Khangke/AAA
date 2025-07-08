@@ -169,6 +169,12 @@ async def delete_product(product_id: str):
         raise HTTPException(status_code=404, detail="Product not found")
     return {"message": "Product deleted successfully"}
 
+@api_router.get("/categories", response_model=dict)
+async def get_all_categories():
+    """Get all product categories (alternative endpoint)"""
+    categories = await db.products.distinct("category")
+    return {"categories": categories}
+
 @api_router.get("/products/categories")
 async def get_categories():
     """Get all product categories"""
