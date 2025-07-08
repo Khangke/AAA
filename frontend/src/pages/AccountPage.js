@@ -22,12 +22,7 @@ const AccountPage = () => {
     password: '',
     confirmPassword: '',
     full_name: '',
-    phone: '',
-    address: '',
-    city: '',
-    district: '',
-    ward: '',
-    zip_code: ''
+    phone: ''
   });
   
   const [profileForm, setProfileForm] = useState({
