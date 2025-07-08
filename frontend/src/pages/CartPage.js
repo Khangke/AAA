@@ -296,34 +296,34 @@ const CartPage = () => {
 
             {/* Checkout Form */}
             {showCheckout && (
-              <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-4 sm:p-6">
-                <h3 className="font-luxury text-lg font-bold text-luxury-gold mb-4">
+              <div className="bg-charcoal/50 backdrop-blur-sm rounded-2xl border border-luxury-gold/20 p-3 sm:p-4">
+                <h3 className="font-luxury text-base font-bold text-luxury-gold mb-3">
                   Thông Tin Đặt Hàng
                 </h3>
                 
                 {/* Show user info if authenticated */}
                 {isAuthenticated && user ? (
-                  <div className="space-y-3 mb-6">
-                    <p className="text-soft-gold">
+                  <div className="space-y-2 mb-4">
+                    <p className="text-soft-gold text-sm">
                       <strong>Khách hàng:</strong> {user.full_name}
                     </p>
-                    <p className="text-soft-gold">
+                    <p className="text-soft-gold text-sm">
                       <strong>Email:</strong> {user.email}
                     </p>
-                    <p className="text-soft-gold">
+                    <p className="text-soft-gold text-sm">
                       <strong>SĐT:</strong> {user.phone}
                     </p>
                     {user.address && (
-                      <p className="text-soft-gold">
+                      <p className="text-soft-gold text-sm">
                         <strong>Địa chỉ:</strong> {user.address}
                       </p>
                     )}
                   </div>
                 ) : (
                   /* Guest checkout form */
-                  <div className="space-y-4 mb-6">
+                  <div className="space-y-3 mb-4">
                     <div>
-                      <label className="block text-luxury-gold font-medium mb-1 text-sm">
+                      <label className="block text-luxury-gold font-medium mb-1 text-xs">
                         Họ và Tên *
                       </label>
                       <input
@@ -331,14 +331,14 @@ const CartPage = () => {
                         name="full_name"
                         value={guestInfo.full_name}
                         onChange={handleGuestInfoChange}
-                        className="w-full px-3 py-2 bg-deep-black/50 border border-luxury-gold/30 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 text-sm"
+                        className="w-full px-3 py-2 bg-deep-black/50 border border-luxury-gold/30 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 text-xs"
                         placeholder="Nhập họ và tên"
                       />
                     </div>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-luxury-gold font-medium mb-1 text-sm">
+                        <label className="block text-luxury-gold font-medium mb-1 text-xs">
                           Email *
                         </label>
                         <input
@@ -346,13 +346,13 @@ const CartPage = () => {
                           name="email"
                           value={guestInfo.email}
                           onChange={handleGuestInfoChange}
-                          className="w-full px-3 py-2 bg-deep-black/50 border border-luxury-gold/30 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 text-sm"
+                          className="w-full px-3 py-2 bg-deep-black/50 border border-luxury-gold/30 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 text-xs"
                           placeholder="email@example.com"
                         />
                       </div>
                       
                       <div>
-                        <label className="block text-luxury-gold font-medium mb-1 text-sm">
+                        <label className="block text-luxury-gold font-medium mb-1 text-xs">
                           Số Điện Thoại *
                         </label>
                         <input
@@ -360,28 +360,28 @@ const CartPage = () => {
                           name="phone"
                           value={guestInfo.phone}
                           onChange={handleGuestInfoChange}
-                          className="w-full px-3 py-2 bg-deep-black/50 border border-luxury-gold/30 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 text-sm"
+                          className="w-full px-3 py-2 bg-deep-black/50 border border-luxury-gold/30 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 text-xs"
                           placeholder="0123 456 789"
                         />
                       </div>
                     </div>
                     
                     <div>
-                      <label className="block text-luxury-gold font-medium mb-1 text-sm">
+                      <label className="block text-luxury-gold font-medium mb-1 text-xs">
                         Địa Chỉ Giao Hàng *
                       </label>
                       <textarea
                         name="address"
                         value={guestInfo.address}
                         onChange={handleGuestInfoChange}
-                        rows="3"
-                        className="w-full px-3 py-2 bg-deep-black/50 border border-luxury-gold/30 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 text-sm resize-none"
+                        rows="2"
+                        className="w-full px-3 py-2 bg-deep-black/50 border border-luxury-gold/30 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 text-xs resize-none"
                         placeholder="Nhập địa chỉ giao hàng đầy đủ"
                       />
                     </div>
                     
                     <div>
-                      <label className="block text-luxury-gold font-medium mb-1 text-sm">
+                      <label className="block text-luxury-gold font-medium mb-1 text-xs">
                         Ghi Chú (Tùy chọn)
                       </label>
                       <textarea
@@ -389,7 +389,7 @@ const CartPage = () => {
                         value={guestInfo.note}
                         onChange={handleGuestInfoChange}
                         rows="2"
-                        className="w-full px-3 py-2 bg-deep-black/50 border border-luxury-gold/30 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 text-sm resize-none"
+                        className="w-full px-3 py-2 bg-deep-black/50 border border-luxury-gold/30 rounded-lg text-white placeholder-soft-gold/60 focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 text-xs resize-none"
                         placeholder="Ghi chú đặc biệt cho đơn hàng"
                       />
                     </div>
@@ -397,12 +397,12 @@ const CartPage = () => {
                 )}
 
                 {/* Payment Method */}
-                <div className="mb-6">
-                  <label className="block text-luxury-gold font-medium mb-3 text-sm">
+                <div className="mb-4">
+                  <label className="block text-luxury-gold font-medium mb-2 text-xs">
                     Phương Thức Thanh Toán
                   </label>
-                  <div className="space-y-2">
-                    <label className="flex items-center space-x-3 cursor-pointer">
+                  <div className="space-y-1">
+                    <label className="flex items-center space-x-2 cursor-pointer">
                       <input
                         type="radio"
                         name="payment_method"
@@ -411,11 +411,11 @@ const CartPage = () => {
                         onChange={handleGuestInfoChange}
                         className="text-luxury-gold focus:ring-luxury-gold"
                       />
-                      <span className="text-soft-gold text-sm">
+                      <span className="text-soft-gold text-xs">
                         💵 Thanh toán khi nhận hàng (COD)
                       </span>
                     </label>
-                    <label className="flex items-center space-x-3 cursor-pointer">
+                    <label className="flex items-center space-x-2 cursor-pointer">
                       <input
                         type="radio"
                         name="payment_method"
@@ -424,24 +424,24 @@ const CartPage = () => {
                         onChange={handleGuestInfoChange}
                         className="text-luxury-gold focus:ring-luxury-gold"
                       />
-                      <span className="text-soft-gold text-sm">
+                      <span className="text-soft-gold text-xs">
                         🏦 Chuyển khoản ngân hàng
                       </span>
                     </label>
                   </div>
                 </div>
 
-                <div className="flex space-x-3">
+                <div className="flex space-x-2">
                   <button
                     onClick={() => setShowCheckout(false)}
-                    className="flex-1 bg-charcoal border border-luxury-gold/30 text-soft-gold px-4 py-3 rounded-lg font-medium hover:bg-luxury-gold/10 transition-colors text-sm"
+                    className="flex-1 bg-charcoal border border-luxury-gold/30 text-soft-gold px-3 py-2 rounded-lg font-medium hover:bg-luxury-gold/10 transition-colors text-xs"
                   >
                     Quay Lại
                   </button>
                   <button
                     onClick={handleCheckout}
                     disabled={isCheckingOut}
-                    className="flex-1 bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm"
+                    className="flex-1 bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-3 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-xs"
                   >
                     {isCheckingOut ? 'Đang Xử Lý...' : 'Đặt Hàng'}
                   </button>
