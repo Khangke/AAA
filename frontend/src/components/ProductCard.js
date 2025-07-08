@@ -21,6 +21,10 @@ const ProductCard = ({ product, onClick }) => {
     return Math.round(((originalPrice - currentPrice) / originalPrice) * 100);
   };
 
+  const handleCardClick = () => {
+    navigate(`/products/${product.id}`);
+  };
+
   const handleAddToCart = async (e) => {
     e.stopPropagation();
     
