@@ -62,7 +62,7 @@ def test_seed_products():
     print("\n=== Testing POST /api/products/seed ===")
     
     url = f"{API_BASE_URL}/products/seed"
-    response = requests.post(url)
+    response = make_request("POST", url)
     
     print(f"Status Code: {response.status_code}")
     print("Response:")
