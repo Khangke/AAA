@@ -400,62 +400,25 @@ const HomePage = () => {
 
           {/* Desktop Grid */}
           <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8">
-            {/* Testimonial 1 */}
-            <div className="bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up">
-              <div className="flex items-center mb-4 xs:mb-6">
-                <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
-                  <span className="text-deep-black font-bold text-sm xs:text-base">A</span>
+            {testimonials.slice(0, 3).map((testimonial, index) => (
+              <div key={testimonial.id} className="bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="flex items-center mb-4 xs:mb-6">
+                  <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
+                    <span className="text-deep-black font-bold text-sm xs:text-base">{testimonial.avatar}</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-luxury-gold text-sm xs:text-base">{testimonial.name}</h4>
+                    <p className="text-soft-gold text-xs xs:text-sm">{testimonial.location}</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-luxury-gold text-sm xs:text-base">Anh Minh</h4>
-                  <p className="text-soft-gold text-xs xs:text-sm">TP. Hồ Chí Minh</p>
-                </div>
-              </div>
-              <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
-                "Trầm hương ở đây chất lượng thật sự tuyệt vời. Hương thơm rất đậm đà và tự nhiên. Tôi đã mua nhiều lần và luôn hài lòng!"
-              </p>
-              <div className="flex text-luxury-gold text-sm xs:text-base">
-                ⭐⭐⭐⭐⭐
-              </div>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              <div className="flex items-center mb-4 xs:mb-6">
-                <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
-                  <span className="text-deep-black font-bold text-sm xs:text-base">L</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-luxury-gold text-sm xs:text-base">Chị Lan</h4>
-                  <p className="text-soft-gold text-xs xs:text-sm">Hà Nội</p>
+                <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
+                  "{testimonial.review}"
+                </p>
+                <div className="flex text-luxury-gold text-sm xs:text-base">
+                  ⭐⭐⭐⭐⭐
                 </div>
               </div>
-              <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
-                "Phục vụ tận tình, sản phẩm đúng như mô tả. Vòng trầm hương rất đẹp và chất lượng. Sẽ giới thiệu cho bạn bè!"
-              </p>
-              <div className="flex text-luxury-gold text-sm xs:text-base">
-                ⭐⭐⭐⭐⭐
-              </div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-deep-black/50 p-6 xs:p-8 rounded-2xl backdrop-blur-sm border border-luxury-gold/20 hover:border-luxury-gold/40 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="flex items-center mb-4 xs:mb-6">
-                <div className="w-10 xs:w-12 h-10 xs:h-12 bg-luxury-gold rounded-full flex items-center justify-center mr-3 xs:mr-4">
-                  <span className="text-deep-black font-bold text-sm xs:text-base">H</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-luxury-gold text-sm xs:text-base">Anh Hưng</h4>
-                  <p className="text-soft-gold text-xs xs:text-sm">Đà Nẵng</p>
-                </div>
-              </div>
-              <p className="text-soft-gold italic mb-3 xs:mb-4 text-sm xs:text-base">
-                "Mua làm quà tặng cho bố mẹ, họ rất thích. Chất lượng trầm hương thật sự cao cấp, xứng đáng với giá tiền!"
-              </p>
-              <div className="flex text-luxury-gold text-sm xs:text-base">
-                ⭐⭐⭐⭐⭐
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* Mobile Horizontal Scroll */}
