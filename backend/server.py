@@ -257,6 +257,14 @@ class ProductUpdate(BaseModel):
     category: str = None
     image_url: str = None
     images: List[str] = None
+    variations: List[ProductVariation] = None
+    in_stock: bool = None
+    stock_quantity: int = None
+    featured: bool = None
+    rating: float = None
+    reviews_count: int = None
+    tags: List[str] = None
+    images: List[str] = None
     in_stock: bool = None
     stock_quantity: int = None
     featured: bool = None
