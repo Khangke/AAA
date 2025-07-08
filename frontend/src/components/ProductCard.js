@@ -24,14 +24,9 @@ const ProductCard = ({ product, onClick }) => {
   const handleAddToCart = async (e) => {
     e.stopPropagation();
     
-    if (!isAuthenticated) {
-      navigate('/account');
-      return;
-    }
-    
     setIsAddingToCart(true);
     
-    const result = await addToCart(product.id, 1);
+    const result = await addToCart(product, 1);
     
     if (result.success) {
       // Optionally show a success notification
