@@ -181,6 +181,66 @@ backend:
         comment: "Created Product, ProductCreate, ProductUpdate models with comprehensive fields for Vietnamese jewelry products."
 
 frontend:
+  - task: "Contact Page Development"
+    implemented: false
+    working: false
+    file: "frontend/src/pages/ContactPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Currently just placeholder, need complete contact form, business info, map integration"
+
+  - task: "Cart Page Development"
+    implemented: false
+    working: false
+    file: "frontend/src/pages/CartPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Currently just placeholder, need cart functionality with shipping fee, COD and bank transfer"
+
+  - task: "Account Page Development"
+    implemented: false
+    working: false
+    file: "frontend/src/pages/AccountPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Currently just placeholder, need user registration/login, profile management, order history"
+
+  - task: "Cart State Management"
+    implemented: false
+    working: false
+    file: "frontend/src/context/CartContext.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Need to implement cart context for state management across components"
+
+  - task: "User Authentication Context"
+    implemented: false
+    working: false
+    file: "frontend/src/context/AuthContext.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Need to implement authentication context for user login/logout state"
+
   - task: "Product Page Development"
     implemented: true
     working: true
