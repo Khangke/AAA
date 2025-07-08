@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { useNotification } from '../context/NotificationContext';
 import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product, onClick }) => {
   const { addToCart, isItemInCart, getItemQuantity } = useCart();
   const { isAuthenticated } = useAuth();
+  const { showCartNotification, showError } = useNotification();
   const navigate = useNavigate();
   const [isAddingToCart, setIsAddingToCart] = useState(false);
 
