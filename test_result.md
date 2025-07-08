@@ -101,3 +101,114 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Test backend API với các endpoints sau: 1. POST /api/products/seed - Seed dữ liệu sản phẩm mẫu, 2. GET /api/products - Lấy danh sách sản phẩm, 3. GET /api/products?category=Vòng Tay - Filter theo category, 4. GET /api/products?featured=true - Filter sản phẩm nổi bật, 5. GET /api/products?search=trầm - Tìm kiếm sản phẩm, 6. GET /api/products/categories - Lấy danh sách categories"
+
+backend:
+  - task: "POST /api/products/seed - Seed dữ liệu sản phẩm mẫu"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Endpoint hoạt động tốt, trả về status code 200 và message thành công. Đã seed 8 sản phẩm mẫu với thông tin tiếng Việt đầy đủ."
+
+  - task: "GET /api/products - Lấy danh sách sản phẩm"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Endpoint hoạt động tốt, trả về status code 200 và danh sách 8 sản phẩm đầy đủ thông tin."
+
+  - task: "GET /api/products?category=Vòng Tay - Filter theo category"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Endpoint hoạt động tốt, trả về status code 200 và danh sách 3 sản phẩm thuộc category 'Vòng Tay'. Filter hoạt động chính xác."
+
+  - task: "GET /api/products?featured=true - Filter sản phẩm nổi bật"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Endpoint hoạt động tốt, trả về status code 200 và danh sách 5 sản phẩm có featured=true. Filter hoạt động chính xác."
+
+  - task: "GET /api/products?search=trầm - Tìm kiếm sản phẩm"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Endpoint hoạt động tốt, trả về status code 200 và danh sách 8 sản phẩm có chứa từ khóa 'trầm' trong name, description hoặc tags. Search hoạt động chính xác."
+
+  - task: "GET /api/products/categories - Lấy danh sách categories"
+    implemented: true
+    working: false
+    file: "/app/backend/server.py"
+    stuck_count: 1
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "testing"
+        comment: "Endpoint trả về status code 404 thay vì 200. Nguyên nhân là do thứ tự route trong server.py, endpoint GET /api/products/{product_id} đang bắt request trước khi nó đến được endpoint GET /api/products/categories. Cần điều chỉnh thứ tự route trong server.py để fix lỗi này. Tuy nhiên, chúng ta vẫn có thể lấy được danh sách categories bằng cách trích xuất từ danh sách sản phẩm, và đã xác nhận có 5 categories: 'Bộ Sưu Tập', 'Trầm Bột', 'Nhang Trầm', 'Vòng Tay', 'Trầm Khối'."
+
+frontend:
+  - task: "Hiển thị danh sách sản phẩm"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/App.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Chưa được kiểm tra"
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "POST /api/products/seed - Seed dữ liệu sản phẩm mẫu"
+    - "GET /api/products - Lấy danh sách sản phẩm"
+    - "GET /api/products?category=Vòng Tay - Filter theo category"
+    - "GET /api/products?featured=true - Filter sản phẩm nổi bật"
+    - "GET /api/products?search=trầm - Tìm kiếm sản phẩm"
+    - "GET /api/products/categories - Lấy danh sách categories"
+  stuck_tasks:
+    - "GET /api/products/categories - Lấy danh sách categories"
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "testing"
+    message: "Đã hoàn thành kiểm tra tất cả các API endpoints theo yêu cầu. 5/6 endpoints hoạt động tốt, riêng endpoint GET /api/products/categories bị lỗi 404 do thứ tự route trong server.py. Cần điều chỉnh thứ tự route để fix lỗi này."
