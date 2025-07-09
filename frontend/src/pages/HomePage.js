@@ -137,7 +137,7 @@ const HomePage = () => {
             <div className="flex justify-center items-center py-12">
               <div className="animate-spin rounded-full h-8 w-8 border-2 border-luxury-gold border-t-transparent"></div>
             </div>
-          ) : (
+          ) : featuredProducts.length > 0 ? (
             <>
               {isMobile ? (
                 /* Mobile: Horizontal Scroll */
@@ -151,6 +151,9 @@ const HomePage = () => {
                             src={product.image_url} 
                             alt={product.name}
                             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            onError={(e) => {
+                              e.target.src = 'https://images.unsplash.com/photo-1662473217799-6e7288f19741';
+                            }}
                           />
                         </div>
                         <div className="p-3">
@@ -161,8 +164,11 @@ const HomePage = () => {
                             <span className="text-luxury-gold font-bold text-base">
                               {formatPrice(product.price)}
                             </span>
-                            <button className="w-full bg-luxury-gold text-deep-black px-3 py-2 rounded-lg font-bold text-sm hover:bg-luxury-copper transition-colors">
-                              Xem
+                            <button 
+                              className="w-full bg-luxury-gold text-deep-black px-3 py-2 rounded-lg font-bold text-sm hover:bg-luxury-copper transition-colors"
+                              onClick={() => window.location.href = `/products/${product.id}`}
+                            >
+                              Xem Chi Tiết
                             </button>
                           </div>
                         </div>
@@ -185,6 +191,9 @@ const HomePage = () => {
                           src={product.image_url} 
                           alt={product.name}
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          onError={(e) => {
+                            e.target.src = 'https://images.unsplash.com/photo-1662473217799-6e7288f19741';
+                          }}
                         />
                       </div>
                       <div className="p-4">
@@ -195,7 +204,10 @@ const HomePage = () => {
                           <span className="text-luxury-gold font-bold text-base">
                             {formatPrice(product.price)}
                           </span>
-                          <button className="bg-luxury-gold text-deep-black px-4 py-2 rounded-full font-bold text-sm hover:bg-luxury-copper transition-colors">
+                          <button 
+                            className="bg-luxury-gold text-deep-black px-4 py-2 rounded-full font-bold text-sm hover:bg-luxury-copper transition-colors"
+                            onClick={() => window.location.href = `/products/${product.id}`}
+                          >
                             Xem
                           </button>
                         </div>
@@ -205,6 +217,18 @@ const HomePage = () => {
                 </div>
               )}
             </>
+          ) : (
+            /* No Products Found */
+            <div className="text-center py-12">
+              <div className="text-luxury-gold text-4xl mb-4">📦</div>
+              <p className="text-soft-gold text-lg mb-4">Chưa có sản phẩm nào</p>
+              <button 
+                className="bg-luxury-gold text-deep-black px-6 py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors"
+                onClick={() => window.location.reload()}
+              >
+                Tải Lại
+              </button>
+            </div>
           )}
           
           <div className="text-center mt-4 sm:mt-6">
