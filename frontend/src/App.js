@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -13,15 +13,17 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NotificationContainer from "./components/NotificationContainer";
 import ScrollToTop from "./components/ScrollToTop";
-import HomePage from "./pages/HomePage";
-import ProductsPage from "./pages/ProductsPage";
-import ProductDetailPage from "./pages/ProductDetailPage";
-import AboutPage from "./pages/AboutPage";
-import NewsPage from "./pages/NewsPage";
-import ContactPage from "./pages/ContactPage";
-import CartPage from "./pages/CartPage";
-import AccountPage from "./pages/AccountPage";
-import OrderSuccessPage from "./pages/OrderSuccessPage";
+
+// Lazy loaded pages
+const HomePage = lazy(() => import("./pages/HomePage"));
+const ProductsPage = lazy(() => import("./pages/ProductsPage"));
+const ProductDetailPage = lazy(() => import("./pages/ProductDetailPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const NewsPage = lazy(() => import("./pages/NewsPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const CartPage = lazy(() => import("./pages/CartPage"));
+const AccountPage = lazy(() => import("./pages/AccountPage"));
+const OrderSuccessPage = lazy(() => import("./pages/OrderSuccessPage"));
 
 function AppContent() {
   const [isMobile, setIsMobile] = useState(false);
