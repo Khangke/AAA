@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import cachedAPI from '../services/api';
-import IonIcon from '../components/IonIcon';
+import IconWrapper from '../components/IconWrapper';
 import IconWrapper from '../components/IconWrapper';
 
 const HomePage = () => {
@@ -121,14 +121,14 @@ const HomePage = () => {
               className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:shadow-lg transition-all flex items-center justify-center space-x-2"
               onClick={() => window.location.href = '/products'}
             >
-              <IonIcon icon="storefront-outline" size={18} color="#1a1a1a" />
+              <IconWrapper icon="storefront-outline" size={18} color="#1a1a1a" />
               <span>Khám Phá Sản Phẩm</span>
             </button>
             <button 
               className="border border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all flex items-center justify-center space-x-2"
               onClick={() => window.location.href = '/contact'}
             >
-              <IonIcon icon="call-outline" size={18} />
+              <IconWrapper icon="call-outline" size={18} />
               <span>Liên Hệ Ngay</span>
             </button>
           </div>
@@ -175,7 +175,7 @@ const HomePage = () => {
                               className="w-full bg-luxury-gold text-deep-black px-3 py-2 rounded-lg font-bold text-sm hover:bg-luxury-copper transition-colors flex items-center justify-center space-x-2"
                               onClick={() => window.location.href = `/products/${product.id}`}
                             >
-                              <IonIcon icon="eye-outline" size={16} color="#1a1a1a" />
+                              <IconWrapper icon="eye-outline" size={16} color="#1a1a1a" />
                               <span>Xem Chi Tiết</span>
                             </button>
                           </div>
@@ -216,7 +216,7 @@ const HomePage = () => {
                             className="bg-luxury-gold text-deep-black px-4 py-2 rounded-full font-bold text-sm hover:bg-luxury-copper transition-colors flex items-center space-x-1"
                             onClick={() => window.location.href = `/products/${product.id}`}
                           >
-                            <IonIcon icon="eye-outline" size={14} color="#1a1a1a" />
+                            <IconWrapper icon="eye-outline" size={14} color="#1a1a1a" />
                             <span>Xem</span>
                           </button>
                         </div>
@@ -235,7 +235,7 @@ const HomePage = () => {
                 className="bg-luxury-gold text-deep-black px-6 py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors flex items-center space-x-2"
                 onClick={() => window.location.reload()}
               >
-                <IonIcon icon="refresh-outline" size={18} color="#1a1a1a" />
+                <IconWrapper icon="refresh-outline" size={18} color="#1a1a1a" />
                 <span>Tải Lại</span>
               </button>
             </div>
@@ -247,7 +247,7 @@ const HomePage = () => {
               onClick={() => window.location.href = '/products'}
             >
               <span>Xem Tất Cả Sản Phẩm</span>
-              <IonIcon icon="arrow-forward-outline" size={16} />
+              <IconWrapper icon="arrow-forward-outline" size={16} />
             </button>
           </div>
         </div>
@@ -364,11 +364,11 @@ const HomePage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center max-w-md mx-auto">
             <button className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:shadow-lg transition-all flex items-center justify-center space-x-2">
-              <IonIcon icon="call-outline" size={18} color="#1a1a1a" />
+              <IconWrapper icon="call-outline" size={18} color="#1a1a1a" />
               <span>Liên Hệ Ngay</span>
             </button>
             <button className="border border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all flex items-center justify-center space-x-2">
-              <IonIcon icon="storefront-outline" size={18} />
+              <IconWrapper icon="storefront-outline" size={18} />
               <span>Xem Sản Phẩm</span>
             </button>
           </div>

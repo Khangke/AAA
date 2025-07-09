@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import IonIcon from '../components/IonIcon';
+import IconWrapper from '../components/IconWrapper';
 import IconWrapper from '../components/IconWrapper';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
@@ -244,7 +244,7 @@ const CartPage = () => {
                           onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
                           className="w-7 h-7 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 text-luxury-gold hover:bg-luxury-gold/30 transition-colors flex items-center justify-center text-sm"
                         >
-                          <IonIcon icon="remove-outline" size={14} />
+                          <IconWrapper icon="remove-outline" size={14} />
                         </button>
                         <span className="text-white font-medium min-w-[1.5rem] text-center text-sm">
                           {item.quantity}
@@ -253,7 +253,7 @@ const CartPage = () => {
                           onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
                           className="w-7 h-7 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 text-luxury-gold hover:bg-luxury-gold/30 transition-colors flex items-center justify-center text-sm"
                         >
-                          <IonIcon icon="add-outline" size={14} />
+                          <IconWrapper icon="add-outline" size={14} />
                         </button>
                       </div>
                       
@@ -265,7 +265,7 @@ const CartPage = () => {
                           onClick={() => handleRemoveItem(item.id)}
                           className="text-red-400 hover:text-red-300 text-xs underline flex items-center space-x-1"
                         >
-                          <IonIcon icon="trash-outline" size={14} />
+                          <IconWrapper icon="trash-outline" size={14} />
                           <span>Xóa</span>
                         </button>
                       </div>
@@ -307,7 +307,7 @@ const CartPage = () => {
                   onClick={() => setShowCheckout(true)}
                   className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] text-sm flex items-center justify-center space-x-2"
                 >
-                  <IonIcon icon="card-outline" size={18} color="#1a1a1a" />
+                  <IconWrapper icon="card-outline" size={18} color="#1a1a1a" />
                   <span>Tiến Hành Thanh Toán</span>
                 </button>
               )}
@@ -455,7 +455,7 @@ const CartPage = () => {
                     onClick={() => setShowCheckout(false)}
                     className="flex-1 bg-charcoal border border-luxury-gold/30 text-soft-gold px-3 py-2 rounded-lg font-medium hover:bg-luxury-gold/10 transition-colors text-xs flex items-center justify-center space-x-1"
                   >
-                    <IonIcon icon="arrow-back-outline" size={14} />
+                    <IconWrapper icon="arrow-back-outline" size={14} />
                     <span>Quay Lại</span>
                   </button>
                   <button
@@ -463,7 +463,7 @@ const CartPage = () => {
                     disabled={isCheckingOut}
                     className="flex-1 bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-3 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-xs flex items-center justify-center space-x-1"
                   >
-                    <IonIcon icon="checkmark-outline" size={14} color="#1a1a1a" />
+                    <IconWrapper icon="checkmark-outline" size={14} color="#1a1a1a" />
                     <span>{isCheckingOut ? 'Đang Xử Lý...' : 'Đặt Hàng'}</span>
                   </button>
                 </div>

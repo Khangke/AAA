@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
-import IonIcon from '../components/IonIcon';
+import IconWrapper from '../components/IconWrapper';
 import IconWrapper from '../components/IconWrapper';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
@@ -512,7 +512,7 @@ const AccountPage = () => {
                           onClick={() => setEditingProfile(true)}
                           className="text-luxury-gold hover:text-luxury-copper transition-colors flex items-center space-x-1"
                         >
-                          <IonIcon icon="create-outline" size={16} />
+                          <IconWrapper icon="create-outline" size={16} />
                           <span>Chỉnh sửa</span>
                         </button>
                       ) : (
@@ -520,7 +520,7 @@ const AccountPage = () => {
                           onClick={() => setEditingProfile(false)}
                           className="text-soft-gold hover:text-luxury-gold transition-colors flex items-center space-x-1"
                         >
-                          <IonIcon icon="close-outline" size={16} />
+                          <IconWrapper icon="close-outline" size={16} />
                           <span>Hủy</span>
                         </button>
                       )}
@@ -528,7 +528,7 @@ const AccountPage = () => {
                         onClick={handleLogout}
                         className="text-red-400 hover:text-red-300 transition-colors flex items-center space-x-1"
                       >
-                        <IonIcon icon="log-out-outline" size={16} />
+                        <IconWrapper icon="log-out-outline" size={16} />
                         <span>Đăng xuất</span>
                       </button>
                     </div>

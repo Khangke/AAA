@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import IonIcon from '../components/IonIcon';
+import IconWrapper from '../components/IconWrapper';
 import IconWrapper from '../components/IconWrapper';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
@@ -249,7 +249,7 @@ const ContactPage = () => {
                 disabled={isSubmitting}
                 className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm flex items-center justify-center space-x-2"
               >
-                <IonIcon icon="send-outline" size={18} color="#1a1a1a" />
+                <IconWrapper icon="send-outline" size={18} color="#1a1a1a" />
                 <span>{isSubmitting ? 'Đang Gửi...' : 'Gửi Tin Nhắn'}</span>
               </button>
             </form>
@@ -267,7 +267,7 @@ const ContactPage = () => {
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0 w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                    <IonIcon icon="location-outline" size={16} color="#D4A853" />
+                    <IconWrapper icon="location-outline" size={16} color="#D4A853" />
                   </div>
                   <div>
                     <h3 className="text-luxury-gold font-semibold mb-1 text-sm">Địa Chỉ</h3>
@@ -277,7 +277,7 @@ const ContactPage = () => {
 
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0 w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                    <IonIcon icon="call-outline" size={16} color="#D4A853" />
+                    <IconWrapper icon="call-outline" size={16} color="#D4A853" />
                   </div>
                   <div>
                     <h3 className="text-luxury-gold font-semibold mb-1 text-sm">Điện Thoại</h3>
@@ -290,7 +290,7 @@ const ContactPage = () => {
 
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0 w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                    <IonIcon icon="mail-outline" size={16} color="#D4A853" />
+                    <IconWrapper icon="mail-outline" size={16} color="#D4A853" />
                   </div>
                   <div>
                     <h3 className="text-luxury-gold font-semibold mb-1 text-sm">Email</h3>
@@ -303,7 +303,7 @@ const ContactPage = () => {
 
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0 w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                    <IonIcon icon="time-outline" size={16} color="#D4A853" />
+                    <IconWrapper icon="time-outline" size={16} color="#D4A853" />
                   </div>
                   <div>
                     <h3 className="text-luxury-gold font-semibold mb-1 text-sm">Giờ Làm Việc</h3>
