@@ -16,8 +16,6 @@ const ProductsPage = () => {
   const [sortBy, setSortBy] = useState('featured');
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
-
   useEffect(() => {
     fetchProducts();
     fetchCategories();
@@ -26,9 +24,9 @@ const ProductsPage = () => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${backendUrl}/api/products`);
-      setProducts(response.data);
-      setFilteredProducts(response.data);
+      const response = await cachedAPI.getAllProducts();
+      setProducts(response);
+      setFilteredProducts(response);
     } catch (err) {
       console.error('Error fetching products:', err);
       setError('Không thể tải sản phẩm. Vui lòng thử lại sau.');
@@ -39,8 +37,8 @@ const ProductsPage = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/categories`);
-      setCategories(response.data.categories);
+      const response = await cachedAPI.getCategories();
+      setCategories(response.categories);
     } catch (err) {
       console.error('Error fetching categories:', err);
       // Fallback: extract categories from products
