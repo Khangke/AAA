@@ -5,6 +5,7 @@ import { useNotification } from '../context/NotificationContext';
 import LazyImage from '../components/LazyImage';
 import { ProductDetailSkeleton } from '../components/Skeleton';
 import cachedAPI from '../services/api';
+import IonIcon from '../components/IonIcon';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
