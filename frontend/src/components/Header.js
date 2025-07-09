@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 const Header = () => {
   const location = useLocation();
   const { getCartItemCount } = useCart();
+  const { isAuthenticated, user } = useAuth();
   
   // Safely get cart count with error handling
   let cartCount = 0;
