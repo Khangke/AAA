@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useNotification } from '../context/NotificationContext';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
@@ -9,6 +10,7 @@ const ProductDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { showNotification } = useNotification();
   
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -17,10 +19,24 @@ const ProductDetailPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   useEffect(() => {
     fetchProduct();
   }, [id]);
+
+  // Auto-swipe functionality
+  useEffect(() => {
+    if (!product || !product.images || product.images.length <= 1 || !isAutoPlaying) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setSelectedImageIndex(prev => (prev + 1) % product.images.length);
+    }, 3000); // Auto-swipe every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [product, isAutoPlaying]);
 
   const fetchProduct = async () => {
     try {
@@ -100,13 +116,23 @@ const ProductDetailPage = () => {
 
     try {
       await addToCart(cartItem);
-      alert('Đã thêm vào giỏ hàng!');
+      showNotification('Đã thêm vào giỏ hàng!', 'success');
     } catch (error) {
       console.error('Error adding to cart:', error);
-      alert('Có lỗi xảy ra khi thêm vào giỏ hàng');
+      showNotification('Có lỗi xảy ra khi thêm vào giỏ hàng', 'error');
     } finally {
       setIsAddingToCart(false);
     }
+  };
+
+  const handleImageClick = (index) => {
+    setSelectedImageIndex(index);
+    setIsAutoPlaying(false); // Pause auto-play when user interacts
+    
+    // Resume auto-play after 5 seconds of no interaction
+    setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, 5000);
   };
 
   const renderStars = (rating) => {
@@ -189,35 +215,49 @@ const ProductDetailPage = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
           
-          {/* Product Images */}
-          <div className="space-y-3 sm:space-y-4">
-            {/* Main Image */}
-            <div className="relative aspect-square bg-charcoal/30 rounded-xl overflow-hidden">
+          {/* Product Images - Made smaller and optimized */}
+          <div className="space-y-2 sm:space-y-3">
+            {/* Main Image - Reduced size */}
+            <div className="relative bg-charcoal/30 rounded-xl overflow-hidden" style={{ aspectRatio: '4/3' }}>
               <img
                 src={currentImages[selectedImageIndex]}
                 alt={product.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover cursor-pointer"
+                onClick={() => handleImageClick(selectedImageIndex)}
                 onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/500x500/1A1A1A/D4AF37?text=No+Image';
+                  e.target.src = 'https://via.placeholder.com/400x300/1A1A1A/D4AF37?text=No+Image';
                 }}
               />
               
               {/* Discount Badge */}
               {getDiscountPercentage() > 0 && (
-                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-red-600 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
+                <div className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-red-600 text-white px-2 py-1 rounded-full text-xs font-bold">
                   -{getDiscountPercentage()}%
                 </div>
               )}
+
+              {/* Auto-play indicator */}
+              <div className="absolute bottom-2 right-2 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
+                {selectedImageIndex + 1} / {currentImages.length}
+              </div>
+
+              {/* Auto-play toggle */}
+              <button
+                onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                className="absolute bottom-2 left-2 bg-black/50 text-white px-2 py-1 rounded-full text-xs hover:bg-black/70 transition-colors"
+              >
+                {isAutoPlaying ? '⏸️' : '▶️'}
+              </button>
             </div>
 
-            {/* Thumbnail Images */}
+            {/* Thumbnail Images - Optimized for mobile */}
             {currentImages.length > 1 && (
-              <div className="flex space-x-2 sm:space-x-3 overflow-x-auto scrollbar-hide">
+              <div className="flex space-x-1 sm:space-x-2 overflow-x-auto scrollbar-hide">
                 {currentImages.map((image, index) => (
                   <button
                     key={index}
-                    onClick={() => setSelectedImageIndex(index)}
-                    className={`flex-shrink-0 w-16 sm:w-20 h-16 sm:h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                    onClick={() => handleImageClick(index)}
+                    className={`flex-shrink-0 w-12 sm:w-16 h-12 sm:h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
                       selectedImageIndex === index 
                         ? 'border-luxury-gold' 
                         : 'border-luxury-gold/30 hover:border-luxury-gold/60'
