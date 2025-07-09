@@ -8,7 +8,7 @@ from datetime import datetime
 import time
 
 # Backend URL from frontend/.env
-BACKEND_URL = "https://6eca8453-1167-4b92-ab54-b2cfed7b2cde.preview.emergentagent.com"
+BACKEND_URL = "https://d2e1be7e-bec3-498e-be5a-b1d309793efb.preview.emergentagent.com"
 API_BASE_URL = f"{BACKEND_URL}/api"
 
 # Global variables to store test data
