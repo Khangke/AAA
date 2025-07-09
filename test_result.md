@@ -447,11 +447,14 @@ frontend:
     file: "frontend/src/pages/ProductDetailPage.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Added 'Mua Ngay' button to product detail page for mobile. Button adds product to cart and immediately navigates to cart page. Changed 'Add to Cart' to outline button and made 'Buy Now' the primary CTA button with golden gradient background."
+      - working: true
+        agent: "testing"
+        comment: "Tested the 'Mua Ngay' (Buy Now) button functionality. The button is correctly implemented on the product detail page and works as expected - it adds the product to the cart and immediately navigates to the cart page. The UI is also correctly styled with 'Thêm vào giỏ' as an outline button and 'Mua Ngay' as the primary CTA with golden gradient background. The feature enhances the mobile shopping experience by providing a quick path to checkout."
 
   - task: "Notification System Fixes"
     implemented: true
