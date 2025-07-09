@@ -453,6 +453,7 @@ def test_get_current_user():
     url = f"{API_BASE_URL}/auth/me"
     headers = get_auth_headers()
     
+    # Test with valid token
     response = requests.get(url, headers=headers)
     
     print(f"Status Code: {response.status_code}")
@@ -463,6 +464,29 @@ def test_get_current_user():
     assert "id" in response.json(), "Response should contain 'id' field"
     assert response.json()["email"] == TEST_USER["email"], f"Email should be {TEST_USER['email']}"
     assert response.json()["full_name"] == TEST_USER["full_name"], f"Full name should be {TEST_USER['full_name']}"
+    
+    # Test with invalid token
+    print("\n=== Testing GET /api/auth/me with Invalid Token ===")
+    invalid_headers = {"Authorization": "Bearer invalidtoken12345"}
+    invalid_response = requests.get(url, headers=invalid_headers)
+    
+    print(f"Status Code: {invalid_response.status_code}")
+    print("Response:")
+    pprint(invalid_response.json())
+    
+    assert invalid_response.status_code == 401, f"Expected status code 401 for invalid token, got {invalid_response.status_code}"
+    assert "detail" in invalid_response.json(), "Response should contain 'detail' field"
+    assert "Could not validate credentials" in invalid_response.json()["detail"], "Error message should indicate invalid credentials"
+    
+    # Test without token
+    print("\n=== Testing GET /api/auth/me without Token ===")
+    no_token_response = requests.get(url)
+    
+    print(f"Status Code: {no_token_response.status_code}")
+    print("Response:")
+    pprint(no_token_response.json())
+    
+    assert no_token_response.status_code in [401, 403], f"Expected status code 401 or 403 for missing token, got {no_token_response.status_code}"
     
     return response.json()
 
