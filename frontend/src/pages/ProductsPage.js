@@ -47,6 +47,14 @@ const ProductsPage = () => {
     }
   };
 
+  // Debounced search function
+  const debouncedSearch = useMemo(
+    () => debounce((term) => {
+      setSearchTerm(term);
+    }, 300),
+    []
+  );
+
   // Filter and sort products
   useEffect(() => {
     let filtered = [...products];
