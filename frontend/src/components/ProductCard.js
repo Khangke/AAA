@@ -3,6 +3,7 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
 import { useNavigate } from 'react-router-dom';
+import LazyImage from './LazyImage';
 
 const ProductCard = ({ product, onClick }) => {
   const { addToCart, isItemInCart, getItemQuantity } = useCart();
