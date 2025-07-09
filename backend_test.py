@@ -181,6 +181,37 @@ def test_search_products():
         assert search_found, f"Search term '{search_term}' not found in product: {product['name']}"
     
     return response.json()
+def test_get_product_detail():
+    """Test GET /api/products/{id} endpoint to verify 10 images per product"""
+    print(f"\n=== Testing GET /api/products/{TEST_PRODUCT_ID} ===")
+    
+    url = f"{API_BASE_URL}/products/{TEST_PRODUCT_ID}"
+    response = make_request("GET", url)
+    
+    print(f"Status Code: {response.status_code}")
+    print("Response:")
+    pprint(response.json())
+    
+    assert response.status_code == 200, f"Expected status code 200, got {response.status_code}"
+    
+    # Verify product has all required fields
+    product = response.json()
+    required_fields = ["id", "name", "description", "price", "category", "image_url", "images", "variations"]
+    for field in required_fields:
+        assert field in product, f"Product should contain '{field}' field"
+    
+    # Verify product has 10 images
+    assert "images" in product, "Product should have 'images' field"
+    assert isinstance(product["images"], list), "'images' should be a list"
+    assert len(product["images"]) == 10, f"Product should have 10 images, got {len(product['images'])}"
+    
+    # Verify all image URLs are valid
+    for image_url in product["images"]:
+        assert isinstance(image_url, str), "Image URL should be a string"
+        assert image_url.startswith("http"), f"Image URL should start with http: {image_url}"
+    
+    return response.json()
+
 
 def test_get_categories():
     """Test GET /api/products/categories and GET /api/categories endpoints"""
