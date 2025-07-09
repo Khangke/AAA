@@ -601,7 +601,18 @@ async def seed_products():
             "original_price": 4000000,
             "category": "Vòng Tay",
             "image_url": "https://images.unsplash.com/photo-1608828201317-ce72715cb12a",
-            "images": ["https://images.unsplash.com/photo-1608828201317-ce72715cb12a"],
+            "images": [
+                "https://images.unsplash.com/photo-1608828201317-ce72715cb12a",
+                "https://images.unsplash.com/photo-1529720317453-c8da503f2051",
+                "https://images.unsplash.com/photo-1573408301185-9146fe634ad0",
+                "https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae",
+                "https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f",
+                "https://images.unsplash.com/photo-1623859006251-54b0c5c4c45c",
+                "https://images.unsplash.com/photo-1524824267900-2fa9cbf7a506",
+                "https://images.unsplash.com/photo-1605100804763-247f67b3557e",
+                "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338",
+                "https://images.unsplash.com/photo-1611652022419-a9419f74343d"
+            ],
             "variations": [
                 {"size": "12mm", "price": 3200000, "original_price": 3800000, "stock_quantity": 6},
                 {"size": "14mm", "price": 3500000, "original_price": 4000000, "stock_quantity": 4}
