@@ -205,6 +205,51 @@ backend:
         comment: "Created Product, ProductCreate, ProductUpdate models with comprehensive fields for Vietnamese jewelry products."
 
 frontend:
+  - task: "Bug Fixes - Frontend Notifications"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/ProductDetailPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Found bug: ProductDetailPage was using showNotification() which doesn't exist in NotificationContext"
+      - working: true
+        agent: "main"
+        comment: "Fixed notification bug by changing showNotification() to showSuccess() and showError() methods that actually exist in NotificationContext"
+
+  - task: "Bug Fixes - Backend URL Consistency"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/ProductsPage.js, frontend/src/pages/HomePage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Found bug: ProductsPage and HomePage were missing fallback for REACT_APP_BACKEND_URL"
+      - working: true
+        agent: "main"
+        comment: "Fixed by adding fallback || 'http://localhost:8001' to ensure consistent backend URL handling"
+
+  - task: "Bug Fixes - Missing CSS Classes"
+    implemented: true
+    working: true
+    file: "frontend/tailwind.config.js, frontend/src/index.css"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Found multiple bugs: Missing CSS classes causing styling issues - animate-slide-in-right, scrollbar-hide, mobile-nav-padding, product-scroll, touch-target, safe-area-inset-bottom"
+      - working: true
+        agent: "main"
+        comment: "Fixed all missing CSS classes by adding proper definitions in tailwind config and index.css"
+
   - task: "Contact Page Development"
     implemented: true
     working: true
