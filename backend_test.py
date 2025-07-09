@@ -557,6 +557,195 @@ def test_remove_from_cart():
         assert item["product_id"] != TEST_PRODUCT_ID, f"Product {TEST_PRODUCT_ID} should not be in the cart"
     
     return response.json()
+# Guest Cart and Order Tests
+def test_guest_add_to_cart():
+    """Test adding items to cart as a guest (without authentication)"""
+    print("\n=== Testing Guest Cart: Add Item ===")
+    
+    # Create a unique cart token for the guest
+    global GUEST_CART_TOKEN
+    GUEST_CART_TOKEN = f"guest-{random_string(16)}"
+    
+    # Add item to cart
+    url = f"{API_BASE_URL}/cart/guest/add"
+    data = {
+        "product_id": TEST_PRODUCT_ID,
+        "quantity": 2,
+        "cart_token": GUEST_CART_TOKEN
+    }
+    
+    response = make_request("POST", url, json=data)
+    
+    print(f"Status Code: {response.status_code}")
+    print("Response:")
+    pprint(response.json())
+    
+    assert response.status_code in [200, 201], f"Expected status code 200 or 201, got {response.status_code}"
+    assert "message" in response.json(), "Response should contain 'message' field"
+    assert "cart" in response.json(), "Response should contain 'cart' field"
+    assert len(response.json()["cart"]["items"]) > 0, "Cart should have at least one item"
+    
+    # Verify the added item
+    cart_item = None
+    for item in response.json()["cart"]["items"]:
+        if item["product_id"] == TEST_PRODUCT_ID:
+            cart_item = item
+            break
+    
+    assert cart_item is not None, f"Product {TEST_PRODUCT_ID} should be in the cart"
+    assert cart_item["quantity"] == data["quantity"], f"Quantity should be {data['quantity']}"
+    
+    return response.json()
+
+def test_guest_get_cart():
+    """Test retrieving cart as a guest"""
+    print("\n=== Testing Guest Cart: Get Cart ===")
+    
+    url = f"{API_BASE_URL}/cart/guest"
+    params = {"cart_token": GUEST_CART_TOKEN}
+    
+    response = make_request("GET", url, params=params)
+    
+    print(f"Status Code: {response.status_code}")
+    print("Response:")
+    pprint(response.json())
+    
+    assert response.status_code == 200, f"Expected status code 200, got {response.status_code}"
+    assert "items" in response.json(), "Response should contain 'items' field"
+    assert "total_amount" in response.json(), "Response should contain 'total_amount' field"
+    
+    return response.json()
+
+def test_guest_update_cart_item():
+    """Test updating cart item as a guest"""
+    print(f"\n=== Testing Guest Cart: Update Item ===")
+    
+    url = f"{API_BASE_URL}/cart/guest/item/{TEST_PRODUCT_ID}"
+    data = {
+        "quantity": 3,
+        "cart_token": GUEST_CART_TOKEN
+    }
+    
+    response = make_request("PUT", url, json=data)
+    
+    print(f"Status Code: {response.status_code}")
+    print("Response:")
+    pprint(response.json())
+    
+    assert response.status_code == 200, f"Expected status code 200, got {response.status_code}"
+    assert "message" in response.json(), "Response should contain 'message' field"
+    assert "cart" in response.json(), "Response should contain 'cart' field"
+    
+    # Verify the updated item
+    cart_item = None
+    for item in response.json()["cart"]["items"]:
+        if item["product_id"] == TEST_PRODUCT_ID:
+            cart_item = item
+            break
+    
+    assert cart_item is not None, f"Product {TEST_PRODUCT_ID} should be in the cart"
+    assert cart_item["quantity"] == data["quantity"], f"Quantity should be {data['quantity']}"
+    
+    return response.json()
+
+def test_guest_remove_from_cart():
+    """Test removing item from cart as a guest"""
+    print(f"\n=== Testing Guest Cart: Remove Item ===")
+    
+    # First, add an item to the cart to ensure there's something to remove
+    add_url = f"{API_BASE_URL}/cart/guest/add"
+    add_data = {
+        "product_id": TEST_PRODUCT_ID,
+        "quantity": 1,
+        "cart_token": GUEST_CART_TOKEN
+    }
+    make_request("POST", add_url, json=add_data)
+    
+    # Now test removing the item
+    url = f"{API_BASE_URL}/cart/guest/item/{TEST_PRODUCT_ID}"
+    data = {"cart_token": GUEST_CART_TOKEN}
+    
+    response = make_request("DELETE", url, json=data)
+    
+    print(f"Status Code: {response.status_code}")
+    print("Response:")
+    pprint(response.json())
+    
+    assert response.status_code == 200, f"Expected status code 200, got {response.status_code}"
+    assert "message" in response.json(), "Response should contain 'message' field"
+    assert "cart" in response.json(), "Response should contain 'cart' field"
+    
+    # Verify the item was removed
+    for item in response.json()["cart"]["items"]:
+        assert item["product_id"] != TEST_PRODUCT_ID, f"Product {TEST_PRODUCT_ID} should not be in the cart"
+    
+    return response.json()
+
+def test_guest_create_order():
+    """Test creating an order as a guest"""
+    print("\n=== Testing Guest Order Creation ===")
+    
+    # First, add an item to the cart
+    add_url = f"{API_BASE_URL}/cart/guest/add"
+    add_data = {
+        "product_id": TEST_PRODUCT_ID,
+        "quantity": 2,
+        "cart_token": GUEST_CART_TOKEN
+    }
+    make_request("POST", add_url, json=add_data)
+    
+    # Get the cart to use its items for the order
+    get_cart_url = f"{API_BASE_URL}/cart/guest"
+    cart_response = make_request("GET", get_cart_url, params={"cart_token": GUEST_CART_TOKEN})
+    cart_items = cart_response.json()["items"]
+    
+    # Create the order
+    url = f"{API_BASE_URL}/orders/guest"
+    data = {
+        "items": cart_items,
+        "payment_method": "cod",  # COD payment method
+        "customer_info": {
+            "full_name": "Khách Hàng",
+            "email": "guest@example.com",
+            "phone": "0987654321"
+        },
+        "shipping_address": {
+            "address": "123 Đường Lê Lợi",
+            "city": "Hồ Chí Minh",
+            "district": "Quận 1",
+            "ward": "Phường Bến Nghé",
+            "zip_code": "70000"
+        },
+        "notes": "Giao hàng trong giờ hành chính",
+        "cart_token": GUEST_CART_TOKEN
+    }
+    
+    response = make_request("POST", url, json=data)
+    
+    print(f"Status Code: {response.status_code}")
+    print("Response:")
+    pprint(response.json())
+    
+    assert response.status_code in [200, 201], f"Expected status code 200 or 201, got {response.status_code}"
+    assert "id" in response.json(), "Response should contain 'id' field"
+    assert "order_number" in response.json(), "Response should contain 'order_number' field"
+    assert "shipping_fee" in response.json(), "Response should contain 'shipping_fee' field"
+    assert response.json()["shipping_fee"] == 30000, "Shipping fee should be 30000 VND"
+    assert response.json()["payment_method"] == "cod", "Payment method should be 'cod'"
+    
+    # Verify all required fields in the order
+    required_fields = [
+        "id", "order_number", "items", "subtotal", "shipping_fee", 
+        "total_amount", "payment_method", "status", "customer_info", 
+        "shipping_address", "created_at"
+    ]
+    for field in required_fields:
+        assert field in response.json(), f"Order should contain '{field}' field"
+    
+    # Verify items in the order
+    assert len(response.json()["items"]) > 0, "Order should have at least one item"
+    
+    return response.json()
 
 def test_clear_cart():
     """Test DELETE /api/cart endpoint"""
