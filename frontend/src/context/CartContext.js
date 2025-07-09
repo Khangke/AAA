@@ -1,9 +1,39 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import axios from 'axios';
-import { useAuth } from './AuthContext';
-import { useNotification } from './NotificationContext';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+
+// Helper function to safely get auth context
+const useAuthSafely = () => {
+  try {
+    const AuthContext = React.createContext();
+    const context = useContext(AuthContext);
+    return context || { isAuthenticated: false, token: null, user: null };
+  } catch (error) {
+    console.warn('AuthContext not available, using guest mode');
+    return { isAuthenticated: false, token: null, user: null };
+  }
+};
+
+// Helper function to safely get notification context
+const useNotificationSafely = () => {
+  try {
+    const { useNotification } = require('./NotificationContext');
+    const context = useNotification();
+    return context || {
+      showCartNotification: () => {},
+      showError: () => {},
+      showOrderSuccess: () => {}
+    };
+  } catch (error) {
+    console.warn('NotificationContext not available, using empty functions');
+    return {
+      showCartNotification: () => {},
+      showError: () => {},
+      showOrderSuccess: () => {}
+    };
+  }
+};
 
 // Initial state
 const initialState = {
