@@ -1,66 +1,57 @@
 import React from 'react';
 
-// Simple CSS-based icon component
-const IconWrapper = ({ icon, size = 24, color = 'currentColor', className = '', ...props }) => {
-  // Simple CSS-based icons using pseudo-elements
-  const getIconStyles = (iconName) => {
-    const baseStyle = {
-      display: 'inline-block',
-      width: `${size}px`,
-      height: `${size}px`,
-      color: color,
-      verticalAlign: 'middle',
-      lineHeight: 1,
-      fontSize: `${size}px`,
-      textAlign: 'center',
-    };
-
-    // Simple text-based icons for reliability
-    const icons = {
-      'home-outline': { ...baseStyle, content: '⌂' },
-      'storefront-outline': { ...baseStyle, content: '⛪' },
-      'information-circle-outline': { ...baseStyle, content: 'i' },
-      'newspaper-outline': { ...baseStyle, content: '📄' },
-      'call-outline': { ...baseStyle, content: '☎' },
-      'bag-outline': { ...baseStyle, content: '🎒' },
-      'person-outline': { ...baseStyle, content: '👤' },
-      'log-in-outline': { ...baseStyle, content: '→' },
-      'sparkles': { ...baseStyle, content: '✨' },
-      'remove-outline': { ...baseStyle, content: '−' },
-      'add-outline': { ...baseStyle, content: '+' },
-      'bag-add-outline': { ...baseStyle, content: '🛒' },
-      'flash-outline': { ...baseStyle, content: '⚡' },
-      'refresh-outline': { ...baseStyle, content: '↻' },
-      'close-outline': { ...baseStyle, content: '×' },
-      'trash-outline': { ...baseStyle, content: '🗑' },
-      'card-outline': { ...baseStyle, content: '💳' },
-      'arrow-back-outline': { ...baseStyle, content: '←' },
-      'checkmark-outline': { ...baseStyle, content: '✓' },
-      'create-outline': { ...baseStyle, content: '✎' },
-      'log-out-outline': { ...baseStyle, content: '←' },
-      'send-outline': { ...baseStyle, content: '→' },
-      'location-outline': { ...baseStyle, content: '📍' },
-      'mail-outline': { ...baseStyle, content: '✉' },
-      'time-outline': { ...baseStyle, content: '⏰' },
-      'eye-outline': { ...baseStyle, content: '👁' },
-      'arrow-forward-outline': { ...baseStyle, content: '→' },
-      'chatbubble-outline': { ...baseStyle, content: '💬' },
-      'star': { ...baseStyle, content: '★' },
-      'star-outline': { ...baseStyle, content: '☆' }
-    };
-
-    return icons[iconName] || icons['home-outline'];
-  };
-
-  const iconStyle = getIconStyles(icon);
+// Ultra-simple icon component
+const IconWrapper = ({ icon, size = 24, color = 'currentColor', className = '', style = {}, ...props }) => {
+  const iconText = (() => {
+    switch (icon) {
+      case 'home-outline': return '🏠';
+      case 'storefront-outline': return '🏪';
+      case 'information-circle-outline': return 'ℹ️';
+      case 'newspaper-outline': return '📰';
+      case 'call-outline': return '📞';
+      case 'bag-outline': return '🛍️';
+      case 'person-outline': return '👤';
+      case 'log-in-outline': return '🔐';
+      case 'sparkles': return '✨';
+      case 'remove-outline': return '−';
+      case 'add-outline': return '+';
+      case 'bag-add-outline': return '🛒';
+      case 'flash-outline': return '⚡';
+      case 'refresh-outline': return '↻';
+      case 'close-outline': return '×';
+      case 'trash-outline': return '🗑️';
+      case 'card-outline': return '💳';
+      case 'arrow-back-outline': return '←';
+      case 'checkmark-outline': return '✓';
+      case 'create-outline': return '✎';
+      case 'log-out-outline': return '←';
+      case 'send-outline': return '→';
+      case 'location-outline': return '📍';
+      case 'mail-outline': return '✉';
+      case 'time-outline': return '⏰';
+      case 'eye-outline': return '👁';
+      case 'arrow-forward-outline': return '→';
+      case 'chatbubble-outline': return '💬';
+      case 'star': return '★';
+      case 'star-outline': return '☆';
+      default: return '●';
+    }
+  })();
 
   return (
     <span
-      style={iconStyle}
       className={className}
+      style={{
+        fontSize: `${size}px`,
+        color: color,
+        display: 'inline-block',
+        lineHeight: '1',
+        verticalAlign: 'middle',
+        ...style
+      }}
       {...props}
     >
-      {iconStyle.content}
+      {iconText}
     </span>
   );
 };
