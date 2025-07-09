@@ -187,6 +187,9 @@ export const CartProvider = ({ children }) => {
           payload: currentItems
         });
         
+        // Show notification
+        showCartNotification('add', product.name, quantity);
+        
         return { success: true, message: 'Đã thêm sản phẩm vào giỏ hàng' };
       } else {
         // Authenticated mode - use API
@@ -200,6 +203,9 @@ export const CartProvider = ({ children }) => {
           payload: response.data.cart
         });
         
+        // Show notification
+        showCartNotification('add', product.name, quantity);
+        
         return { success: true, message: 'Đã thêm sản phẩm vào giỏ hàng' };
       }
     } catch (error) {
@@ -208,6 +214,10 @@ export const CartProvider = ({ children }) => {
         type: actionTypes.ADD_TO_CART_FAILURE,
         payload: errorMessage
       });
+      
+      // Show error notification
+      showError(errorMessage);
+      
       return { success: false, error: errorMessage };
     }
   };
