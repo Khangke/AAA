@@ -5,7 +5,15 @@ import { useCart } from '../context/CartContext';
 const MobileNavigation = () => {
   const location = useLocation();
   const { getCartItemCount } = useCart();
-  const cartCount = getCartItemCount();
+  
+  // Safely get cart count with error handling
+  let cartCount = 0;
+  try {
+    cartCount = getCartItemCount() || 0;
+  } catch (error) {
+    console.error('Error getting cart count:', error);
+    cartCount = 0;
+  }
 
   const navItems = [
     { path: '/', label: 'Trang Chủ', icon: '🏠' },
@@ -18,7 +26,7 @@ const MobileNavigation = () => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-deep-black/95 backdrop-blur-md border-t border-luxury-gold/20">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-deep-black/95 backdrop-blur-md border-t border-luxury-gold/20 safe-area-inset-bottom">
       <div className="grid grid-cols-7 gap-1 px-2 py-2">
         {navItems.map((item) => (
           <Link
@@ -33,8 +41,8 @@ const MobileNavigation = () => {
             <div className="relative">
               <span className="text-lg">{item.icon}</span>
               {item.path === '/cart' && cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-luxury-gold text-deep-black text-xs rounded-full w-4 h-4 flex items-center justify-center animate-pulse">
-                  {cartCount}
+                <span className="absolute -top-1 -right-1 bg-luxury-gold text-deep-black text-xs rounded-full w-4 h-4 flex items-center justify-center animate-pulse font-bold">
+                  {cartCount > 99 ? '99+' : cartCount}
                 </span>
               )}
             </div>
