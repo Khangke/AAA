@@ -568,7 +568,8 @@ def test_remove_from_cart():
         assert item["product_id"] != TEST_PRODUCT_ID, f"Product {TEST_PRODUCT_ID} should not be in the cart"
     
     return response.json()
-# Guest Cart and Order Tests
+# Guest Cart and Order Tests - These endpoints are not implemented in the current backend
+# Keeping these tests commented out for future reference
 def test_guest_add_to_cart():
     """Test adding items to cart as a guest (without authentication)"""
     print("\n=== Testing Guest Cart: Add Item ===")
