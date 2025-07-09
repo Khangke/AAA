@@ -452,16 +452,18 @@ const CartPage = () => {
                 <div className="flex space-x-2">
                   <button
                     onClick={() => setShowCheckout(false)}
-                    className="flex-1 bg-charcoal border border-luxury-gold/30 text-soft-gold px-3 py-2 rounded-lg font-medium hover:bg-luxury-gold/10 transition-colors text-xs"
+                    className="flex-1 bg-charcoal border border-luxury-gold/30 text-soft-gold px-3 py-2 rounded-lg font-medium hover:bg-luxury-gold/10 transition-colors text-xs flex items-center justify-center space-x-1"
                   >
-                    Quay Lại
+                    <IonIcon icon="arrow-back-outline" size={14} />
+                    <span>Quay Lại</span>
                   </button>
                   <button
                     onClick={handleCheckout}
                     disabled={isCheckingOut}
-                    className="flex-1 bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-3 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-xs"
+                    className="flex-1 bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-3 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-xs flex items-center justify-center space-x-1"
                   >
-                    {isCheckingOut ? 'Đang Xử Lý...' : 'Đặt Hàng'}
+                    <IonIcon icon="checkmark-outline" size={14} color="#1a1a1a" />
+                    <span>{isCheckingOut ? 'Đang Xử Lý...' : 'Đặt Hàng'}</span>
                   </button>
                 </div>
               </div>
