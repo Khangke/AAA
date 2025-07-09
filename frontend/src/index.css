@@ -37,6 +37,16 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
   }
+
+  .mobile-nav-padding {
+    padding-bottom: 5rem; /* Space for mobile navigation */
+  }
+
+  @media (min-width: 768px) {
+    .mobile-nav-padding {
+      padding-bottom: 0;
+    }
+  }
 }
 
 body {
