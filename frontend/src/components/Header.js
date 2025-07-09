@@ -35,7 +35,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 hover:scale-105 transition-transform duration-300">
             <div className="w-10 h-10 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-lg">
-              <IonIcon icon="sparkles" size={20} color="#1a1a1a" />
+              <IconWrapper icon="sparkles" size={20} color="#1a1a1a" />
             </div>
             <div className="text-luxury-gold font-luxury text-xl font-bold">
               Khang Trầm Hương
