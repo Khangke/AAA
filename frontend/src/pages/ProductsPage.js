@@ -15,7 +15,7 @@ const ProductsPage = () => {
   const [sortBy, setSortBy] = useState('featured');
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
   useEffect(() => {
     fetchProducts();
