@@ -510,6 +510,114 @@ backend:
         comment: "Performed load testing with 10 concurrent users. The /products and /categories endpoints handle concurrent load excellently (78.33ms and 58.07ms average response times respectively with 100% success rate). However, the product detail endpoint (/products/{id}) shows poor performance under high load (2303ms average). Also detected a 21.76% performance degradation for the /products endpoint over multiple sequential requests, suggesting potential memory leaks or resource exhaustion issues that should be monitored."
 
 frontend:
+  - task: "Logo Update với Ionic Icons"
+    implemented: true
+    working: true
+    file: "frontend/src/components/Header.js, frontend/src/components/Footer.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã cập nhật logo từ 'leaf' thành 'sparkles' cho phù hợp với thương hiệu trầm hương luxury. Cập nhật cả Header và Footer để đồng bộ. Thêm hiệu ứng hover cho logo trong Header."
+
+  - task: "Navigation Icons Update"
+    implemented: true
+    working: true
+    file: "frontend/src/components/Header.js, frontend/src/components/MobileNavigation.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã cập nhật tất cả navigation icons sử dụng Ionic icons phiên bản outline: home-outline, storefront-outline, information-circle-outline, newspaper-outline, call-outline, bag-outline, person-outline, log-in-outline. Cập nhật cả desktop và mobile navigation."
+
+  - task: "Product Page Button Icons"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/ProductDetailPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã thêm icons vào các nút trong trang chi tiết sản phẩm: remove-outline và add-outline cho quantity controls, bag-add-outline cho 'Thêm vào giỏ hàng', flash-outline cho 'Mua Ngay'. Tất cả nút đều có layout flexbox để căn chỉnh icon và text."
+
+  - task: "Products Page Button Icons"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/ProductsPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã thêm icons vào các nút trong trang sản phẩm: refresh-outline cho 'Thử Lại', close-outline cho 'Xóa bộ lọc'. Cải thiện UX với icon trực quan."
+
+  - task: "Cart Page Button Icons"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/CartPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã thêm icons vào tất cả nút trong giỏ hàng: remove-outline/add-outline cho quantity controls, trash-outline cho 'Xóa', card-outline cho 'Tiến Hành Thanh Toán', arrow-back-outline cho 'Quay Lại', checkmark-outline cho 'Đặt Hàng'."
+
+  - task: "Account Page Button Icons"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/AccountPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã thêm icons vào các nút trong trang tài khoản: create-outline cho 'Chỉnh sửa', close-outline cho 'Hủy', log-out-outline cho 'Đăng xuất'. Cải thiện trải nghiệm người dùng."
+
+  - task: "Contact Page Icons & Links"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/ContactPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã thêm send-outline icon cho nút 'Gửi Tin Nhắn' và cập nhật tất cả contact info icons: location-outline, call-outline, mail-outline, time-outline. Đã đảm bảo các liên kết tel: và mailto: hoạt động đúng."
+
+  - task: "HomePage Button Icons & Links"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/HomePage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã thêm icons vào tất cả nút trong trang chủ: storefront-outline cho 'Khám Phá Sản Phẩm', call-outline cho 'Liên Hệ Ngay', eye-outline cho 'Xem Chi Tiết'/'Xem', refresh-outline cho 'Tải Lại', arrow-forward-outline cho 'Xem Tất Cả Sản Phẩm'. Tất cả nút đều có liên kết hoạt động đúng."
+
+  - task: "Ionic Icons Integration"
+    implemented: true
+    working: true
+    file: "frontend/public/index.html"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Đã thêm Ionic Icons scripts vào HTML template để load icons từ CDN. Sử dụng phiên bản 8.0.0 với cả ES modules và nomodule fallback để đảm bảo tương thích."
+
   - task: "Code Splitting & Lazy Loading"
     implemented: true
     working: true
