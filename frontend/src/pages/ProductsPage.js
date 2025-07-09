@@ -145,16 +145,16 @@ const ProductsPage = () => {
   }
 
   return (
-    <div className="min-h-screen pt-14 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-3 sm:py-8">
+    <div className="min-h-screen pt-16 md:pt-20 bg-deep-black mobile-nav-padding">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
         
-        {/* Header - Compact for mobile */}
-        <div className="text-center mb-3 sm:mb-6">
-          <h1 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-1 sm:mb-2">
-            Sản Phẩm Trầm Hương Cao Cấp
+        {/* Header */}
+        <div className="text-center mb-4 sm:mb-6">
+          <h1 className="font-luxury text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-luxury-gold mb-2 sm:mb-4">
+            Sản Phẩm Trầm Hương
           </h1>
-          <p className="text-soft-gold text-xs sm:text-sm md:text-base max-w-2xl mx-auto">
-            Khám phá bộ sưu tập trầm hương luxury được tuyển chọn kỹ lưỡng
+          <p className="text-soft-gold text-sm sm:text-base">
+            Khám phá bộ sưu tập trầm hương cao cấp từ Việt Nam
           </p>
         </div>
 
