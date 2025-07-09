@@ -175,16 +175,7 @@ const ProductDetailPage = () => {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen pt-14 md:pt-20 bg-deep-black">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
-          <div className="text-center py-12">
-            <div className="text-luxury-gold text-4xl mb-4 animate-pulse">⏳</div>
-            <p className="text-soft-gold">Đang tải thông tin sản phẩm...</p>
-          </div>
-        </div>
-      </div>
-    );
+    return <ProductDetailSkeleton />;
   }
 
   if (error || !product) {
