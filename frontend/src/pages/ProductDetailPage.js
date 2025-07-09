@@ -412,9 +412,10 @@ const ProductDetailPage = () => {
                   <button
                     onClick={handleAddToCart}
                     disabled={isAddingToCart || getAvailableStock() === 0}
-                    className="w-full border-2 border-luxury-gold text-luxury-gold bg-transparent px-6 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-luxury-gold hover:text-deep-black hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                    className="w-full border-2 border-luxury-gold text-luxury-gold bg-transparent px-6 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-luxury-gold hover:text-deep-black hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
                   >
-                    {isAddingToCart ? 'Đang thêm...' : 'Thêm vào giỏ hàng'}
+                    <IonIcon icon="bag-add-outline" size={20} />
+                    <span>{isAddingToCart ? 'Đang thêm...' : 'Thêm vào giỏ hàng'}</span>
                   </button>
 
                   {/* Buy Now Button - Mobile Optimized */}
