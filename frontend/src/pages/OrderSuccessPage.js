@@ -164,7 +164,7 @@ const OrderSuccessPage = () => {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-luxury-gold font-medium text-sm sm:text-base">
-                    {item.product_name || `Sản phẩm ${item.product_id}`}
+                    {item.name || `Sản phẩm ${item.product_id}`}
                   </h3>
                   <p className="text-soft-gold text-xs sm:text-sm">
                     Số lượng: {item.quantity}
