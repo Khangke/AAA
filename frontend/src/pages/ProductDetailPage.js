@@ -238,14 +238,11 @@ const ProductDetailPage = () => {
           <div className="space-y-2 sm:space-y-3">
             {/* Main Image - Reduced size */}
             <div className="relative bg-charcoal/30 rounded-xl overflow-hidden" style={{ aspectRatio: '4/3' }}>
-              <img
+              <LazyImage
                 src={currentImages[selectedImageIndex]}
                 alt={product.name}
-                className="w-full h-full object-cover cursor-pointer"
+                className="w-full h-full cursor-pointer"
                 onClick={() => handleImageClick(selectedImageIndex)}
-                onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/400x300/1A1A1A/D4AF37?text=No+Image';
-                }}
               />
               
               {/* Discount Badge */}
@@ -282,10 +279,10 @@ const ProductDetailPage = () => {
                         : 'border-luxury-gold/30 hover:border-luxury-gold/60'
                     }`}
                   >
-                    <img
+                    <LazyImage
                       src={image}
                       alt={`${product.name} ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full"
                     />
                   </button>
                 ))}
