@@ -5,7 +5,15 @@ import { useCart } from '../context/CartContext';
 const Header = () => {
   const location = useLocation();
   const { getCartItemCount } = useCart();
-  const cartCount = getCartItemCount();
+  
+  // Safely get cart count with error handling
+  let cartCount = 0;
+  try {
+    cartCount = getCartItemCount() || 0;
+  } catch (error) {
+    console.error('Error getting cart count:', error);
+    cartCount = 0;
+  }
 
   const navItems = [
     { path: '/', label: 'Trang Chủ', icon: '🏠' },
@@ -48,8 +56,8 @@ const Header = () => {
                   <span>{item.label}</span>
                 </span>
                 {item.path === '/cart' && cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-luxury-gold text-deep-black text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
-                    {cartCount}
+                  <span className="absolute -top-2 -right-2 bg-luxury-gold text-deep-black text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse font-bold">
+                    {cartCount > 99 ? '99+' : cartCount}
                   </span>
                 )}
                 {location.pathname === item.path && (
