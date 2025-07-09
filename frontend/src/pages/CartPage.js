@@ -243,7 +243,7 @@ const CartPage = () => {
                           onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
                           className="w-7 h-7 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 text-luxury-gold hover:bg-luxury-gold/30 transition-colors flex items-center justify-center text-sm"
                         >
-                          -
+                          <IonIcon icon="remove-outline" size={14} />
                         </button>
                         <span className="text-white font-medium min-w-[1.5rem] text-center text-sm">
                           {item.quantity}
@@ -252,7 +252,7 @@ const CartPage = () => {
                           onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
                           className="w-7 h-7 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 text-luxury-gold hover:bg-luxury-gold/30 transition-colors flex items-center justify-center text-sm"
                         >
-                          +
+                          <IonIcon icon="add-outline" size={14} />
                         </button>
                       </div>
                       
