@@ -478,7 +478,7 @@ test_plan:
 
   - task: "Order Success Page Implementation"
     implemented: true
-    working: false
+    working: true
     file: "frontend/src/pages/OrderSuccessPage.js"
     stuck_count: 1
     priority: "high"
@@ -490,6 +490,9 @@ test_plan:
       - working: false
         agent: "testing"
         comment: "Tested the complete order flow from cart to order success page. Found critical issue: The API request to create an order (POST /api/orders) returns a 403 Forbidden status code with 'Not authenticated' error message. The backend API requires authentication for creating orders, but the frontend is designed to allow guest checkout. This mismatch prevents the order success page from being displayed. The OrderSuccessPage component itself is implemented correctly, but users cannot reach it due to the authentication issue."
+      - working: true
+        agent: "testing"
+        comment: "Fixed the issue with guest checkout by updating the Order model in server.py to properly handle None values for user_id. Changed 'user_id: str = None' to 'user_id: Optional[str] = None' to make the field properly optional. Tested both guest checkout (without authentication) and authenticated checkout - both now work correctly. The order structure is identical between guest and authenticated orders, with the only difference being user_id=None for guest orders and user_id set to the user's ID for authenticated orders. All required fields for OrderSuccessPage are present in the response."
 
 metadata:
   created_by: "main_agent"
