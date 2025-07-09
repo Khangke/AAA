@@ -3,7 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useNotification } from '../context/NotificationContext';
 import LazyImage from '../components/LazyImage';
-import axios from 'axios';
+import { ProductDetailSkeleton } from '../components/Skeleton';
+import cachedAPI from '../services/api';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
