@@ -304,9 +304,10 @@ const CartPage = () => {
               {!showCheckout && (
                 <button
                   onClick={() => setShowCheckout(true)}
-                  className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] text-sm"
+                  className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] text-sm flex items-center justify-center space-x-2"
                 >
-                  Tiến Hành Thanh Toán
+                  <IonIcon icon="card-outline" size={18} color="#1a1a1a" />
+                  <span>Tiến Hành Thanh Toán</span>
                 </button>
               )}
             </div>
