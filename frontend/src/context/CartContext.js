@@ -327,6 +327,7 @@ export const CartProvider = ({ children }) => {
       }
     } catch (error) {
       const errorMessage = error.response?.data?.detail || 'Không thể xóa giỏ hàng';
+      showError(errorMessage);
       return { success: false, error: errorMessage };
     }
   };
