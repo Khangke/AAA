@@ -386,7 +386,18 @@ async def seed_products():
             "original_price": 3000000,
             "category": "Vòng Tay",
             "image_url": "https://images.unsplash.com/photo-1662473217799-6e7288f19741",
-            "images": ["https://images.unsplash.com/photo-1662473217799-6e7288f19741"],
+            "images": [
+                "https://images.unsplash.com/photo-1662473217799-6e7288f19741",
+                "https://images.unsplash.com/photo-1605100804763-247f67b3557e",
+                "https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f",
+                "https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae",
+                "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338",
+                "https://images.unsplash.com/photo-1529720317453-c8da503f2051",
+                "https://images.unsplash.com/photo-1573408301185-9146fe634ad0",
+                "https://images.unsplash.com/photo-1623859006251-54b0c5c4c45c",
+                "https://images.unsplash.com/photo-1524824267900-2fa9cbf7a506",
+                "https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NjAwMjJ8MHwxfHNlYXJjaHwxfHxqZXdlbHJ5fGVufDB8fHx8MTY5ODc2MjQ1MHww&ixlib=rb-4.0.3&q=80&w=1080"
+            ],
             "variations": [
                 {"size": "6mm", "price": 2200000, "original_price": 2800000, "stock_quantity": 10},
                 {"size": "8mm", "price": 2500000, "original_price": 3000000, "stock_quantity": 8},
