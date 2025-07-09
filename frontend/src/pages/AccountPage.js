@@ -246,12 +246,12 @@ const AccountPage = () => {
   }
 
   return (
-    <div className="min-h-screen pt-14 md:pt-20 bg-deep-black">
+    <div className="min-h-screen pt-14 md:pt-20 bg-deep-black mobile-nav-padding">
       <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-12">
         
         {/* Header */}
         <div className="text-center mb-6 sm:mb-12">
-          <h1 className="font-luxury text-2xl sm:text-4xl lg:text-5xl font-bold text-luxury-gold mb-2 sm:mb-4">
+          <h1 className="font-luxury text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-luxury-gold mb-2 sm:mb-4">
             {isAuthenticated ? 'Tài Khoản Của Tôi' : 'Đăng Nhập / Đăng Ký'}
           </h1>
           {isAuthenticated && user && (
