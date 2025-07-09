@@ -36,6 +36,9 @@ const PageLoadingSpinner = () => (
 function AppContent() {
   const [isMobile, setIsMobile] = useState(false);
 
+  // Preload critical resources
+  usePreloadResources();
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
