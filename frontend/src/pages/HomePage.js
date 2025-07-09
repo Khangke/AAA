@@ -362,11 +362,13 @@ const HomePage = () => {
             Liên hệ ngay để được tư vấn sản phẩm phù hợp
           </p>
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center max-w-md mx-auto">
-            <button className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:shadow-lg transition-all">
-              📞 Liên Hệ Ngay
+            <button className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:shadow-lg transition-all flex items-center justify-center space-x-2">
+              <IonIcon icon="call-outline" size={18} color="#1a1a1a" />
+              <span>Liên Hệ Ngay</span>
             </button>
-            <button className="border border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all">
-              🛍️ Xem Sản Phẩm
+            <button className="border border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all flex items-center justify-center space-x-2">
+              <IonIcon icon="storefront-outline" size={18} />
+              <span>Xem Sản Phẩm</span>
             </button>
           </div>
         </div>
