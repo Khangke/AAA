@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, useMemo } from 'react';
 import ProductCard from '../components/ProductCard';
+import cachedAPI from '../services/api';
+import { debounce } from '../utils/cacheManager';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
