@@ -33,9 +33,9 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center">
-              <IonIcon icon="leaf" size={20} color="#1a1a1a" />
+          <Link to="/" className="flex items-center space-x-3 hover:scale-105 transition-transform duration-300">
+            <div className="w-10 h-10 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-lg">
+              <IonIcon icon="sparkles" size={20} color="#1a1a1a" />
             </div>
             <div className="text-luxury-gold font-luxury text-xl font-bold">
               Khang Trầm Hương
