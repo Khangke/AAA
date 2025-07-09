@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { withCache } from './cacheManager';
+import { withCache } from '../utils/cacheManager';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
