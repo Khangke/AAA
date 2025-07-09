@@ -948,6 +948,170 @@ def test_bank_transfer_order():
     
     return response.json()
 
+def test_order_structure_for_success_page():
+    """Test order structure specifically for OrderSuccessPage requirements"""
+    print("\n=== Testing Order Structure for OrderSuccessPage ===")
+    
+    # First, add an item to the cart
+    add_to_cart_url = f"{API_BASE_URL}/cart/add"
+    add_data = {
+        "product_id": TEST_PRODUCT_ID,
+        "quantity": 2
+    }
+    requests.post(add_to_cart_url, headers=get_auth_headers(), json=add_data)
+    
+    # Get the cart to use its items for the order
+    get_cart_url = f"{API_BASE_URL}/cart"
+    cart_response = requests.get(get_cart_url, headers=get_auth_headers())
+    cart_items = cart_response.json()["items"]
+    
+    # Create the order
+    url = f"{API_BASE_URL}/orders"
+    headers = get_auth_headers()
+    data = {
+        "items": cart_items,
+        "payment_method": "cod",
+        "customer_info": {
+            "full_name": "Nguyễn Văn Test",
+            "email": TEST_USER["email"],
+            "phone": "0987654321"
+        },
+        "shipping_address": {
+            "address": "123 Đường Lê Lợi",
+            "city": "Hồ Chí Minh",
+            "district": "Quận 1",
+            "ward": "Phường Bến Nghé",
+            "zip_code": "70000"
+        },
+        "notes": "Đơn hàng test cho OrderSuccessPage"
+    }
+    
+    response = requests.post(url, headers=headers, json=data)
+    
+    print(f"Status Code: {response.status_code}")
+    print("Response:")
+    pprint(response.json())
+    
+    assert response.status_code in [200, 201], f"Expected status code 200 or 201, got {response.status_code}"
+    
+    # Verify all fields required by OrderSuccessPage
+    order_data = response.json()
+    
+    # Required fields for OrderSuccessPage
+    required_fields = [
+        "id",
+        "created_at",
+        "total_amount",  # total
+        "payment_method",
+        "customer_info",  # or user
+        "items",
+        "subtotal",
+        "shipping_fee"
+    ]
+    
+    for field in required_fields:
+        assert field in order_data, f"Order should contain '{field}' field for OrderSuccessPage"
+    
+    # Verify items structure
+    assert isinstance(order_data["items"], list), "Items should be a list"
+    assert len(order_data["items"]) > 0, "Order should have at least one item"
+    
+    # Verify item structure
+    item = order_data["items"][0]
+    item_fields = ["product_id", "quantity", "price", "name", "image_url", "subtotal"]
+    for field in item_fields:
+        assert field in item, f"Order item should contain '{field}' field"
+    
+    # Verify customer_info structure
+    customer_info = order_data["customer_info"]
+    customer_fields = ["full_name", "email", "phone"]
+    for field in customer_fields:
+        assert field in customer_info, f"Customer info should contain '{field}' field"
+    
+    # Verify shipping fee is 30,000 VND
+    assert order_data["shipping_fee"] == 30000, "Shipping fee should be 30,000 VND"
+    
+    # Verify total calculation
+    assert order_data["total_amount"] == order_data["subtotal"] + order_data["shipping_fee"], "Total amount should be subtotal + shipping fee"
+    
+    return order_data
+
+def test_guest_order_creation():
+    """Test creating an order as a guest (without authentication)"""
+    print("\n=== Testing Guest Order Creation ===")
+    
+    # Create sample cart items directly (since we don't have guest cart API)
+    cart_items = [
+        {
+            "product_id": TEST_PRODUCT_ID,
+            "quantity": 2,
+            "price": 2200000,  # Use price from a known product
+            "name": "Vòng Trầm Hương Cao Cấp",  # Use name from a known product
+            "image_url": "https://images.unsplash.com/photo-1662473217799-6e7288f19741"
+        }
+    ]
+    
+    # Create the order
+    url = f"{API_BASE_URL}/orders"
+    data = {
+        "items": cart_items,
+        "payment_method": "cod",
+        "customer_info": {
+            "full_name": "Khách Hàng",
+            "email": "guest@example.com",
+            "phone": "0987654321"
+        },
+        "shipping_address": {
+            "address": "123 Đường Lê Lợi",
+            "city": "Hồ Chí Minh",
+            "district": "Quận 1",
+            "ward": "Phường Bến Nghé",
+            "zip_code": "70000"
+        },
+        "notes": "Đơn hàng khách không đăng nhập"
+    }
+    
+    # Try to create order without authentication
+    response = make_request("POST", url, json=data)
+    
+    print(f"Status Code: {response.status_code}")
+    
+    # If the API requires authentication, we'll get a 401 or 403 error
+    # In that case, we'll note that guest checkout is not supported
+    if response.status_code in [401, 403]:
+        print("Guest checkout is not supported - authentication required")
+        print("This is expected if the API requires authentication for all orders")
+        return {"message": "Guest checkout not supported"}
+    
+    print("Response:")
+    pprint(response.json())
+    
+    # If we get here, the API accepted the guest order
+    assert response.status_code in [200, 201], f"Expected status code 200 or 201, got {response.status_code}"
+    
+    # Verify all fields required by OrderSuccessPage
+    order_data = response.json()
+    
+    # Required fields for OrderSuccessPage
+    required_fields = [
+        "id",
+        "created_at",
+        "total_amount",  # total
+        "payment_method",
+        "customer_info",  # or user
+        "items",
+        "subtotal",
+        "shipping_fee"
+    ]
+    
+    for field in required_fields:
+        assert field in order_data, f"Order should contain '{field}' field for OrderSuccessPage"
+    
+    # Verify shipping fee is 30,000 VND
+    assert order_data["shipping_fee"] == 30000, "Shipping fee should be 30,000 VND"
+    
+    return order_data
+
 def run_all_tests():
     """Run all API tests"""
     print("\n======= STARTING BACKEND API TESTS =======\n")
