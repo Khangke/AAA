@@ -496,6 +496,8 @@ def test_update_current_user():
     
     url = f"{API_BASE_URL}/auth/me"
     headers = get_auth_headers()
+    
+    # Test with valid data
     data = {
         "phone": "0987654321",
         "address": "456 Đường Nguyễn Huệ",
@@ -514,6 +516,51 @@ def test_update_current_user():
     assert response.status_code == 200, f"Expected status code 200, got {response.status_code}"
     assert response.json()["phone"] == data["phone"], "Phone number should be updated"
     assert response.json()["address"] == data["address"], "Address should be updated"
+    assert response.json()["city"] == data["city"], "City should be updated"
+    assert response.json()["district"] == data["district"], "District should be updated"
+    assert response.json()["ward"] == data["ward"], "Ward should be updated"
+    assert response.json()["zip_code"] == data["zip_code"], "Zip code should be updated"
+    
+    # Test with empty data (should fail)
+    print("\n=== Testing PUT /api/auth/me with Empty Data ===")
+    empty_data = {}
+    empty_response = requests.put(url, headers=headers, json=empty_data)
+    
+    print(f"Status Code: {empty_response.status_code}")
+    print("Response:")
+    pprint(empty_response.json())
+    
+    assert empty_response.status_code == 400, f"Expected status code 400 for empty data, got {empty_response.status_code}"
+    assert "detail" in empty_response.json(), "Response should contain 'detail' field"
+    assert "No fields to update" in empty_response.json()["detail"], "Error message should indicate no fields to update"
+    
+    # Test with invalid token
+    print("\n=== Testing PUT /api/auth/me with Invalid Token ===")
+    invalid_headers = {"Authorization": "Bearer invalidtoken12345"}
+    invalid_response = requests.put(url, headers=invalid_headers, json=data)
+    
+    print(f"Status Code: {invalid_response.status_code}")
+    print("Response:")
+    pprint(invalid_response.json())
+    
+    assert invalid_response.status_code == 401, f"Expected status code 401 for invalid token, got {invalid_response.status_code}"
+    
+    # Test partial update (only update full_name)
+    print("\n=== Testing Partial Update (only full_name) ===")
+    partial_data = {
+        "full_name": "Nguyễn Văn Updated"
+    }
+    partial_response = requests.put(url, headers=headers, json=partial_data)
+    
+    print(f"Status Code: {partial_response.status_code}")
+    print("Response:")
+    pprint(partial_response.json())
+    
+    assert partial_response.status_code == 200, f"Expected status code 200, got {partial_response.status_code}"
+    assert partial_response.json()["full_name"] == partial_data["full_name"], "Full name should be updated"
+    # Other fields should remain unchanged
+    assert partial_response.json()["phone"] == data["phone"], "Phone number should remain unchanged"
+    assert partial_response.json()["address"] == data["address"], "Address should remain unchanged"
     
     return response.json()
 
