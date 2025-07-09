@@ -407,7 +407,7 @@ agent_communication:
   - agent: "testing"
     message: "Đã test lại API endpoint POST /api/orders để xác minh nó hoạt động chính xác cho cả guest checkout và authenticated users. Kết quả: (1) Guest checkout hoạt động hoàn hảo với user_id=None, không yêu cầu xác thực. (2) Authenticated checkout hoạt động chính xác với user_id lấy từ token. (3) Cấu trúc đơn hàng hoàn toàn giống nhau giữa hai trường hợp, chỉ khác ở giá trị user_id. (4) Response chứa đầy đủ các trường cần thiết cho OrderSuccessPage: id, created_at, total_amount, payment_method, customer_info, items, subtotal, shipping_fee. (5) Phí vận chuyển 30,000 VND được áp dụng đúng. (6) Tổng tiền được tính chính xác (subtotal + shipping_fee). Tóm lại, API endpoint POST /api/orders hoạt động hoàn hảo cho cả hai trường hợp và trả về đúng cấu trúc dữ liệu cần thiết cho OrderSuccessPage."
 
-user_problem_statement: "check và fix lỗi bug toàn trang"
+user_problem_statement: "tối ưu loading cho page thật mượt mà không giật lag, không chờ"
 
 backend:
   - task: "Product Images Enhancement"
