@@ -102,9 +102,6 @@ const CartPage = () => {
           name: item.name,
           image_url: item.image_url || item.images?.[0] || ''
         })),
-        subtotal: getSubtotal(),
-        shipping_fee: getShippingFee(),
-        total: getCartTotal(),
         payment_method: guestInfo.payment_method,
         customer_info: isGuest && !isAuthenticated ? {
           full_name: guestInfo.full_name,
