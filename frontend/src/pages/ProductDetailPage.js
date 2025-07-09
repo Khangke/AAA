@@ -141,7 +141,7 @@ const ProductDetailPage = () => {
 
     try {
       await addToCart(cartItem);
-      showSuccess('Đã thêm vào giỏ hàng!');
+      // Notification is already shown in CartContext
       // Navigate to cart page after adding to cart
       navigate('/cart');
     } catch (error) {
