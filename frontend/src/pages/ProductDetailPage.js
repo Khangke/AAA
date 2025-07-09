@@ -116,10 +116,10 @@ const ProductDetailPage = () => {
 
     try {
       await addToCart(cartItem);
-      showNotification('Đã thêm vào giỏ hàng!', 'success');
+      showSuccess('Đã thêm vào giỏ hàng!');
     } catch (error) {
       console.error('Error adding to cart:', error);
-      showNotification('Có lỗi xảy ra khi thêm vào giỏ hàng', 'error');
+      showError('Có lỗi xảy ra khi thêm vào giỏ hàng');
     } finally {
       setIsAddingToCart(false);
     }
