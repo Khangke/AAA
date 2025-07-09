@@ -53,7 +53,7 @@ const OrderSuccessPage = () => {
   }
 
   return (
-    <div className="min-h-screen pt-16 md:pt-20 bg-deep-black">
+    <div className="min-h-screen pt-16 md:pt-20 bg-deep-black mobile-nav-padding">
       <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
         
         {/* Success Header */}
