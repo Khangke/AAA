@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import IonIcon from './IonIcon';
 
 const Header = () => {
   const location = useLocation();
@@ -18,13 +19,13 @@ const Header = () => {
   }
 
   const navItems = [
-    { path: '/', label: 'Trang Chủ', icon: '🏠' },
-    { path: '/products', label: 'Sản Phẩm', icon: '🛍️' },
-    { path: '/about', label: 'Giới Thiệu', icon: 'ℹ️' },
-    { path: '/news', label: 'Tin Tức', icon: '📰' },
-    { path: '/contact', label: 'Liên Hệ', icon: '📞' },
-    { path: '/cart', label: 'Giỏ Hàng', icon: '🛒' },
-    { path: '/account', label: 'Tài Khoản', icon: '👤' },
+    { path: '/', label: 'Trang Chủ', icon: 'home' },
+    { path: '/products', label: 'Sản Phẩm', icon: 'storefront' },
+    { path: '/about', label: 'Giới Thiệu', icon: 'information-circle' },
+    { path: '/news', label: 'Tin Tức', icon: 'newspaper' },
+    { path: '/contact', label: 'Liên Hệ', icon: 'call' },
+    { path: '/cart', label: 'Giỏ Hàng', icon: 'basket' },
+    { path: '/account', label: 'Tài Khoản', icon: 'person' },
   ];
 
   return (
@@ -34,7 +35,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center">
-              <span className="text-deep-black font-bold text-lg">K</span>
+              <IonIcon icon="leaf" size={20} color="#1a1a1a" />
             </div>
             <div className="text-luxury-gold font-luxury text-xl font-bold">
               Khang Trầm Hương
@@ -60,7 +61,7 @@ const Header = () => {
                   }`}
                 >
                   <span className="flex items-center space-x-2">
-                    <span>{item.icon}</span>
+                    <IonIcon icon={item.icon} size={18} />
                     <span>
                       {item.path === '/account' && isAuthenticated 
                         ? (user?.full_name || 'Tài Khoản')
@@ -91,7 +92,7 @@ const Header = () => {
                 }`}
               >
                 <span className="flex items-center space-x-2">
-                  <span>👤</span>
+                  <IonIcon icon="log-in" size={18} />
                   <span>Đăng Nhập</span>
                 </span>
                 {location.pathname === '/account' && (
