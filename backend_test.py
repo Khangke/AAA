@@ -957,6 +957,7 @@ def run_all_tests():
         
         # Test product endpoints
         products = test_get_products()
+        product_detail = test_get_product_detail()
         category_products = test_filter_by_category()
         featured_products = test_filter_featured_products()
         search_results = test_search_products()
