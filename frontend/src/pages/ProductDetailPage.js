@@ -390,18 +390,18 @@ const ProductDetailPage = () => {
                   <div className="flex items-center border border-luxury-gold/30 rounded-lg">
                     <button
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="px-3 sm:px-4 py-2 text-luxury-gold hover:bg-luxury-gold/10 transition-colors"
+                      className="px-3 sm:px-4 py-2 text-luxury-gold hover:bg-luxury-gold/10 transition-colors flex items-center justify-center"
                     >
-                      −
+                      <IonIcon icon="remove-outline" size={16} />
                     </button>
                     <span className="px-4 sm:px-6 py-2 text-soft-gold font-medium">
                       {quantity}
                     </span>
                     <button
                       onClick={() => setQuantity(Math.min(getAvailableStock(), quantity + 1))}
-                      className="px-3 sm:px-4 py-2 text-luxury-gold hover:bg-luxury-gold/10 transition-colors"
+                      className="px-3 sm:px-4 py-2 text-luxury-gold hover:bg-luxury-gold/10 transition-colors flex items-center justify-center"
                     >
-                      +
+                      <IonIcon icon="add-outline" size={16} />
                     </button>
                   </div>
                 </div>
