@@ -43,30 +43,62 @@ const Header = () => {
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+            {navItems.map((item) => {
+              // Skip account item if not authenticated and show login status
+              if (item.path === '/account' && !isAuthenticated) {
+                return null;
+              }
+              
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`relative px-4 py-2 transition-all duration-300 ${
+                    location.pathname === item.path
+                      ? 'text-luxury-gold'
+                      : 'text-white hover:text-luxury-gold'
+                  }`}
+                >
+                  <span className="flex items-center space-x-2">
+                    <span>{item.icon}</span>
+                    <span>
+                      {item.path === '/account' && isAuthenticated 
+                        ? (user?.full_name || 'Tài Khoản')
+                        : item.label
+                      }
+                    </span>
+                  </span>
+                  {item.path === '/cart' && cartCount > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-luxury-gold text-deep-black text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse font-bold">
+                      {cartCount > 99 ? '99+' : cartCount}
+                    </span>
+                  )}
+                  {location.pathname === item.path && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-luxury-gold rounded-full"></div>
+                  )}
+                </Link>
+              );
+            })}
+            
+            {/* Login/Account button */}
+            {!isAuthenticated && (
               <Link
-                key={item.path}
-                to={item.path}
+                to="/account"
                 className={`relative px-4 py-2 transition-all duration-300 ${
-                  location.pathname === item.path
+                  location.pathname === '/account'
                     ? 'text-luxury-gold'
                     : 'text-white hover:text-luxury-gold'
                 }`}
               >
                 <span className="flex items-center space-x-2">
-                  <span>{item.icon}</span>
-                  <span>{item.label}</span>
+                  <span>👤</span>
+                  <span>Đăng Nhập</span>
                 </span>
-                {item.path === '/cart' && cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-luxury-gold text-deep-black text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse font-bold">
-                    {cartCount > 99 ? '99+' : cartCount}
-                  </span>
-                )}
-                {location.pathname === item.path && (
+                {location.pathname === '/account' && (
                   <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-luxury-gold rounded-full"></div>
                 )}
               </Link>
-            ))}
+            )}
           </nav>
         </div>
       </div>
