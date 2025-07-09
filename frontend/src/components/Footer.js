@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="mb-6 sm:mb-8">
           <div className="flex items-center space-x-2 mb-3 sm:mb-4">
             <div className="w-8 h-8 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center">
-              <IonIcon icon="leaf" size={16} color="#1a1a1a" />
+              <IonIcon icon="sparkles" size={16} color="#1a1a1a" />
             </div>
             <h3 className="font-luxury text-base sm:text-lg font-bold text-luxury-gold">
               Khang Trầm Hương
