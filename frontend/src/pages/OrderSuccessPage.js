@@ -200,7 +200,7 @@ const OrderSuccessPage = () => {
               <div className="flex justify-between text-lg sm:text-xl font-bold pt-2 border-t border-luxury-gold/20">
                 <span className="text-luxury-gold">Tổng cộng:</span>
                 <span className="text-luxury-gold">
-                  {formatPrice(orderData.total)}
+                  {formatPrice(orderData.total_amount || orderData.total)}
                 </span>
               </div>
             </div>
