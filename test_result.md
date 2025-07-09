@@ -208,7 +208,7 @@ frontend:
   - task: "Bug Fixes - Frontend Notifications"
     implemented: true
     working: true
-    file: "frontend/src/pages/ProductDetailPage.js"
+    file: "frontend/src/pages/ProductDetailPage.js, frontend/src/App.js"
     stuck_count: 0
     priority: "high"
     needs_retesting: false
@@ -216,9 +216,12 @@ frontend:
       - working: false
         agent: "main"
         comment: "Found bug: ProductDetailPage was using showNotification() which doesn't exist in NotificationContext"
+      - working: false
+        agent: "main"
+        comment: "Fixed notification method but user reported thông báo chưa hoạt động when adding to cart"
       - working: true
         agent: "main"
-        comment: "Fixed notification bug by changing showNotification() to showSuccess() and showError() methods that actually exist in NotificationContext"
+        comment: "Fixed notification issues: 1) Changed showNotification() to showSuccess() and showError() 2) Fixed provider order in App.js - NotificationProvider must wrap CartProvider 3) Removed duplicate notifications from ProductDetailPage to avoid conflicts"
 
   - task: "Bug Fixes - Backend URL Consistency"
     implemented: true
