@@ -94,7 +94,7 @@ const OrderSuccessPage = () => {
             <div>
               <p className="text-soft-gold mb-1">Tổng giá trị:</p>
               <p className="text-luxury-gold font-bold text-lg sm:text-xl">
-                {formatPrice(orderData.total)}
+                {formatPrice(orderData.total_amount || orderData.total)}
               </p>
             </div>
             <div>
