@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
-import IonIcon from './IonIcon';
+import IconWrapper from './IconWrapper';
 
 const Header = () => {
   const location = useLocation();
