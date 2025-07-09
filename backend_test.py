@@ -1075,18 +1075,10 @@ def test_guest_order_creation():
     response = make_request("POST", url, json=data)
     
     print(f"Status Code: {response.status_code}")
-    
-    # If the API requires authentication, we'll get a 401 or 403 error
-    # In that case, we'll note that guest checkout is not supported
-    if response.status_code in [401, 403]:
-        print("Guest checkout is not supported - authentication required")
-        print("This is expected if the API requires authentication for all orders")
-        return {"message": "Guest checkout not supported"}
-    
     print("Response:")
     pprint(response.json())
     
-    # If we get here, the API accepted the guest order
+    # The API should now accept guest orders with verify_token_optional
     assert response.status_code in [200, 201], f"Expected status code 200 or 201, got {response.status_code}"
     
     # Verify all fields required by OrderSuccessPage
@@ -1109,6 +1101,9 @@ def test_guest_order_creation():
     
     # Verify shipping fee is 30,000 VND
     assert order_data["shipping_fee"] == 30000, "Shipping fee should be 30,000 VND"
+    
+    # Verify user_id is None for guest orders
+    assert order_data["user_id"] is None, "Guest order should have user_id set to None"
     
     return order_data
 
