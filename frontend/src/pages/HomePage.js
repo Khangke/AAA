@@ -7,8 +7,6 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
@@ -32,8 +30,7 @@ const HomePage = () => {
 
   const fetchFeaturedProducts = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/products`);
-      const products = response.data;
+      const products = await cachedAPI.getAllProducts();
       
       // Filter featured products or take first 6
       const featured = products.filter(p => p.featured) || products.slice(0, 6);
