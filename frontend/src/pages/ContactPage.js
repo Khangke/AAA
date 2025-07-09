@@ -246,9 +246,10 @@ const ContactPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-3 rounded-lg font-bold text-base hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm flex items-center justify-center space-x-2"
               >
-                {isSubmitting ? 'Đang Gửi...' : 'Gửi Tin Nhắn'}
+                <IonIcon icon="send-outline" size={18} color="#1a1a1a" />
+                <span>{isSubmitting ? 'Đang Gửi...' : 'Gửi Tin Nhắn'}</span>
               </button>
             </form>
           </div>
