@@ -135,14 +135,14 @@ const OrderSuccessPage = () => {
             <div className="md:col-span-2">
               <p className="text-soft-gold mb-1">Địa chỉ giao hàng:</p>
               <p className="text-luxury-gold font-medium">
-                {orderData.customer_info?.address || orderData.user?.address}
+                {orderData.customer_info?.address || orderData.shipping_address?.address || orderData.user?.address}
               </p>
             </div>
-            {(orderData.customer_info?.note || orderData.note) && (
+            {(orderData.customer_info?.note || orderData.notes) && (
               <div className="md:col-span-2">
                 <p className="text-soft-gold mb-1">Ghi chú:</p>
                 <p className="text-luxury-gold font-medium">
-                  {orderData.customer_info?.note || orderData.note}
+                  {orderData.customer_info?.note || orderData.notes}
                 </p>
               </div>
             )}
