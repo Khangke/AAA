@@ -242,10 +242,11 @@ const HomePage = () => {
           
           <div className="text-center mt-4 sm:mt-6">
             <button 
-              className="text-luxury-gold hover:text-luxury-copper transition-colors text-sm sm:text-base underline"
+              className="text-luxury-gold hover:text-luxury-copper transition-colors text-sm sm:text-base underline flex items-center space-x-1"
               onClick={() => window.location.href = '/products'}
             >
-              Xem Tất Cả Sản Phẩm →
+              <span>Xem Tất Cả Sản Phẩm</span>
+              <IonIcon icon="arrow-forward-outline" size={16} />
             </button>
           </div>
         </div>
