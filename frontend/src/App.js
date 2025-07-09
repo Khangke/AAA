@@ -4,6 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import usePreloadResources from "./hooks/usePreloadResources";
 // import { usePerformanceMonitor } from "./utils/performanceMonitor";
 
+// Load Ionic Icons
+import { defineCustomElements } from 'ionicons/loader';
+
 // Context Providers
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
