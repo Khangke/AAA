@@ -397,11 +397,12 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Frontend Testing"
+    - "Product Detail Page Image Optimization"
+    - "Auto-Swipe Carousel Implementation"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
 
 agent_communication:
   - agent: "main"
-    message: "Đã hoàn thành tối ưu hóa trang tài khoản cho mobile theo yêu cầu của user. Giảm padding và margin để tối đa hóa không gian hiển thị: giảm pt-16 xuống pt-14, px-4 xuống px-3, py-8 xuống py-4. Cải thiện form spacing và text size để phù hợp với mobile. Tất cả content hiển thị đầy đủ trên màn hình mobile và có thể cuộn mượt mà. Form đăng ký và đăng nhập hoạt động tốt trên mobile với UX được cải thiện đáng kể."
+    message: "Đã hoàn thành tối ưu hóa trang chi tiết sản phẩm theo yêu cầu của user. 1) Giảm kích thước ảnh sản phẩm từ aspect-square xuống 4:3 để tiết kiệm không gian màn hình. 2) Thêm tính năng auto-swipe carousel với 10 ảnh cho mỗi sản phẩm, tự động chuyển ảnh sau 3 giây. 3) Thêm nút play/pause để điều khiển auto-swipe. 4) Thêm chỉ số ảnh hiện tại (x/10). 5) Tích hợp NotificationContext để hiển thị thông báo khi thêm sản phẩm vào giỏ. 6) Cập nhật backend với 10 ảnh jewelry chất lượng cao cho mỗi sản phẩm. Tất cả tính năng đã được implement và sẵn sàng test."
