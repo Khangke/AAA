@@ -42,7 +42,7 @@ const NotificationContainer = () => {
   }
 
   return (
-    <div className="fixed top-4 right-4 z-50 space-y-2 max-w-sm w-full">
+    <div className="fixed top-4 right-4 z-[9999] space-y-2 max-w-sm w-full pointer-events-none">
       {visibleNotifications.map((notification) => (
         <div
           key={notification.id}
@@ -53,13 +53,14 @@ const NotificationContainer = () => {
             transform transition-all duration-300 
             animate-slide-in-right
             relative
+            pointer-events-auto
           `}
         >
           <div className="flex items-start gap-2">
             <span className="text-base flex-shrink-0 mt-0.5">
               {getNotificationIcon(notification.type)}
             </span>
-            <p className="text-sm font-medium leading-tight flex-1">
+            <p className="text-sm font-medium leading-tight flex-1 break-words">
               {notification.message}
             </p>
           </div>
@@ -67,7 +68,7 @@ const NotificationContainer = () => {
           {/* Close button */}
           <button
             onClick={() => removeNotification(notification.id)}
-            className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors duration-200"
+            className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer"
             aria-label="Đóng thông báo"
           >
             <svg
