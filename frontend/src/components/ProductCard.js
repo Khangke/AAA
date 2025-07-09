@@ -30,17 +30,27 @@ const ProductCard = ({ product, onClick }) => {
   const handleAddToCart = async (e) => {
     e.stopPropagation();
     
-    setIsAddingToCart(true);
-    
-    const result = await addToCart(product, 1);
-    
-    if (result.success) {
-      showCartNotification('add', product.name, 1);
-    } else {
-      showError(result.error || 'Không thể thêm vào giỏ hàng');
+    if (!product || !product.id) {
+      showError('Sản phẩm không hợp lệ');
+      return;
     }
     
-    setIsAddingToCart(false);
+    setIsAddingToCart(true);
+    
+    try {
+      const result = await addToCart(product, 1);
+      
+      if (result.success) {
+        // Notification is already shown in addToCart function
+        console.log('Product added to cart successfully');
+      } else {
+        showError(result.error || 'Không thể thêm vào giỏ hàng');
+      }
+    } catch (error) {
+      showError('Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng');
+    } finally {
+      setIsAddingToCart(false);
+    }
   };
 
   const discount = calculateDiscount(product.original_price, product.price);
