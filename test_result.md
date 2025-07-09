@@ -284,16 +284,19 @@ frontend:
         comment: "Đã hoàn thành trang giỏ hàng hoạt động hoàn toàn mà không cần đăng nhập. Guest checkout với form đầy đủ: họ tên, email, SĐT, địa chỉ, ghi chú. Phí vận chuyển 30k, hỗ trợ COD và chuyển khoản ngân hàng. Layout mobile-friendly, hiển thị tóm tắt đơn hàng và checkout process hoàn chỉnh."
 
   - task: "Account Page Development"
-    implemented: false
-    working: false
+    implemented: true
+    working: true
     file: "frontend/src/pages/AccountPage.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "main"
         comment: "Currently just placeholder, need user registration/login, profile management, order history"
+      - working: true
+        agent: "main"
+        comment: "Hoàn thành trang Account với đăng nhập/đăng ký, quản lý profile, lịch sử đơn hàng. Tích hợp AuthContext hoàn chỉnh. UI responsive và user-friendly với validation form."
 
   - task: "Cart State Management"
     implemented: true
