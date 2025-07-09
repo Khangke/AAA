@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import IonIcon from './IonIcon';
 
 const MobileNavigation = () => {
   const location = useLocation();
@@ -18,13 +19,13 @@ const MobileNavigation = () => {
   }
 
   const navItems = [
-    { path: '/', label: 'Trang Chủ', icon: '🏠' },
-    { path: '/products', label: 'Sản Phẩm', icon: '🛍️' },
-    { path: '/about', label: 'Giới Thiệu', icon: 'ℹ️' },
-    { path: '/news', label: 'Tin Tức', icon: '📰' },
-    { path: '/contact', label: 'Liên Hệ', icon: '📞' },
-    { path: '/cart', label: 'Giỏ Hàng', icon: '🛒' },
-    { path: '/account', label: 'Tài Khoản', icon: '👤' },
+    { path: '/', label: 'Trang Chủ', icon: 'home' },
+    { path: '/products', label: 'Sản Phẩm', icon: 'storefront' },
+    { path: '/about', label: 'Giới Thiệu', icon: 'information-circle' },
+    { path: '/news', label: 'Tin Tức', icon: 'newspaper' },
+    { path: '/contact', label: 'Liên Hệ', icon: 'call' },
+    { path: '/cart', label: 'Giỏ Hàng', icon: 'basket' },
+    { path: '/account', label: 'Tài Khoản', icon: 'person' },
   ];
 
   return (
@@ -41,7 +42,7 @@ const MobileNavigation = () => {
             }`}
           >
             <div className="relative">
-              <span className="text-lg">{item.icon}</span>
+              <IonIcon icon={item.icon} size={20} />
               {item.path === '/cart' && cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-luxury-gold text-deep-black text-xs rounded-full w-4 h-4 flex items-center justify-center animate-pulse font-bold">
                   {cartCount > 99 ? '99+' : cartCount}
