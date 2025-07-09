@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const IonIcon = ({ icon, size = 24, color = 'currentColor', className = '', ...props }) => {
+  useEffect(() => {
+    // Load ionicons from local package
+    import('ionicons/icons').then((icons) => {
+      // Icons are loaded
+    });
+  }, []);
+
   return (
     <ion-icon
       name={icon}
