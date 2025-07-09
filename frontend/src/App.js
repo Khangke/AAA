@@ -48,6 +48,7 @@ function AppContent() {
 
   return (
     <div className="App min-h-screen bg-deep-black text-white">
+      <ScrollToTop />
       {!isMobile && <Header />}
       
       <main className={`${isMobile ? 'pb-20' : 'pt-0'}`}>
