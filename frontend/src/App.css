@@ -196,6 +196,23 @@ html, body {
   animation: shimmer 1.5s infinite;
 }
 
+/* Mobile Safe Area Support */
+.safe-area-inset-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-inset-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-inset-left {
+  padding-left: env(safe-area-inset-left);
+}
+
+.safe-area-inset-right {
+  padding-right: env(safe-area-inset-right);
+}
+
 /* Mobile Optimizations */
 @media (max-width: 768px) {
   html {
@@ -208,7 +225,7 @@ html, body {
   }
   
   .mobile-nav-padding {
-    padding-bottom: 5rem;
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
   }
   
   /* Optimize touch interactions */
@@ -220,6 +237,16 @@ html, body {
   /* Reduce motion for performance */
   * {
     transition-duration: 0.2s;
+  }
+  
+  /* Fixed notification position for mobile */
+  .notification-mobile {
+    position: fixed !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    left: 1rem !important;
+    max-width: calc(100vw - 2rem) !important;
+    z-index: 9999 !important;
   }
 }
 
