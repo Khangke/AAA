@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import IonIcon from './IonIcon';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,7 +13,7 @@ const Footer = () => {
         <div className="mb-6 sm:mb-8">
           <div className="flex items-center space-x-2 mb-3 sm:mb-4">
             <div className="w-8 h-8 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center">
-              <span className="text-deep-black font-bold text-sm">K</span>
+              <IonIcon icon="leaf" size={16} color="#1a1a1a" />
             </div>
             <h3 className="font-luxury text-base sm:text-lg font-bold text-luxury-gold">
               Khang Trầm Hương
@@ -22,14 +23,17 @@ const Footer = () => {
             Chuyên cung cấp trầm hương cao cấp, chất lượng luxury với hơn 20 năm kinh nghiệm trong ngành.
           </p>
           <div className="flex space-x-4">
-            <a href="#" className="text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
-              Facebook
+            <a href="https://facebook.com" className="flex items-center space-x-1 text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
+              <IonIcon icon="logo-facebook" size={16} />
+              <span>Facebook</span>
             </a>
-            <a href="#" className="text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
-              Instagram
+            <a href="https://instagram.com" className="flex items-center space-x-1 text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
+              <IonIcon icon="logo-instagram" size={16} />
+              <span>Instagram</span>
             </a>
-            <a href="#" className="text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
-              Zalo
+            <a href="https://zalo.me" className="flex items-center space-x-1 text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
+              <IonIcon icon="chatbubble" size={16} />
+              <span>Zalo</span>
             </a>
           </div>
         </div>
@@ -43,23 +47,27 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
-                  Về Chúng Tôi
+                <Link to="/" className="flex items-center space-x-2 text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
+                  <IonIcon icon="information-circle" size={14} />
+                  <span>Về Chúng Tôi</span>
                 </Link>
               </li>
               <li>
-                <Link to="/products" className="text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
-                  Sản Phẩm
+                <Link to="/products" className="flex items-center space-x-2 text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
+                  <IonIcon icon="storefront" size={14} />
+                  <span>Sản Phẩm</span>
                 </Link>
               </li>
               <li>
-                <Link to="/news" className="text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
-                  Tin Tức
+                <Link to="/news" className="flex items-center space-x-2 text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
+                  <IonIcon icon="newspaper" size={14} />
+                  <span>Tin Tức</span>
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
-                  Liên Hệ
+                <Link to="/contact" className="flex items-center space-x-2 text-soft-gold hover:text-luxury-gold transition-colors text-xs sm:text-sm">
+                  <IonIcon icon="call" size={14} />
+                  <span>Liên Hệ</span>
                 </Link>
               </li>
             </ul>
@@ -71,20 +79,20 @@ const Footer = () => {
               Liên Hệ
             </h4>
             <div className="space-y-2 text-soft-gold text-xs sm:text-sm">
-              <div className="flex items-center">
-                <span className="mr-2">📞</span>
+              <div className="flex items-center space-x-2">
+                <IonIcon icon="call" size={14} />
                 <a href="tel:0123456789" className="hover:text-luxury-gold transition-colors">
                   0123 456 789
                 </a>
               </div>
-              <div className="flex items-center">
-                <span className="mr-2">✉️</span>
+              <div className="flex items-center space-x-2">
+                <IonIcon icon="mail" size={14} />
                 <a href="mailto:info@khangtramhuong.com" className="hover:text-luxury-gold transition-colors">
                   info@khangtramhuong.com
                 </a>
               </div>
-              <div className="flex items-start">
-                <span className="mr-2 mt-0.5">📍</span>
+              <div className="flex items-start space-x-2">
+                <IonIcon icon="location" size={14} className="mt-0.5" />
                 <span>123 Đường ABC, Quận 1, TP HCM</span>
               </div>
             </div>
