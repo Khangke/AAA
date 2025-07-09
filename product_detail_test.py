@@ -5,7 +5,7 @@ from pprint import pprint
 import time
 
 # Backend URL from frontend/.env
-BACKEND_URL = "https://dbe62f8b-cea5-4002-8cff-0cd7ed98eb8a.preview.emergentagent.com"
+BACKEND_URL = "https://1623479a-df29-45ce-a5ef-4cb79d7aea58.preview.emergentagent.com"
 API_BASE_URL = f"{BACKEND_URL}/api"
 
 # Helper function to make requests with retry logic
