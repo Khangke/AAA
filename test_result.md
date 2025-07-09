@@ -351,7 +351,7 @@ agent_communication:
   - agent: "testing"
     message: "Đã test lại tất cả backend API endpoints theo yêu cầu 'check và fix lỗi bug toàn trang'. Tất cả endpoints đều hoạt động tốt, không phát hiện lỗi nào. Đã kiểm tra: (1) Product endpoints: GET /api/products, GET /api/products/{id}, POST /api/products/seed, GET /api/categories - tất cả đều trả về dữ liệu đúng, mỗi sản phẩm có đủ 10 hình ảnh. (2) Authentication endpoints: POST /api/auth/register, POST /api/auth/login, GET /api/auth/me, PUT /api/auth/me - đăng ký và đăng nhập hoạt động tốt, token được tạo và xác thực đúng. (3) Cart endpoints: POST /api/cart/add, GET /api/cart, PUT /api/cart/item/{productId}, DELETE /api/cart/item/{productId}, DELETE /api/cart - quản lý giỏ hàng hoạt động tốt. (4) Order endpoints: POST /api/orders, GET /api/orders - tạo đơn hàng với cả COD và bank_transfer đều hoạt động tốt, phí vận chuyển 30,000 VND được áp dụng đúng. (5) Contact form endpoints: POST /api/contact, GET /api/contact - gửi và lấy form liên hệ hoạt động tốt. Không có lỗi backend nào cần phải sửa."
 
-user_problem_statement: "PHẦN CHI TIẾT SẢN PHẨM TÔI THẤY ẢNH SẢN PHẨM CHIẾM HƠI NHIỀU MÀN HÌNH, TỐI ƯU NÓ NHỎ HƠN 1 TÍ VÀ THÊM TÍNH NĂNG 10 ẢNH TỰ ĐỘNG VUỐT QUA TRÁI"
+user_problem_statement: "check và fix lỗi bug toàn trang"
 
 backend:
   - task: "Product Images Enhancement"
