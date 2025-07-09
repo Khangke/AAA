@@ -140,13 +140,7 @@ const CartPage = () => {
       // Navigate to order success page with order data
       navigate('/order-success', { 
         state: { 
-          orderData: {
-            ...response.data,
-            items: items.map(item => ({
-              ...item,
-              product_name: item.name
-            }))
-          }
+          orderData: response.data
         }
       });
       
