@@ -120,11 +120,23 @@ const ProductsPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-2 border-luxury-gold border-t-transparent"></div>
+      <div className="min-h-screen pt-16 md:pt-20 bg-deep-black mobile-nav-padding">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+          {/* Header skeleton */}
+          <div className="mb-6">
+            <div className="h-8 bg-gray-800 rounded w-64 mb-4 animate-pulse"></div>
+            <div className="h-4 bg-gray-800 rounded w-96 animate-pulse"></div>
           </div>
+          
+          {/* Filters skeleton */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            {[...Array(4)].map((_, index) => (
+              <div key={index} className="h-10 bg-gray-800 rounded animate-pulse"></div>
+            ))}
+          </div>
+          
+          {/* Products grid skeleton */}
+          <ProductGridSkeleton count={8} />
         </div>
       </div>
     );
