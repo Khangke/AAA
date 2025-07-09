@@ -478,15 +478,18 @@ test_plan:
 
   - task: "Order Success Page Implementation"
     implemented: true
-    working: true
+    working: false
     file: "frontend/src/pages/OrderSuccessPage.js"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "User báo cáo 'trang đặt hàng thành công chưa được'. Đã kiểm tra và xác nhận OrderSuccessPage đã được implement đầy đủ với tất cả thông tin: order details, customer info, order items, next steps, action buttons. Đã tích hợp với routing (/order-success) và CartPage navigation. Cần test end-to-end."
+      - working: false
+        agent: "testing"
+        comment: "Tested the complete order flow from cart to order success page. Found critical issue: The API request to create an order (POST /api/orders) returns a 403 Forbidden status code with 'Not authenticated' error message. The backend API requires authentication for creating orders, but the frontend is designed to allow guest checkout. This mismatch prevents the order success page from being displayed. The OrderSuccessPage component itself is implemented correctly, but users cannot reach it due to the authentication issue."
 
 metadata:
   created_by: "main_agent"
