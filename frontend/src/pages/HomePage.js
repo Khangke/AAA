@@ -32,13 +32,19 @@ const HomePage = () => {
 
   const fetchFeaturedProducts = async () => {
     try {
-      // Get more products for scrolling
       const response = await axios.get(`${backendUrl}/api/products`);
-      setFeaturedProducts(response.data);
+      const products = response.data;
+      
+      // Filter featured products or take first 6
+      const featured = products.filter(p => p.featured) || products.slice(0, 6);
+      setFeaturedProducts(featured);
+      
+      console.log('Featured products loaded:', featured.length);
     } catch (error) {
       console.error('Error fetching featured products:', error);
+      
       // Fallback to static data if API fails
-      setFeaturedProducts([
+      const fallbackProducts = [
         {
           id: 1,
           name: 'Vòng Trầm Hương Cao Cấp',
@@ -56,8 +62,28 @@ const HomePage = () => {
           name: 'Nhang Trầm Hương Premium',
           price: 850000,
           image_url: 'https://images.unsplash.com/photo-1652959889888-53d048374e35',
+        },
+        {
+          id: 4,
+          name: 'Tràng Hạt Trầm Hương',
+          price: 1200000,
+          image_url: 'https://images.unsplash.com/photo-1662473217799-6e7288f19741',
+        },
+        {
+          id: 5,
+          name: 'Tinh Dầu Trầm Hương',
+          price: 980000,
+          image_url: 'https://images.unsplash.com/photo-1719611639294-f754d39a6bed',
+        },
+        {
+          id: 6,
+          name: 'Gỗ Trầm Hương Tự Nhiên',
+          price: 3500000,
+          image_url: 'https://images.unsplash.com/photo-1652959889888-53d048374e35',
         }
-      ]);
+      ];
+      
+      setFeaturedProducts(fallbackProducts);
     } finally {
       setLoading(false);
     }
