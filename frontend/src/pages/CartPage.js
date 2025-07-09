@@ -262,9 +262,10 @@ const CartPage = () => {
                         </span>
                         <button
                           onClick={() => handleRemoveItem(item.id)}
-                          className="text-red-400 hover:text-red-300 text-xs underline"
+                          className="text-red-400 hover:text-red-300 text-xs underline flex items-center space-x-1"
                         >
-                          Xóa
+                          <IonIcon icon="trash-outline" size={14} />
+                          <span>Xóa</span>
                         </button>
                       </div>
                     </div>
