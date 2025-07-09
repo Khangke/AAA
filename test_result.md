@@ -415,8 +415,9 @@ metadata:
 
 test_plan:
   current_focus:
+    - "Buy Now Button Enhancement"
+    - "Notification System Fixes"  
     - "Product Detail Page Image Optimization"
-    - "Auto-Swipe Carousel Implementation"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
