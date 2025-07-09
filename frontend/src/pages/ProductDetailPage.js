@@ -116,7 +116,7 @@ const ProductDetailPage = () => {
 
     try {
       await addToCart(cartItem);
-      showSuccess('Đã thêm vào giỏ hàng!');
+      // Notification is already shown in CartContext
     } catch (error) {
       console.error('Error adding to cart:', error);
       showError('Có lỗi xảy ra khi thêm vào giỏ hàng');
