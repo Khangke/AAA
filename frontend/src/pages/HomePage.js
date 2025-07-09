@@ -231,10 +231,11 @@ const HomePage = () => {
               <div className="text-luxury-gold text-4xl mb-4">📦</div>
               <p className="text-soft-gold text-lg mb-4">Chưa có sản phẩm nào</p>
               <button 
-                className="bg-luxury-gold text-deep-black px-6 py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors"
+                className="bg-luxury-gold text-deep-black px-6 py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors flex items-center space-x-2"
                 onClick={() => window.location.reload()}
               >
-                Tải Lại
+                <IonIcon icon="refresh-outline" size={18} color="#1a1a1a" />
+                <span>Tải Lại</span>
               </button>
             </div>
           )}
