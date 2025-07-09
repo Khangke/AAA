@@ -39,25 +39,16 @@ const CartPage = () => {
   const handleQuantityChange = async (productId, newQuantity) => {
     if (newQuantity <= 0) {
       const result = await removeFromCart(productId);
-      if (result.success) {
-        showCartNotification('remove', result.productName);
-      }
+      // Notification is already shown in removeFromCart function
     } else {
       const result = await updateCartItem(productId, newQuantity);
-      if (result.success) {
-        const product = items.find(item => item.id === productId);
-        if (product) {
-          showCartNotification('update', product.name, newQuantity);
-        }
-      }
+      // Notification is already shown in updateCartItem function
     }
   };
 
   const handleRemoveItem = async (productId) => {
     const result = await removeFromCart(productId);
-    if (result.success) {
-      showCartNotification('remove', result.productName);
-    }
+    // Notification is already shown in removeFromCart function
   };
 
   const formatPrice = (price) => {
