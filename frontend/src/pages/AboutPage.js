@@ -11,16 +11,16 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6">
+    <div className="min-h-screen pt-16 md:pt-20 bg-deep-black mobile-nav-padding">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         
-        {/* Header - Very Compact */}
-        <div className="text-center mb-3 sm:mb-6">
-          <h1 className="font-luxury text-lg sm:text-3xl md:text-4xl font-bold text-luxury-gold mb-1 sm:mb-3">
-            Khang Trầm Hương
+        {/* Header */}
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="font-luxury text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-luxury-gold mb-2 sm:mb-4">
+            Giới Thiệu Khang Trầm Hương
           </h1>
-          <p className="text-soft-gold text-xs sm:text-base max-w-xl mx-auto">
-            20 năm kinh nghiệm • Nghệ nhân tâm huyết • Chất lượng cao cấp
+          <p className="text-soft-gold text-sm sm:text-base">
+            Hành trình 20 năm với tinh hoa trầm hương Việt Nam
           </p>
         </div>
 
