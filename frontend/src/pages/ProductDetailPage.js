@@ -43,8 +43,7 @@ const ProductDetailPage = () => {
   const fetchProduct = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${BACKEND_URL}/api/products/${id}`);
-      const productData = response.data;
+      const productData = await cachedAPI.getProductById(id);
       setProduct(productData);
       
       // Set default variation (first one or none if no variations)
