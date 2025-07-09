@@ -182,7 +182,7 @@ def test_search_products():
     
     return response.json()
 def test_get_product_detail():
-    """Test GET /api/products/{id} endpoint to verify 10 images per product"""
+    """Test GET /api/products/{id} endpoint to verify product details"""
     print(f"\n=== Testing GET /api/products/{TEST_PRODUCT_ID} ===")
     
     url = f"{API_BASE_URL}/products/{TEST_PRODUCT_ID}"
@@ -209,6 +209,17 @@ def test_get_product_detail():
     for image_url in product["images"]:
         assert isinstance(image_url, str), "Image URL should be a string"
         assert image_url.startswith("http"), f"Image URL should start with http: {image_url}"
+    
+    # Verify variations
+    assert "variations" in product, "Product should have 'variations' field"
+    assert isinstance(product["variations"], list), "'variations' should be a list"
+    assert len(product["variations"]) > 0, "Product should have at least one variation"
+    
+    # Verify first variation has required fields
+    variation = product["variations"][0]
+    variation_fields = ["size", "price", "stock_quantity"]
+    for field in variation_fields:
+        assert field in variation, f"Variation should contain '{field}' field"
     
     return response.json()
 
