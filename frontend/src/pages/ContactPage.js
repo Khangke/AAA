@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import IonIcon from '../components/IonIcon';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
