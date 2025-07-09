@@ -3,6 +3,18 @@ import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
+// Helper function to safely get auth context
+const useAuthSafely = () => {
+  try {
+    const { useAuth } = require('./AuthContext');
+    const context = useAuth();
+    return context || { isAuthenticated: false, token: null, user: null };
+  } catch (error) {
+    console.warn('AuthContext not available, using guest mode');
+    return { isAuthenticated: false, token: null, user: null };
+  }
+};
+
 // Helper function to safely get notification context
 const useNotificationSafely = () => {
   try {
