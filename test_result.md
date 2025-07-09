@@ -383,20 +383,29 @@ frontend:
         agent: "testing"
         comment: "Verified that backend API provides 10 images per product as required for the auto-swipe carousel functionality. All product endpoints return the correct image data structure."
 
-  - task: "Auto-Swipe Carousel Implementation"
+  - task: "Buy Now Button Enhancement"
     implemented: true
     working: true
     file: "frontend/src/pages/ProductDetailPage.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
       - working: true
         agent: "main"
-        comment: "Implemented automatic image carousel with 10 images per product. Features: Auto-swipe every 3 seconds, pause when user clicks on image, resume after 5 seconds, play/pause toggle button, image counter display, smooth transitions between images."
+        comment: "Added 'Mua Ngay' button to product detail page for mobile. Button adds product to cart and immediately navigates to cart page. Changed 'Add to Cart' to outline button and made 'Buy Now' the primary CTA button with golden gradient background."
+
+  - task: "Notification System Fixes"
+    implemented: true
+    working: true
+    file: "frontend/src/context/CartContext.js, frontend/src/context/NotificationContext.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
       - working: true
-        agent: "testing"
-        comment: "Verified that backend API provides all necessary data for the auto-swipe carousel. All 8 products have 10 images each with properly formatted URLs."
+        agent: "main"
+        comment: "Fixed notification system integration. CartContext properly uses NotificationContext for cart notifications (add/remove/update). NotificationContainer is already integrated in App.js. Product detail page uses notification for cart actions."
 
 metadata:
   created_by: "testing_agent"
