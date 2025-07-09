@@ -239,6 +239,11 @@ export const CartProvider = ({ children }) => {
           payload: updatedItems
         });
         
+        const product = currentItems.find(item => item.id === productId);
+        if (product) {
+          showCartNotification('update', product.name, quantity);
+        }
+        
         return { success: true };
       } else {
         // Authenticated mode - use API
@@ -251,10 +256,16 @@ export const CartProvider = ({ children }) => {
           payload: response.data.cart
         });
         
+        const product = state.items.find(item => item.id === productId);
+        if (product) {
+          showCartNotification('update', product.name, quantity);
+        }
+        
         return { success: true };
       }
     } catch (error) {
       const errorMessage = error.response?.data?.detail || 'Không thể cập nhật số lượng';
+      showError(errorMessage);
       return { success: false, error: errorMessage };
     }
   };
