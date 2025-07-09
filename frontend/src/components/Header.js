@@ -92,7 +92,7 @@ const Header = () => {
                 }`}
               >
                 <span className="flex items-center space-x-2">
-                  <IonIcon icon="log-in-outline" size={18} />
+                  <IconWrapper icon="log-in-outline" size={18} />
                   <span>Đăng Nhập</span>
                 </span>
                 {location.pathname === '/account' && (
