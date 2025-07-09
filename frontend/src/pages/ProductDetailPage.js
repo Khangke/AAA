@@ -416,14 +416,26 @@ const ProductDetailPage = () => {
                   </div>
                 </div>
 
-                {/* Add to Cart Button */}
-                <button
-                  onClick={handleAddToCart}
-                  disabled={isAddingToCart || getAvailableStock() === 0}
-                  className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                >
-                  {isAddingToCart ? 'Đang thêm...' : 'Thêm vào giỏ hàng'}
-                </button>
+                {/* Action Buttons */}
+                <div className="space-y-3">
+                  {/* Add to Cart Button */}
+                  <button
+                    onClick={handleAddToCart}
+                    disabled={isAddingToCart || getAvailableStock() === 0}
+                    className="w-full border-2 border-luxury-gold text-luxury-gold bg-transparent px-6 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-luxury-gold hover:text-deep-black hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  >
+                    {isAddingToCart ? 'Đang thêm...' : 'Thêm vào giỏ hàng'}
+                  </button>
+
+                  {/* Buy Now Button - Mobile Optimized */}
+                  <button
+                    onClick={handleBuyNow}
+                    disabled={isAddingToCart || getAvailableStock() === 0}
+                    className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:shadow-lg hover:shadow-luxury-gold/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  >
+                    {isAddingToCart ? 'Đang xử lý...' : '🛒 Mua Ngay'}
+                  </button>
+                </div>
               </div>
             )}
 
