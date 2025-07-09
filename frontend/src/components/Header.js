@@ -19,13 +19,13 @@ const Header = () => {
   }
 
   const navItems = [
-    { path: '/', label: 'Trang Chủ', icon: 'home' },
-    { path: '/products', label: 'Sản Phẩm', icon: 'storefront' },
-    { path: '/about', label: 'Giới Thiệu', icon: 'information-circle' },
-    { path: '/news', label: 'Tin Tức', icon: 'newspaper' },
-    { path: '/contact', label: 'Liên Hệ', icon: 'call' },
-    { path: '/cart', label: 'Giỏ Hàng', icon: 'basket' },
-    { path: '/account', label: 'Tài Khoản', icon: 'person' },
+    { path: '/', label: 'Trang Chủ', icon: 'home-outline' },
+    { path: '/products', label: 'Sản Phẩm', icon: 'storefront-outline' },
+    { path: '/about', label: 'Giới Thiệu', icon: 'information-circle-outline' },
+    { path: '/news', label: 'Tin Tức', icon: 'newspaper-outline' },
+    { path: '/contact', label: 'Liên Hệ', icon: 'call-outline' },
+    { path: '/cart', label: 'Giỏ Hàng', icon: 'bag-outline' },
+    { path: '/account', label: 'Tài Khoản', icon: 'person-outline' },
   ];
 
   return (
