@@ -273,6 +273,12 @@ export const CartProvider = ({ children }) => {
   // Remove from cart
   const removeFromCart = async (productId) => {
     try {
+      let productName = '';
+      const productToRemove = state.items.find(item => item.id === productId);
+      if (productToRemove) {
+        productName = productToRemove.name;
+      }
+      
       if (state.isGuest) {
         // Guest mode - use localStorage
         const updatedItems = state.items.filter(item => item.id !== productId);
@@ -282,7 +288,9 @@ export const CartProvider = ({ children }) => {
           payload: updatedItems
         });
         
-        return { success: true, message: 'Đã xóa sản phẩm khỏi giỏ hàng' };
+        showCartNotification('remove', productName);
+        
+        return { success: true, message: 'Đã xóa sản phẩm khỏi giỏ hàng', productName };
       } else {
         // Authenticated mode - use API
         const response = await axios.delete(`${BACKEND_URL}/api/cart/item/${productId}`);
@@ -292,10 +300,13 @@ export const CartProvider = ({ children }) => {
           payload: response.data.cart
         });
         
-        return { success: true, message: 'Đã xóa sản phẩm khỏi giỏ hàng' };
+        showCartNotification('remove', productName);
+        
+        return { success: true, message: 'Đã xóa sản phẩm khỏi giỏ hàng', productName };
       }
     } catch (error) {
       const errorMessage = error.response?.data?.detail || 'Không thể xóa sản phẩm';
+      showError(errorMessage);
       return { success: false, error: errorMessage };
     }
   };
