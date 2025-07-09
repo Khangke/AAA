@@ -125,6 +125,33 @@ const ProductDetailPage = () => {
     }
   };
 
+  const handleBuyNow = async () => {
+    if (!product) return;
+    
+    setIsAddingToCart(true);
+    
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      price: getCurrentPrice(),
+      image: product.image_url,
+      quantity: quantity,
+      variation: selectedVariation ? selectedVariation.size : null
+    };
+
+    try {
+      await addToCart(cartItem);
+      showNotification('Đã thêm vào giỏ hàng!', 'success');
+      // Navigate to cart page after adding to cart
+      navigate('/cart');
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      showNotification('Có lỗi xảy ra khi thêm vào giỏ hàng', 'error');
+    } finally {
+      setIsAddingToCart(false);
+    }
+  };
+
   const handleImageClick = (index) => {
     setSelectedImageIndex(index);
     setIsAutoPlaying(false); // Pause auto-play when user interacts
