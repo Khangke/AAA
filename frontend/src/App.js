@@ -25,6 +25,13 @@ const CartPage = lazy(() => import("./pages/CartPage"));
 const AccountPage = lazy(() => import("./pages/AccountPage"));
 const OrderSuccessPage = lazy(() => import("./pages/OrderSuccessPage"));
 
+// Loading component nhẹ nhàng không chói lóe
+const PageLoadingSpinner = () => (
+  <div className="min-h-screen bg-deep-black flex items-center justify-center">
+    <div className="w-6 h-6 border-2 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
+
 function AppContent() {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -48,17 +55,19 @@ function AppContent() {
       {!isMobile && <Header />}
       
       <main className={`${isMobile ? 'pb-20' : 'pt-0'}`}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:id" element={<ProductDetailPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/account" element={<AccountPage />} />
-          <Route path="/order-success" element={<OrderSuccessPage />} />
-        </Routes>
+        <Suspense fallback={<PageLoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products/:id" element={<ProductDetailPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/account" element={<AccountPage />} />
+            <Route path="/order-success" element={<OrderSuccessPage />} />
+          </Routes>
+        </Suspense>
       </main>
 
       {showFooter && <Footer />}
