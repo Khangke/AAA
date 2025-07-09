@@ -47,6 +47,10 @@
       padding-bottom: 0;
     }
   }
+
+  .product-scroll {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
