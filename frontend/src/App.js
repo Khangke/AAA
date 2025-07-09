@@ -40,8 +40,8 @@ function AppContent() {
   // Preload critical resources
   usePreloadResources();
   
-  // Performance monitoring
-  usePerformanceMonitor(true);
+  // Performance monitoring - disabled for now to avoid issues
+  // usePerformanceMonitor(true);
 
   useEffect(() => {
     const handleResize = () => {
