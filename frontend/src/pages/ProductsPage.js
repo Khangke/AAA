@@ -184,8 +184,7 @@ const ProductsPage = () => {
             <input
               type="text"
               placeholder="Tìm kiếm sản phẩm..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => debouncedSearch(e.target.value)}
               className="w-full px-3 py-2 sm:px-4 sm:py-3 pl-9 sm:pl-12 bg-deep-black/50 border border-luxury-gold/20 rounded-full text-white placeholder-soft-gold focus:outline-none focus:border-luxury-gold/60 transition-colors text-sm sm:text-base"
             />
             <div className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-luxury-gold text-sm sm:text-base">
