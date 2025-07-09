@@ -500,7 +500,8 @@ metadata:
 test_plan:
   current_focus:
     - "Order Success Page Implementation"
-  stuck_tasks: []
+  stuck_tasks:
+    - "Order Success Page Implementation"
   test_all: false
   test_priority: "high_first"
 
