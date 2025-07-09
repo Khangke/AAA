@@ -25,7 +25,6 @@ import OrderSuccessPage from "./pages/OrderSuccessPage";
 
 function AppContent() {
   const [isMobile, setIsMobile] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     const handleResize = () => {
