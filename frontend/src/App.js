@@ -12,6 +12,7 @@ import MobileNavigation from "./components/MobileNavigation";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NotificationContainer from "./components/NotificationContainer";
+import ScrollToTop from "./components/ScrollToTop";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
