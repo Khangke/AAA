@@ -101,6 +101,10 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
   const { isAuthenticated, token } = useAuth();
+  const { showCartNotification, showError } = useNotification() || {
+    showCartNotification: () => {},
+    showError: () => {}
+  };
 
   // Load cart based on authentication status
   useEffect(() => {
