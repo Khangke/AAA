@@ -106,15 +106,15 @@ const CartPage = () => {
         shipping_fee: getShippingFee(),
         total: getCartTotal(),
         payment_method: guestInfo.payment_method,
-        ...(isGuest && !isAuthenticated ? {
-          customer_info: {
-            full_name: guestInfo.full_name,
-            email: guestInfo.email,
-            phone: guestInfo.phone,
-            address: guestInfo.address,
-            note: guestInfo.note
-          }
-        } : {})
+        customer_info: isGuest && !isAuthenticated ? {
+          full_name: guestInfo.full_name,
+          email: guestInfo.email,
+          phone: guestInfo.phone
+        } : {},
+        shipping_address: isGuest && !isAuthenticated ? {
+          address: guestInfo.address
+        } : {},
+        notes: isGuest && !isAuthenticated ? (guestInfo.note || '') : ''
       };
 
       const response = await axios.post(`${BACKEND_URL}/api/orders`, orderData);
