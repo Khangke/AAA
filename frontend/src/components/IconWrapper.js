@@ -1,85 +1,58 @@
 import React from 'react';
-import { 
-  IoHomeOutline, 
-  IoStorefrontOutline, 
-  IoInformationCircleOutline, 
-  IoNewspaperOutline, 
-  IoCallOutline, 
-  IoBagOutline, 
-  IoPersonOutline, 
-  IoLogInOutline,
-  IoSparkles,
-  IoRemoveOutline,
-  IoAddOutline,
-  IoBagAddOutline,
-  IoFlashOutline,
-  IoRefreshOutline,
-  IoCloseOutline,
-  IoTrashOutline,
-  IoCardOutline,
-  IoArrowBackOutline,
-  IoCheckmarkOutline,
-  IoCreateOutline,
-  IoLogOutOutline,
-  IoSendOutline,
-  IoLocationOutline,
-  IoMailOutline,
-  IoTimeOutline,
-  IoEyeOutline,
-  IoArrowForwardOutline,
-  IoChatbubbleOutline,
-  IoStar,
-  IoStarOutline
-} from 'react-icons/io5';
 
+// Simple icon component using text symbols and CSS
 const IconWrapper = ({ icon, size = 24, color = 'currentColor', className = '', ...props }) => {
+  // Icon mapping to Unicode symbols and CSS
   const iconMap = {
-    'home-outline': IoHomeOutline,
-    'storefront-outline': IoStorefrontOutline,
-    'information-circle-outline': IoInformationCircleOutline,
-    'newspaper-outline': IoNewspaperOutline,
-    'call-outline': IoCallOutline,
-    'bag-outline': IoBagOutline,
-    'person-outline': IoPersonOutline,
-    'log-in-outline': IoLogInOutline,
-    'sparkles': IoSparkles,
-    'remove-outline': IoRemoveOutline,
-    'add-outline': IoAddOutline,
-    'bag-add-outline': IoBagAddOutline,
-    'flash-outline': IoFlashOutline,
-    'refresh-outline': IoRefreshOutline,
-    'close-outline': IoCloseOutline,
-    'trash-outline': IoTrashOutline,
-    'card-outline': IoCardOutline,
-    'arrow-back-outline': IoArrowBackOutline,
-    'checkmark-outline': IoCheckmarkOutline,
-    'create-outline': IoCreateOutline,
-    'log-out-outline': IoLogOutOutline,
-    'send-outline': IoSendOutline,
-    'location-outline': IoLocationOutline,
-    'mail-outline': IoMailOutline,
-    'time-outline': IoTimeOutline,
-    'eye-outline': IoEyeOutline,
-    'arrow-forward-outline': IoArrowForwardOutline,
-    'chatbubble-outline': IoChatbubbleOutline,
-    'star': IoStar,
-    'star-outline': IoStarOutline
+    'home-outline': '🏠',
+    'storefront-outline': '🏪', 
+    'information-circle-outline': 'ℹ️',
+    'newspaper-outline': '📰',
+    'call-outline': '📞',
+    'bag-outline': '🛍️',
+    'person-outline': '👤',
+    'log-in-outline': '🔐',
+    'sparkles': '✨',
+    'remove-outline': '➖',
+    'add-outline': '➕',
+    'bag-add-outline': '🛒',
+    'flash-outline': '⚡',
+    'refresh-outline': '🔄',
+    'close-outline': '❌',
+    'trash-outline': '🗑️',
+    'card-outline': '💳',
+    'arrow-back-outline': '←',
+    'checkmark-outline': '✅',
+    'create-outline': '✏️',
+    'log-out-outline': '🚪',
+    'send-outline': '📤',
+    'location-outline': '📍',
+    'mail-outline': '📧',
+    'time-outline': '⏰',
+    'eye-outline': '👁️',
+    'arrow-forward-outline': '→',
+    'chatbubble-outline': '💬',
+    'star': '⭐',
+    'star-outline': '☆'
   };
 
-  const IconComponent = iconMap[icon] || IoHomeOutline;
+  const iconSymbol = iconMap[icon] || '●';
 
   return (
-    <IconComponent
-      size={size}
-      color={color}
-      className={className}
-      style={{ 
+    <span
+      style={{
+        fontSize: `${size}px`,
+        color: color,
         verticalAlign: 'middle',
         display: 'inline-block',
         lineHeight: 1,
+        fontFamily: 'emoji',
       }}
+      className={className}
       {...props}
-    />
+    >
+      {iconSymbol}
+    </span>
   );
 };
 
