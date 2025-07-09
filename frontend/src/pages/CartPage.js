@@ -98,7 +98,9 @@ const CartPage = () => {
         items: items.map(item => ({
           product_id: item.id,
           quantity: item.quantity,
-          price: item.price
+          price: item.price,
+          name: item.name,
+          image_url: item.image_url || item.images?.[0] || ''
         })),
         subtotal: getSubtotal(),
         shipping_fee: getShippingFee(),
