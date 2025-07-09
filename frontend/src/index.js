@@ -3,18 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 
-// Import ionicons
-import { defineCustomElements } from 'ionicons/dist/loader';
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
 );
-
-// Define ionicons custom elements
-defineCustomElements();
 
 // Register service worker for caching
 if ('serviceWorker' in navigator) {
