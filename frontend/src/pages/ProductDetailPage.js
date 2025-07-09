@@ -10,7 +10,7 @@ const ProductDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
-  const { showNotification } = useNotification();
+  const { showSuccess, showError } = useNotification();
   
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
