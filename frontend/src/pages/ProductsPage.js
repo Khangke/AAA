@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import ProductCard from '../components/ProductCard';
+import { ProductGridSkeleton } from '../components/Skeleton';
 import cachedAPI from '../services/api';
 import { debounce } from '../utils/cacheManager';
 
