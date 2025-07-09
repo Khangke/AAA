@@ -61,7 +61,7 @@ const Header = () => {
                   }`}
                 >
                   <span className="flex items-center space-x-2">
-                    <IonIcon icon={item.icon} size={18} />
+                    <IconWrapper icon={item.icon} size={18} />
                     <span>
                       {item.path === '/account' && isAuthenticated 
                         ? (user?.full_name || 'Tài Khoản')
