@@ -509,23 +509,26 @@ const AccountPage = () => {
                       {!editingProfile ? (
                         <button
                           onClick={() => setEditingProfile(true)}
-                          className="text-luxury-gold hover:text-luxury-copper transition-colors"
+                          className="text-luxury-gold hover:text-luxury-copper transition-colors flex items-center space-x-1"
                         >
-                          ✏️ Chỉnh sửa
+                          <IonIcon icon="create-outline" size={16} />
+                          <span>Chỉnh sửa</span>
                         </button>
                       ) : (
                         <button
                           onClick={() => setEditingProfile(false)}
-                          className="text-soft-gold hover:text-luxury-gold transition-colors"
+                          className="text-soft-gold hover:text-luxury-gold transition-colors flex items-center space-x-1"
                         >
-                          ❌ Hủy
+                          <IonIcon icon="close-outline" size={16} />
+                          <span>Hủy</span>
                         </button>
                       )}
                       <button
                         onClick={handleLogout}
-                        className="text-red-400 hover:text-red-300 transition-colors"
+                        className="text-red-400 hover:text-red-300 transition-colors flex items-center space-x-1"
                       >
-                        🚪 Đăng xuất
+                        <IonIcon icon="log-out-outline" size={16} />
+                        <span>Đăng xuất</span>
                       </button>
                     </div>
                   </div>
