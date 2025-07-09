@@ -76,6 +76,10 @@ module.exports = {
           '0%': { boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)' },
           '100%': { boxShadow: '0 0 30px rgba(212, 175, 55, 0.6)' },
         },
+        slideInRight: {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
       },
       backdropBlur: {
         'xs': '2px',
