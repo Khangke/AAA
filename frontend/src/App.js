@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense, lazy } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import usePreloadResources from "./hooks/usePreloadResources";
+import { usePerformanceMonitor } from "./utils/performanceMonitor";
 
 // Context Providers
 import { AuthProvider } from "./context/AuthContext";
