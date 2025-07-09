@@ -42,7 +42,7 @@ const MobileNavigation = () => {
             }`}
           >
             <div className="relative">
-              <IonIcon icon={item.icon} size={20} />
+              <IconWrapper icon={item.icon} size={20} />
               {item.path === '/cart' && cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-luxury-gold text-deep-black text-xs rounded-full w-4 h-4 flex items-center justify-center animate-pulse font-bold">
                   {cartCount > 99 ? '99+' : cartCount}
