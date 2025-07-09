@@ -65,12 +65,10 @@ const ProductCard = ({ product, onClick }) => {
     >
       {/* Product Image - Square aspect ratio */}
       <div className="relative aspect-square bg-gradient-to-br from-luxury-gold/20 to-luxury-copper/20 flex items-center justify-center overflow-hidden">
-        <img 
+        <LazyImage 
           src={product.image_url} 
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-          loading="lazy"
-          draggable="false"
+          className="w-full h-full transition-transform duration-300 hover:scale-110"
         />
         
         {/* Discount Badge */}
