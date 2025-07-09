@@ -484,7 +484,7 @@ test_plan:
     implemented: true
     working: true
     file: "frontend/src/pages/OrderSuccessPage.js"
-    stuck_count: 1
+    stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
@@ -497,6 +497,9 @@ test_plan:
       - working: true
         agent: "testing"
         comment: "Fixed the issue with guest checkout by updating the Order model in server.py to properly handle None values for user_id. Changed 'user_id: str = None' to 'user_id: Optional[str] = None' to make the field properly optional. Tested both guest checkout (without authentication) and authenticated checkout - both now work correctly. The order structure is identical between guest and authenticated orders, with the only difference being user_id=None for guest orders and user_id set to the user's ID for authenticated orders. All required fields for OrderSuccessPage are present in the response."
+      - working: true
+        agent: "testing"
+        comment: "Tested the order creation API endpoint POST /api/orders to verify it works correctly for both guest checkout and authenticated users. Confirmed that: (1) Guest checkout works perfectly with user_id=None, no authentication required. (2) Authenticated checkout works correctly with user_id from token. (3) Order structure is identical between both cases, only differing in user_id value. (4) Response contains all required fields for OrderSuccessPage: id, created_at, total_amount, payment_method, customer_info, items, subtotal, shipping_fee. (5) Shipping fee of 30,000 VND is correctly applied. (6) Total amount is calculated correctly (subtotal + shipping_fee). The API endpoint is working perfectly for both scenarios."
 
 metadata:
   created_by: "main_agent"
