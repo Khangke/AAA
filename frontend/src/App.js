@@ -72,11 +72,11 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <CartProvider>
-          <NotificationProvider>
+        <NotificationProvider>
+          <CartProvider>
             <AppContent />
-          </NotificationProvider>
-        </CartProvider>
+          </CartProvider>
+        </NotificationProvider>
       </AuthProvider>
     </BrowserRouter>
   );
