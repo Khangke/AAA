@@ -21,6 +21,7 @@ TEST_USER = {
 ACCESS_TOKEN = None
 TEST_PRODUCT_ID = None
 TEST_ORDER_ID = None
+GUEST_CART_TOKEN = None
 
 # Helper function to generate random string
 def random_string(length=8):
