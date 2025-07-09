@@ -49,7 +49,10 @@ const MobileNavigation = () => {
               )}
             </div>
             <span className="text-xs mt-1 text-center leading-none">
-              {item.label}
+              {item.path === '/account' 
+                ? (isAuthenticated ? (user?.full_name?.split(' ')[0] || 'Tài Khoản') : 'Đăng Nhập')
+                : item.label
+              }
             </span>
             {location.pathname === item.path && (
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-luxury-gold rounded-full animate-glow"></div>
