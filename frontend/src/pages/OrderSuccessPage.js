@@ -172,7 +172,7 @@ const OrderSuccessPage = () => {
                 </div>
                 <div className="text-right">
                   <p className="text-luxury-gold font-bold text-sm sm:text-base">
-                    {formatPrice(item.price * item.quantity)}
+                    {formatPrice(item.subtotal || (item.price * item.quantity))}
                   </p>
                   <p className="text-soft-gold text-xs">
                     {formatPrice(item.price)}/sp
