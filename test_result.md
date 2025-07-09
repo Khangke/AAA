@@ -349,7 +349,7 @@ agent_communication:
   - agent: "testing"
     message: "Đã test lại tất cả API endpoints theo yêu cầu. Tất cả endpoints đều hoạt động tốt, bao gồm: Product API (GET /api/products, GET /api/categories, POST /api/products/seed), Cart Management API (POST /api/cart/add, GET /api/cart, PUT /api/cart/item/{productId}, DELETE /api/cart/item/{productId}, DELETE /api/cart), Order Management API (POST /api/orders với cả COD và bank_transfer), User Authentication API (POST /api/auth/register, POST /api/auth/login, GET /api/auth/me, PUT /api/auth/me), và Contact Form API (POST /api/contact, GET /api/contact). Đã kiểm tra cả trường hợp thành công và thất bại, tất cả đều trả về status code và dữ liệu đúng format. Đặc biệt, đã xác nhận rằng đăng ký người dùng đã được đơn giản hóa chỉ yêu cầu 4 trường cơ bản (email, password, full_name, phone) và địa chỉ từ đơn hàng đầu tiên được tự động lưu vào hồ sơ người dùng."
 
-user_problem_statement: "Build cho tôi trang đặt hàng và thanh toán. Và trang đặt hàng thành công. Tối ưu cho mobile và vừa vặn với mọi kích cỡ màn hình. Tôi muốn hiển thị được nhiều ở màn hình. Có thêm cả thông báo khi thêm vào giỏ. Thông báo khi xoá sản phẩm ở giỏ. Thông báo đã dặt hàng thành công"
+user_problem_statement: "PHẦN CHI TIẾT SẢN PHẨM TÔI THẤY ẢNH SẢN PHẨM CHIẾM HƠI NHIỀU MÀN HÌNH, TỐI ƯU NÓ NHỎ HƠN 1 TÍ VÀ THÊM TÍNH NĂNG 10 ẢNH TỰ ĐỘNG VUỐT QUA TRÁI"
 
 backend:
   - task: "Account Registration Simplification"
