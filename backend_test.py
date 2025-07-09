@@ -398,6 +398,7 @@ def test_user_login():
         "password": TEST_USER["password"]
     }
     
+    # Test with correct credentials
     response = requests.post(url, json=data)
     
     print(f"Status Code: {response.status_code}")
@@ -412,6 +413,36 @@ def test_user_login():
     # Update the access token
     global ACCESS_TOKEN
     ACCESS_TOKEN = response.json()["access_token"]
+    
+    # Test with incorrect password
+    print("\n=== Testing Login with Incorrect Password ===")
+    wrong_password_data = {
+        "email": TEST_USER["email"],
+        "password": "WrongPassword123"
+    }
+    wrong_password_response = requests.post(url, json=wrong_password_data)
+    print(f"Status Code: {wrong_password_response.status_code}")
+    print("Response:")
+    pprint(wrong_password_response.json())
+    
+    assert wrong_password_response.status_code == 401, f"Expected status code 401 for wrong password, got {wrong_password_response.status_code}"
+    assert "detail" in wrong_password_response.json(), "Response should contain 'detail' field"
+    assert "Incorrect email or password" in wrong_password_response.json()["detail"], "Error message should indicate incorrect credentials"
+    
+    # Test with non-existent email
+    print("\n=== Testing Login with Non-existent Email ===")
+    wrong_email_data = {
+        "email": f"nonexistent.{random_string()}@example.com",
+        "password": TEST_USER["password"]
+    }
+    wrong_email_response = requests.post(url, json=wrong_email_data)
+    print(f"Status Code: {wrong_email_response.status_code}")
+    print("Response:")
+    pprint(wrong_email_response.json())
+    
+    assert wrong_email_response.status_code == 401, f"Expected status code 401 for non-existent email, got {wrong_email_response.status_code}"
+    assert "detail" in wrong_email_response.json(), "Response should contain 'detail' field"
+    assert "Incorrect email or password" in wrong_email_response.json()["detail"], "Error message should indicate incorrect credentials"
     
     return response.json()
 
