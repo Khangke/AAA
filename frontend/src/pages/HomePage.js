@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import cachedAPI from '../services/api';
 
 const HomePage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
