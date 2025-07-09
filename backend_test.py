@@ -375,6 +375,17 @@ def test_user_registration():
     global ACCESS_TOKEN
     ACCESS_TOKEN = response.json()["access_token"]
     
+    # Test registration with existing email (should fail)
+    print("\n=== Testing Registration with Existing Email ===")
+    duplicate_response = make_request("POST", url, json=data)
+    print(f"Status Code: {duplicate_response.status_code}")
+    print("Response:")
+    pprint(duplicate_response.json())
+    
+    assert duplicate_response.status_code == 400, f"Expected status code 400 for duplicate email, got {duplicate_response.status_code}"
+    assert "detail" in duplicate_response.json(), "Response should contain 'detail' field"
+    assert "Email already registered" in duplicate_response.json()["detail"], "Error message should indicate email is already registered"
+    
     return response.json()
 
 def test_user_login():
