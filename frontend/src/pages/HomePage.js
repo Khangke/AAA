@@ -311,8 +311,8 @@ const HomePage = () => {
         </div>
 
         {/* Features Section - Enhanced with Floating Effects */}
-        <div className="mb-8 sm:mb-12">
-          <div className="text-center mb-3 sm:mb-6">
+        <div className="mb-4 sm:mb-6">
+          <div className="text-center mb-2 sm:mb-4">
             <h2 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-2">
               <span className="inline-block animate-pulse">✨</span> Tại Sao Chọn Chúng Tôi?
             </h2>
