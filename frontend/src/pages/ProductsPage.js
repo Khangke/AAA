@@ -17,6 +17,12 @@ const ProductsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('featured');
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
+  
+  // New filter states
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [brandFilter, setBrandFilter] = useState('');
+  const [minRating, setMinRating] = useState('');
 
   useEffect(() => {
     fetchProducts();
