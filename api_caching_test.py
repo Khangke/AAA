@@ -7,7 +7,7 @@ from pprint import pprint
 from datetime import datetime
 
 # Backend URL from frontend/.env
-BACKEND_URL = "https://67cf7e8e-f331-4893-b60f-87759970fd18.preview.emergentagent.com"
+BACKEND_URL = "https://ee142728-bb35-45ab-a75b-854409c5898e.preview.emergentagent.com"
 API_BASE_URL = f"{BACKEND_URL}/api"
 
 def measure_response_time(url, method="GET", headers=None, data=None, params=None):
