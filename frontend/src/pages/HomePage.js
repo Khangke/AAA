@@ -104,7 +104,7 @@ const HomePage = () => {
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}>
           {/* Hero Background Image */}
-          <div className="relative h-80 sm:h-96 md:h-[450px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+          <div className="relative h-96 sm:h-[500px] md:h-[600px] lg:h-[700px] rounded-3xl overflow-hidden shadow-2xl">
             <img
               src="https://cdn.myportfolio.com/b60af86a855ed2da587d6e31dbd728bf/584cc299-eacc-457d-93d7-684d4af9a6e5.jpg?h=8730de8918cada72cfaf3ccccf1ff0f5"
               alt="Luxury Incense Hero"
