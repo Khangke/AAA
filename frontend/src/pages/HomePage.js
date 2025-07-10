@@ -14,7 +14,8 @@ const HomePage = () => {
     'https://images.unsplash.com/photo-1541795083-1b160cf4f3d7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxpbmNlbnNlfGVufDB8fHxibGFja3wxNzUyMTE5OTQ5fDA&ixlib=rb-4.1.0&q=85',
     'https://images.unsplash.com/photo-1628709353367-35f0bb07413d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwzfHxpbmNlbnNlfGVufDB8fHxibGFja3wxNzUyMTE5OTQ5fDA&ixlib=rb-4.1.0&q=85',
     'https://images.unsplash.com/photo-1611072488315-fd8d5f8bc1e3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwxfHxhZ2Fyd29vZHxlbnwwfHx8YmxhY2t8MTc1MjExOTk1Nnww&ixlib=rb-4.1.0&q=85',
-    // Thêm ảnh setup trầm hương đẹp tương tự như bạn gửi
+    // Ảnh của bạn - setup trầm hương đẹp với geometric design
+    'https://cdn.myportfolio.com/b60af86a855ed2da587d6e31dbd728bf/584cc299-eacc-457d-93d7-684d4af9a6e5.jpg?h=8730de8918cada72cfaf3ccccf1ff0f5',
     'https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwzfHxhcm9tYXRoZXJhcHl8ZW58MHx8fGJsYWNrfDE3NTIxMTk5NTZ8MA&ixlib=rb-4.1.0&q=85',
     'https://images.unsplash.com/photo-1557804506-669a67965ba0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHw1fHxhcm9tYXRoZXJhcHl8ZW58MHx8fGJsYWNrfDE3NTIxMTk5NTZ8MA&ixlib=rb-4.1.0&q=85'
   ];
