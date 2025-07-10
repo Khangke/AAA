@@ -185,7 +185,7 @@ const ProductDetailPage = () => {
             <div className="flex items-center space-x-4 mb-4">
               <div className="flex items-center space-x-1">
                 {[...Array(5)].map((_, i) => (
-                  <IconWrapper
+                  <IonIcon
                     key={i}
                     icon={i < Math.floor(product.rating) ? "star" : "star-outline"}
                     size={16}
