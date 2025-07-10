@@ -289,53 +289,30 @@ const ProductsPage = () => {
         </div>
       </div>
 
-      {/* Compact Results Header */}
-      <div className="mb-3">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-2 bg-gradient-to-r from-deep-black/40 to-deep-black/20 rounded-lg border border-luxury-gold/10">
-          <div className="flex items-center space-x-2">
-            <div className="w-5 h-5 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center">
-              <IonIcon icon="bag-outline" size={10} color="#1a1a1a" />
+      {/* Elegant Results Header */}
+      <div className="mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-gradient-to-r from-luxury-gold/5 via-deep-black/80 to-luxury-copper/5 backdrop-blur-xl border border-luxury-gold/20 rounded-xl shadow-lg">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-luxury-gold via-luxury-copper to-luxury-gold rounded-full flex items-center justify-center shadow-lg">
+              <IonIcon icon="storefront-outline" size={20} color="#1a1a1a" />
             </div>
             <div>
-              <p className="text-white text-xs font-medium">
+              <h2 className="text-white font-bold text-lg">
                 {filteredProducts.length > 0 ? (
                   <>
-                    <span className="text-luxury-gold font-bold">{filteredProducts.length}</span> sản phẩm
+                    <span className="text-luxury-gold">{filteredProducts.length}</span> sản phẩm
                   </>
                 ) : (
                   <span className="text-gray-400">Không có sản phẩm</span>
                 )}
-              </p>
+              </h2>
               {searchTerm && (
-                <p className="text-xs text-gray-400">
-                  "<span className="text-luxury-gold">{searchTerm}</span>"
+                <p className="text-sm text-gray-300">
+                  Kết quả cho "<span className="text-luxury-gold font-medium">{searchTerm}</span>"
                 </p>
               )}
             </div>
           </div>
-          
-          {/* Compact Active Filters Display */}
-          {hasActiveFilters && (
-            <div className="flex flex-wrap items-center gap-1">
-              <span className="text-xs text-gray-400">Lọc:</span>
-              {selectedCategory !== 'all' && (
-                <span className="px-1.5 py-0.5 bg-luxury-gold/20 text-luxury-gold rounded-full text-xs border border-luxury-gold/30">
-                  {selectedCategory}
-                </span>
-              )}
-              {sortBy !== 'featured' && (
-                <span className="px-1.5 py-0.5 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-500/30">
-                  {sortBy === 'price-low' ? 'Giá thấp' : sortBy === 'price-high' ? 'Giá cao' : 'A-Z'}
-                </span>
-              )}
-              {showFeaturedOnly && (
-                <span className="px-1.5 py-0.5 bg-yellow-500/20 text-yellow-300 rounded-full text-xs border border-yellow-500/30 flex items-center space-x-0.5">
-                  <IonIcon icon="star" size={8} color="#fcd34d" />
-                  <span>Nổi bật</span>
-                </span>
-              )}
-            </div>
-          )}
         </div>
       </div>
 
