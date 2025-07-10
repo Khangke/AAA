@@ -133,9 +133,13 @@ const ProductsPage = () => {
     setSearchTerm('');
     setSortBy('featured');
     setShowFeaturedOnly(false);
+    setMinPrice('');
+    setMaxPrice('');
+    setBrandFilter('');
+    setMinRating('');
   };
 
-  const hasActiveFilters = selectedCategory !== 'all' || searchTerm || sortBy !== 'featured' || showFeaturedOnly;
+  const hasActiveFilters = selectedCategory !== 'all' || searchTerm || sortBy !== 'featured' || showFeaturedOnly || minPrice || maxPrice || brandFilter || minRating;
 
   if (loading) {
     return (
