@@ -6,6 +6,16 @@ import cachedAPI from '../services/api';
 import { ProductDetailSkeleton } from '../components/Skeleton';
 import IonIcon from '../components/IonIcon';
 
+// Import specific icons
+import { 
+  star, 
+  starOutline, 
+  removeOutline, 
+  addOutline, 
+  bagAddOutline, 
+  flashOutline 
+} from 'ionicons/icons';
+
 const ProductDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
