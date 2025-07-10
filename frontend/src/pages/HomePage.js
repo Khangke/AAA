@@ -246,7 +246,7 @@ const HomePage = () => {
               onClick={() => window.location.href = '/products'}
             >
               <span>Xem Tất Cả Sản Phẩm</span>
-              <IconWrapper icon="arrow-forward-outline" size={16} />
+              <IonIcon icon="arrow-forward-outline" size={16} />
             </button>
           </div>
         </div>
