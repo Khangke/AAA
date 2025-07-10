@@ -272,7 +272,7 @@ const ProductDetailPage = () => {
                 onClick={handleBuyNow}
                 className="flex-1 bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-luxury-gold/30 transition-all flex items-center justify-center space-x-2"
               >
-                <IonIcon icon="flash-outline" size={20} color="#1a1a1a" />
+                <IonIcon icon={flashOutline} size={20} color="#1a1a1a" />
                 <span>Mua Ngay</span>
               </button>
             </div>
