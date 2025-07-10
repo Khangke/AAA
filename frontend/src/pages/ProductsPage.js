@@ -12,17 +12,10 @@ const ProductsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  // Filter states
+  // Simple filter states
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('featured');
-  const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
-  
-  // New filter states
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
-  const [brandFilter, setBrandFilter] = useState('');
-  const [minRating, setMinRating] = useState('');
 
   useEffect(() => {
     fetchProducts();
