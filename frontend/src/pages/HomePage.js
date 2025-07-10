@@ -150,14 +150,7 @@ const HomePage = () => {
                 </div>
               ))}
               
-              {/* Floating Particles */}
-              <div className="particles">
-                <div className="particle" style={{left: '10%', top: '20%'}}></div>
-                <div className="particle" style={{left: '80%', top: '30%'}}></div>
-                <div className="particle" style={{left: '60%', top: '60%'}}></div>
-                <div className="particle" style={{left: '20%', top: '80%'}}></div>
-                <div className="particle" style={{left: '90%', top: '70%'}}></div>
-              </div>
+
               
               {/* Banner Content Overlay - Enhanced */}
               <div className="absolute inset-0 flex items-center justify-center z-10">
