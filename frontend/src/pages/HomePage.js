@@ -495,11 +495,8 @@ const HomePage = () => {
                 </div>
                 
                 <div className="flex items-center mb-4 sm:mb-5">
-                  <div className="relative w-12 h-12 mr-3">
-                    <div className="absolute inset-0 bg-luxury-gold rounded-full animate-pulse opacity-30 group-hover:opacity-50 transition-opacity duration-700"></div>
-                    <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-transform duration-500">
-                      <span className="text-deep-black font-bold text-sm">{testimonial.avatar}</span>
-                    </div>
+                  <div className="w-12 h-12 mr-3 bg-luxury-gold/20 flex items-center justify-center">
+                    <span className="text-luxury-gold font-bold text-sm">{testimonial.avatar}</span>
                   </div>
                   <div>
                     <h4 className="font-bold text-luxury-gold text-sm group-hover:text-luxury-copper transition-colors duration-500">{testimonial.name}</h4>
