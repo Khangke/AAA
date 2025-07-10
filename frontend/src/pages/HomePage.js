@@ -116,17 +116,17 @@ const HomePage = () => {
               <div className="text-center px-4 sm:px-6 max-w-5xl mx-auto">
                 {/* Logo and Brand */}
                 <div className="mb-6 sm:mb-8">
-                  <h1 className="font-luxury text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-luxury-gold mb-4 drop-shadow-2xl">
+                  <h1 className="font-luxury text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-luxury-gold mb-4 drop-shadow-2xl" style={{textShadow: '4px 4px 8px rgba(0, 0, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.6)'}}>
                     Khang Trầm Hương
                   </h1>
                 </div>
 
                 {/* Main Content */}
                 <div className="p-6 sm:p-8 md:p-12">
-                  <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-luxury font-bold text-luxury-gold mb-4 sm:mb-6 drop-shadow-2xl">
+                  <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-luxury font-bold text-luxury-gold mb-4 sm:mb-6 drop-shadow-2xl" style={{textShadow: '3px 3px 6px rgba(0, 0, 0, 0.8), 1px 1px 3px rgba(0, 0, 0, 0.6)'}}>
                     Tinh Hoa Trầm Hương Việt Nam
                   </h2>
-                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 leading-relaxed drop-shadow-xl font-medium">
+                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 leading-relaxed drop-shadow-xl font-medium" style={{textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9), 1px 1px 2px rgba(0, 0, 0, 0.7)'}}>
                     Chất Lượng Luxury • 20+ Năm Kinh Nghiệm • Hàng Ngàn Khách Hàng Tin Tưởng
                   </p>
                   <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center max-w-lg mx-auto">
