@@ -152,26 +152,26 @@ const HomePage = () => {
               {/* Banner Content Overlay - Enhanced */}
               <div className="absolute inset-0 flex items-center justify-center z-10">
                 <div className="text-center px-4 sm:px-6 max-w-4xl mx-auto">
-                  <div className="glass-morphism-light rounded-2xl p-6 sm:p-8 backdrop-blur-ultra">
-                    <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-luxury font-bold text-luxury-gold mb-3 sm:mb-4 text-glow-intense animate-float">
+                  <div className="bg-black/60 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-luxury-gold/30">
+                    <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-luxury font-bold text-luxury-gold mb-3 sm:mb-4 drop-shadow-lg">
                       Tinh Hoa Trầm Hương Việt Nam
                     </h2>
-                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-soft-gold mb-4 sm:mb-6 text-glow leading-relaxed animate-fade-in-scale">
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white mb-4 sm:mb-6 leading-relaxed drop-shadow-md">
                       Chất Lượng Luxury • 20+ Năm Kinh Nghiệm • Hàng Ngàn Khách Hàng Tin Tưởng
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-slide-in-up">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                       <button 
-                        className="btn-luxury bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:shadow-2xl transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105 animate-glow-pulse"
+                        className="btn-luxury bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:shadow-2xl transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105"
                         onClick={() => window.location.href = '/products'}
                       >
-                        <IonIcon icon="storefront-outline" size={20} color="#1a1a1a" className="animate-float" />
+                        <IonIcon icon="storefront-outline" size={20} color="#1a1a1a" />
                         <span>Khám Phá Sản Phẩm</span>
                       </button>
                       <button 
-                        className="btn-luxury border-2 border-luxury-gold text-luxury-gold px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105 glass-morphism"
+                        className="btn-luxury border-2 border-luxury-gold text-luxury-gold px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105"
                         onClick={() => window.location.href = '/contact'}
                       >
-                        <IonIcon icon="call-outline" size={20} className="animate-float-reverse" />
+                        <IonIcon icon="call-outline" size={20} />
                         <span>Liên Hệ Ngay</span>
                       </button>
                     </div>
