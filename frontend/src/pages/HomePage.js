@@ -427,11 +427,8 @@ const HomePage = () => {
               >
 
                 
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6">
-                  <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full animate-pulse opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
-                  <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-transform duration-700">
-                    <span className="text-2xl sm:text-3xl">{feature.icon}</span>
-                  </div>
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-luxury-gold/20 flex items-center justify-center">
+                  <span className="text-2xl sm:text-3xl">{feature.icon}</span>
                 </div>
                 
                 <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold mb-3 group-hover:text-luxury-copper transition-colors duration-500">
