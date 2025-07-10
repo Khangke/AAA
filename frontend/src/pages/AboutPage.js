@@ -238,6 +238,157 @@ const AboutPage = () => {
             </div>
           )}
 
+          {/* Values Tab */}
+          {activeTab === 'values' && (
+            <div className="space-y-3 sm:space-y-4">
+              <div className="text-center">
+                <h3 className="font-luxury text-base sm:text-2xl font-bold text-luxury-gold mb-2 sm:mb-4">
+                  Giá Trị Cốt Lõi
+                </h3>
+                <p className="text-soft-gold text-xs sm:text-sm mb-3">
+                  Những giá trị định hướng mọi hoạt động của chúng tôi
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="bg-gradient-to-br from-luxury-gold/10 to-luxury-copper/5 p-3 sm:p-4 rounded-lg border border-luxury-gold/20">
+                  <div className="flex items-center mb-2">
+                    <span className="text-base sm:text-xl mr-2">🤝</span>
+                    <h4 className="font-luxury text-sm sm:text-lg font-bold text-luxury-gold">
+                      Tính Chân Thật
+                    </h4>
+                  </div>
+                  <p className="text-soft-gold text-xs sm:text-sm leading-relaxed">
+                    Mỗi sản phẩm trầm hương đều được kiểm định kỹ lưỡng, đảm bảo 100% tự nhiên. 
+                    Chúng tôi cam kết minh bạch về nguồn gốc và chất lượng với khách hàng.
+                  </p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-luxury-gold/10 to-luxury-copper/5 p-3 sm:p-4 rounded-lg border border-luxury-gold/20">
+                  <div className="flex items-center mb-2">
+                    <span className="text-base sm:text-xl mr-2">❤️</span>
+                    <h4 className="font-luxury text-sm sm:text-lg font-bold text-luxury-gold">
+                      Tâm Huyết
+                    </h4>
+                  </div>
+                  <p className="text-soft-gold text-xs sm:text-sm leading-relaxed">
+                    Từ quá trình tuyển chọn nguyên liệu đến chế tác thành phẩm, mỗi công đoạn 
+                    đều được thực hiện với tâm huyết và tình yêu nghề nghiệp của nghệ nhân.
+                  </p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-luxury-gold/10 to-luxury-copper/5 p-3 sm:p-4 rounded-lg border border-luxury-gold/20">
+                  <div className="flex items-center mb-2">
+                    <span className="text-base sm:text-xl mr-2">🏆</span>
+                    <h4 className="font-luxury text-sm sm:text-lg font-bold text-luxury-gold">
+                      Chất Lượng Đẳng Cấp
+                    </h4>
+                  </div>
+                  <p className="text-soft-gold text-xs sm:text-sm leading-relaxed">
+                    Áp dụng tiêu chuẩn quốc tế trong từng khâu sản xuất. Chỉ những sản phẩm 
+                    đạt chất lượng cao nhất mới được đưa đến tay khách hàng.
+                  </p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-luxury-gold/10 to-luxury-copper/5 p-3 sm:p-4 rounded-lg border border-luxury-gold/20">
+                  <div className="flex items-center mb-2">
+                    <span className="text-base sm:text-xl mr-2">🌱</span>
+                    <h4 className="font-luxury text-sm sm:text-lg font-bold text-luxury-gold">
+                      Phát Triển Bền Vững
+                    </h4>
+                  </div>
+                  <p className="text-soft-gold text-xs sm:text-sm leading-relaxed">
+                    Cam kết bảo vệ môi trường và phát triển bền vững. Chúng tôi hợp tác với 
+                    các cộng đồng địa phương để bảo tồn rừng trầm hương.
+                  </p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-luxury-gold/10 to-luxury-copper/5 p-3 sm:p-4 rounded-lg border border-luxury-gold/20">
+                  <div className="flex items-center mb-2">
+                    <span className="text-base sm:text-xl mr-2">🎯</span>
+                    <h4 className="font-luxury text-sm sm:text-lg font-bold text-luxury-gold">
+                      Tận Tâm Phục Vụ
+                    </h4>
+                  </div>
+                  <p className="text-soft-gold text-xs sm:text-sm leading-relaxed">
+                    Đặt khách hàng làm trung tâm của mọi quyết định. Luôn lắng nghe và cải thiện 
+                    để mang đến trải nghiệm tốt nhất cho khách hàng.
+                  </p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-luxury-gold/10 to-luxury-copper/5 p-3 sm:p-4 rounded-lg border border-luxury-gold/20">
+                  <div className="flex items-center mb-2">
+                    <span className="text-base sm:text-xl mr-2">🏛️</span>
+                    <h4 className="font-luxury text-sm sm:text-lg font-bold text-luxury-gold">
+                      Kế Thừa Truyền Thống
+                    </h4>
+                  </div>
+                  <p className="text-soft-gold text-xs sm:text-sm leading-relaxed">
+                    Gìn giữ và phát huy những giá trị văn hóa truyền thống của trầm hương Việt Nam, 
+                    đồng thời ứng dụng công nghệ hiện đại trong sản xuất.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-luxury-gold/5 to-luxury-copper/5 p-3 sm:p-4 rounded-lg mt-4">
+                <h4 className="font-luxury text-sm sm:text-lg font-bold text-luxury-gold mb-3 text-center">
+                  Cam Kết Với Khách Hàng
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-base sm:text-lg">💯</span>
+                    </div>
+                    <h5 className="font-luxury text-xs sm:text-sm font-bold text-luxury-gold mb-1">
+                      Đảm Bảo Chất Lượng
+                    </h5>
+                    <p className="text-soft-gold text-3xs sm:text-xs">
+                      Hoàn tiền 100% nếu không hài lòng
+                    </p>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-base sm:text-lg">🚚</span>
+                    </div>
+                    <h5 className="font-luxury text-xs sm:text-sm font-bold text-luxury-gold mb-1">
+                      Giao Hàng Tận Nơi
+                    </h5>
+                    <p className="text-soft-gold text-3xs sm:text-xs">
+                      Miễn phí giao hàng toàn quốc
+                    </p>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-base sm:text-lg">🎓</span>
+                    </div>
+                    <h5 className="font-luxury text-xs sm:text-sm font-bold text-luxury-gold mb-1">
+                      Tư Vấn Chuyên Sâu
+                    </h5>
+                    <p className="text-soft-gold text-3xs sm:text-xs">
+                      Hỗ trợ 24/7 từ chuyên gia
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-luxury-gold/10 to-transparent p-3 sm:p-4 rounded-lg text-center">
+                <h4 className="font-luxury text-sm sm:text-lg font-bold text-luxury-gold mb-2">
+                  Thông Điệp Từ Người Sáng Lập
+                </h4>
+                <blockquote className="text-soft-gold text-xs sm:text-sm italic leading-relaxed">
+                  "Chúng tôi không chỉ kinh doanh trầm hương, mà còn lan tỏa những giá trị tốt đẹp 
+                  của văn hóa Việt Nam. Mỗi sản phẩm là một câu chuyện, mỗi hương thơm là một kỷ niệm 
+                  đẹp mà chúng tôi muốn chia sẻ với khách hàng."
+                </blockquote>
+                <cite className="text-luxury-gold text-xs sm:text-sm font-semibold mt-2 block">
+                  - Nghệ nhân Nguyễn Văn Khang, Người sáng lập
+                </cite>
+              </div>
+            </div>
+          )}
+
           {/* Heritage Tab */}
           {activeTab === 'heritage' && (
             <div className="space-y-3 sm:space-y-4">
