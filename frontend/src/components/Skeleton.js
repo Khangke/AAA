@@ -87,7 +87,7 @@ const ProductDetailSkeleton = () => {
 
 const PageLoadingSkeleton = () => {
   return (
-    <div className="min-h-screen pt-16 md:pt-20 bg-deep-black">
+    <div className="pt-16 md:pt-20 bg-deep-black">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
         {/* Header skeleton */}
         <div className="mb-6">
