@@ -120,11 +120,8 @@ const HomePage = () => {
         }`}>
           {/* Logo and Brand */}
           <div className="mb-6 sm:mb-8">
-            <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 group">
-              <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full animate-pulse opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-              <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-105 transition-transform duration-300">
-                <span className="text-deep-black font-bold text-2xl sm:text-3xl">K</span>
-              </div>
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-luxury-gold/20 flex items-center justify-center">
+              <span className="text-luxury-gold font-bold text-2xl sm:text-3xl">K</span>
             </div>
             <h1 className="font-luxury text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-luxury-gold via-warm-gold to-luxury-copper bg-clip-text text-transparent drop-shadow-lg">
               Khang Trầm Hương
