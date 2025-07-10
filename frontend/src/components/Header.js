@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
-import IconWrapper from './IconWrapper';
+import IonIcon from './IonIcon';
 
 const Header = () => {
   const location = useLocation();
@@ -35,7 +35,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 hover:scale-105 transition-transform duration-300">
             <div className="w-10 h-10 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-lg">
-              <IconWrapper icon="sparkles" size={20} color="#1a1a1a" />
+              <IonIcon icon="sparkles" size={20} color="#1a1a1a" />
             </div>
             <div className="text-luxury-gold font-luxury text-xl font-bold">
               Khang Trầm Hương
@@ -61,7 +61,7 @@ const Header = () => {
                   }`}
                 >
                   <span className="flex items-center space-x-2">
-                    <IconWrapper icon={item.icon} size={18} />
+                    <IonIcon icon={item.icon} size={18} />
                     <span>
                       {item.path === '/account' && isAuthenticated 
                         ? (user?.full_name || 'Tài Khoản')
@@ -92,7 +92,7 @@ const Header = () => {
                 }`}
               >
                 <span className="flex items-center space-x-2">
-                  <IconWrapper icon="log-in-outline" size={18} />
+                  <IonIcon icon="log-in-outline" size={18} />
                   <span>Đăng Nhập</span>
                 </span>
                 {location.pathname === '/account' && (
