@@ -527,7 +527,7 @@ const AccountPage = () => {
                         onClick={handleLogout}
                         className="text-red-400 hover:text-red-300 transition-colors flex items-center space-x-1"
                       >
-                        <IconWrapper icon="log-out-outline" size={16} />
+                        <IonIcon icon="log-out-outline" size={16} />
                         <span>Đăng xuất</span>
                       </button>
                     </div>
