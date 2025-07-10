@@ -123,7 +123,7 @@ const ProductsPage = () => {
 
   if (error) {
     return (
-      <div className="container mx-auto px-4 py-8 pt-20">
+      <div className="container mx-auto px-2 py-4 pt-16">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-luxury-gold mb-4">Sản Phẩm</h1>
           <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-6 max-w-md mx-auto">
