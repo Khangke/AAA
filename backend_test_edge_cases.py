@@ -7,7 +7,7 @@ from pprint import pprint
 from datetime import datetime
 
 # Backend URL from frontend/.env
-BACKEND_URL = "https://32677e99-6a93-465b-862c-73ecc5e745f7.preview.emergentagent.com"
+BACKEND_URL = "https://becea3af-8c73-4a75-951c-2aadc73d9709.preview.emergentagent.com"
 API_BASE_URL = f"{BACKEND_URL}/api"
 
 # Global variables to store test data
