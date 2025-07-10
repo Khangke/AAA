@@ -53,7 +53,7 @@ const ProductGridSkeleton = ({ count = 8 }) => {
 
 const ProductDetailSkeleton = () => {
   return (
-    <div className="min-h-screen pt-14 md:pt-20 bg-deep-black">
+    <div className="pt-14 md:pt-20 bg-deep-black">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {/* Image skeleton */}
