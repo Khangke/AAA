@@ -127,7 +127,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Main Content */}
-                <div className="bg-black/80 backdrop-blur-xl rounded-3xl p-6 sm:p-8 md:p-12 border-2 border-luxury-gold/50 shadow-2xl">
+                <div className="p-6 sm:p-8 md:p-12">
                   <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-luxury font-bold text-luxury-gold mb-4 sm:mb-6 drop-shadow-2xl">
                     Tinh Hoa Trầm Hương Việt Nam
                   </h2>
