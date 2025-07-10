@@ -174,7 +174,7 @@ const HomePage = () => {
                               className="w-full bg-luxury-gold text-deep-black px-3 py-2 rounded-lg font-bold text-sm hover:bg-luxury-copper transition-colors flex items-center justify-center space-x-2"
                               onClick={() => window.location.href = `/products/${product.id}`}
                             >
-                              <IconWrapper icon="eye-outline" size={16} color="#1a1a1a" />
+                              <IonIcon icon="eye-outline" size={16} color="#1a1a1a" />
                               <span>Xem Chi Tiết</span>
                             </button>
                           </div>
