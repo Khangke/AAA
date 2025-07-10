@@ -3,7 +3,7 @@ import ProductCard from '../components/ProductCard';
 import { ProductGridSkeleton } from '../components/Skeleton';
 import cachedAPI from '../services/api';
 import { debounce } from '../utils/cacheManager';
-import IconWrapper from '../components/IconWrapper';
+import IonIcon from '../components/IonIcon';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
