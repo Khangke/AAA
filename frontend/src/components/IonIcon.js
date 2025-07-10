@@ -2,10 +2,13 @@ import React, { useEffect } from 'react';
 
 const IonIcon = ({ icon, size = 24, color = 'currentColor', className = '', ...props }) => {
   useEffect(() => {
-    // Load ionicons from local package
-    import('ionicons/icons').then((icons) => {
-      // Icons are loaded
-    });
+    // Load ionicons dynamically
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/ionicons@8.0.0/dist/ionicons/ionicons.esm.js';
+    script.type = 'module';
+    if (!document.querySelector('script[src*="ionicons"]')) {
+      document.head.appendChild(script);
+    }
   }, []);
 
   return (
@@ -14,9 +17,9 @@ const IonIcon = ({ icon, size = 24, color = 'currentColor', className = '', ...p
       style={{
         fontSize: `${size}px`,
         color: color,
-        verticalAlign: 'middle',
         display: 'inline-block',
-        lineHeight: 1,
+        verticalAlign: 'middle',
+        '--ionicon-stroke-width': '32px'
       }}
       className={className}
       {...props}
