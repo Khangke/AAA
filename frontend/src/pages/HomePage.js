@@ -367,7 +367,7 @@ const HomePage = () => {
               <span>Liên Hệ Ngay</span>
             </button>
             <button className="border border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all flex items-center justify-center space-x-2">
-              <IconWrapper icon="storefront-outline" size={18} />
+              <IonIcon icon="storefront-outline" size={18} />
               <span>Xem Sản Phẩm</span>
             </button>
           </div>
