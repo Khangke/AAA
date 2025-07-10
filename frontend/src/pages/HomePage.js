@@ -141,7 +141,7 @@ const HomePage = () => {
                       <span>Khám Phá Sản Phẩm</span>
                     </button>
                     <button 
-                      className="btn-luxury border-2 border-luxury-gold text-luxury-gold px-8 py-3 sm:px-10 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-3 transform hover:scale-105 shadow-xl backdrop-blur-sm"
+                      className="btn-luxury border-2 border-luxury-gold text-luxury-gold px-8 py-3 sm:px-10 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-3 transform hover:scale-105 shadow-xl"
                       onClick={() => window.location.href = '/contact'}
                     >
                       <IonIcon icon="call-outline" size={20} />
