@@ -252,13 +252,7 @@ const HomePage = () => {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                           
-                          {/* Enhanced Floating Elements */}
-                          <div className="absolute top-3 right-3 glass-morphism-light text-luxury-gold px-3 py-1 rounded-full text-xs font-bold transform translate-y-[-40px] group-hover:translate-y-0 transition-all duration-700 animate-glow-pulse">
-                            <span className="animate-float">🔥 HOT</span>
-                          </div>
-                          <div className="absolute top-3 left-3 glass-morphism text-luxury-gold px-3 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transform translate-x-[-40px] group-hover:translate-x-0 transition-all duration-700 delay-200">
-                            ⚡ SALE -20%
-                          </div>
+
                           
                           {/* Quick action buttons */}
                           <div className="absolute bottom-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transform translate-y-10 group-hover:translate-y-0 transition-all duration-700 delay-300">
