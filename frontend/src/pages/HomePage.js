@@ -110,8 +110,6 @@ const HomePage = () => {
               alt="Luxury Incense Hero"
               className="w-full h-full object-cover"
             />
-            {/* Dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/60"></div>
             
             {/* Hero Content Overlay */}
             <div className="absolute inset-0 flex items-center justify-center z-10">
