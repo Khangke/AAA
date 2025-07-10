@@ -321,12 +321,7 @@ const HomePage = () => {
                       onMouseEnter={() => setHoveredProduct(product.id)}
                       onMouseLeave={() => setHoveredProduct(null)}
                     >
-                      {/* Floating background particles */}
-                      <div className="absolute inset-0 overflow-hidden">
-                        <div className="absolute top-4 left-4 w-1 h-1 bg-luxury-gold/40 rounded-full animate-particle-float"></div>
-                        <div className="absolute bottom-8 right-6 w-2 h-2 bg-luxury-gold/30 rounded-full animate-particle-float" style={{animationDelay: '2s'}}></div>
-                        <div className="absolute top-1/2 left-1/4 w-1 h-1 bg-luxury-gold/50 rounded-full animate-particle-float" style={{animationDelay: '4s'}}></div>
-                      </div>
+
                       
                       <div className="relative aspect-square overflow-hidden">
                         <img 
