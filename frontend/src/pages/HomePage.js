@@ -251,15 +251,7 @@ const HomePage = () => {
                           
 
                           
-                          {/* Quick action buttons */}
-                          <div className="absolute bottom-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transform translate-y-10 group-hover:translate-y-0 transition-all duration-700 delay-300">
-                            <button className="glass-morphism-light text-luxury-gold p-2 rounded-full hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 btn-luxury">
-                              <IonIcon icon="heart-outline" size={16} />
-                            </button>
-                            <button className="glass-morphism-light text-luxury-gold p-2 rounded-full hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 btn-luxury">
-                              <IonIcon icon="share-outline" size={16} />
-                            </button>
-                          </div>
+
                         </div>
                         
                         <div className="p-5 glass-morphism-light backdrop-blur-ultra">
