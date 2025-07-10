@@ -233,58 +233,75 @@ const HomePage = () => {
           ) : featuredProducts.length > 0 ? (
             <>
               {isMobile ? (
-                /* Mobile: Enhanced Horizontal Scroll */
+                /* Mobile: Ultra Enhanced Horizontal Scroll */
                 <div>
-                  <div className="flex gap-4 overflow-x-auto pb-6 px-4 -mx-4 scrollbar-hide product-scroll">
+                  <div className="flex gap-6 overflow-x-auto pb-6 px-4 -mx-4 scrollbar-luxury product-scroll">
                     {featuredProducts.map((product, index) => (
                       <div 
                         key={product.id} 
-                        className="group relative bg-black/90 backdrop-blur-md rounded-2xl overflow-hidden border border-luxury-gold/40 hover:border-luxury-gold/80 transition-all duration-700 cursor-pointer flex-shrink-0 w-64 min-w-64 hover:shadow-2xl hover:shadow-luxury-gold/30 transform hover:scale-105"
+                        className="group relative card-luxury glass-morphism rounded-3xl overflow-hidden border border-luxury-gold/50 hover:border-luxury-gold transition-all duration-700 cursor-pointer flex-shrink-0 w-72 min-w-72 hover:shadow-2xl hover:shadow-luxury-gold/40"
                         style={{
-                          animationDelay: `${index * 150}ms`,
-                          animation: isLoaded ? 'slideInRight 0.8s ease-out forwards' : 'none'
+                          animationDelay: `${index * 200}ms`,
+                          animation: isLoaded ? 'slideInRight 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards' : 'none'
                         }}
                         onMouseEnter={() => setHoveredProduct(product.id)}
                         onMouseLeave={() => setHoveredProduct(null)}
                       >
+                        {/* Floating background particles */}
+                        <div className="absolute inset-0 overflow-hidden">
+                          <div className="absolute top-4 left-4 w-1 h-1 bg-luxury-gold/40 rounded-full animate-particle-float"></div>
+                          <div className="absolute bottom-8 right-6 w-2 h-2 bg-luxury-gold/30 rounded-full animate-particle-float" style={{animationDelay: '2s'}}></div>
+                          <div className="absolute top-1/2 left-1/4 w-1 h-1 bg-luxury-gold/50 rounded-full animate-particle-float" style={{animationDelay: '4s'}}></div>
+                        </div>
+                        
                         <div className="relative aspect-square overflow-hidden">
                           <img 
                             src={product.image_url} 
                             alt={product.name}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125 group-hover:rotate-2"
                             onError={(e) => {
                               e.target.src = 'https://images.unsplash.com/photo-1662473217799-6e7288f19741';
                             }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                           
-                          {/* Floating Elements */}
-                          <div className="absolute top-3 right-3 bg-luxury-gold/95 backdrop-blur-sm text-deep-black px-2 py-1 rounded-full text-xs font-bold transform translate-y-[-30px] group-hover:translate-y-0 transition-all duration-500">
-                            HOT
+                          {/* Enhanced Floating Elements */}
+                          <div className="absolute top-3 right-3 glass-morphism-light text-luxury-gold px-3 py-1 rounded-full text-xs font-bold transform translate-y-[-40px] group-hover:translate-y-0 transition-all duration-700 animate-glow-pulse">
+                            <span className="animate-float">🔥 HOT</span>
                           </div>
-                          <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-luxury-gold px-2 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transform translate-x-[-30px] group-hover:translate-x-0 transition-all duration-500 delay-100">
-                            ⚡ SALE
+                          <div className="absolute top-3 left-3 glass-morphism text-luxury-gold px-3 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transform translate-x-[-40px] group-hover:translate-x-0 transition-all duration-700 delay-200">
+                            ⚡ SALE -20%
+                          </div>
+                          
+                          {/* Quick action buttons */}
+                          <div className="absolute bottom-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transform translate-y-10 group-hover:translate-y-0 transition-all duration-700 delay-300">
+                            <button className="glass-morphism-light text-luxury-gold p-2 rounded-full hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 btn-luxury">
+                              <IonIcon icon="heart-outline" size={16} />
+                            </button>
+                            <button className="glass-morphism-light text-luxury-gold p-2 rounded-full hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 btn-luxury">
+                              <IonIcon icon="share-outline" size={16} />
+                            </button>
                           </div>
                         </div>
                         
-                        <div className="p-4 bg-gradient-to-b from-transparent to-black/40 backdrop-blur-sm">
-                          <h3 className="font-luxury text-sm font-bold text-luxury-gold mb-3 line-clamp-2 leading-tight group-hover:text-luxury-copper transition-colors duration-500">
+                        <div className="p-5 glass-morphism-light backdrop-blur-ultra">
+                          <h3 className="font-luxury text-sm font-bold text-luxury-gold mb-3 line-clamp-2 leading-tight group-hover:text-glow transition-all duration-500">
                             {product.name}
                           </h3>
-                          <div className="space-y-3">
+                          <div className="space-y-4">
                             <div className="flex items-center justify-between">
-                              <span className="text-luxury-gold font-bold text-base">
+                              <span className="text-luxury-gold font-bold text-lg text-glow">
                                 {formatPrice(product.price)}
                               </span>
-                              <div className="flex text-luxury-gold text-xs">
+                              <div className="flex text-luxury-gold text-sm animate-float">
                                 {'⭐'.repeat(5)}
                               </div>
                             </div>
                             <button 
-                              className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-3 py-3 rounded-xl font-bold text-sm hover:shadow-xl transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105 group-hover:shadow-luxury-gold/50"
+                              className="w-full btn-luxury bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-3 rounded-2xl font-bold text-sm hover:shadow-xl transition-all duration-700 flex items-center justify-center space-x-2 transform hover:scale-105 ultra-smooth-hover"
                               onClick={() => window.location.href = `/products/${product.id}`}
                             >
-                              <IonIcon icon="eye-outline" size={16} color="#1a1a1a" />
+                              <IonIcon icon="eye-outline" size={16} color="#1a1a1a" className="animate-float" />
                               <span>Xem Chi Tiết</span>
                             </button>
                           </div>
@@ -293,66 +310,78 @@ const HomePage = () => {
                     ))}
                   </div>
                   <div className="text-center mt-6">
-                    <p className="text-soft-gold text-xs opacity-70 animate-pulse">← Lướt để xem thêm →</p>
+                    <p className="text-soft-gold text-sm opacity-70 animate-pulse text-glow">← Lướt để khám phá thêm →</p>
                   </div>
                 </div>
               ) : (
-                /* Desktop: Enhanced Grid Layout */
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                /* Desktop: Ultra Enhanced Grid Layout */
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
                   {featuredProducts.map((product, index) => (
                     <div 
                       key={product.id} 
-                      className="group relative bg-black/90 backdrop-blur-md rounded-2xl overflow-hidden border border-luxury-gold/40 hover:border-luxury-gold/80 transition-all duration-700 cursor-pointer hover:shadow-2xl hover:shadow-luxury-gold/30 transform hover:scale-105"
+                      className="group relative card-luxury glass-morphism rounded-3xl overflow-hidden border border-luxury-gold/50 hover:border-luxury-gold transition-all duration-700 cursor-pointer hover:shadow-2xl hover:shadow-luxury-gold/40"
                       style={{
-                        animationDelay: `${index * 150}ms`,
-                        animation: isLoaded ? 'slideInUp 0.8s ease-out forwards' : 'none'
+                        animationDelay: `${index * 200}ms`,
+                        animation: isLoaded ? 'slideInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards' : 'none'
                       }}
                       onMouseEnter={() => setHoveredProduct(product.id)}
                       onMouseLeave={() => setHoveredProduct(null)}
                     >
+                      {/* Floating background particles */}
+                      <div className="absolute inset-0 overflow-hidden">
+                        <div className="absolute top-4 left-4 w-1 h-1 bg-luxury-gold/40 rounded-full animate-particle-float"></div>
+                        <div className="absolute bottom-8 right-6 w-2 h-2 bg-luxury-gold/30 rounded-full animate-particle-float" style={{animationDelay: '2s'}}></div>
+                        <div className="absolute top-1/2 left-1/4 w-1 h-1 bg-luxury-gold/50 rounded-full animate-particle-float" style={{animationDelay: '4s'}}></div>
+                      </div>
+                      
                       <div className="relative aspect-square overflow-hidden">
                         <img 
                           src={product.image_url} 
                           alt={product.name}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125 group-hover:rotate-2"
                           onError={(e) => {
                             e.target.src = 'https://images.unsplash.com/photo-1662473217799-6e7288f19741';
                           }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                         
-                        {/* Floating Elements */}
-                        <div className="absolute top-3 right-3 bg-luxury-gold/95 backdrop-blur-sm text-deep-black px-3 py-1 rounded-full text-xs font-bold transform translate-y-[-30px] group-hover:translate-y-0 transition-all duration-500">
-                          HOT
+                        {/* Enhanced Floating Elements */}
+                        <div className="absolute top-4 right-4 glass-morphism-light text-luxury-gold px-3 py-2 rounded-full text-xs font-bold transform translate-y-[-40px] group-hover:translate-y-0 transition-all duration-700 animate-glow-pulse">
+                          <span className="animate-float">🔥 HOT</span>
                         </div>
-                        <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-luxury-gold px-3 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transform translate-x-[-30px] group-hover:translate-x-0 transition-all duration-500 delay-100">
-                          ⚡ SALE
+                        <div className="absolute top-4 left-4 glass-morphism text-luxury-gold px-3 py-2 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transform translate-x-[-40px] group-hover:translate-x-0 transition-all duration-700 delay-200">
+                          ⚡ SALE -20%
                         </div>
                         
-                        {/* Heart Icon */}
-                        <div className="absolute top-3 right-16 bg-black/60 backdrop-blur-sm text-luxury-gold p-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-[-30px] group-hover:translate-y-0 transition-all duration-500 delay-200 hover:bg-luxury-gold hover:text-deep-black cursor-pointer">
-                          <IonIcon icon="heart-outline" size={16} />
+                        {/* Quick action buttons */}
+                        <div className="absolute bottom-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transform translate-y-10 group-hover:translate-y-0 transition-all duration-700 delay-300">
+                          <button className="glass-morphism-light text-luxury-gold p-3 rounded-full hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 btn-luxury">
+                            <IonIcon icon="heart-outline" size={18} />
+                          </button>
+                          <button className="glass-morphism-light text-luxury-gold p-3 rounded-full hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 btn-luxury">
+                            <IonIcon icon="share-outline" size={18} />
+                          </button>
                         </div>
                       </div>
                       
-                      <div className="p-4 bg-gradient-to-b from-transparent to-black/40 backdrop-blur-sm">
-                        <h3 className="font-luxury text-base font-bold text-luxury-gold mb-3 line-clamp-2 group-hover:text-luxury-copper transition-colors duration-500">
+                      <div className="p-6 glass-morphism-light backdrop-blur-ultra">
+                        <h3 className="font-luxury text-lg font-bold text-luxury-gold mb-4 line-clamp-2 group-hover:text-glow transition-all duration-500">
                           {product.name}
                         </h3>
-                        <div className="flex justify-between items-center">
-                          <div className="flex flex-col">
-                            <span className="text-luxury-gold font-bold text-base">
+                        <div className="flex justify-between items-end">
+                          <div className="flex flex-col space-y-2">
+                            <span className="text-luxury-gold font-bold text-xl text-glow">
                               {formatPrice(product.price)}
                             </span>
-                            <div className="flex text-luxury-gold text-xs mt-1">
+                            <div className="flex text-luxury-gold text-sm animate-float">
                               {'⭐'.repeat(5)}
                             </div>
                           </div>
                           <button 
-                            className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 rounded-full font-bold text-sm hover:shadow-xl transition-all duration-500 flex items-center space-x-1 transform hover:scale-105 group-hover:shadow-luxury-gold/50"
+                            className="btn-luxury bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 rounded-2xl font-bold text-sm hover:shadow-xl transition-all duration-700 flex items-center space-x-2 transform hover:scale-105 ultra-smooth-hover"
                             onClick={() => window.location.href = `/products/${product.id}`}
                           >
-                            <IonIcon icon="eye-outline" size={14} color="#1a1a1a" />
+                            <IonIcon icon="eye-outline" size={16} color="#1a1a1a" className="animate-float" />
                             <span>Xem</span>
                           </button>
                         </div>
