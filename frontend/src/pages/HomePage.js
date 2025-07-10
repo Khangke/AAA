@@ -7,6 +7,7 @@ const HomePage = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [hoveredProduct, setHoveredProduct] = useState(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
