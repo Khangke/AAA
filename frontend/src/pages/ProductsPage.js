@@ -143,10 +143,10 @@ const ProductsPage = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 pt-20">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-luxury-gold mb-4">Sản Phẩm</h1>
-        <p className="text-gray-300">Khám phá bộ sưu tập trầm hương cao cấp</p>
+      {/* Compact Header */}
+      <div className="text-center mb-4">
+        <h1 className="text-xl font-bold text-luxury-gold mb-2">Sản Phẩm</h1>
+        <p className="text-gray-300 text-xs">Khám phá bộ sưu tập trầm hương cao cấp</p>
       </div>
 
       {/* Enhanced Filters - Compact 30% */}
