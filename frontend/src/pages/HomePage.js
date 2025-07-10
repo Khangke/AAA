@@ -8,6 +8,13 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [hoveredProduct, setHoveredProduct] = useState(null);
+  const [currentBanner, setCurrentBanner] = useState(0);
+
+  const bannerImages = [
+    'https://images.unsplash.com/photo-1541795083-1b160cf4f3d7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxpbmNlbnNlfGVufDB8fHxibGFja3wxNzUyMTE5OTQ5fDA&ixlib=rb-4.1.0&q=85',
+    'https://images.unsplash.com/photo-1628709353367-35f0bb07413d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwzfHxpbmNlbnNlfGVufDB8fHxibGFja3wxNzUyMTE5OTQ5fDA&ixlib=rb-4.1.0&q=85',
+    'https://images.unsplash.com/photo-1611072488315-fd8d5f8bc1e3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwxfHxhZ2Fyd29vZHxlbnwwfHx8YmxhY2t8MTc1MjExOTk1Nnww&ixlib=rb-4.1.0&q=85'
+  ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -21,7 +28,7 @@ const HomePage = () => {
     
     // Check if mobile
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640); // 640px is Tailwind's sm breakpoint
+      setIsMobile(window.innerWidth < 640);
     };
     
     checkMobile();
@@ -29,6 +36,15 @@ const HomePage = () => {
     
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Banner auto-rotation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBanner((prev) => (prev + 1) % bannerImages.length);
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [bannerImages.length]);
 
   const fetchFeaturedProducts = async () => {
     try {
