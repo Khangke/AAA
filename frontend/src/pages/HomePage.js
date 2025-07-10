@@ -132,68 +132,84 @@ const HomePage = () => {
             </h1>
           </div>
 
-          {/* Banner Section */}
+          {/* Banner Section - Ultra Enhanced */}
           <div className="relative mb-6 sm:mb-8">
-            <div className="relative h-48 sm:h-64 md:h-80 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-56 sm:h-72 md:h-96 rounded-2xl overflow-hidden shadow-2xl ultra-smooth-hover">
               {bannerImages.map((image, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-opacity duration-1000 ${
-                    index === currentBanner ? 'opacity-100' : 'opacity-0'
+                  className={`absolute inset-0 transition-all duration-1000 ${
+                    index === currentBanner ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
                   }`}
                 >
                   <img
                     src={image}
-                    alt={`Banner ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    alt={`Luxury Incense Banner ${index + 1}`}
+                    className="w-full h-full object-cover animate-banner-slide"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 banner-overlay"></div>
                 </div>
               ))}
               
-              {/* Banner Content Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center px-4 sm:px-6">
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-luxury font-bold text-luxury-gold mb-2 sm:mb-4 drop-shadow-lg">
-                    Tinh Hoa Trầm Hương Việt Nam
-                  </h2>
-                  <p className="text-sm sm:text-base md:text-lg text-soft-gold mb-4 sm:mb-6 drop-shadow-lg">
-                    Chất Lượng Luxury • 20+ Năm Kinh Nghiệm • Hàng Ngàn Khách Hàng Tin Tưởng
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                    <button 
-                      className="group relative overflow-hidden bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
-                      onClick={() => window.location.href = '/products'}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-luxury-copper to-luxury-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <IonIcon icon="storefront-outline" size={18} color="#1a1a1a" />
-                      <span className="relative z-10">Khám Phá Sản Phẩm</span>
-                    </button>
-                    <button 
-                      className="group relative overflow-hidden border-2 border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
-                      onClick={() => window.location.href = '/contact'}
-                    >
-                      <IonIcon icon="call-outline" size={18} className="group-hover:animate-pulse" />
-                      <span>Liên Hệ Ngay</span>
-                    </button>
+              {/* Floating Particles */}
+              <div className="particles">
+                <div className="particle" style={{left: '10%', top: '20%'}}></div>
+                <div className="particle" style={{left: '80%', top: '30%'}}></div>
+                <div className="particle" style={{left: '60%', top: '60%'}}></div>
+                <div className="particle" style={{left: '20%', top: '80%'}}></div>
+                <div className="particle" style={{left: '90%', top: '70%'}}></div>
+              </div>
+              
+              {/* Banner Content Overlay - Enhanced */}
+              <div className="absolute inset-0 flex items-center justify-center z-10">
+                <div className="text-center px-4 sm:px-6 max-w-4xl mx-auto">
+                  <div className="glass-morphism-light rounded-2xl p-6 sm:p-8 backdrop-blur-ultra">
+                    <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-luxury font-bold text-luxury-gold mb-3 sm:mb-4 text-glow-intense animate-float">
+                      Tinh Hoa Trầm Hương Việt Nam
+                    </h2>
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-soft-gold mb-4 sm:mb-6 text-glow leading-relaxed animate-fade-in-scale">
+                      Chất Lượng Luxury • 20+ Năm Kinh Nghiệm • Hàng Ngàn Khách Hàng Tin Tưởng
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-slide-in-up">
+                      <button 
+                        className="btn-luxury bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:shadow-2xl transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105 animate-glow-pulse"
+                        onClick={() => window.location.href = '/products'}
+                      >
+                        <IonIcon icon="storefront-outline" size={20} color="#1a1a1a" className="animate-float" />
+                        <span>Khám Phá Sản Phẩm</span>
+                      </button>
+                      <button 
+                        className="btn-luxury border-2 border-luxury-gold text-luxury-gold px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105 glass-morphism"
+                        onClick={() => window.location.href = '/contact'}
+                      >
+                        <IonIcon icon="call-outline" size={20} className="animate-float-reverse" />
+                        <span>Liên Hệ Ngay</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Banner Indicators */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              {/* Enhanced Banner Indicators */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
                 {bannerImages.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentBanner(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    className={`transition-all duration-500 rounded-full ${
                       index === currentBanner
-                        ? 'bg-luxury-gold w-8'
-                        : 'bg-luxury-gold/50 hover:bg-luxury-gold/80'
+                        ? 'w-10 h-3 bg-gradient-to-r from-luxury-gold to-luxury-copper shadow-lg'
+                        : 'w-3 h-3 bg-luxury-gold/50 hover:bg-luxury-gold/80 hover:scale-125'
                     }`}
                   />
                 ))}
               </div>
+              
+              {/* Corner decorations */}
+              <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-luxury-gold/50 animate-float"></div>
+              <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-luxury-gold/50 animate-float-reverse"></div>
+              <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-luxury-gold/50 animate-float-reverse"></div>
+              <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-luxury-gold/50 animate-float"></div>
             </div>
           </div>
         </div>
