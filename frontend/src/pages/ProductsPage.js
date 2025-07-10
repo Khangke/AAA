@@ -313,7 +313,6 @@ const ProductsPage = () => {
           ))}
         </div>
       ) : (
-        {/* Enhanced No Results */}
         <div className="text-center py-16">
           <div className="max-w-md mx-auto">
             <div className="w-20 h-20 bg-gradient-to-r from-luxury-gold/20 to-luxury-copper/20 rounded-full flex items-center justify-center mx-auto mb-6">
