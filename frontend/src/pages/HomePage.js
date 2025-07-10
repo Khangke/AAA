@@ -141,9 +141,9 @@ const HomePage = () => {
                   <img
                     src={image}
                     alt={`Luxury Incense Banner ${index + 1}`}
-                    className="w-full h-full object-cover animate-banner-slide"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 banner-overlay"></div>
+                  <div className="absolute inset-0 bg-black/50"></div>
                 </div>
               ))}
               
