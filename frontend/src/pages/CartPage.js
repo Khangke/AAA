@@ -454,7 +454,7 @@ const CartPage = () => {
                     onClick={() => setShowCheckout(false)}
                     className="flex-1 bg-charcoal border border-luxury-gold/30 text-soft-gold px-3 py-2 rounded-lg font-medium hover:bg-luxury-gold/10 transition-colors text-xs flex items-center justify-center space-x-1"
                   >
-                    <IconWrapper icon="arrow-back-outline" size={14} />
+                    <IonIcon icon="arrow-back-outline" size={14} />
                     <span>Quay Lại</span>
                   </button>
                   <button
