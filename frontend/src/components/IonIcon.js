@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react';
+import { defineCustomElements } from 'ionicons/loader';
 
 const IonIcon = ({ icon, size = 24, color = 'currentColor', className = '', ...props }) => {
   useEffect(() => {
-    // Load ionicons dynamically
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/ionicons@8.0.0/dist/ionicons/ionicons.esm.js';
-    script.type = 'module';
-    if (!document.querySelector('script[src*="ionicons"]')) {
-      document.head.appendChild(script);
-    }
+    // Load ionicons from node_modules
+    defineCustomElements();
   }, []);
 
   return (
