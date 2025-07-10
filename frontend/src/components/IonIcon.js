@@ -1,4 +1,8 @@
 import React from 'react';
+import { defineCustomElements } from 'ionicons/loader';
+
+// Initialize ionicons
+defineCustomElements();
 
 const IonIcon = ({ icon, size = 24, color = 'currentColor', className = '', ...props }) => {
   return (
