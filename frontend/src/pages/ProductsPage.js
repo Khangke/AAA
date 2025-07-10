@@ -111,7 +111,7 @@ const ProductsPage = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 pt-20">
+      <div className="container mx-auto px-2 py-4 pt-16">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-luxury-gold mb-4">Sản Phẩm</h1>
           <p className="text-gray-300">Đang tải sản phẩm...</p>
