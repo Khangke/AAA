@@ -265,7 +265,7 @@ const ProductDetailPage = () => {
                 onClick={handleAddToCart}
                 className="flex-1 bg-transparent border-2 border-luxury-gold text-luxury-gold px-6 py-3 rounded-full font-bold hover:bg-luxury-gold hover:text-deep-black transition-colors flex items-center justify-center space-x-2"
               >
-                <IonIcon icon="bag-add-outline" size={20} />
+                <IonIcon icon={bagAddOutline} size={20} />
                 <span>Thêm vào giỏ hàng</span>
               </button>
               <button
