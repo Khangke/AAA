@@ -252,7 +252,7 @@ const CartPage = () => {
                           onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
                           className="w-7 h-7 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 text-luxury-gold hover:bg-luxury-gold/30 transition-colors flex items-center justify-center text-sm"
                         >
-                          <IconWrapper icon="add-outline" size={14} />
+                          <IonIcon icon="add-outline" size={14} />
                         </button>
                       </div>
                       
