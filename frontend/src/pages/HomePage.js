@@ -115,12 +115,13 @@ const HomePage = () => {
     <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal mobile-nav-padding">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
         
-        {/* Hero Section - Enhanced */}
+        {/* Hero Section - Enhanced with Banner */}
         <div className={`text-center mb-8 sm:mb-12 transition-all duration-1000 ${
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}>
-          <div className="mb-4 sm:mb-6">
-            <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3 sm:mb-4 group">
+          {/* Logo and Brand */}
+          <div className="mb-6 sm:mb-8">
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 group">
               <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full animate-pulse opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
               <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-105 transition-transform duration-300">
                 <span className="text-deep-black font-bold text-2xl sm:text-3xl">K</span>
@@ -130,31 +131,74 @@ const HomePage = () => {
               Khang Trầm Hương
             </h1>
           </div>
-          
-          <p className="text-soft-gold text-sm sm:text-base md:text-lg mb-4 sm:mb-6 max-w-2xl mx-auto leading-relaxed">
-            Tinh Hoa Trầm Hương Việt Nam • Chất Lượng Luxury • 20+ Năm Kinh Nghiệm
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center max-w-md mx-auto">
-            <button 
-              className="group relative overflow-hidden bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
-              onClick={() => window.location.href = '/products'}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-luxury-copper to-luxury-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <IonIcon icon="storefront-outline" size={18} color="#1a1a1a" />
-              <span className="relative z-10">Khám Phá Sản Phẩm</span>
-            </button>
-            <button 
-              className="group relative overflow-hidden border-2 border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
-              onClick={() => window.location.href = '/contact'}
-            >
-              <IonIcon icon="call-outline" size={18} className="group-hover:animate-pulse" />
-              <span>Liên Hệ Ngay</span>
-            </button>
+
+          {/* Banner Section */}
+          <div className="relative mb-6 sm:mb-8">
+            <div className="relative h-48 sm:h-64 md:h-80 rounded-2xl overflow-hidden shadow-2xl">
+              {bannerImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    index === currentBanner ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <img
+                    src={image}
+                    alt={`Banner ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                </div>
+              ))}
+              
+              {/* Banner Content Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center px-4 sm:px-6">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-luxury font-bold text-luxury-gold mb-2 sm:mb-4 drop-shadow-lg">
+                    Tinh Hoa Trầm Hương Việt Nam
+                  </h2>
+                  <p className="text-sm sm:text-base md:text-lg text-soft-gold mb-4 sm:mb-6 drop-shadow-lg">
+                    Chất Lượng Luxury • 20+ Năm Kinh Nghiệm • Hàng Ngàn Khách Hàng Tin Tưởng
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                    <button 
+                      className="group relative overflow-hidden bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
+                      onClick={() => window.location.href = '/products'}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-luxury-copper to-luxury-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <IonIcon icon="storefront-outline" size={18} color="#1a1a1a" />
+                      <span className="relative z-10">Khám Phá Sản Phẩm</span>
+                    </button>
+                    <button 
+                      className="group relative overflow-hidden border-2 border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
+                      onClick={() => window.location.href = '/contact'}
+                    >
+                      <IonIcon icon="call-outline" size={18} className="group-hover:animate-pulse" />
+                      <span>Liên Hệ Ngay</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Banner Indicators */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {bannerImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentBanner(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentBanner
+                        ? 'bg-luxury-gold w-8'
+                        : 'bg-luxury-gold/50 hover:bg-luxury-gold/80'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Products Section - Enhanced */}
+        {/* Products Section - Enhanced with More Animations */}
         <div className="mb-8 sm:mb-12">
           <div className="text-center mb-3 sm:mb-6">
             <h2 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-2">
@@ -175,14 +219,14 @@ const HomePage = () => {
               {isMobile ? (
                 /* Mobile: Enhanced Horizontal Scroll */
                 <div>
-                  <div className="flex gap-4 overflow-x-auto pb-4 px-4 -mx-4 scrollbar-hide product-scroll">
+                  <div className="flex gap-4 overflow-x-auto pb-6 px-4 -mx-4 scrollbar-hide product-scroll">
                     {featuredProducts.map((product, index) => (
                       <div 
                         key={product.id} 
-                        className="group bg-black/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-luxury-gold/30 hover:border-luxury-gold/60 transition-all duration-500 cursor-pointer flex-shrink-0 w-64 min-w-64 hover:shadow-2xl hover:shadow-luxury-gold/20 transform hover:scale-105"
+                        className="group relative bg-black/90 backdrop-blur-md rounded-2xl overflow-hidden border border-luxury-gold/40 hover:border-luxury-gold/80 transition-all duration-700 cursor-pointer flex-shrink-0 w-64 min-w-64 hover:shadow-2xl hover:shadow-luxury-gold/30 transform hover:scale-105"
                         style={{
-                          animationDelay: `${index * 100}ms`,
-                          animation: isLoaded ? 'slideInRight 0.6s ease-out forwards' : 'none'
+                          animationDelay: `${index * 150}ms`,
+                          animation: isLoaded ? 'slideInRight 0.8s ease-out forwards' : 'none'
                         }}
                         onMouseEnter={() => setHoveredProduct(product.id)}
                         onMouseLeave={() => setHoveredProduct(null)}
@@ -191,18 +235,24 @@ const HomePage = () => {
                           <img 
                             src={product.image_url} 
                             alt={product.name}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             onError={(e) => {
                               e.target.src = 'https://images.unsplash.com/photo-1662473217799-6e7288f19741';
                             }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                          <div className="absolute top-2 right-2 bg-luxury-gold/90 backdrop-blur-sm text-deep-black px-2 py-1 rounded-full text-xs font-bold transform translate-y-[-20px] group-hover:translate-y-0 transition-transform duration-300">
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          
+                          {/* Floating Elements */}
+                          <div className="absolute top-3 right-3 bg-luxury-gold/95 backdrop-blur-sm text-deep-black px-2 py-1 rounded-full text-xs font-bold transform translate-y-[-30px] group-hover:translate-y-0 transition-all duration-500">
                             HOT
                           </div>
+                          <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-luxury-gold px-2 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transform translate-x-[-30px] group-hover:translate-x-0 transition-all duration-500 delay-100">
+                            ⚡ SALE
+                          </div>
                         </div>
-                        <div className="p-4 bg-gradient-to-b from-transparent to-black/20">
-                          <h3 className="font-luxury text-sm font-bold text-luxury-gold mb-3 line-clamp-2 leading-tight group-hover:text-luxury-copper transition-colors duration-300">
+                        
+                        <div className="p-4 bg-gradient-to-b from-transparent to-black/40 backdrop-blur-sm">
+                          <h3 className="font-luxury text-sm font-bold text-luxury-gold mb-3 line-clamp-2 leading-tight group-hover:text-luxury-copper transition-colors duration-500">
                             {product.name}
                           </h3>
                           <div className="space-y-3">
@@ -215,7 +265,7 @@ const HomePage = () => {
                               </div>
                             </div>
                             <button 
-                              className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-3 py-2 rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
+                              className="w-full bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-3 py-3 rounded-xl font-bold text-sm hover:shadow-xl transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105 group-hover:shadow-luxury-gold/50"
                               onClick={() => window.location.href = `/products/${product.id}`}
                             >
                               <IonIcon icon="eye-outline" size={16} color="#1a1a1a" />
@@ -226,7 +276,7 @@ const HomePage = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="text-center mt-4">
+                  <div className="text-center mt-6">
                     <p className="text-soft-gold text-xs opacity-70 animate-pulse">← Lướt để xem thêm →</p>
                   </div>
                 </div>
@@ -236,10 +286,10 @@ const HomePage = () => {
                   {featuredProducts.map((product, index) => (
                     <div 
                       key={product.id} 
-                      className="group bg-black/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-luxury-gold/30 hover:border-luxury-gold/60 transition-all duration-500 cursor-pointer hover:shadow-2xl hover:shadow-luxury-gold/20 transform hover:scale-105"
+                      className="group relative bg-black/90 backdrop-blur-md rounded-2xl overflow-hidden border border-luxury-gold/40 hover:border-luxury-gold/80 transition-all duration-700 cursor-pointer hover:shadow-2xl hover:shadow-luxury-gold/30 transform hover:scale-105"
                       style={{
-                        animationDelay: `${index * 100}ms`,
-                        animation: isLoaded ? 'slideInUp 0.6s ease-out forwards' : 'none'
+                        animationDelay: `${index * 150}ms`,
+                        animation: isLoaded ? 'slideInUp 0.8s ease-out forwards' : 'none'
                       }}
                       onMouseEnter={() => setHoveredProduct(product.id)}
                       onMouseLeave={() => setHoveredProduct(null)}
@@ -248,18 +298,29 @@ const HomePage = () => {
                         <img 
                           src={product.image_url} 
                           alt={product.name}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                           onError={(e) => {
                             e.target.src = 'https://images.unsplash.com/photo-1662473217799-6e7288f19741';
                           }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="absolute top-3 right-3 bg-luxury-gold/90 backdrop-blur-sm text-deep-black px-2 py-1 rounded-full text-xs font-bold transform translate-y-[-20px] group-hover:translate-y-0 transition-transform duration-300">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        {/* Floating Elements */}
+                        <div className="absolute top-3 right-3 bg-luxury-gold/95 backdrop-blur-sm text-deep-black px-3 py-1 rounded-full text-xs font-bold transform translate-y-[-30px] group-hover:translate-y-0 transition-all duration-500">
                           HOT
                         </div>
+                        <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-luxury-gold px-3 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transform translate-x-[-30px] group-hover:translate-x-0 transition-all duration-500 delay-100">
+                          ⚡ SALE
+                        </div>
+                        
+                        {/* Heart Icon */}
+                        <div className="absolute top-3 right-16 bg-black/60 backdrop-blur-sm text-luxury-gold p-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-[-30px] group-hover:translate-y-0 transition-all duration-500 delay-200 hover:bg-luxury-gold hover:text-deep-black cursor-pointer">
+                          <IonIcon icon="heart-outline" size={16} />
+                        </div>
                       </div>
-                      <div className="p-4 bg-gradient-to-b from-transparent to-black/20">
-                        <h3 className="font-luxury text-base font-bold text-luxury-gold mb-3 line-clamp-2 group-hover:text-luxury-copper transition-colors duration-300">
+                      
+                      <div className="p-4 bg-gradient-to-b from-transparent to-black/40 backdrop-blur-sm">
+                        <h3 className="font-luxury text-base font-bold text-luxury-gold mb-3 line-clamp-2 group-hover:text-luxury-copper transition-colors duration-500">
                           {product.name}
                         </h3>
                         <div className="flex justify-between items-center">
@@ -272,7 +333,7 @@ const HomePage = () => {
                             </div>
                           </div>
                           <button 
-                            className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 rounded-full font-bold text-sm hover:shadow-lg transition-all duration-300 flex items-center space-x-1 transform hover:scale-105"
+                            className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 rounded-full font-bold text-sm hover:shadow-xl transition-all duration-500 flex items-center space-x-1 transform hover:scale-105 group-hover:shadow-luxury-gold/50"
                             onClick={() => window.location.href = `/products/${product.id}`}
                           >
                             <IonIcon icon="eye-outline" size={14} color="#1a1a1a" />
@@ -288,10 +349,10 @@ const HomePage = () => {
           ) : (
             /* No Products Found - Enhanced */
             <div className="text-center py-12">
-              <div className="text-luxury-gold text-6xl mb-4 animate-bounce">📦</div>
-              <p className="text-soft-gold text-lg mb-4">Chưa có sản phẩm nào</p>
+              <div className="text-luxury-gold text-6xl mb-6 animate-bounce">📦</div>
+              <p className="text-soft-gold text-lg mb-6">Chưa có sản phẩm nào</p>
               <button 
-                className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 rounded-full font-bold hover:shadow-lg transition-all duration-300 flex items-center space-x-2 transform hover:scale-105 mx-auto"
+                className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 rounded-full font-bold hover:shadow-xl transition-all duration-500 flex items-center space-x-2 transform hover:scale-105 mx-auto"
                 onClick={() => window.location.reload()}
               >
                 <IonIcon icon="refresh-outline" size={18} color="#1a1a1a" />
@@ -300,13 +361,13 @@ const HomePage = () => {
             </div>
           )}
           
-          <div className="text-center mt-4 sm:mt-6">
+          <div className="text-center mt-6 sm:mt-8">
             <button 
-              className="group text-luxury-gold hover:text-luxury-copper transition-colors duration-300 text-sm sm:text-base underline flex items-center space-x-2 mx-auto"
+              className="group text-luxury-gold hover:text-luxury-copper transition-colors duration-500 text-sm sm:text-base underline flex items-center space-x-2 mx-auto"
               onClick={() => window.location.href = '/products'}
             >
               <span>Xem Tất Cả Sản Phẩm</span>
-              <IonIcon icon="arrow-forward-outline" size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+              <IonIcon icon="arrow-forward-outline" size={16} className="group-hover:translate-x-2 transition-transform duration-500" />
             </button>
           </div>
         </div>
