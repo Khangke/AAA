@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
-import { defineCustomElements } from 'ionicons/loader';
+import React from 'react';
 
 const IonIcon = ({ icon, size = 24, color = 'currentColor', className = '', ...props }) => {
-  useEffect(() => {
-    // Load ionicons from node_modules
-    defineCustomElements();
-  }, []);
-
   return (
     <ion-icon
-      name={icon}
+      icon={icon}
       style={{
         fontSize: `${size}px`,
         color: color,
