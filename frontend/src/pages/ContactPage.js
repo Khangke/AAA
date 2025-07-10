@@ -266,7 +266,7 @@ const ContactPage = () => {
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0 w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                    <IconWrapper icon="location-outline" size={16} color="#D4A853" />
+                    <IonIcon icon="location-outline" size={16} color="#D4A853" />
                   </div>
                   <div>
                     <h3 className="text-luxury-gold font-semibold mb-1 text-sm">Địa Chỉ</h3>
