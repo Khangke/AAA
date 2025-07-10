@@ -132,7 +132,7 @@ const ProductsPage = () => {
               onClick={fetchProducts}
               className="bg-luxury-gold text-deep-black px-6 py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors flex items-center space-x-2"
             >
-              <IconWrapper icon="refresh-outline" size={20} color="#1a1a1a" />
+              <IonIcon icon="refresh-outline" size={20} color="#1a1a1a" />
               <span>Thử Lại</span>
             </button>
           </div>
