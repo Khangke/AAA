@@ -179,20 +179,7 @@ const HomePage = () => {
                 </div>
               </div>
 
-              {/* Enhanced Banner Indicators */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
-                {bannerImages.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentBanner(index)}
-                    className={`transition-all duration-500 rounded-full ${
-                      index === currentBanner
-                        ? 'w-10 h-3 bg-gradient-to-r from-luxury-gold to-luxury-copper shadow-lg'
-                        : 'w-3 h-3 bg-luxury-gold/50 hover:bg-luxury-gold/80 hover:scale-125'
-                    }`}
-                  />
-                ))}
-              </div>
+
               
               {/* Corner decorations */}
               <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-luxury-gold/50 animate-float"></div>
