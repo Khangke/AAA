@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import cachedAPI from '../services/api';
-import IconWrapper from '../components/IconWrapper';
+import IonIcon from '../components/IonIcon';
 
 const HomePage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
