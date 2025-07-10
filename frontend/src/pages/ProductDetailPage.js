@@ -249,7 +249,7 @@ const ProductDetailPage = () => {
                   className="p-3 hover:bg-white/10 transition-colors flex items-center justify-center"
                   disabled={quantity >= product.stock}
                 >
-                  <IonIcon icon="add-outline" size={20} color={quantity >= product.stock ? "#666" : "#fff"} />
+                  <IonIcon icon={addOutline} size={20} color={quantity >= product.stock ? "#666" : "#fff"} />
                 </button>
               </div>
               <span className="text-gray-400 text-sm">
