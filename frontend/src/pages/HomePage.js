@@ -127,7 +127,7 @@ const HomePage = () => {
               className="border border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all flex items-center justify-center space-x-2"
               onClick={() => window.location.href = '/contact'}
             >
-              <IconWrapper icon="call-outline" size={18} />
+              <IonIcon icon="call-outline" size={18} />
               <span>Liên Hệ Ngay</span>
             </button>
           </div>
