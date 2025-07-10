@@ -163,7 +163,7 @@ const HomePage = () => {
         </div>
 
           {/* Products Section - Enhanced with More Animations */}
-          <div className="mb-8 sm:mb-12 bg-black/40 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-luxury-gold/20">
+          <div className="mb-8 sm:mb-12">
             <div className="text-center mb-3 sm:mb-6">
               <h2 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-2">
                 <span className="inline-block animate-bounce">🌟</span> Sản Phẩm Nổi Bật
