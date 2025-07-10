@@ -197,7 +197,7 @@ const ProductDetailPage = () => {
                 {[...Array(5)].map((_, i) => (
                   <IonIcon
                     key={i}
-                    icon={i < Math.floor(product.rating) ? "star" : "star-outline"}
+                    icon={i < Math.floor(product.rating) ? star : starOutline}
                     size={16}
                     color="#D4AF37"
                   />
