@@ -96,61 +96,57 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen pt-16 md:pt-20 mobile-nav-padding relative">
-      {/* Full Page Background Image */}
-      <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0">
-          <img
-            src="https://cdn.myportfolio.com/b60af86a855ed2da587d6e31dbd728bf/584cc299-eacc-457d-93d7-684d4af9a6e5.jpg?h=8730de8918cada72cfaf3ccccf1ff0f5"
-            alt="Luxury Incense Background"
-            className="w-full h-full object-cover"
-          />
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/70"></div>
-        </div>
-      </div>
-
-      {/* Content Container */}
-      <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
-          
-          {/* Hero Section - Enhanced with Full Background */}
-          <div className={`text-center mb-8 sm:mb-12 transition-all duration-1000 ${
-            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}>
-            {/* Logo and Brand */}
-            <div className="mb-6 sm:mb-8">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-6 bg-luxury-gold/30 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-luxury-gold/50 shadow-2xl">
-                <span className="text-luxury-gold font-bold text-3xl sm:text-4xl drop-shadow-lg">K</span>
-              </div>
-              <h1 className="font-luxury text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-luxury-gold mb-4 drop-shadow-2xl">
-                Khang Trầm Hương
-              </h1>
-            </div>
-
-            {/* Main Content Banner - Enhanced */}
-            <div className="relative mb-6 sm:mb-8">
+    <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal mobile-nav-padding">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
+        
+        {/* Hero Section - Enhanced with Full Background Image */}
+        <div className={`relative mb-8 sm:mb-12 transition-all duration-1000 ${
+          isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}>
+          {/* Hero Background Image */}
+          <div className="relative h-96 sm:h-[500px] md:h-[600px] lg:h-[700px] rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src="https://cdn.myportfolio.com/b60af86a855ed2da587d6e31dbd728bf/584cc299-eacc-457d-93d7-684d4af9a6e5.jpg?h=8730de8918cada72cfaf3ccccf1ff0f5"
+              alt="Luxury Incense Hero"
+              className="w-full h-full object-cover"
+            />
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/60"></div>
+            
+            {/* Hero Content Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center z-10">
               <div className="text-center px-4 sm:px-6 max-w-5xl mx-auto">
-                <div className="bg-black/80 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border-2 border-luxury-gold/50 shadow-2xl">
-                  <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-luxury font-bold text-luxury-gold mb-6 sm:mb-8 drop-shadow-2xl">
+                {/* Logo and Brand */}
+                <div className="mb-6 sm:mb-8">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-6 bg-luxury-gold/30 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-luxury-gold/50 shadow-2xl">
+                    <span className="text-luxury-gold font-bold text-3xl sm:text-4xl drop-shadow-lg">K</span>
+                  </div>
+                  <h1 className="font-luxury text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-luxury-gold mb-4 drop-shadow-2xl">
+                    Khang Trầm Hương
+                  </h1>
+                </div>
+
+                {/* Main Content */}
+                <div className="bg-black/80 backdrop-blur-xl rounded-3xl p-6 sm:p-8 md:p-12 border-2 border-luxury-gold/50 shadow-2xl">
+                  <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-luxury font-bold text-luxury-gold mb-4 sm:mb-6 drop-shadow-2xl">
                     Tinh Hoa Trầm Hương Việt Nam
                   </h2>
-                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mb-8 sm:mb-10 leading-relaxed drop-shadow-xl font-medium">
+                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 leading-relaxed drop-shadow-xl font-medium">
                     Chất Lượng Luxury • 20+ Năm Kinh Nghiệm • Hàng Ngàn Khách Hàng Tin Tưởng
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center max-w-2xl mx-auto">
                     <button 
-                      className="btn-luxury bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-10 py-4 sm:px-12 sm:py-5 rounded-full font-bold text-lg sm:text-xl hover:shadow-2xl transition-all duration-500 flex items-center justify-center space-x-3 transform hover:scale-105 shadow-xl"
+                      className="btn-luxury bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-8 py-3 sm:px-10 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:shadow-2xl transition-all duration-500 flex items-center justify-center space-x-3 transform hover:scale-105 shadow-xl"
                       onClick={() => window.location.href = '/products'}
                     >
-                      <IonIcon icon="storefront-outline" size={24} color="#1a1a1a" />
+                      <IonIcon icon="storefront-outline" size={20} color="#1a1a1a" />
                       <span>Khám Phá Sản Phẩm</span>
                     </button>
                     <button 
-                      className="btn-luxury border-2 border-luxury-gold text-luxury-gold px-10 py-4 sm:px-12 sm:py-5 rounded-full font-bold text-lg sm:text-xl hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-3 transform hover:scale-105 shadow-xl backdrop-blur-sm"
+                      className="btn-luxury border-2 border-luxury-gold text-luxury-gold px-8 py-3 sm:px-10 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-3 transform hover:scale-105 shadow-xl backdrop-blur-sm"
                       onClick={() => window.location.href = '/contact'}
                     >
-                      <IonIcon icon="call-outline" size={24} />
+                      <IonIcon icon="call-outline" size={20} />
                       <span>Liên Hệ Ngay</span>
                     </button>
                   </div>
@@ -164,6 +160,7 @@ const HomePage = () => {
             <div className="absolute bottom-4 left-4 w-12 h-12 border-l-2 border-b-2 border-luxury-gold/60 animate-float-reverse rounded-bl-lg"></div>
             <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-luxury-gold/60 animate-float rounded-br-lg"></div>
           </div>
+        </div>
 
           {/* Products Section - Enhanced with More Animations */}
           <div className="mb-8 sm:mb-12 bg-black/40 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-luxury-gold/20">
