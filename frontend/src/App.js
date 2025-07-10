@@ -58,7 +58,7 @@ function AppContent() {
   const showFooter = true;
 
   return (
-    <div className="App min-h-screen bg-deep-black text-white">
+    <div className="App bg-deep-black text-white">
       <ScrollToTop />
       {!isMobile && <Header />}
       
