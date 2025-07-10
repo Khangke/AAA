@@ -120,7 +120,7 @@ const HomePage = () => {
               className="bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:shadow-lg transition-all flex items-center justify-center space-x-2"
               onClick={() => window.location.href = '/products'}
             >
-              <IconWrapper icon="storefront-outline" size={18} color="#1a1a1a" />
+              <IonIcon icon="storefront-outline" size={18} color="#1a1a1a" />
               <span>Khám Phá Sản Phẩm</span>
             </button>
             <button 
