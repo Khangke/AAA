@@ -29,7 +29,7 @@ const OrderSuccessPage = lazy(() => import("./pages/OrderSuccessPage"));
 
 // Loading component nhẹ nhàng không chói lóe
 const PageLoadingSpinner = () => (
-  <div className="min-h-screen bg-deep-black flex items-center justify-center">
+  <div className="bg-deep-black flex items-center justify-center py-20">
     <div className="w-6 h-6 border-2 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
