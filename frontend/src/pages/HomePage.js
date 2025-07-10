@@ -97,10 +97,10 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal mobile-nav-padding">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4">
         
         {/* Hero Section - Enhanced with Full Background Image */}
-        <div className={`relative mb-8 sm:mb-12 transition-all duration-1000 ${
+        <div className={`relative mb-4 sm:mb-6 transition-all duration-1000 ${
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}>
           {/* Hero Background Image */}
