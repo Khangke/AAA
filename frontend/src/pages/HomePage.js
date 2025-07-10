@@ -299,7 +299,7 @@ const HomePage = () => {
             </div>
           )}
           
-          <div className="text-center mt-6 sm:mt-8">
+          <div className="text-center mt-3 sm:mt-4">
             <button 
               className="group text-luxury-gold hover:text-luxury-copper transition-colors duration-500 text-sm sm:text-base underline flex items-center space-x-2 mx-auto"
               onClick={() => window.location.href = '/products'}
