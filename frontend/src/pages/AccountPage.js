@@ -511,7 +511,7 @@ const AccountPage = () => {
                           onClick={() => setEditingProfile(true)}
                           className="text-luxury-gold hover:text-luxury-copper transition-colors flex items-center space-x-1"
                         >
-                          <IconWrapper icon="create-outline" size={16} />
+                          <IonIcon icon="create-outline" size={16} />
                           <span>Chỉnh sửa</span>
                         </button>
                       ) : (
