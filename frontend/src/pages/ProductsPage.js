@@ -98,14 +98,9 @@ const ProductsPage = () => {
     setSelectedCategory('all');
     setSearchTerm('');
     setSortBy('featured');
-    setShowFeaturedOnly(false);
-    setMinPrice('');
-    setMaxPrice('');
-    setBrandFilter('');
-    setMinRating('');
   };
 
-  const hasActiveFilters = selectedCategory !== 'all' || searchTerm || sortBy !== 'featured' || showFeaturedOnly || minPrice || maxPrice || brandFilter || minRating;
+  const hasActiveFilters = selectedCategory !== 'all' || searchTerm || sortBy !== 'featured';
 
   if (loading) {
     return (
