@@ -111,84 +111,74 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-deep-black to-charcoal mobile-nav-padding">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
-        
-        {/* Hero Section - Enhanced with Banner */}
-        <div className={`text-center mb-8 sm:mb-12 transition-all duration-1000 ${
-          isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}>
-          {/* Logo and Brand */}
-          <div className="mb-6 sm:mb-8">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-luxury-gold/20 flex items-center justify-center">
-              <span className="text-luxury-gold font-bold text-2xl sm:text-3xl">K</span>
+    <div className="min-h-screen pt-16 md:pt-20 mobile-nav-padding relative">
+      {/* Full Page Background Image */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0">
+          <img
+            src="https://cdn.myportfolio.com/b60af86a855ed2da587d6e31dbd728bf/584cc299-eacc-457d-93d7-684d4af9a6e5.jpg?h=8730de8918cada72cfaf3ccccf1ff0f5"
+            alt="Luxury Incense Background"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/70"></div>
+        </div>
+      </div>
+
+      {/* Content Container */}
+      <div className="relative z-10">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
+          
+          {/* Hero Section - Enhanced with Full Background */}
+          <div className={`text-center mb-8 sm:mb-12 transition-all duration-1000 ${
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
+            {/* Logo and Brand */}
+            <div className="mb-6 sm:mb-8">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-6 bg-luxury-gold/30 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-luxury-gold/50 shadow-2xl">
+                <span className="text-luxury-gold font-bold text-3xl sm:text-4xl drop-shadow-lg">K</span>
+              </div>
+              <h1 className="font-luxury text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-luxury-gold mb-4 drop-shadow-2xl text-shadow-lg">
+                Khang Trầm Hương
+              </h1>
             </div>
-            <h1 className="font-luxury text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-luxury-gold via-warm-gold to-luxury-copper bg-clip-text text-transparent drop-shadow-lg">
-              Khang Trầm Hương
-            </h1>
-          </div>
 
-          {/* Banner Section - Ultra Enhanced */}
-          <div className="relative mb-6 sm:mb-8">
-            <div className="relative h-56 sm:h-72 md:h-96 rounded-2xl overflow-hidden shadow-2xl ultra-smooth-hover">
-              {bannerImages.map((image, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-0 transition-all duration-1000 ${
-                    index === currentBanner ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
-                  }`}
-                >
-                  <img
-                    src={image}
-                    alt={`Luxury Incense Banner ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/50"></div>
-                </div>
-              ))}
-              
-
-              
-              {/* Banner Content Overlay - Enhanced */}
-              <div className="absolute inset-0 flex items-center justify-center z-10">
-                <div className="text-center px-4 sm:px-6 max-w-4xl mx-auto">
-                  <div className="bg-black/60 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-luxury-gold/30">
-                    <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-luxury font-bold text-luxury-gold mb-3 sm:mb-4 drop-shadow-lg">
-                      Tinh Hoa Trầm Hương Việt Nam
-                    </h2>
-                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white mb-4 sm:mb-6 leading-relaxed drop-shadow-md">
-                      Chất Lượng Luxury • 20+ Năm Kinh Nghiệm • Hàng Ngàn Khách Hàng Tin Tưởng
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                      <button 
-                        className="btn-luxury bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:shadow-2xl transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105"
-                        onClick={() => window.location.href = '/products'}
-                      >
-                        <IonIcon icon="storefront-outline" size={20} color="#1a1a1a" />
-                        <span>Khám Phá Sản Phẩm</span>
-                      </button>
-                      <button 
-                        className="btn-luxury border-2 border-luxury-gold text-luxury-gold px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105"
-                        onClick={() => window.location.href = '/contact'}
-                      >
-                        <IonIcon icon="call-outline" size={20} />
-                        <span>Liên Hệ Ngay</span>
-                      </button>
-                    </div>
+            {/* Main Content Banner - Enhanced */}
+            <div className="relative mb-6 sm:mb-8">
+              <div className="text-center px-4 sm:px-6 max-w-5xl mx-auto">
+                <div className="bg-black/80 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border-2 border-luxury-gold/50 shadow-2xl">
+                  <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-luxury font-bold text-luxury-gold mb-6 sm:mb-8 drop-shadow-2xl text-shadow-xl">
+                    Tinh Hoa Trầm Hương Việt Nam
+                  </h2>
+                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mb-8 sm:mb-10 leading-relaxed drop-shadow-xl font-medium">
+                    Chất Lượng Luxury • 20+ Năm Kinh Nghiệm • Hàng Ngàn Khách Hàng Tin Tưởng
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center max-w-2xl mx-auto">
+                    <button 
+                      className="btn-luxury bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-10 py-4 sm:px-12 sm:py-5 rounded-full font-bold text-lg sm:text-xl hover:shadow-2xl transition-all duration-500 flex items-center justify-center space-x-3 transform hover:scale-105 shadow-xl"
+                      onClick={() => window.location.href = '/products'}
+                    >
+                      <IonIcon icon="storefront-outline" size={24} color="#1a1a1a" />
+                      <span>Khám Phá Sản Phẩm</span>
+                    </button>
+                    <button 
+                      className="btn-luxury border-3 border-luxury-gold text-luxury-gold px-10 py-4 sm:px-12 sm:py-5 rounded-full font-bold text-lg sm:text-xl hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-3 transform hover:scale-105 shadow-xl backdrop-blur-sm"
+                      onClick={() => window.location.href = '/contact'}
+                    >
+                      <IonIcon icon="call-outline" size={24} />
+                      <span>Liên Hệ Ngay</span>
+                    </button>
                   </div>
                 </div>
               </div>
-
-
-              
-              {/* Corner decorations */}
-              <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-luxury-gold/50 animate-float"></div>
-              <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-luxury-gold/50 animate-float-reverse"></div>
-              <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-luxury-gold/50 animate-float-reverse"></div>
-              <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-luxury-gold/50 animate-float"></div>
             </div>
+
+            {/* Floating Corner Decorations */}
+            <div className="absolute top-4 left-4 w-12 h-12 border-l-3 border-t-3 border-luxury-gold/60 animate-float rounded-tl-lg"></div>
+            <div className="absolute top-4 right-4 w-12 h-12 border-r-3 border-t-3 border-luxury-gold/60 animate-float-reverse rounded-tr-lg"></div>
+            <div className="absolute bottom-4 left-4 w-12 h-12 border-l-3 border-b-3 border-luxury-gold/60 animate-float-reverse rounded-bl-lg"></div>
+            <div className="absolute bottom-4 right-4 w-12 h-12 border-r-3 border-b-3 border-luxury-gold/60 animate-float rounded-br-lg"></div>
           </div>
-        </div>
 
         {/* Products Section - Enhanced with More Animations */}
         <div className="mb-8 sm:mb-12">
