@@ -513,7 +513,7 @@ const HomePage = () => {
                 
                 <div className="flex items-center justify-between">
                   <div className="text-luxury-gold text-sm">⭐⭐⭐⭐⭐</div>
-                  <div className="w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center group-hover:bg-luxury-gold/40 transition-colors duration-500 transform group-hover:scale-110">
+                  <div className="w-8 h-8 bg-transparent flex items-center justify-center">
                     <span className="text-luxury-gold text-sm">{testimonial.emoji}</span>
                   </div>
                 </div>
