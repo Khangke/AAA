@@ -213,7 +213,7 @@ const ProductsPage = () => {
               onClick={clearFilters}
               className="text-luxury-gold hover:text-luxury-copper transition-colors text-xs sm:text-sm underline flex items-center space-x-1"
             >
-              <IconWrapper icon="close-outline" size={14} />
+              <IonIcon icon="close-outline" size={14} />
               <span>Xóa bộ lọc</span>
             </button>
           </div>
