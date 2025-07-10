@@ -129,19 +129,19 @@ const HomePage = () => {
                   <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 leading-relaxed drop-shadow-xl font-medium">
                     Chất Lượng Luxury • 20+ Năm Kinh Nghiệm • Hàng Ngàn Khách Hàng Tin Tưởng
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center max-w-2xl mx-auto">
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center max-w-lg mx-auto">
                     <button 
-                      className="btn-luxury bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-8 py-3 sm:px-10 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:shadow-2xl transition-all duration-500 flex items-center justify-center space-x-3 transform hover:scale-105 shadow-xl"
+                      className="btn-luxury bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-5 sm:py-2 rounded-full font-bold text-xs sm:text-sm hover:shadow-xl transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105 shadow-lg"
                       onClick={() => window.location.href = '/products'}
                     >
-                      <IonIcon icon="storefront-outline" size={20} color="#1a1a1a" />
+                      <IonIcon icon="storefront-outline" size={14} color="#1a1a1a" />
                       <span>Khám Phá Sản Phẩm</span>
                     </button>
                     <button 
-                      className="btn-luxury border-2 border-luxury-gold text-luxury-gold px-8 py-3 sm:px-10 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-3 transform hover:scale-105 shadow-xl"
+                      className="btn-luxury border-2 border-luxury-gold text-luxury-gold px-4 py-2 sm:px-5 sm:py-2 rounded-full font-bold text-xs sm:text-sm hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105 shadow-lg"
                       onClick={() => window.location.href = '/contact'}
                     >
-                      <IonIcon icon="call-outline" size={20} />
+                      <IonIcon icon="call-outline" size={14} />
                       <span>Liên Hệ Ngay</span>
                     </button>
                   </div>
