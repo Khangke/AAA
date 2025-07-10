@@ -437,12 +437,7 @@ const HomePage = () => {
                   animation: isLoaded ? 'slideInUp 0.8s ease-out forwards' : 'none'
                 }}
               >
-                {/* Floating particles */}
-                <div className="absolute inset-0 overflow-hidden rounded-2xl">
-                  <div className="absolute top-4 left-4 w-2 h-2 bg-luxury-gold/30 rounded-full animate-pulse"></div>
-                  <div className="absolute bottom-4 right-4 w-1 h-1 bg-luxury-gold/50 rounded-full animate-ping"></div>
-                  <div className="absolute top-1/2 left-1/4 w-1 h-1 bg-luxury-gold/40 rounded-full animate-pulse delay-500"></div>
-                </div>
+
                 
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6">
                   <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full animate-pulse opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
