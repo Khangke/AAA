@@ -234,7 +234,7 @@ const HomePage = () => {
                 className="bg-luxury-gold text-deep-black px-6 py-3 rounded-full font-bold hover:bg-luxury-copper transition-colors flex items-center space-x-2"
                 onClick={() => window.location.reload()}
               >
-                <IconWrapper icon="refresh-outline" size={18} color="#1a1a1a" />
+              <IonIcon icon="refresh-outline" size={18} color="#1a1a1a" />
                 <span>Tải Lại</span>
               </button>
             </div>
