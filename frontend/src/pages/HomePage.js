@@ -116,9 +116,6 @@ const HomePage = () => {
               <div className="text-center px-4 sm:px-6 max-w-5xl mx-auto">
                 {/* Logo and Brand */}
                 <div className="mb-6 sm:mb-8">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-6 rounded-full flex items-center justify-center">
-                    <span className="text-luxury-gold font-bold text-3xl sm:text-4xl drop-shadow-lg">K</span>
-                  </div>
                   <h1 className="font-luxury text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-luxury-gold mb-4 drop-shadow-2xl">
                     Khang Trầm Hương
                   </h1>
