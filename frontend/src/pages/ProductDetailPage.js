@@ -4,7 +4,7 @@ import { useCart } from '../context/CartContext';
 import { useNotification } from '../context/NotificationContext';
 import cachedAPI from '../services/api';
 import { ProductDetailSkeleton } from '../components/Skeleton';
-import IconWrapper from '../components/IconWrapper';
+import IonIcon from '../components/IonIcon';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
