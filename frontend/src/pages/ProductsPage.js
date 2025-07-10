@@ -149,72 +149,107 @@ const ProductsPage = () => {
         <p className="text-gray-300">Khám phá bộ sưu tập trầm hương cao cấp</p>
       </div>
 
-      {/* Filters */}
+      {/* Enhanced Filters */}
       <div className="mb-8">
-        <div className="bg-deep-black/50 rounded-lg p-4 mb-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {/* Search */}
-            <div className="relative">
+        {/* Sticky Filter Bar */}
+        <div className="sticky top-16 z-10 bg-gradient-to-r from-deep-black/95 to-deep-black/90 backdrop-blur-sm border border-luxury-gold/20 rounded-xl p-4 mb-6 shadow-2xl">
+          {/* Mobile First Layout */}
+          <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-4 md:gap-4">
+            
+            {/* Enhanced Search */}
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <IonIcon icon="search-outline" size={20} color="#D4AF37" />
+              </div>
               <input
                 type="text"
                 placeholder="Tìm kiếm sản phẩm..."
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-luxury-gold transition-colors"
+                className="w-full pl-10 pr-4 py-3 bg-gradient-to-r from-white/10 to-white/5 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-luxury-gold focus:ring-2 focus:ring-luxury-gold/20 transition-all duration-300 hover:border-luxury-gold/50"
                 onChange={(e) => debouncedSearch(e.target.value)}
               />
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-luxury-gold/0 to-luxury-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             </div>
 
-            {/* Category Filter */}
-            <div>
+            {/* Enhanced Category Filter */}
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <IonIcon icon="grid-outline" size={20} color="#D4AF37" />
+              </div>
               <select 
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-luxury-gold transition-colors"
+                className="w-full pl-10 pr-4 py-3 bg-gradient-to-r from-white/10 to-white/5 border border-white/20 rounded-xl text-white focus:outline-none focus:border-luxury-gold focus:ring-2 focus:ring-luxury-gold/20 transition-all duration-300 hover:border-luxury-gold/50 appearance-none cursor-pointer"
               >
                 <option value="all">Tất cả danh mục</option>
                 {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
+                  <option key={category} value={category} className="bg-deep-black text-white">{category}</option>
                 ))}
               </select>
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <IonIcon icon="chevron-down-outline" size={16} color="#D4AF37" />
+              </div>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-luxury-gold/0 to-luxury-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             </div>
 
-            {/* Sort */}
-            <div>
+            {/* Enhanced Sort */}
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <IonIcon icon="funnel-outline" size={20} color="#D4AF37" />
+              </div>
               <select 
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-luxury-gold transition-colors"
+                className="w-full pl-10 pr-4 py-3 bg-gradient-to-r from-white/10 to-white/5 border border-white/20 rounded-xl text-white focus:outline-none focus:border-luxury-gold focus:ring-2 focus:ring-luxury-gold/20 transition-all duration-300 hover:border-luxury-gold/50 appearance-none cursor-pointer"
               >
-                <option value="featured">Nổi bật</option>
-                <option value="price-low">Giá thấp đến cao</option>
-                <option value="price-high">Giá cao đến thấp</option>
-                <option value="name">Tên A-Z</option>
+                <option value="featured" className="bg-deep-black text-white">Nổi bật</option>
+                <option value="price-low" className="bg-deep-black text-white">Giá thấp đến cao</option>
+                <option value="price-high" className="bg-deep-black text-white">Giá cao đến thấp</option>
+                <option value="name" className="bg-deep-black text-white">Tên A-Z</option>
               </select>
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <IonIcon icon="chevron-down-outline" size={16} color="#D4AF37" />
+              </div>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-luxury-gold/0 to-luxury-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             </div>
 
-            {/* Featured Toggle */}
-            <div>
-              <label className="flex items-center space-x-2 px-4 py-3 bg-white/10 border border-white/20 rounded-lg cursor-pointer hover:bg-white/20 transition-colors">
-                <input 
-                  type="checkbox"
-                  checked={showFeaturedOnly}
-                  onChange={(e) => setShowFeaturedOnly(e.target.checked)}
-                  className="accent-luxury-gold"
-                />
-                <span className="text-white text-sm">Chỉ sản phẩm nổi bật</span>
+            {/* Enhanced Featured Toggle */}
+            <div className="relative group">
+              <label className="flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-white/10 to-white/5 border border-white/20 rounded-xl cursor-pointer hover:border-luxury-gold/50 transition-all duration-300 hover:bg-gradient-to-r hover:from-luxury-gold/10 hover:to-luxury-gold/5">
+                <div className="relative">
+                  <input 
+                    type="checkbox"
+                    checked={showFeaturedOnly}
+                    onChange={(e) => setShowFeaturedOnly(e.target.checked)}
+                    className="sr-only"
+                  />
+                  <div className={`w-5 h-5 rounded-md border-2 transition-all duration-300 ${
+                    showFeaturedOnly 
+                      ? 'bg-luxury-gold border-luxury-gold' 
+                      : 'border-white/40 hover:border-luxury-gold/70'
+                  }`}>
+                    {showFeaturedOnly && (
+                      <IonIcon icon="checkmark-outline" size={14} color="#1a1a1a" />
+                    )}
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <IonIcon icon="star-outline" size={18} color="#D4AF37" />
+                  <span className="text-white text-sm font-medium">Sản phẩm nổi bật</span>
+                </div>
               </label>
             </div>
           </div>
         </div>
 
-        {/* Clear Filters */}
+        {/* Enhanced Clear Filters */}
         {hasActiveFilters && (
-          <div className="text-center">
+          <div className="text-center mb-4">
             <button
               onClick={clearFilters}
-              className="text-luxury-gold hover:text-luxury-copper transition-colors text-xs sm:text-sm underline flex items-center space-x-1"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-red-500/20 to-red-600/20 border border-red-500/30 rounded-full text-red-300 hover:text-red-200 hover:border-red-400/50 transition-all duration-300 text-sm font-medium"
             >
-              <IonIcon icon="close-outline" size={14} />
-              <span>Xóa bộ lọc</span>
+              <IonIcon icon="close-circle-outline" size={16} color="#fca5a5" />
+              <span>Xóa tất cả bộ lọc</span>
             </button>
           </div>
         )}
