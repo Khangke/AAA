@@ -372,7 +372,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Features Section - Enhanced */}
+        {/* Features Section - Enhanced with Floating Effects */}
         <div className="mb-8 sm:mb-12">
           <div className="text-center mb-3 sm:mb-6">
             <h2 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-2">
@@ -381,55 +381,61 @@ const HomePage = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-luxury-gold to-luxury-copper mx-auto rounded-full"></div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6">
-            <div className="group text-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm rounded-2xl border border-luxury-gold/30 hover:border-luxury-gold/60 transition-all duration-500 hover:shadow-xl hover:shadow-luxury-gold/20 transform hover:scale-105">
-              <div className="relative w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4">
-                <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full animate-pulse opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-                <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
-                  <span className="text-lg sm:text-2xl">🌿</span>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            {[
+              {
+                icon: '🌿',
+                title: '100% Tự Nhiên',
+                description: 'Trầm hương nguyên chất, không pha tạp',
+                delay: 0
+              },
+              {
+                icon: '👑',
+                title: 'Chất Lượng Luxury',
+                description: 'Tiêu chuẩn cao cấp, kiểm tra nghiêm ngặt',
+                delay: 200
+              },
+              {
+                icon: '🏆',
+                title: 'Uy Tín 20+ Năm',
+                description: 'Hàng ngàn khách hàng tin tưởng',
+                delay: 400
+              }
+            ].map((feature, index) => (
+              <div 
+                key={index}
+                className="group relative text-center p-4 sm:p-6 bg-black/80 backdrop-blur-md rounded-2xl border border-luxury-gold/40 hover:border-luxury-gold/80 transition-all duration-700 hover:shadow-xl hover:shadow-luxury-gold/30 transform hover:scale-105"
+                style={{
+                  animationDelay: `${feature.delay}ms`,
+                  animation: isLoaded ? 'slideInUp 0.8s ease-out forwards' : 'none'
+                }}
+              >
+                {/* Floating particles */}
+                <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                  <div className="absolute top-4 left-4 w-2 h-2 bg-luxury-gold/30 rounded-full animate-pulse"></div>
+                  <div className="absolute bottom-4 right-4 w-1 h-1 bg-luxury-gold/50 rounded-full animate-ping"></div>
+                  <div className="absolute top-1/2 left-1/4 w-1 h-1 bg-luxury-gold/40 rounded-full animate-pulse delay-500"></div>
                 </div>
-              </div>
-              <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold mb-2 group-hover:text-luxury-copper transition-colors duration-300">
-                100% Tự Nhiên
-              </h3>
-              <p className="text-soft-gold text-xs sm:text-sm leading-relaxed">
-                Trầm hương nguyên chất, không pha tạp
-              </p>
-            </div>
-            
-            <div className="group text-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm rounded-2xl border border-luxury-gold/30 hover:border-luxury-gold/60 transition-all duration-500 hover:shadow-xl hover:shadow-luxury-gold/20 transform hover:scale-105">
-              <div className="relative w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4">
-                <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full animate-pulse opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-                <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
-                  <span className="text-lg sm:text-2xl">👑</span>
+                
+                <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6">
+                  <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full animate-pulse opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
+                  <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-transform duration-700">
+                    <span className="text-2xl sm:text-3xl">{feature.icon}</span>
+                  </div>
                 </div>
+                
+                <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold mb-3 group-hover:text-luxury-copper transition-colors duration-500">
+                  {feature.title}
+                </h3>
+                <p className="text-soft-gold text-xs sm:text-sm leading-relaxed group-hover:text-white transition-colors duration-500">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold mb-2 group-hover:text-luxury-copper transition-colors duration-300">
-                Chất Lượng Luxury
-              </h3>
-              <p className="text-soft-gold text-xs sm:text-sm leading-relaxed">
-                Tiêu chuẩn cao cấp, kiểm tra nghiêm ngặt
-              </p>
-            </div>
-            
-            <div className="group text-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm rounded-2xl border border-luxury-gold/30 hover:border-luxury-gold/60 transition-all duration-500 hover:shadow-xl hover:shadow-luxury-gold/20 transform hover:scale-105 sm:col-span-1 col-span-1">
-              <div className="relative w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4">
-                <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full animate-pulse opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-                <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
-                  <span className="text-lg sm:text-2xl">🏆</span>
-                </div>
-              </div>
-              <h3 className="font-luxury text-sm sm:text-base font-bold text-luxury-gold mb-2 group-hover:text-luxury-copper transition-colors duration-300">
-                Uy Tín 20+ Năm
-              </h3>
-              <p className="text-soft-gold text-xs sm:text-sm leading-relaxed">
-                Hàng ngàn khách hàng tin tưởng
-              </p>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* Testimonials Section - Enhanced */}
+        {/* Testimonials Section - Enhanced with Floating Animation */}
         <div className="mb-8 sm:mb-12">
           <div className="text-center mb-3 sm:mb-6">
             <h2 className="font-luxury text-lg sm:text-2xl md:text-3xl font-bold text-luxury-gold mb-2">
@@ -438,110 +444,133 @@ const HomePage = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-luxury-gold to-luxury-copper mx-auto rounded-full"></div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-            <div className="group bg-black/60 backdrop-blur-sm p-4 sm:p-5 rounded-2xl border border-luxury-gold/30 hover:border-luxury-gold/60 transition-all duration-500 hover:shadow-xl hover:shadow-luxury-gold/20 transform hover:scale-105">
-              <div className="flex items-center mb-3 sm:mb-4">
-                <div className="relative w-10 h-10 mr-3">
-                  <div className="absolute inset-0 bg-luxury-gold rounded-full animate-pulse opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-                  <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-deep-black font-bold text-sm">A</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {[
+              {
+                name: 'Anh Minh',
+                location: 'TP.HCM',
+                testimonial: 'Chất lượng tuyệt vời, hương thơm rất đậm đà và tự nhiên!',
+                avatar: 'A',
+                emoji: '👍'
+              },
+              {
+                name: 'Chị Lan',
+                location: 'Hà Nội',
+                testimonial: 'Phục vụ tận tình, sản phẩm đúng như mô tả. Rất hài lòng!',
+                avatar: 'L',
+                emoji: '❤️'
+              },
+              {
+                name: 'Anh Hưng',
+                location: 'Đà Nẵng',
+                testimonial: 'Chất lượng cao cấp, xứng đáng với giá tiền!',
+                avatar: 'H',
+                emoji: '🔥'
+              }
+            ].map((testimonial, index) => (
+              <div 
+                key={index}
+                className="group relative bg-black/80 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-luxury-gold/40 hover:border-luxury-gold/80 transition-all duration-700 hover:shadow-xl hover:shadow-luxury-gold/30 transform hover:scale-105"
+                style={{
+                  animationDelay: `${index * 200}ms`,
+                  animation: isLoaded ? 'slideInUp 0.8s ease-out forwards' : 'none'
+                }}
+              >
+                {/* Floating quote marks */}
+                <div className="absolute top-2 left-2 text-luxury-gold/30 text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  "
+                </div>
+                <div className="absolute bottom-2 right-2 text-luxury-gold/30 text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  "
+                </div>
+                
+                <div className="flex items-center mb-4 sm:mb-5">
+                  <div className="relative w-12 h-12 mr-3">
+                    <div className="absolute inset-0 bg-luxury-gold rounded-full animate-pulse opacity-30 group-hover:opacity-50 transition-opacity duration-700"></div>
+                    <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-transform duration-500">
+                      <span className="text-deep-black font-bold text-sm">{testimonial.avatar}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-luxury-gold text-sm group-hover:text-luxury-copper transition-colors duration-500">{testimonial.name}</h4>
+                    <p className="text-soft-gold text-xs">{testimonial.location}</p>
                   </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-luxury-gold text-sm group-hover:text-luxury-copper transition-colors duration-300">Anh Minh</h4>
-                  <p className="text-soft-gold text-xs">TP.HCM</p>
-                </div>
-              </div>
-              <p className="text-soft-gold text-xs sm:text-sm italic leading-relaxed mb-2">
-                "Chất lượng tuyệt vời, hương thơm rất đậm đà và tự nhiên!"
-              </p>
-              <div className="flex items-center justify-between">
-                <div className="text-luxury-gold text-sm">⭐⭐⭐⭐⭐</div>
-                <div className="w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                  <span className="text-luxury-gold text-xs">👍</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="group bg-black/60 backdrop-blur-sm p-4 sm:p-5 rounded-2xl border border-luxury-gold/30 hover:border-luxury-gold/60 transition-all duration-500 hover:shadow-xl hover:shadow-luxury-gold/20 transform hover:scale-105">
-              <div className="flex items-center mb-3 sm:mb-4">
-                <div className="relative w-10 h-10 mr-3">
-                  <div className="absolute inset-0 bg-luxury-gold rounded-full animate-pulse opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-                  <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-deep-black font-bold text-sm">L</span>
+                
+                <p className="text-soft-gold text-xs sm:text-sm italic leading-relaxed mb-3 group-hover:text-white transition-colors duration-500">
+                  {testimonial.testimonial}
+                </p>
+                
+                <div className="flex items-center justify-between">
+                  <div className="text-luxury-gold text-sm">⭐⭐⭐⭐⭐</div>
+                  <div className="w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center group-hover:bg-luxury-gold/40 transition-colors duration-500 transform group-hover:scale-110">
+                    <span className="text-luxury-gold text-sm">{testimonial.emoji}</span>
                   </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-luxury-gold text-sm group-hover:text-luxury-copper transition-colors duration-300">Chị Lan</h4>
-                  <p className="text-soft-gold text-xs">Hà Nội</p>
-                </div>
               </div>
-              <p className="text-soft-gold text-xs sm:text-sm italic leading-relaxed mb-2">
-                "Phục vụ tận tình, sản phẩm đúng như mô tả. Rất hài lòng!"
-              </p>
-              <div className="flex items-center justify-between">
-                <div className="text-luxury-gold text-sm">⭐⭐⭐⭐⭐</div>
-                <div className="w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                  <span className="text-luxury-gold text-xs">❤️</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="group bg-black/60 backdrop-blur-sm p-4 sm:p-5 rounded-2xl border border-luxury-gold/30 hover:border-luxury-gold/60 transition-all duration-500 hover:shadow-xl hover:shadow-luxury-gold/20 transform hover:scale-105 sm:col-span-2 lg:col-span-1">
-              <div className="flex items-center mb-3 sm:mb-4">
-                <div className="relative w-10 h-10 mr-3">
-                  <div className="absolute inset-0 bg-luxury-gold rounded-full animate-pulse opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-                  <div className="relative w-full h-full bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-deep-black font-bold text-sm">H</span>
-                  </div>
-                </div>
-                <div>
-                  <h4 className="font-bold text-luxury-gold text-sm group-hover:text-luxury-copper transition-colors duration-300">Anh Hưng</h4>
-                  <p className="text-soft-gold text-xs">Đà Nẵng</p>
-                </div>
-              </div>
-              <p className="text-soft-gold text-xs sm:text-sm italic leading-relaxed mb-2">
-                "Chất lượng cao cấp, xứng đáng với giá tiền!"
-              </p>
-              <div className="flex items-center justify-between">
-                <div className="text-luxury-gold text-sm">⭐⭐⭐⭐⭐</div>
-                <div className="w-8 h-8 bg-luxury-gold/20 rounded-full flex items-center justify-center">
-                  <span className="text-luxury-gold text-xs">🔥</span>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* CTA Section - Enhanced */}
-        <div className="relative bg-gradient-to-r from-luxury-gold/10 to-luxury-copper/10 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-luxury-gold/30 text-center overflow-hidden">
+        {/* CTA Section - Enhanced with Particle Effects */}
+        <div className="relative bg-gradient-to-r from-luxury-gold/15 to-luxury-copper/15 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-luxury-gold/50 text-center overflow-hidden">
+          {/* Animated background particles */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-10 left-10 w-2 h-2 bg-luxury-gold/30 rounded-full animate-ping"></div>
+            <div className="absolute bottom-10 right-10 w-1 h-1 bg-luxury-gold/50 rounded-full animate-pulse"></div>
+            <div className="absolute top-1/2 left-1/4 w-1 h-1 bg-luxury-gold/40 rounded-full animate-bounce"></div>
+            <div className="absolute bottom-1/4 left-3/4 w-2 h-2 bg-luxury-gold/20 rounded-full animate-pulse delay-1000"></div>
+            <div className="absolute top-1/4 right-1/4 w-1 h-1 bg-luxury-gold/60 rounded-full animate-ping delay-500"></div>
+          </div>
+          
           <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold/5 to-luxury-copper/5 animate-pulse"></div>
+          
           <div className="relative z-10">
-            <div className="mb-3 sm:mb-4">
-              <div className="inline-block animate-bounce text-2xl sm:text-3xl mb-2">🎉</div>
-              <h2 className="font-luxury text-base sm:text-xl md:text-2xl font-bold text-luxury-gold">
-                Sẵn Sàng Trải Nghiệm?
+            <div className="mb-4 sm:mb-6">
+              <div className="inline-block animate-bounce text-3xl sm:text-4xl mb-3">🎉</div>
+              <h2 className="font-luxury text-lg sm:text-xl md:text-2xl font-bold text-luxury-gold mb-2">
+                Sẵn Sàng Trải Nghiệm Trầm Hương Luxury?
               </h2>
+              <div className="w-32 h-1 bg-gradient-to-r from-luxury-gold to-luxury-copper mx-auto rounded-full mb-3"></div>
             </div>
-            <p className="text-soft-gold text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
-              Liên hệ ngay để được tư vấn sản phẩm phù hợp
+            
+            <p className="text-soft-gold text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed max-w-2xl mx-auto">
+              Liên hệ ngay để được tư vấn sản phẩm phù hợp • Miễn phí giao hàng toàn quốc • Bảo hành chính hãng
             </p>
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center max-w-md mx-auto">
+            
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-lg mx-auto">
               <button 
-                className="group relative overflow-hidden bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
+                className="group relative overflow-hidden bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:shadow-2xl transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105"
                 onClick={() => window.location.href = '/contact'}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-luxury-copper to-luxury-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <IonIcon icon="call-outline" size={18} color="#1a1a1a" className="group-hover:animate-pulse relative z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-luxury-copper to-luxury-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <IonIcon icon="call-outline" size={20} color="#1a1a1a" className="group-hover:animate-pulse relative z-10" />
                 <span className="relative z-10">Liên Hệ Ngay</span>
               </button>
+              
               <button 
-                className="group relative overflow-hidden border-2 border-luxury-gold text-luxury-gold px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
+                className="group relative overflow-hidden border-2 border-luxury-gold text-luxury-gold px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-luxury-gold hover:text-deep-black transition-all duration-500 flex items-center justify-center space-x-2 transform hover:scale-105"
                 onClick={() => window.location.href = '/products'}
               >
-                <IonIcon icon="storefront-outline" size={18} className="group-hover:animate-pulse" />
-                <span>Xem Sản Phẩm</span>
+                <IonIcon icon="storefront-outline" size={20} className="group-hover:animate-pulse" />
+                <span>Khám Phá Ngay</span>
               </button>
+            </div>
+            
+            {/* Trust indicators */}
+            <div className="flex justify-center items-center space-x-6 mt-6 sm:mt-8 text-soft-gold text-xs sm:text-sm">
+              <div className="flex items-center space-x-1">
+                <span>🚚</span>
+                <span>Miễn phí vận chuyển</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <span>🔒</span>
+                <span>Thanh toán an toàn</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <span>⭐</span>
+                <span>Đánh giá 5 sao</span>
+              </div>
             </div>
           </div>
         </div>
