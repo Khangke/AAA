@@ -519,7 +519,7 @@ const AccountPage = () => {
                           onClick={() => setEditingProfile(false)}
                           className="text-soft-gold hover:text-luxury-gold transition-colors flex items-center space-x-1"
                         >
-                          <IconWrapper icon="close-outline" size={16} />
+                          <IonIcon icon="close-outline" size={16} />
                           <span>Hủy</span>
                         </button>
                       )}
