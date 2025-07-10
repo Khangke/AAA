@@ -255,32 +255,87 @@ const ProductsPage = () => {
         )}
       </div>
 
-      {/* Results */}
+      {/* Enhanced Results Header */}
       <div className="mb-6">
-        <p className="text-gray-300 text-sm">
-          Hiển thị {filteredProducts.length} sản phẩm
-          {searchTerm && (
-            <span className="text-luxury-gold"> cho "{searchTerm}"</span>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 bg-gradient-to-r from-deep-black/40 to-deep-black/20 rounded-xl border border-luxury-gold/10">
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center">
+              <IonIcon icon="bag-outline" size={16} color="#1a1a1a" />
+            </div>
+            <div>
+              <p className="text-white font-medium">
+                {filteredProducts.length > 0 ? (
+                  <>
+                    Tìm thấy <span className="text-luxury-gold font-bold">{filteredProducts.length}</span> sản phẩm
+                  </>
+                ) : (
+                  <span className="text-gray-400">Không có sản phẩm nào</span>
+                )}
+              </p>
+              {searchTerm && (
+                <p className="text-sm text-gray-400">
+                  Kết quả cho "<span className="text-luxury-gold">{searchTerm}</span>"
+                </p>
+              )}
+            </div>
+          </div>
+          
+          {/* Active Filters Display */}
+          {hasActiveFilters && (
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs text-gray-400">Bộ lọc:</span>
+              {selectedCategory !== 'all' && (
+                <span className="px-2 py-1 bg-luxury-gold/20 text-luxury-gold rounded-full text-xs border border-luxury-gold/30">
+                  {selectedCategory}
+                </span>
+              )}
+              {sortBy !== 'featured' && (
+                <span className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-500/30">
+                  {sortBy === 'price-low' ? 'Giá thấp' : sortBy === 'price-high' ? 'Giá cao' : 'Tên A-Z'}
+                </span>
+              )}
+              {showFeaturedOnly && (
+                <span className="px-2 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-xs border border-yellow-500/30 flex items-center space-x-1">
+                  <IonIcon icon="star" size={10} color="#fcd34d" />
+                  <span>Nổi bật</span>
+                </span>
+              )}
+            </div>
           )}
-        </p>
+        </div>
       </div>
 
-      {/* Products Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-        {filteredProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-
-      {/* No Results */}
-      {filteredProducts.length === 0 && (
-        <div className="text-center py-12">
-          <div className="text-gray-400 mb-4">
-            <svg className="mx-auto h-12 w-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <h3 className="text-lg font-medium text-gray-300 mb-2">Không tìm thấy sản phẩm</h3>
-            <p className="text-sm text-gray-400">Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm</p>
+      {/* Enhanced Products Grid */}
+      {filteredProducts.length > 0 ? (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+          {filteredProducts.map(product => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      ) : (
+        {/* Enhanced No Results */}
+        <div className="text-center py-16">
+          <div className="max-w-md mx-auto">
+            <div className="w-20 h-20 bg-gradient-to-r from-luxury-gold/20 to-luxury-copper/20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <IonIcon icon="search-outline" size={32} color="#D4AF37" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-3">Không tìm thấy sản phẩm</h3>
+            <p className="text-gray-400 mb-6">
+              {searchTerm ? (
+                <>Không có sản phẩm nào phù hợp với từ khóa "<span className="text-luxury-gold">{searchTerm}</span>"</>
+              ) : (
+                <>Thử điều chỉnh bộ lọc hoặc tìm kiếm với từ khóa khác</>
+              )}
+            </p>
+            {hasActiveFilters && (
+              <button
+                onClick={clearFilters}
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black font-bold rounded-full hover:from-luxury-copper hover:to-luxury-gold transition-all duration-300 transform hover:scale-105"
+              >
+                <IonIcon icon="refresh-outline" size={16} color="#1a1a1a" />
+                <span>Xóa bộ lọc và xem tất cả</span>
+              </button>
+            )}
           </div>
         </div>
       )}
