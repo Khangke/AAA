@@ -255,48 +255,48 @@ const ProductsPage = () => {
         )}
       </div>
 
-      {/* Enhanced Results Header */}
-      <div className="mb-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 bg-gradient-to-r from-deep-black/40 to-deep-black/20 rounded-xl border border-luxury-gold/10">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center">
-              <IonIcon icon="bag-outline" size={16} color="#1a1a1a" />
+      {/* Compact Results Header */}
+      <div className="mb-3">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-2 bg-gradient-to-r from-deep-black/40 to-deep-black/20 rounded-lg border border-luxury-gold/10">
+          <div className="flex items-center space-x-2">
+            <div className="w-5 h-5 bg-gradient-to-r from-luxury-gold to-luxury-copper rounded-full flex items-center justify-center">
+              <IonIcon icon="bag-outline" size={10} color="#1a1a1a" />
             </div>
             <div>
-              <p className="text-white font-medium">
+              <p className="text-white text-xs font-medium">
                 {filteredProducts.length > 0 ? (
                   <>
-                    Tìm thấy <span className="text-luxury-gold font-bold">{filteredProducts.length}</span> sản phẩm
+                    <span className="text-luxury-gold font-bold">{filteredProducts.length}</span> sản phẩm
                   </>
                 ) : (
-                  <span className="text-gray-400">Không có sản phẩm nào</span>
+                  <span className="text-gray-400">Không có sản phẩm</span>
                 )}
               </p>
               {searchTerm && (
-                <p className="text-sm text-gray-400">
-                  Kết quả cho "<span className="text-luxury-gold">{searchTerm}</span>"
+                <p className="text-xs text-gray-400">
+                  "<span className="text-luxury-gold">{searchTerm}</span>"
                 </p>
               )}
             </div>
           </div>
           
-          {/* Active Filters Display */}
+          {/* Compact Active Filters Display */}
           {hasActiveFilters && (
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs text-gray-400">Bộ lọc:</span>
+            <div className="flex flex-wrap items-center gap-1">
+              <span className="text-xs text-gray-400">Lọc:</span>
               {selectedCategory !== 'all' && (
-                <span className="px-2 py-1 bg-luxury-gold/20 text-luxury-gold rounded-full text-xs border border-luxury-gold/30">
+                <span className="px-1.5 py-0.5 bg-luxury-gold/20 text-luxury-gold rounded-full text-xs border border-luxury-gold/30">
                   {selectedCategory}
                 </span>
               )}
               {sortBy !== 'featured' && (
-                <span className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-500/30">
-                  {sortBy === 'price-low' ? 'Giá thấp' : sortBy === 'price-high' ? 'Giá cao' : 'Tên A-Z'}
+                <span className="px-1.5 py-0.5 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-500/30">
+                  {sortBy === 'price-low' ? 'Giá thấp' : sortBy === 'price-high' ? 'Giá cao' : 'A-Z'}
                 </span>
               )}
               {showFeaturedOnly && (
-                <span className="px-2 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-xs border border-yellow-500/30 flex items-center space-x-1">
-                  <IonIcon icon="star" size={10} color="#fcd34d" />
+                <span className="px-1.5 py-0.5 bg-yellow-500/20 text-yellow-300 rounded-full text-xs border border-yellow-500/30 flex items-center space-x-0.5">
+                  <IonIcon icon="star" size={8} color="#fcd34d" />
                   <span>Nổi bật</span>
                 </span>
               )}
@@ -313,26 +313,26 @@ const ProductsPage = () => {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16">
-          <div className="max-w-md mx-auto">
-            <div className="w-20 h-20 bg-gradient-to-r from-luxury-gold/20 to-luxury-copper/20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <IonIcon icon="search-outline" size={32} color="#D4AF37" />
+        <div className="text-center py-8">
+          <div className="max-w-sm mx-auto">
+            <div className="w-12 h-12 bg-gradient-to-r from-luxury-gold/20 to-luxury-copper/20 rounded-full flex items-center justify-center mx-auto mb-3">
+              <IonIcon icon="search-outline" size={18} color="#D4AF37" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">Không tìm thấy sản phẩm</h3>
-            <p className="text-gray-400 mb-6">
+            <h3 className="text-sm font-bold text-white mb-2">Không tìm thấy sản phẩm</h3>
+            <p className="text-gray-400 mb-3 text-xs">
               {searchTerm ? (
-                <>Không có sản phẩm nào phù hợp với từ khóa "<span className="text-luxury-gold">{searchTerm}</span>"</>
+                <>Không có sản phẩm phù hợp "<span className="text-luxury-gold">{searchTerm}</span>"</>
               ) : (
-                <>Thử điều chỉnh bộ lọc hoặc tìm kiếm với từ khóa khác</>
+                <>Thử điều chỉnh bộ lọc</>
               )}
             </p>
             {hasActiveFilters && (
               <button
                 onClick={clearFilters}
-                className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black font-bold rounded-full hover:from-luxury-copper hover:to-luxury-gold transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center space-x-1 px-3 py-1.5 bg-gradient-to-r from-luxury-gold to-luxury-copper text-deep-black font-bold rounded-full hover:from-luxury-copper hover:to-luxury-gold transition-all duration-300 text-xs"
               >
-                <IonIcon icon="refresh-outline" size={16} color="#1a1a1a" />
-                <span>Xóa bộ lọc và xem tất cả</span>
+                <IonIcon icon="refresh-outline" size={10} color="#1a1a1a" />
+                <span>Xóa bộ lọc</span>
               </button>
             )}
           </div>
