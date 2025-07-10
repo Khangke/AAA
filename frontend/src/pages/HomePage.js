@@ -536,14 +536,7 @@ const HomePage = () => {
 
         {/* CTA Section - Enhanced with Particle Effects */}
         <div className="relative bg-gradient-to-r from-luxury-gold/15 to-luxury-copper/15 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-luxury-gold/50 text-center overflow-hidden">
-          {/* Animated background particles */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-10 left-10 w-2 h-2 bg-luxury-gold/30 rounded-full animate-ping"></div>
-            <div className="absolute bottom-10 right-10 w-1 h-1 bg-luxury-gold/50 rounded-full animate-pulse"></div>
-            <div className="absolute top-1/2 left-1/4 w-1 h-1 bg-luxury-gold/40 rounded-full animate-bounce"></div>
-            <div className="absolute bottom-1/4 left-3/4 w-2 h-2 bg-luxury-gold/20 rounded-full animate-pulse delay-1000"></div>
-            <div className="absolute top-1/4 right-1/4 w-1 h-1 bg-luxury-gold/60 rounded-full animate-ping delay-500"></div>
-          </div>
+
           
           <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold/5 to-luxury-copper/5 animate-pulse"></div>
           
