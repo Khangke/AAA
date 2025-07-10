@@ -447,27 +447,73 @@ code {
   animation: particleFloat 6s ease-in-out infinite;
 }
 
-/* Enhanced backdrop blur with better performance */
+/* Enhanced Text Shadow Effects */
+.text-shadow-lg {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(212, 175, 55, 0.3);
+}
+
+.text-shadow-xl {
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9), 0 8px 24px rgba(212, 175, 55, 0.4);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Enhanced Button Styles */
+.btn-luxury {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-luxury:hover::before {
+  left: 100%;
+}
+
+/* Ultra smooth hover effects */
+.ultra-smooth-hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.ultra-smooth-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+/* Enhanced card styles */
+.card-luxury {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-luxury:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+}
+
+/* Enhanced backdrop blur */
 .backdrop-blur-ultra {
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(0, 0, 0, 0.3);
 }
 
-.backdrop-blur-sm {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.backdrop-blur-md {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* Smooth glass morphism */
+/* Enhanced glass morphism */
 .glass-morphism {
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
