@@ -224,7 +224,7 @@ html, body {
   }
   
   .mobile-nav-padding {
-    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
   }
   
   /* Optimize touch interactions */
