@@ -8,12 +8,6 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [hoveredProduct, setHoveredProduct] = useState(null);
-  const [currentBanner, setCurrentBanner] = useState(0);
-
-  const bannerImages = [
-    // Chỉ dùng ảnh của bạn
-    'https://cdn.myportfolio.com/b60af86a855ed2da587d6e31dbd728bf/584cc299-eacc-457d-93d7-684d4af9a6e5.jpg?h=8730de8918cada72cfaf3ccccf1ff0f5'
-  ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -35,15 +29,6 @@ const HomePage = () => {
     
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  // Banner auto-rotation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBanner((prev) => (prev + 1) % bannerImages.length);
-    }, 5000); // Change every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [bannerImages.length]);
 
   const fetchFeaturedProducts = async () => {
     try {
