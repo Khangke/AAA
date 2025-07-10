@@ -44,9 +44,6 @@ function AppContent() {
   // usePerformanceMonitor(true);
 
   useEffect(() => {
-    // Load Ionic Icons
-    defineCustomElements();
-    
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
